@@ -1,4 +1,19 @@
 
+## linux 基础知识
+
+#### 向文件添加和追加内容
+
+添加内容
+
+    ivan@jiefang:~/test$ echo Hello > a.txt
+
+追加内容
+
+    ivan@jiefang:~/test$ echo World >> a.txt
+
+> 其中，> 是覆盖，>> 是追加。
+
+***
 
 ## deb 包安装方法  
 
