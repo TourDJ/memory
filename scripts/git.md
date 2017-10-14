@@ -212,7 +212,10 @@ git reset HEAD <file>...
       (use "git add <file>..." to update what will be committed)
       (use "git checkout -- <file>..." to discard changes in working directory)
 
-        modified:   CONTRIBUTING.md
+        modified:   CONTRIBUTING.md
+多个文件需要加上 --
+
+    git reset HEAD -- public/libs/*
 ***
 
 ### git checkout 撤消对文件的修改
