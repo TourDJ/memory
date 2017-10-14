@@ -1,30 +1,42 @@
 
+## git 命令
 
-在现有目录中初始化仓库
+#### git init
 
-  如果你打算使用 Git 来对现有的项目进行管理，你只需要进入该项目目录并输入
+在现有目录中初始化仓库。如果你打算使用 Git 来对现有的项目进行管理，你只需要进入该项目目录并输入：
 
     $ git init
 
-  这个时候，我们仅仅是做了一个初始化的操作，你的项目里的文件还没有被跟踪。
+该命令将创建一个名为 .git 的子目录，这个子目录含有你初始化的 Git 仓库中所有的必须文件，这些文件是 Git 仓库的骨干。 但是，在这个时候，我们仅仅是做了一个初始化的操作，你的项目里的文件还没有被跟踪。通过 git add 命令来实现对指定文件的跟踪，然后执行 git commit 提交：
 
-
-  通过 git add 命令来实现对指定文件的跟踪，然后执行 git commit 提交
-    $ git add *.c
+    $ git add *.c
     $ git add LICENSE
     $ git commit -m 'initial project version'
 
 
-克隆现有的仓库
+#### git clone
 
-  Git 克隆的是该 Git 仓库服务器上的几乎所有数据，而不是仅仅复制完成你的工作所需要文件。
-  
-    $ git clone https://github.com/libgit2/libgit2
-    $ git clone https://github.com/libgit2/libgit2 mylibgit
+克隆现有的仓库。Git 克隆的是该 Git 仓库服务器上的几乎所有数据，而不是仅仅复制完成你的工作所需要文件。
+命令格式：
 
+    git clone [url]
+  
+例如：
 
-状态简览
-  git status 命令的输出十分详细，但其用语有些繁琐。 如果你使用 git status -s 命令或 git status --short 命令，你将得到一种更为紧凑的格式输出。
+    $ git clone https://github.com/libgit2/libgit2
+    
+    //克隆远程仓库的时候，自定义本地仓库的名字
+    $ git clone https://github.com/libgit2/libgit2 mylibgit
+
+#### git status
+
+检查当前文件状态。git status 命令的输出十分详细，但其用语有些繁琐。 
+
+    $ git status
+    On branch master
+    nothing to commit, working directory clean
+
+如果你使用 git status -s 命令或 git status --short 命令，你将得到一种更为紧凑的格式输出。
   
     $ git status -s
     M README
@@ -33,27 +45,67 @@
     M  lib/simplegit.rb
     ?? LICENSE.txt
 
+> 新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。 你可能注意到了 M 有两个可以出现的位置，出现在右边的 M 表示该文件被修改了但是还没放入暂存区，出现在靠左边的 M 表示该文件被修改了并放入了暂存区。
 
-忽略文件
-  一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件
-  等。 在这种情况下，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件模式。
+#### git add
+
+跟踪新文件。使用命令 git add 开始跟踪一个文件。 
+
+    $ git add README
+
+跟踪多个文件
+
+    $ git add .
+    
+此时再运行 git status 命令，会看到 README 文件已被跟踪，并处于暂存状态：
+
+    $ git status
+    On branch master
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
+
+        new file:   README
+
+只要在 Changes to be committed 这行下面的，就说明是已暂存状态。
+
+#### 忽略文件
+一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件
+等。 在这种情况下，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件模式。
 
     $ cat .gitignore
     *.[oa]
     *~
 
-  文件 .gitignore 的格式规范如下：
+文件 .gitignore 的格式规范如下：
 
-    所有空行或者以 ＃ 开头的行都会被 Git 忽略。
-    可以使用标准的 glob 模式匹配。
-    匹配模式可以以（/）开头防止递归。
-    匹配模式可以以（/）结尾指定目录。
+    * 所有空行或者以 ＃ 开头的行都会被 Git 忽略。
+    * 可以使用标准的 glob 模式匹配。
+    * 匹配模式可以以（/）开头防止递归。
+    * 匹配模式可以以（/）结尾指定目录。
+    * 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
 
-  要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
+#### git commit
 
+提交更新。在的暂存区域已经准备妥当可以提交了。 在此之前，请一定要确认还有什么修改过的或新建的文件还没有 git add 过，否则提交的时候不会记录这些还没暂存起来的变化。 这些修改过的文件只保留在本地磁盘。 所以，每次准备提交前，先用 git status 看下，是不是都已暂存起来了， 然后再运行提交命令 git commit：
 
-移除文件
-移动文件
+    $ git commit
+
+这种方式会启动文本编辑器以便输入本次提交的说明。
+另外，你也可以在 commit 命令后添加 -m 选项，将提交信息与命令放在同一行：
+
+    $ git commit -m "Story 182: Fix benchmarks for speed"
+
+跳过使用暂存区域
+git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤。
+  
+    $ git commit -a -m 'added new benchmarks'
+    [master 83e38c7] added new benchmarks
+     1 file changed, 5 insertions(+), 0 deletions(-)
+
+#### git rm
+
+移动文件。要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除（确切地说，是从暂存区域移除），然后提交。
+
 
 添加远程仓库
 
@@ -71,17 +123,17 @@ git remote set-url origin http://git.qingtime.cn:3000/gGroup/gPro.git
 
 
 $ git status
-# On branch master
-# Changes to be committed:
-#   (use "git reset HEAD <file>..." to unstage)
-#
-#      modified:   index.html
-#
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#
-#      modified:   lib/simplegit.rb
-#
+ On branch master
+ Changes to be committed:
+   (use "git reset HEAD <file>..." to unstage)
+
+      modified:   index.html
+
+ Changes not staged for commit:
+   (use "git add <file>..." to update what will be committed)
+
+      modified:   lib/simplegit.rb
+
 
 现在你想切换分支，但是你还不想提交你正在进行中的工作；所以你储藏这些变更。为了往堆栈推送一个新的储藏，只要运行 git stash：
 
@@ -164,4 +216,7 @@ git status 同样提示了具体的撤消方法，接着上面的例子，现在
 
     git reset --soft HEAD~1
     
-    
+
+
+
+
