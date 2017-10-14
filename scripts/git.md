@@ -216,6 +216,16 @@ git reset HEAD <file>...
 多个文件需要加上 --
 
     git reset HEAD -- public/libs/*
+    
+记住，任何已经提交到 Git 的都可以被恢复。即便在已经删除的分支中的提交，或者用 --amend 重新改写的提交，都可以被恢复。
+
+取消上一次 commit
+  
+    git reset --hard HEAD~1
+    
+取消上一次 commit(保证你修改)
+
+    git reset --soft HEAD~1   
 ***
 
 ### git checkout 撤消对文件的修改
@@ -243,7 +253,9 @@ git reset HEAD <file>...
 ***
 
 ### git remote add 添加远程仓库
-
+在本地的git仓库"添加一个远程仓库",当然这个远程仓库还是你自己的这个目录。
+$ git remote add origin ssh://你的IP/~/testgit/.git
+    
     $ git remote
     origin
     $ git remote add pb https://github.com/paulboone/ticgit
@@ -253,124 +265,94 @@ git reset HEAD <file>...
     pb	https://github.com/paulboone/ticgit (fetch)
     pb	https://github.com/paulboone/ticgit (push)
 添加一个新的远程 Git 仓库，同时指定一个你可以轻松引用的简写。
-
-  在本地的git仓库"添加一个远程仓库",当然这个远程仓库还是你自己的这个目录。
-
-    $ git remote add origin ssh://你的IP/~/testgit/.git
-
-更新获取地址方式
-git remote set-url origin http://git.example.cn:3000/project/ptest.git
-
-
-
-储藏你的工作
-为了演示这一功能，你可以进入你的项目，在一些文件上进行工作，有可能还暂存其中一个变更。如果你运行 git status，你可以看到你的中间状态：
-
-    $ git checkout -- CONTRIBUTING.md
-    $ git status
-    On branch master
-    Changes to be committed:
-      (use "git reset HEAD <file>..." to unstage)
-
-        renamed:    README.md -> README
-可以看到那些修改已经被撤消了。
 ***
 
-$ git status
- On branch master
- Changes to be committed:
-   (use "git reset HEAD <file>..." to unstage)
+### git fetch 从远程仓库中拉取
+这个命令会访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。
 
-      modified:   index.html
+    $ git fetch [remote-name]
+git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令会将数据拉取到你的本地仓库 - 它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作。
+***
 
- Changes not staged for commit:
-   (use "git add <file>..." to update what will be committed)
+### git pull 从远程仓库中抓取与拉取
+自动的抓取然后合并远程分支到当前分支。 
 
-      modified:   lib/simplegit.rb
+    $ git pull [remote-name]
+***
+
+### git push 推送到远程仓库
+
+    $ git push origin master
+当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先将他们的工作拉取下来并将其合并进你的工作后才能推送。
+***
+
+### git remote show 查看远程仓库详细信息
+
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/schacon/ticgit
+  Push  URL: https://github.com/schacon/ticgit
+  HEAD branch: master
+  Remote branches:
+    master                               tracked
+    dev-branch                           tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+***
+
+### git remote rename 远程仓库的重命名
+
+    $ git remote rename pb paul
+    $ git remote
+    origin
+    paul
+***
+
+### git remote rm 远程仓库的移除
+
+    $ git remote rm paul
+    $ git remote
+    origin
+***
+
+### git remote set-url 更新获取地址方式
+
+    git remote set-url origin http://git.example.cn:3000/project/ptest.git
+***
+
+### git stash 储藏你的工作
+为了演示这一功能，你可以进入你的项目，在一些文件上进行工作，有可能还暂存其中一个变更。如果你运行 git status，你可以看到你的中间状态：
+
+    $ git status
+     On branch master
+     Changes to be committed:
+       (use "git reset HEAD <file>..." to unstage)
+
+          modified:   index.html
+
+     Changes not staged for commit:
+       (use "git add <file>..." to update what will be committed)
+
+          modified:   lib/simplegit.rb
 
 
 现在你想切换分支，但是你还不想提交你正在进行中的工作；所以你储藏这些变更。为了往堆栈推送一个新的储藏，只要运行 git stash：
 
-$ git stash
-Saved working directory and index state \
-  "WIP on master: 049d078 added the index file"
-HEAD is now at 049d078 added the index file
-(To restore them type "git stash apply")
+    $ git stash
+    Saved working directory and index state \
+      "WIP on master: 049d078 added the index file"
+    HEAD is now at 049d078 added the index file
+    (To restore them type "git stash apply")
 你的工作目录就干净了：
 
-$ git status
-# On branch master
-nothing to commit, working directory clean
-
-取消已经暂存的文件
-
-有两个修改过的文件，我们想要分开提交，但不小心用 git add . 全加到了暂存区域。该如何撤消暂存其中的一个文件呢？
-其实，git status 的命令输出已经告诉了我们该怎么做：
-
-    $ git add .
     $ git status
-    On branch master
-    Changes to be committed:
-      (use "git reset HEAD <file>..." to unstage)
+    # On branch master
+    nothing to commit, working directory clean
+***
 
-            modified:   README.txt
-            modified:   benchmarks.rb
-
-可以使用 git reset HEAD <file>... 的方式取消暂存。
-
-    $ git reset HEAD benchmarks.rb
-    Unstaged changes after reset:
-    M       benchmarks.rb
-    $ git status
-    On branch master
-    Changes to be committed:
-      (use "git reset HEAD <file>..." to unstage)
-
-            modified:   README.txt
-
-    Changes not staged for commit:
-      (use "git add <file>..." to update what will be committed)
-      (use "git checkout -- <file>..." to discard changes in working directory)
-
-            modified:   benchmarks.rb
-            
-            
-取消对文件的修改
-
-如果觉得刚才对 benchmarks.rb 的修改完全没有必要，该如何取消修改，回到之前的状态（也就是修改之前的版本）呢？
-git status 同样提示了具体的撤消方法，接着上面的例子，现在未暂存区域看起来像这样：
-
-    Changes not staged for commit:
-      (use "git add <file>..." to update what will be committed)
-      (use "git checkout -- <file>..." to discard changes in working directory)
-
-            modified:   benchmarks.rb
-    
-    
-在第二个括号中，我们看到了抛弃文件修改的命令
-
-    $ git checkout -- benchmarks.rb
-    $ git status
-    On branch master
-    Changes to be committed:
-      (use "git reset HEAD <file>..." to unstage)
-
-            modified:   README.txt
-            
-
-可以看到，该文件已经恢复到修改前的版本。
-
-记住，任何已经提交到 Git 的都可以被恢复。即便在已经删除的分支中的提交，或者用 --amend 重新改写的提交，都可以被恢复。
-
-取消上一次 commit
-  
-    git reset --hard HEAD~1
-    
-取消上一次 commit(保证你修改)
-
-    git reset --soft HEAD~1
-    
-
+## git 使用技巧
 
 
 
