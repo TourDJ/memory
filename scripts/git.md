@@ -154,6 +154,24 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
     $ git add README
 
 
+#### git log
+
+查看提交历史。
+
+    $ git log
+    commit ca82a6dff817ec66f44342007202690a93763949
+    Author: Scott Chacon <schacon@gee-mail.com>
+    Date:   Mon Mar 17 21:52:11 2008 -0700
+
+        changed the version number
+    ......
+
+一个常用的选项是 -p，用来显示每次提交的内容差异。 你也可以加上 -2 来仅显示最近两次提交：
+
+    $ git log -p -2
+    ......
+
+
 添加远程仓库
 
   在本地的git仓库"添加一个远程仓库",当然这个远程仓库还是你自己的这个目录。
