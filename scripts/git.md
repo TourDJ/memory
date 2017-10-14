@@ -46,7 +46,11 @@ git status 命令的输出十分详细，但其用语有些繁琐。
     M  lib/simplegit.rb
     ?? LICENSE.txt
 
-> 新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。 你可能注意到了 M 有两个可以出现的位置，出现在右边的 M 表示该文件被修改了但是还没放入暂存区，出现在靠左边的 M 表示该文件被修改了并放入了暂存区。
+> 新添加的未跟踪文件前面有 ?? 标记
+  新添加到暂存区中的文件前面有 A 标记
+  修改过的文件前面有 M 标记。 
+  
+  你可能注意到了 M 有两个可以出现的位置，出现在右边的 M 表示该文件被修改了但是还没放入暂存区，出现在靠左边的 M 表示该文件被修改了并放入了暂存区。
 ***
 
 ### git add 跟踪新文件
@@ -211,7 +215,41 @@ git reset HEAD <file>...
         modified:   CONTRIBUTING.md
 ***
 
-添加远程仓库
+### git checkout 撤消对文件的修改
+你该如何方便地撤消修改 - 将它还原成上次提交时的样子（或者刚克隆完的样子，或者刚把它放入工作目录时的样子）？
+
+    $ git checkout -- CONTRIBUTING.md
+    $ git status
+    On branch master
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    README.md -> README
+可以看到那些修改已经被撤消了。
+***
+
+### git remote 查看远程仓库
+
+    $ git remote
+    origin
+你也可以指定选项 -v，会显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。
+
+    $ git remote -v
+    origin	https://github.com/schacon/ticgit (fetch)
+    origin	https://github.com/schacon/ticgit (push)
+***
+
+### git remote add 添加远程仓库
+
+    $ git remote
+    origin
+    $ git remote add pb https://github.com/paulboone/ticgit
+    $ git remote -v
+    origin	https://github.com/schacon/ticgit (fetch)
+    origin	https://github.com/schacon/ticgit (push)
+    pb	https://github.com/paulboone/ticgit (fetch)
+    pb	https://github.com/paulboone/ticgit (push)
+添加一个新的远程 Git 仓库，同时指定一个你可以轻松引用的简写。
 
   在本地的git仓库"添加一个远程仓库",当然这个远程仓库还是你自己的这个目录。
 
@@ -225,6 +263,15 @@ git remote set-url origin http://git.example.cn:3000/project/ptest.git
 储藏你的工作
 为了演示这一功能，你可以进入你的项目，在一些文件上进行工作，有可能还暂存其中一个变更。如果你运行 git status，你可以看到你的中间状态：
 
+    $ git checkout -- CONTRIBUTING.md
+    $ git status
+    On branch master
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    README.md -> README
+可以看到那些修改已经被撤消了。
+***
 
 $ git status
  On branch master
