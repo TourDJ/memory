@@ -1,9 +1,9 @@
 
 ## git 命令
 
-#### git init
+#### git init 在现有目录中初始化仓库
 
-在现有目录中初始化仓库。如果你打算使用 Git 来对现有的项目进行管理，你只需要进入该项目目录并输入：
+如果你打算使用 Git 来对现有的项目进行管理，你只需要进入该项目目录并输入：
 
     $ git init
 
@@ -12,11 +12,11 @@
     $ git add *.c
     $ git add LICENSE
     $ git commit -m 'initial project version'
+***
 
+#### git clone 克隆现有的仓库
 
-#### git clone
-
-克隆现有的仓库。Git 克隆的是该 Git 仓库服务器上的几乎所有数据，而不是仅仅复制完成你的工作所需要文件。
+Git 克隆的是该 Git 仓库服务器上的几乎所有数据，而不是仅仅复制完成你的工作所需要文件。
 命令格式：
 
     git clone [url]
@@ -27,10 +27,11 @@
     
     //克隆远程仓库的时候，自定义本地仓库的名字
     $ git clone https://github.com/libgit2/libgit2 mylibgit
+***
 
-#### git status
+#### git status 检查当前文件状态
 
-检查当前文件状态。git status 命令的输出十分详细，但其用语有些繁琐。 
+git status 命令的输出十分详细，但其用语有些繁琐。 
 
     $ git status
     On branch master
@@ -46,10 +47,11 @@
     ?? LICENSE.txt
 
 > 新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。 你可能注意到了 M 有两个可以出现的位置，出现在右边的 M 表示该文件被修改了但是还没放入暂存区，出现在靠左边的 M 表示该文件被修改了并放入了暂存区。
+***
 
-#### git add
+#### git add 跟踪新文件
 
-跟踪新文件。使用命令 git add 开始跟踪一个文件。 
+使用命令 git add 开始跟踪一个文件。 
 
     $ git add README
 
@@ -67,6 +69,7 @@
         new file:   README
 
 只要在 Changes to be committed 这行下面的，就说明是已暂存状态。
+***
 
 #### 忽略文件
 一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件
@@ -83,10 +86,11 @@
     * 匹配模式可以以（/）开头防止递归。
     * 匹配模式可以以（/）结尾指定目录。
     * 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
+***
 
-#### git commit
+#### git commit 提交更新
 
-提交更新。在的暂存区域已经准备妥当可以提交了。 在此之前，请一定要确认还有什么修改过的或新建的文件还没有 git add 过，否则提交的时候不会记录这些还没暂存起来的变化。 这些修改过的文件只保留在本地磁盘。 所以，每次准备提交前，先用 git status 看下，是不是都已暂存起来了， 然后再运行提交命令 git commit：
+在的暂存区域已经准备妥当可以提交了。 在此之前，请一定要确认还有什么修改过的或新建的文件还没有 git add 过，否则提交的时候不会记录这些还没暂存起来的变化。 这些修改过的文件只保留在本地磁盘。 所以，每次准备提交前，先用 git status 看下，是不是都已暂存起来了， 然后再运行提交命令 git commit：
 
     $ git commit
 
@@ -101,10 +105,11 @@ git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件�
     $ git commit -a -m 'added new benchmarks'
     [master 83e38c7] added new benchmarks
      1 file changed, 5 insertions(+), 0 deletions(-)
+***
 
-#### git rm
+#### git rm 移除文件
 
-移动文件。要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除（确切地说，是从暂存区域移除），然后提交。
+要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除（确切地说，是从暂存区域移除），然后提交。
 如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 “Changes not staged for commit” 部分（也就是 未暂存清单）看到：
 
     $ rm PROJECTS.md
@@ -140,10 +145,9 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
 
     $ git rm \*~
 该命令为删除以 ~ 结尾的所有文件。
+***
 
-#### git mv
-
-移动文件。
+#### git mv 移动文件
 
     $ git mv file_from file_to
 它会恰如预期般正常工作。 
@@ -152,11 +156,9 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
     $ mv README.md README
     $ git rm README.md
     $ git add README
+***
 
-
-#### git log
-
-查看提交历史。
+#### git log 查看提交历史
 
     $ git log
     commit ca82a6dff817ec66f44342007202690a93763949
@@ -170,7 +172,21 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
 
     $ git log -p -2
     ......
+***
 
+#### 撤消操作
+
+    $ git commit --amend
+这个命令会将暂存区中的文件提交。 如果自上次提交以来你还未做任何修改（例如，在上次提交后马上执行了此命令），那么快照会保持不变，而你所修改的只是提交信息。
+
+文本编辑器启动后，可以看到之前的提交信息。 编辑后保存会覆盖原来的提交信息。
+
+例如，你提交后发现忘记了暂存某些需要的修改，可以像下面这样操作：
+
+    $ git commit -m 'initial commit'
+    $ git add forgotten_file
+    $ git commit --amend
+最终你只会有一个提交 - 第二次提交将代替第一次提交的结果。
 
 添加远程仓库
 
