@@ -14,7 +14,7 @@
     $ git commit -m 'initial project version'
 ***
 
-#### git clone 克隆现有的仓库
+### git clone 克隆现有的仓库
 
 Git 克隆的是该 Git 仓库服务器上的几乎所有数据，而不是仅仅复制完成你的工作所需要文件。
 命令格式：
@@ -29,7 +29,7 @@ Git 克隆的是该 Git 仓库服务器上的几乎所有数据，而不是仅�
     $ git clone https://github.com/libgit2/libgit2 mylibgit
 ***
 
-#### git status 检查当前文件状态
+### git status 检查当前文件状态
 
 git status 命令的输出十分详细，但其用语有些繁琐。 
 
@@ -49,7 +49,7 @@ git status 命令的输出十分详细，但其用语有些繁琐。
 > 新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。 你可能注意到了 M 有两个可以出现的位置，出现在右边的 M 表示该文件被修改了但是还没放入暂存区，出现在靠左边的 M 表示该文件被修改了并放入了暂存区。
 ***
 
-#### git add 跟踪新文件
+### git add 跟踪新文件
 
 使用命令 git add 开始跟踪一个文件。 
 
@@ -71,7 +71,7 @@ git status 命令的输出十分详细，但其用语有些繁琐。
 只要在 Changes to be committed 这行下面的，就说明是已暂存状态。
 ***
 
-#### 忽略文件
+### 忽略文件
 一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件
 等。 在这种情况下，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件模式。
 
@@ -88,7 +88,7 @@ git status 命令的输出十分详细，但其用语有些繁琐。
     * 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
 ***
 
-#### git commit 提交更新
+### git commit 提交更新
 
 在的暂存区域已经准备妥当可以提交了。 在此之前，请一定要确认还有什么修改过的或新建的文件还没有 git add 过，否则提交的时候不会记录这些还没暂存起来的变化。 这些修改过的文件只保留在本地磁盘。 所以，每次准备提交前，先用 git status 看下，是不是都已暂存起来了， 然后再运行提交命令 git commit：
 
@@ -107,7 +107,7 @@ git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件�
      1 file changed, 5 insertions(+), 0 deletions(-)
 ***
 
-#### git rm 移除文件
+### git rm 移除文件
 
 要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除（确切地说，是从暂存区域移除），然后提交。
 如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 “Changes not staged for commit” 部分（也就是 未暂存清单）看到：
@@ -147,7 +147,7 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
 该命令为删除以 ~ 结尾的所有文件。
 ***
 
-#### git mv 移动文件
+### git mv 移动文件
 
     $ git mv file_from file_to
 它会恰如预期般正常工作。 
@@ -158,7 +158,7 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
     $ git add README
 ***
 
-#### git log 查看提交历史
+### git log 查看提交历史
 
     $ git log
     commit ca82a6dff817ec66f44342007202690a93763949
@@ -174,7 +174,7 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
     ......
 ***
 
-#### 撤消操作
+### 撤消操作
 
     $ git commit --amend
 这个命令会将暂存区中的文件提交。 如果自上次提交以来你还未做任何修改（例如，在上次提交后马上执行了此命令），那么快照会保持不变，而你所修改的只是提交信息。
@@ -187,6 +187,29 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
     $ git add forgotten_file
     $ git commit --amend
 最终你只会有一个提交 - 第二次提交将代替第一次提交的结果。
+***
+
+### git reset 取消暂存的文件
+
+git reset HEAD <file>...
+例如，你已经修改了两个文件并且想要将它们作为两次独立的修改提交，但是却意外地输入了 git add * 暂存了它们两个。 如何只取消暂存两个中的一个呢？
+
+    $ git reset HEAD CONTRIBUTING.md
+    Unstaged changes after reset:
+    M	CONTRIBUTING.md
+    $ git status
+    On branch master
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    README.md -> README
+
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   CONTRIBUTING.md
+***
 
 添加远程仓库
 
@@ -195,7 +218,7 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
     $ git remote add origin ssh://你的IP/~/testgit/.git
 
 更新获取地址方式
-git remote set-url origin http://git.qingtime.cn:3000/gGroup/gPro.git
+git remote set-url origin http://git.example.cn:3000/project/ptest.git
 
 
 
