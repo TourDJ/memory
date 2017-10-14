@@ -352,7 +352,52 @@ $ git remote show origin
     nothing to commit, working directory clean
 ***
 
+### git reflog 显示整个本地仓储的 commit
+显示整个本地仓储的commit, 包括所有branch的commit, 甚至包括已经撤销的commit, 只要HEAD发生了变化, 就会在reflog里面看得到. git log只包括当前分支的commit。
+例如：
+
+    $ git reflog
+    b7057a9 HEAD@{0}: reset: moving to b7057a9
+    98abc5a HEAD@{1}: commit: more stuff added to foo
+    b7057a9 HEAD@{2}: commit (initial): initial commit
+
+所以，我们要找回我们第二commit，只需要做如下操作：
+    
+    $ git reset --hard 98abc5a
+
+再来看一下 git 记录：
+
+    $ git log
+    * 98abc5a (HEAD, master) more stuff added to foo
+    * b7057a9 initial commit
+
+所以，如果你因为reset等操作丢失一个提交的时候，你总是可以把它找回来。除非你的操作已经被git当做垃圾处理掉了，一般是30天以后。
+***
+
 ## git 使用技巧
 
+1 在本地仓库执行 pull 时报以下错误：
 
+    sign_and_send_pubkey: signing failed: agent refused operation
+执行以下命令：
 
+    eval "$(ssh-agent -s)"
+    ssh-add
+***
+
+2 当在本地执行 push 推送到远程仓库中时，发现代码有重大问题，想要删除该条提交记录时，可以按以下步骤执行：
+
+    git reset --hard SHA 
+这句命令可以回退到指定版本。再次提交时如果保存，加上 -f 参数：
+
+    git push -u master origin -f
+此时，SHA 对应的版本之后所有的版本就被覆盖了，所以需要谨慎处理，最好做个备份。
+***
+
+3 HEAD 的含义
+在git中，用HEAD表示当前版本，也就是最新的提交，比如：3628164...882e1e0，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+
+ * HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
+ * 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
+ * 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+***
