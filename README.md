@@ -12,3 +12,8 @@
 * [arangodb](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md)
 * [batch](https://github.com/TourDJ/memory/blob/master/scripts/batch.md)
 * [docker](https://github.com/TourDJ/memory/blob/master/scripts/docker_cli.md)
+
+
+
+## License
+Apache License 2.0
