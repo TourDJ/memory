@@ -1,6 +1,6 @@
 
 
-putty ftp 使用方法：
+#### putty ftp 使用方法：
 
 putty ftp usage
   1, start psftp.exe with prompt "psftp: no hostname specified; use "open host.name" to connect"
