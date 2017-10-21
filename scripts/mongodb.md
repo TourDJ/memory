@@ -31,7 +31,7 @@
 MongoDB数据库在默认是没有用户名及密码，不用安全验证的，只要连接上服务就可以进行CRUD操作。
 
 #### 开启认证
-> 当admin.system.users一个用户都没有时，即使mongod启动时添加了--auth参数,如果没有在admin数据库中添加用户,此时不进行任何认证还是可以做任何操作(不管是否是以--auth 参数启动),直到在admin.system.users中添加了一个用户。详情请看[这里](http://blog.itpub.net/22664653/viewspace-715617)
+> 当admin.system.users一个用户都没有时，即使mongod启动时添加了--auth参数,如果没有在admin数据库中添加用户,此时不进行任何认证还是可以做任何操作(不管是否是以--auth 参数启动),直到在admin.system.users中添加了一个用户。详情请看[这里](http://blog.itpub.net/22664653/viewspace-715617)   
 > 数据库帐号对应着数据库。
 
 如果需要给MongoDB数据库使用安全验证，则需要用--auth开启安全性检查，则只有数据库认证的用户才能执行读写操作，开户安全性检查。开启方法:
