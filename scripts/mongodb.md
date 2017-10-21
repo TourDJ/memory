@@ -17,11 +17,11 @@
 
 > 启用用户认证
 
-    mongo --host 127.0.0.1:27017 -authenticationDatabase admin -u qingtime -p
+    mongo --host 127.0.0.1:27017 -authenticationDatabase admin -u admin -p
 
 #### 数据导出
-    mongoexport --host 127.0.0.1:27017 -u qingtime -d post -c genealogies /authenticationDatabase:admin
-    /authenticationMechanism:SCRAM_SHA_1 -o "d:\data\catalog.json"
+    mongoexport --host 127.0.0.1:27017 -u admin -d post -c users /authenticationDatabase:admin
+    /authenticationMechanism:SCRAM_SHA_1 -o "d:\data\user.json"
 
 ***
 
