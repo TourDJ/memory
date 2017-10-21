@@ -31,7 +31,7 @@
 MongoDB数据库在默认是没有用户名及密码，不用安全验证的，只要连接上服务就可以进行CRUD操作。
 
 #### 开启认证
-> 当admin.system.users一个用户都没有时，即使mongod启动时添加了--auth参数,如果没有在admin数据库中添加用户,此时不进行任何认证还是可以做任何操作(不管是否是以--auth 参数启动),直到在admin.system.users中添加了一个用户。详情请看[这里](http://blog.itpub.net/22664653/viewspace-715617)   
+> 当admin.system.users一个用户都没有时，即使mongod启动时添加了--auth参数,如果没有在admin数据库中添加用户,此时不进行任何认证还是可以做任何操作(不管是否是以--auth 参数启动),直到在admin.system.users中添加了一个用户。详情请看[这里](http://blog.itpub.net/22664653/viewspace-715617)。  
 > 数据库帐号对应着数据库。
 
 如果需要给MongoDB数据库使用安全验证，则需要用--auth开启安全性检查，则只有数据库认证的用户才能执行读写操作，开户安全性检查。开启方法:
@@ -58,6 +58,21 @@ MongoDB数据库在默认是没有用户名及密码，不用安全验证的，�
         db.auth("adminUser", "adminPass")
 
         // 输出 1 表示验证成功
+
+#### 忘记密码
+忘记用户登录密码时，先切换登录方式为不需要验证，然后重启数据库服务，进入到 admin 表中，删除用户，然后重新创建用户名和密码。
+
+    vim /etc/mongodb.conf          # 修改 mongodb 配置，将 auth = true 注释掉，或者改成 false
+    service mongodb restart        # 重启 mongodb 服务
+
+    mongo                          # 运行客户端（也可以去mongodb安装目录下运行这个）
+    use admin                      # 切换到系统帐户表
+    db.system.users.find()         # 查看当前帐户（密码有加密过）
+    db.system.users.remove({})     # 删除所有帐户
+    db.addUser('admin','password') # 添加新帐户
+
+    vim /etc/mongodb.conf          # 恢复 auth = true
+    service mongodb restart        # 重启 mongodb 服务
 
 #### 访问方式
 > 生产环境中使用 URI 形式对数据库进行连接
