@@ -318,6 +318,7 @@ $ git remote show origin
 ***
 
 ### git remote set-url 更新获取地址方式
+> set-url 有两个参数：当前远程库名字、为远程库新设置的地址
 
     git remote set-url origin http://git.example.cn:3000/project/ptest.git
 ***
