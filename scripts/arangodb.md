@@ -373,6 +373,30 @@
       RETURN c
 ***
 
+#### 左外关联
+> Arangodb 不直接支持外关联，但是可以通过子查询实现。
+
+      FOR vertex 
+       IN 0..2  OUTBOUND "organization/5122557" 
+       relation   
+       LET v = vertex
+       FILTER CONTAINS(v.name, "邮局")
+       let users = (
+         FOR u IN my_gpro_user
+           FILTER u.status == 1 and u._key == v.createUserId
+           RETURN u
+       )
+       FOR user IN (
+          LENGTH(users) > 0 ? users :
+            [ { /* no match exists */ } ]
+          )
+      RETURN { 
+          username: user.username,
+          mobileArea: user.mobileArea,
+          mobile: user.mobile,
+          org: v
+      }
+***
 
 ------------------------------------------------------------------------------------------------
 
