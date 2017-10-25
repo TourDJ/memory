@@ -10,9 +10,9 @@
 
 * [angular](https://github.com/TourDJ/memory/blob/master/scripts/angular.md)
 * [arangodb](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md)  
-    * [API](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md#API)
-    * [Shell](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md#Shell)
-    * [AQL](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md#AQL)
+    * [API](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md#API)   
+    * [Shell](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md#Shell)  
+    * [AQL](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md#AQL)   
 * [batch](https://github.com/TourDJ/memory/blob/master/scripts/batch.md)
 * [docker](https://github.com/TourDJ/memory/blob/master/scripts/docker_cli.md)
 * [git](https://github.com/TourDJ/memory/blob/master/scripts/git.md)
