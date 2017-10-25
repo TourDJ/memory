@@ -9,7 +9,7 @@
 ## scripts
 
 * [angular](https://github.com/TourDJ/memory/blob/master/scripts/angular.md)
-* [arangodb](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md)
+* [arangodb](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md)  
     [API](https://github.com/TourDJ/memory/blob/master/scripts/arangodb.md#Shell)
 * [batch](https://github.com/TourDJ/memory/blob/master/scripts/batch.md)
 * [docker](https://github.com/TourDJ/memory/blob/master/scripts/docker_cli.md)
