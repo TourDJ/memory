@@ -399,6 +399,76 @@
             }
 ***
 
+#### 外关联返回路径
+
+      FOR vertex, edge, path   
+      IN 0..1000  OUTBOUND "organization/5122557"   
+      relation   
+      LET v = vertex 
+      let users = ( 
+        FOR u IN user 
+        FILTER u.status == 1 and u._key == v.userID
+        RETURN u 
+      ) 
+      FOR user IN ( 
+        LENGTH(users) > 0 ? users : [ {} ] 
+      ) 
+      RETURN path
+***
+
+#### 外关联统计
+
+      FOR vertex, edge, path   
+      IN 0..1000  OUTBOUND "organization/5122557"  
+      relation     
+      LET v = vertex 
+      let users = ( 
+        FOR u IN user 
+        FILTER u.status == 1 and u._key == v.createUserId 
+        RETURN u 
+      ) 
+      FOR user IN ( 
+        LENGTH(users) > 0 ? users : [ { } ] 
+      ) 
+      COLLECT WITH COUNT INTO num
+      RETURN num
+***
+
+#### 外关联查询分页
+
+      FOR vertex, edge, path   
+      IN 0..1000  OUTBOUND "organization/5122557"   
+      relation        
+      LET v = vertex 
+      let users = ( 
+      FOR u IN user 
+      FILTER u.status == 1 and u._key == v.createUserId 
+      RETURN u 
+      ) FOR user IN ( 
+      LENGTH(users) > 0 ? users : [ { } ] ) 
+      LIMIT 0, 2
+      RETURN {  
+          username: user.profile.trueName || user.profile.nickName, 
+          tmobileArea: user.mobileArea, 
+          tmobile: user.mobile, 
+          org: v 
+      }
+***
+
+#### 分组统计
+
+      FOR o IN organization 
+      FILTER o._key IN ["5122557", "15924843", "7148108", "5894726"]
+        FOR c IN catalog
+        FILTER c.orgId == o._key
+      COLLECT 
+          orgId = o._key
+          WITH COUNT INTO number
+      RETURN {
+          orgId: orgId,
+          num: number
+      }
+
 ------------------------------------------------------------------------------------------------
 
 ## 增、删、改语句
