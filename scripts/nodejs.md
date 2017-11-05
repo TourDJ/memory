@@ -1,5 +1,5 @@
 ### node 脚本安装
-> 注： 摘录自网络
+> 注： 摘录自网络  
 
     #! /bin/bash
     # run it by: bash install-node.sh
