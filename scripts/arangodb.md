@@ -383,7 +383,7 @@
              LET v = vertex   
              FILTER CONTAINS(v.name, "邮局")      
              let users = (    
-               FOR u IN my_gpro_user      
+               FOR u IN user      
                  FILTER u.status == 1 and u._key == v.createUserId      
                  RETURN u
              )
