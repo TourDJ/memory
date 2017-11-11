@@ -13,11 +13,10 @@
 
 3. req.body 
 例如: http://localhost:3000/blog， 通过 post 请求传送数据。
-
-`
-{
-  "id": 12
-}
+    `
+    {
+      "id": 12
+    }
 `
 这种方式是通过 req.body.id 获取数据
 
