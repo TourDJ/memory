@@ -4,17 +4,20 @@
 * Install any missing dependencies
 #### debian
 
-    sudo apt-get install libcurl3 libgssapi-krb5-2 libkrb5-dbg libldap-2.4-2 libpcap0.8 libpci3 libsasl2-2 libsensors4 libsnmp30 libssl1.0.0 libwrap0
+    sudo apt-get install libcurl3 libgssapi-krb5-2 libkrb5-dbg libldap-2.4-2 libpcap0.8 libpci3 
+    libsasl2-2 libsensors4 libsnmp30 libssl1.0.0 libwrap0
+    
 * Download and extract the MongoDB Enterprise packages.
 
-* Ensure that the MongoDB binaries are in your PATH
-
-    Copy these binaries into a directory listed in your PATH variable such as /usr/local/bin, Create symbolic links to each of these binaries from a directory listed in your PATH variable
+* Ensure that the MongoDB binaries are in your PATH     
+    
+        Copy these binaries into a directory listed in your PATH variable such as /usr/local/bin, 
+        Create symbolic links to each of these binaries from a directory listed in your PATH variable
 
 * Create the data directory and log directory
 
 * Set permissions for the data directory.
- 
+*** 
     
 ## mongodb shell
 
@@ -154,6 +157,17 @@ MongoDB数据库在默认是没有用户名及密码，不用安全验证的，�
 #### 删除用户
 
     db.dropUser("test"[, writeConcern: { <write concern> }])
+    
+#### 创建表
+
+    db.createCollection("TableName")
+    
+#### 查询表/集合
+
+    show tables;
+    show collections;
+
+
 ***
 
 ## mongodb 聚合管道
