@@ -27,7 +27,7 @@ serial 中间件是一个一个的执行
 
 parallel 提供更细粒度的操作
 
-var schema = new Schema(..);
+    var schema = new Schema(..);
 
     // `true` means this is a parallel middleware. You **must** specify `true`
     // as the second parameter if you want to use parallel middleware.
