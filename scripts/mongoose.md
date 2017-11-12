@@ -5,16 +5,19 @@
 
 
 ### 文档中间件
+文档中间件包括：
 
-    init
+    init
     validate
     save
     remove
 
-pre
-  一共有两种pre中间件 serial 和 parallel。
+> 中间件是一种控制函数，类似插件，能控制流程中的init、validate、save、remove方法。
+
+#### pre
+  一共有两种pre中间件： serial 和 parallel。   
   
-serial 中间件是一个一个的执行
+serial 中间件是一个一个的执行  
 
     var schema = new Schema(..);
     schema.pre('save', function(next) {
@@ -22,7 +25,7 @@ serial 中间件是一个一个的执行
       next();
     });
 
-parallel 
+parallel 提供更细粒度的操作
 
 var schema = new Schema(..);
 
@@ -34,4 +37,22 @@ var schema = new Schema(..);
       setTimeout(done, 100);
     });
 
-post
+#### post
+发生在被附挂的方法之后. post中间件不直接参与到整个流程, 所以他的callback没有next也没有done。
+
+    schema.post('init', function(doc) {
+      console.log('%s has been initialized from the db', doc._id);
+    });
+    schema.post('validate', function(doc) {
+      console.log('%s has been validated (but not saved yet)', doc._id);
+    });
+    schema.post('save', function(doc) {
+      console.log('%s has been saved', doc._id);
+    });
+    schema.post('remove', function(doc) {
+      console.log('%s has been removed', doc._id);
+    });
+
+> 中间件就相当于java中的过滤器、拦截器，在执行某个方法前，将其拦截住，也有点像AOP中的前置注入。
+
+
