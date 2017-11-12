@@ -7,10 +7,10 @@
 ### 文档中间件
 文档中间件包括：
 
-    init
-    validate
-    save
-    remove
+   * init
+   * validate
+   * save
+   * remove
 
 > 中间件是一种控制函数，类似插件，能控制流程中的init、validate、save、remove方法。
 
