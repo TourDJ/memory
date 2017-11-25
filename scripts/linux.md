@@ -48,7 +48,10 @@
 #### 重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)
 
     dpkg-reconfigure <package>
-   
+ 
+ 
+apt-cache 是linux下的一个apt软件包管理工具，它可查询apt的二进制软件包缓存文件。
+参见： http://zwkufo.blog.163.com/blog/static/258825120092245519896/
 
 ## linux 命令
 
