@@ -19,3 +19,16 @@ Your Angular application can start off in many ways, but when you run on the bro
 In short these packages contain angular features which make getting an Angular app up and running possible in the browser. Bootstrapping is essential and one of those features.
 
 You can omit this when your target is not to develop the app to run on browser otherwise it is essential.
+
+
+
+问题：今天安装了Lantern之后，不能启动起来，一闪而过，命令行里启动，包如下错误：
+/.lantern/bin/lantern: error while loading shared libraries: libappindicator3.so.1: cannot open shared object file: No such file or directory 
+
+尝试：# apt-cache search libappindicator3 
+gir1.2-appindicator3-0.1 - Typelib files for libappindicator3-1
+libappindicator3-1- allow applications to export a menu into the panel -- GTK3 version 
+libappindicator3-dev - allow applications to export a menu into the panel -- GTK3 development 
+
+安装：apt-get install libappindicator3-1
+http://www.linuxdiyf.com/linux/17125.html
