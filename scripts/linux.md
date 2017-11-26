@@ -64,6 +64,7 @@ apt-cache 是linux下的一个apt软件包管理工具，它可查询apt的二�
 　　描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 & （ 表示"and"的符号）到命令的尾部。   
 
 #### ldconfig
+http://blog.csdn.net/Destina/article/details/6208319
 
 
 ## linux 中变量的含义
