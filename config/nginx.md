@@ -7,7 +7,7 @@ Rambler.ru 站点开发的，第一个公开版本0.1.0发布于2004年10月4日
 来完成，从而减小node.js的负载，并通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。
 
 
-nginx.conf 完整例子看 [这里](https://www.nginx.com/resources/wiki/start/topics/examples/full/)
+nginx.conf, 完整例子看 [这里](https://www.nginx.com/resources/wiki/start/topics/examples/full/)
 
       # For more information on configuration, see:
       #   * Official English Documentation: http://nginx.org/en/docs/
@@ -118,23 +118,97 @@ nginx.conf 完整例子看 [这里](https://www.nginx.com/resources/wiki/start/t
               index index.html;
 
 
-              #location ~* \.(ico|gif|jpg|png|bmp|html|htm|css|svg|js)$ {
-              #  access_log   off;
-              #  expires      30d;
-              #  break;
-              #}
-
-              ## 静态文件拦截器
-              location ~ ^/(images/|img/|javascript/|js/|css/|stylesheets/|flash/|media/|static/|robots.txt|humans.txt|favicon.ico) {
-                root /usr/local/silly_face_society/node/public;
-                access_log off;
-                expires max;
+              location ~* \.(ico|gif|jpg|png|bmp|html|htm|css|svg|js)$ {
+                access_log   off;
+                expires      30d;
+                break;
               }
 
           }    
       }
 
 
-[详细解释](http://blog.argteam.com/coding/hardening-node-js-for-production-part-2-using-nginx-to-avoid-node-js-load/)
+
+nginx 配置文件的简单解释， 详细解释请看[这里](http://blog.argteam.com/coding/hardening-node-js-for-production-part-2-using-nginx-to-avoid-node-js-load/)
+
+#### upstream
+The upstream directive specifies that these two instances work in tandem as an upstream server for nginx. The keepalive 64; directs nginx to keep a minimum of 64 HTTP/1.1 connections to the proxy server at any given time. This is a true minimum: if there is more traffic then nginx will open more connections to the proxy.
 
 
+#### 静态文件拦截器
+  location ~ ^/(images/|img/|javascript/|js/|css/|stylesheets/|flash/|media/|static/|robots.txt|humans.txt|favicon.ico) {
+    root /usr/local/silly_face_society/node/public;
+    access_log off;
+    expires max;
+  }
+
+
+
+
+
+其他配置
+
+      upstream abc  {
+          server 127.0.0.1:8050 max_fails=2 fail_timeout=30s;
+        }
+
+        server {
+          listen 80;
+          server_name abc.example.cn;
+          access_log logs/abc.example.cn.log;
+
+
+          listen 443 ssl;
+          ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+          ssl_certificate     /etc/nginx/ssl/abc.example.cn.cer;
+          ssl_certificate_key /etc/nginx/ssl/abc.example.cn.key;
+
+          #root /mnt/static/abc;
+          #index index.html;
+
+          if ( $scheme = http ){
+             return 301 https://$server_name$request_uri;
+          }
+
+          location / {
+              if ($request_method = 'OPTIONS') {
+                add_header 'Access-Control-Allow-Origin' '*';
+                #
+                # Om nom nom cookies
+                #
+                add_header 'Access-Control-Allow-Credentials' 'true';
+                add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+                #
+                # Custom headers and headers various browsers *should* be OK with but aren't
+                #
+                add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+                #
+                # Tell client that this pre-flight info is valid for 20 days
+                #
+                add_header 'Access-Control-Max-Age' 1728000;
+                add_header 'Content-Type' 'text/plain charset=UTF-8';
+                add_header 'Content-Length' 0;
+                return 204;
+              }
+              if ($request_method = 'POST') {
+                add_header 'Access-Control-Allow-Origin' '*';
+                add_header 'Access-Control-Allow-Credentials' 'true';
+                add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+                add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+              }
+              if ($request_method = 'GET') {
+                add_header 'Access-Control-Allow-Origin' '*';
+                add_header 'Access-Control-Allow-Credentials' 'true';
+                add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+                add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+              }
+
+              #rewrite /api/(.+)$ /$1 break;
+              proxy_pass        http://abc;
+              proxy_redirect    off;
+              proxy_set_header  Host  $host;
+              proxy_set_header  X-Real-IP  $remote_addr;
+              proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+              proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+          }
+        }
