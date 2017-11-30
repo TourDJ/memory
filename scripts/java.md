@@ -48,7 +48,7 @@ http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
 
 ## web.xml
 
-格式定义：
+[格式定义](http://blog.csdn.net/liaoxiaohua1981/article/details/6759206)：
 
     <context-param>  
         <param-name>contextConfigLocation</param-name>  
