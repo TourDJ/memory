@@ -113,3 +113,6 @@ db.properties
     mongo.heartbeatConnectTimeout=1500
     mongo.minHeartbeatFrequency=5
     mongo.heartbeatFrequency=10
+
+相关参考：
+[spring annotation](http://blog.csdn.net/kaiwii/article/details/7877663)
