@@ -21,3 +21,5 @@
   * CommonAnnotationBeanPostProcessor
   * PersistenceAnnotationBeanPostProcessor
   * equiredAnnotationBeanPostProcessor
+
+详情看[这里](http://blog.csdn.net/jationxiaozi/article/details/6084757)
