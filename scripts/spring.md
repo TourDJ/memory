@@ -14,7 +14,7 @@
 
 ## Spring 标签
 
-\<context:annotationconfig/\> 
+\<context:annotation-config/\> 
 
 将隐式地向 Spring 容器注册 4 个 BeanPostProcessor：
   * AutowiredAnnotationBeanPostProcessor
