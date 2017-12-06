@@ -23,3 +23,10 @@
   * equiredAnnotationBeanPostProcessor
 
 详情看[这里](http://blog.csdn.net/jationxiaozi/article/details/6084757)
+
+
+\<context:component-scan base-package="pack.pack"/\>
+
+该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
+
+详情看[这里](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html)
