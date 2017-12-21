@@ -76,3 +76,29 @@ http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
 
     Servlet中    
         String paramValue=getServletContext().getInitParameter("contextConfigLocation")
+
+
+
+
+## JVM 内部原理的相关特性
+
+#### java 沙箱
+组成Java沙箱的基本组件如下：
+* 类加载体系结构
+* class文件检验器
+* 内置于Java虚拟机（及语言）的安全特性
+* 安全管理器及Java API
+
+详细说明见[这里](http://zhaohe162.blog.163.com/blog/static/3821679720119311111880/)。
+
+#### class 文件校验器
+通过四趟扫描，保证了class文件正确 
+* 第一趟：class文件的结构检查
+* 第二趟：类型数据的语义检查
+* 第三趟：字节码验证
+* 第四趟：符号引用的验证
+
+详细说明见[这里](http://blog.csdn.net/u013361114/article/details/25034077）
+
+
+
