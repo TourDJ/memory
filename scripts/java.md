@@ -98,7 +98,7 @@ http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
 * 第三趟：字节码验证
 * 第四趟：符号引用的验证
 
-详细说明见[这里](http://blog.csdn.net/u013361114/article/details/25034077）
+详细说明见[这里](http://blog.csdn.net/u013361114/article/details/25034077)
 
 
 
