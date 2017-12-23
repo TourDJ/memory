@@ -147,5 +147,46 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 
 摘自[这里](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)
 
+***
+
+## Servlet
+
+#### ServletConfig
+代表当前 Servlet 在web.xml中的配置信息。
+例如：
+
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>com.tang.Servlet</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>value</param-value>
+        </init-param>
+        <init-param>
+            <param-name>encode</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </servlet>
+
+> 在Servlet的配置文件中，可以使用一个或多个<init-param>标签为servlet配置一些初始化参数。  
+  当servlet配置了初始化参数后，web容器在创建servlet实例对象时，会自动将这些初始化参数封装到ServletConfig对象中，并在调用servlet的init方法时，将ServletConfig对象传递给servlet。进而，程序员通过ServletConfig对象就可以得到当前servlet的初始化参数信息。
+
+#### ServletContext
+[ServletContext](http://www.cnblogs.com/smyhvae/p/4140877.html)代表当前web应用。WEB容器在启动时，它会为每个WEB应用程序都创建一个对应的ServletContext对象。ServletConfig对象中维护了ServletContext对象的引用。
+
+1.做为域对象可以在整个web应用范围内共享数据。
+
+* 域对象：在一个可以被看见的范围内共享数据用到对象
+* 作用范围：整个web应用范围内共享数据
+* 生命周期：当服务器启动web应用加载后创建出ServletContext对象后，域产生。当web应用被移除出容器或服务器关闭，随着web应用的销毁域销毁。
+
+2、获取WEB应用的初始化参数
+
+通过<init-param>标签为某一个单独的servlet加配置信息，这种配置信息在其他的Servlet中是无法访问到的。可如果我们使用<context-param>标签（与Servlet标签并列）为整个Web应用配置属性的话，那所有的Servlet就都能访问里面的参数了。例如：可以把数据库的配置信息放在这里。
+
+* 请求参数 parameter --- 浏览器发送过来的请求中的参数信息
+* 初始化参数 initparameter --- 在web.xml中为Servlet或ServletContext配置的初始化时带有的基本参数
+* 域属性 attribute --- 四大作用域中存取的键值对
+
 
 
