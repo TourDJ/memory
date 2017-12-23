@@ -155,18 +155,18 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 代表当前 Servlet 在web.xml中的配置信息。    
 例如：
 
-    <servlet>
-        <servlet-name>UploadServlet</servlet-name>
-        <servlet-class>com.tang.Servlet</servlet-class>
-        <init-param>
-            <param-name>name</param-name>
-            <param-value>value</param-value>
-        </init-param>
-        <init-param>
-            <param-name>encode</param-name>
-            <param-value>utf-8</param-value>
-        </init-param>
-    </servlet>
+        <servlet>
+            <servlet-name>UploadServlet</servlet-name>
+            <servlet-class>com.tang.Servlet</servlet-class>
+            <init-param>
+                <param-name>name</param-name>
+                <param-value>value</param-value>
+            </init-param>
+            <init-param>
+                <param-name>encode</param-name>
+                <param-value>utf-8</param-value>
+            </init-param>
+        </servlet>
 
 > 在Servlet的配置文件中，可以使用一个或多个<init-param>标签为servlet配置一些初始化参数。  
   当servlet配置了初始化参数后，web容器在创建servlet实例对象时，会自动将这些初始化参数封装到ServletConfig对象中，并在调用servlet的init方法时，将ServletConfig对象传递给servlet。进而，程序员通过ServletConfig对象就可以得到当前servlet的初始化参数信息。
