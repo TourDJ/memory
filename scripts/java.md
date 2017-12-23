@@ -100,5 +100,23 @@ http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
 
 详细说明见[这里](http://blog.csdn.net/u013361114/article/details/25034077)
 
+#### Java 异常
+
+Throwable 类是 Java 语言中所有错误或异常的超类。它有两个子类：Error和Exception。
+
+Error：用于指示合理的应用程序不应该试图捕获的严重问题。
+
+Exception：它指出了合理的应用程序想要捕获的条件。Exception又分为两类：一种是CheckedException，一种是UncheckedException。这两种Exception的区别主要是CheckedException需要用try...catch...显示的捕获，而UncheckedException不需要捕获。通常UncheckedException又叫做RuntimeException。
+
+异常链的使用：保存异常信息，在抛出另外一个异常的同时不丢失原来的异常。
+    
+    public Throwable initCause(Throwable cause)
+
+throw：是语句抛出异常。
+throws： 是方法可能抛出异常的声明。
+throws可以单独使用，但throw不能， throw要么和try-catch-finally语句配套使用，要么与throws配套使用。但throws可以单独使 用，然后再由处理异常的方法捕获。
+
+摘自[这里](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)
+
 
 
