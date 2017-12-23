@@ -152,7 +152,7 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 ## Servlet
 
 #### ServletConfig
-代表当前 Servlet 在web.xml中的配置信息。
+代表当前 Servlet 在web.xml中的配置信息。    
 例如：
 
     <servlet>
