@@ -139,9 +139,9 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
     public Throwable initCause(Throwable cause)
 
 #### throw 与 throws
-throw：是语句抛出异常。  
+throw：是语句抛出异常。    
 throws： 是方法可能抛出异常的声明。   
-throws可以单独使用，但throw不能， throw要么和try-catch-finally语句配套使用，要么与throws配套使用。但throws可以单独使 用，然后再由处理异常的方法捕获。  
+> throws可以单独使用，但throw不能， throw要么和try-catch-finally语句配套使用，要么与throws配套使用。但throws可以单独使 用，然后再由处理异常的方法捕获。  
 
 摘自[这里](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)
 
