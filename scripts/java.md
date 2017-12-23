@@ -158,6 +158,7 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 ***
 
 ## Servlet
+[servlet](http://www.cnblogs.com/doit8791/p/4209442.html)是一种运行服务器端的java应用程序，具有独立于平台和协议的特性，并且可以动态的生成web页面，它工作在客户端请求与服务器响应的中间层。
 
 #### ServletConfig
 代表当前 Servlet 在web.xml中的配置信息。    
