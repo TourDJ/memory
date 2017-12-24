@@ -242,6 +242,9 @@ Listener 主要用于对 Session、Request、Context 进行监控。
 与上面六类不同，这两类 Listener 监听的是 Session 内的对象，而非 Session 本身，不需要在 web.xml中配置。
 
 
+## Interceptor
+[Interceptor](http://blog.csdn.net/ggibenben1314/article/details/45341855)是在面向切面编程的时候，在你的service的一个方法前调用一个方法，或者在方法后调用一个方法。两者的本质区别：拦截器是基于java的反射机制的，而过滤器是基于函数回调。
+> Interceptor 是框架自己造的概念，Filter是servlet规范里的。
 
 
 
