@@ -202,5 +202,22 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 * 初始化参数 initparameter --- 在web.xml中为Servlet或ServletContext配置的初始化时带有的基本参数
 * 域属性 attribute --- 四大作用域中存取的键值对
 
+***
 
+## Filter
+[Filter 简介](http://www.open-open.com/lib/view/open1350703788524.html)   
+Servlet API中提供了一个Filter接口，开发web应用时，如果编写的Java类实现了这个接口，则把这个java类称之为过滤器Filter。通过Filter技术，开发人员可以实现用户在访问某个目标资源之前，对访问的请求和响应进行拦截。简单说，就是可以实现web容器对某资源的访问前截获进行相关的处理，还可以在某资源向web容器返回响应前进行截获进行处理。
+
+例如：
+
+	<filter>
+		<filter-name>logfilter</filter-name>
+		<filter-class>com.tang.filter.LogFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+> FilterChain接口的doFilter方法用于通知Web容器把请求交给Filter链中的下一个Filter去处理，如果当前调用此方法的Filter对象是Filter链中的最后一个Filter，那么将把请求交给目标Servlet程序去处理。
 
