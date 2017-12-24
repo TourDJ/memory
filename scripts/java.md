@@ -84,7 +84,7 @@ http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
 #### url-pattern
 > Servlet 2.5规范允许<servlet-mapping>的<url-pattern>子元素出现多次，之前的规范只允许一个<servlet-mapping>元素包含一个<url-pattern>子元素。详细看[这里](http://blog.csdn.net/woshizoe/article/details/7696367)
 
-##### *Servlet 的 url 映射    
+##### Servlet 的 url 映射    
 当Servlet容器接收到一个请求，它首先确定该请求应该由哪一个Web应用程序来响应。这是通过比较请求URI的开始部分与Web应用程序的上下文路径来确定的。映射到Servlet的路径是请求URI减去上下文的路径，Web应用程序的Context对象在去掉请求URI的上下文路径后，将按照下面的路径映射规则的顺序对剩余部分的路径进行处理，并且在找到第一个成功的匹配后，不再进行下一个匹配。
 
 * 容器试着对请求的路径和Servlet映射的路径进行精确匹配，如果匹配成功，则调用这个Servlet来处理请求。
@@ -92,13 +92,14 @@ http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
 * 如果请求的URL路径最后有扩展名，如.jsp，Servlet容器会试着匹配处理这个扩展名的Servlet。
 * 如果按照前面3条规则没有找到匹配的Servlet，容器会调用Web应用程序默认的Servlet来对请求进行处理，如果没有定义默认的Servlet，容器将向客户端发送HTTP 404错误信息（请求资源不存在）。
 
-##### *使用下面的语法来定义映射: 
+##### 使用下面的语法来定义映射: 
 
 * 以/开始并且以 /* 结束的字符串用来映射路径       
 * 以*.为前缀的字符串用来映射扩展名         
 * 以一个单独的/指示这个Web应用程序默认的Servlet    
 * 所有其他的字符被用于精确匹配   
 
+> 所以，为什么定义”/*.action”这样一个看起来很正常的匹配会错？因为这个匹配即属于路径映射，也属于扩展映射，导致容器无法判断。
 ***
 
 ## JVM 内部原理的相关特性
