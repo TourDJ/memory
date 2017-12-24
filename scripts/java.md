@@ -221,3 +221,29 @@ Servlet API中提供了一个Filter接口，开发web应用时，如果编写的
 
 > [提示](http://www.cnblogs.com/therunningfish/p/6639192.html) FilterChain接口的doFilter方法用于通知Web容器把请求交给Filter链中的下一个Filter去处理，如果当前调用此方法的Filter对象是Filter链中的最后一个Filter，那么将把请求交给目标Servlet程序去处理。
 
+
+
+## Listener
+[Listener](http://blog.csdn.net/u012228718/article/details/41730799) 是 Servlet 的监听器，它可以监听客户端的请求、服务端的操作等。
+Listener 主要用于对 Session、Request、Context 进行监控。	
+
+在Servlet 2.4和JSP 2.0 规范中一共有八个 listener 接口和六个 [event](http://www.blogjava.net/i369/articles/236313.html) 事件类。当一个事件发生的时候我们可以使用listener中的某个方法去对事件做出相应的响应，这些方法的参数都是java.util.EventObject的子类。	
+	
+8种监听器可以分为三类：
+1）监听 Session、request、context 的创建于销毁，分别为  
+
+	HttpSessionLister、ServletContextListener、ServletRequestListener
+2）监听对象属性变化，分别为：
+
+	HttpSessionAttributeLister、ServletContextAttributeListener、ServletRequestAttributeListener 
+3）监听Session 内的对象，分别为
+
+	HttpSessionBindingListener 和 HttpSessionActivationListener。
+与上面六类不同，这两类 Listener 监听的是 Session 内的对象，而非 Session 本身，不需要在 web.xml中配置。
+
+
+
+
+
+
+
