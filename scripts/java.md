@@ -219,5 +219,5 @@ Servlet API中提供了一个Filter接口，开发web应用时，如果编写的
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-> FilterChain接口的doFilter方法用于通知Web容器把请求交给Filter链中的下一个Filter去处理，如果当前调用此方法的Filter对象是Filter链中的最后一个Filter，那么将把请求交给目标Servlet程序去处理。
+> [提示](http://www.cnblogs.com/therunningfish/p/6639192.html) FilterChain接口的doFilter方法用于通知Web容器把请求交给Filter链中的下一个Filter去处理，如果当前调用此方法的Filter对象是Filter链中的最后一个Filter，那么将把请求交给目标Servlet程序去处理。
 
