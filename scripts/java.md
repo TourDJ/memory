@@ -106,13 +106,19 @@ Servlet中
   因为这个匹配即属于路径映射，也属于扩展映射，导致容器无法判断。
 ***
 
+## class 字节码文件
+class [字节码](http://www.cnblogs.com/ivantang/p/6236711.html)文件是一组以8位字节为基础单位的二进制流，各个数据项目严格按照顺序紧凑地排列在Class文件之中，中间没有添加任何分隔符，这使得整个Class文件中存储的内容几乎全部都是程序运行的必要数据，没有空隙存在。当遇到需要占用8位字节以上的空间的数据项时，则会按照高位在前的方式分割成若干个8位字节进行存储。
+
 ## JVM 内部原理的相关特性
 JVM([Java虚拟机](http://www.cnblogs.com/ivantang/p/5530787.html))一种用于计算设备的规范，可用不同的方式（软件或硬件）加以实现。编译虚拟机的指令集与编译微处理器的指令集非常类似。Java虚拟机包括一套字节码指令集、一组寄存器、一个栈、一个垃圾回收堆和一个存储方法域。Java虚拟机(JVM)是可运行Java代码的假想计算机。只要根据[JVM规格](http://www.cnblogs.com/ivantang/p/5531580.html)描述将解释器移植到特定的计算机上，就能保证经过编译的任何Java代码能够在该系统上运行。Java虚拟机是一个想象中的机器,在实际的计算机上通过软件模拟来实现。Java虚拟机有自己想象中的硬件,如处理器、[堆栈](http://www.cnblogs.com/ivantang/p/5531501.html)、寄存器等,还具有相应的指令系统。
 
 为什么要分代?
 [分代](http://www.cnblogs.com/ivantang/p/5530889.html)的垃圾回收策略，是基于这样一个事实：不同的对象的生命周期是不一样的。因此，不同生命周期的对象可以采取不同的收集方式，以便提高回收效率。
 
-[JVM内存模型](http://www.cnblogs.com/ivantang/p/5530945.html)是Java的核心技术之一，现在很多编程语言都引入了类似Java JVM的[内存](http://www.cnblogs.com/ivantang/p/5531534.html)模型和垃圾收集器的[机制](http://www.cnblogs.com/ivantang/p/5531496.html)
+[JVM内存模型](http://www.cnblogs.com/ivantang/p/5530945.html)是Java的核心技术之一，现在很多编程语言都引入了类似Java JVM的[内存](http://www.cnblogs.com/ivantang/p/5531534.html)模型和垃圾收集器的[机制](http://www.cnblogs.com/ivantang/p/5531496.html)。
+
+#### HotSpot
+Java [HotSpot](http://www.cnblogs.com/ivantang/p/5531587.html) 虚拟机是Sun公司的Java平台一个高效的[虚拟机实现](http://www.cnblogs.com/ivantang/p/5531592.html)。Java HotSpot技术提供Java标准平台的基础设施，提供对快速开发、部署关键业务的桌面和企业应用程序的解决方案。Java SE可应用在Solaris操作环境、Linux和Windows下，也可以应用在其它通过Java技术认证的平台下。
 
 #### java 沙箱
 组成Java沙箱的基本组件如下：
