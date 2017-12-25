@@ -107,6 +107,12 @@ Servlet中
 ***
 
 ## JVM 内部原理的相关特性
+JVM([Java虚拟机](http://www.cnblogs.com/ivantang/p/5530787.html))一种用于计算设备的规范，可用不同的方式（软件或硬件）加以实现。编译虚拟机的指令集与编译微处理器的指令集非常类似。Java虚拟机包括一套字节码指令集、一组寄存器、一个栈、一个垃圾回收堆和一个存储方法域。Java虚拟机(JVM)是可运行Java代码的假想计算机。只要根据[JVM规格](http://www.cnblogs.com/ivantang/p/5531580.html)描述将解释器移植到特定的计算机上，就能保证经过编译的任何Java代码能够在该系统上运行。Java虚拟机是一个想象中的机器,在实际的计算机上通过软件模拟来实现。Java虚拟机有自己想象中的硬件,如处理器、[堆栈](http://www.cnblogs.com/ivantang/p/5531501.html)、寄存器等,还具有相应的指令系统。
+
+为什么要分代?
+[分代](http://www.cnblogs.com/ivantang/p/5530889.html)的垃圾回收策略，是基于这样一个事实：不同的对象的生命周期是不一样的。因此，不同生命周期的对象可以采取不同的收集方式，以便提高回收效率。
+
+[JVM内存模型](http://www.cnblogs.com/ivantang/p/5530945.html)是Java的核心技术之一，现在很多编程语言都引入了类似Java JVM的[内存](http://www.cnblogs.com/ivantang/p/5531534.html)模型和垃圾收集器的[机制](http://www.cnblogs.com/ivantang/p/5531496.html)
 
 #### java 沙箱
 组成Java沙箱的基本组件如下：
