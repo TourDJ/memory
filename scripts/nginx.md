@@ -1,13 +1,14 @@
 
+## Nginx 简介
+
 Nginx ("engine x") 是一个高性能的 HTTP 和 反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器。 Nginx 是由 Igor Sysoev 为俄罗斯访问量第二的 
 Rambler.ru 站点开发的，第一个公开版本0.1.0发布于2004年10月4日。其将源代码以类BSD许可证的形式发布，因它的稳定性、丰富的功能集、示例配置文件和低系
 统资源的消耗而闻名。
 
-尽管Node.JS的性能不错，但处理静态事务确实不是他的专长，如：gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理及多站点代理等，都可以通过nginx
-来完成，从而减小node.js的负载，并通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。
+尽管Node.JS的性能不错，但处理静态事务确实不是他的专长，如：gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理及多站点代理等，都可以通过nginx 来完成，从而减小node.js的负载，并通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。
 
 
-nginx.conf, 完整例子看 [这里](https://www.nginx.com/resources/wiki/start/topics/examples/full/)
+nginx.conf, 完整例子看 [这里](https://www.nginx.com/resources/wiki/start/topics/examples/full/)。
 
       # For more information on configuration, see:
       #   * Official English Documentation: http://nginx.org/en/docs/
@@ -212,3 +213,26 @@ The upstream directive specifies that these two instances work in tandem as an u
               proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
           }
         }
+        
+## SELinux 对 nginx 影响
+当SELinux开启时，将会禁止访问设置在其他路径下的地址。比如 server 中设置 
+
+      root  /home/www/public
+
+无论你将文件的权限设置为777 还是多少，日志中都会提示  
+
+      ：***  open() "/home/www/centre/public/index.html" failed (13: Permission denied), client:   ***   
+
+只有关闭了SELinux后，才能正常访问。
+
+ 
+查看 selinux 状态：
+
+/usr/sbin/sestatus -v
+
+临时修改 selinux 状态命令：
+
+setenforce [ Enforcing | Permissive | 1 | 0 ]   // 1 开启， 0 关闭
+
+永久关闭，需要设置文件/etc/sysconfig/selinux 并重启才能生效。
+
