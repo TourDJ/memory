@@ -45,6 +45,16 @@ $java -version
 #### ubuntu下安装eclipse
 http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
 
+#### dt.jar、tools.jar [作用](http://blog.csdn.net/ns_code/article/details/18547959)
+* tools.jar：工具类库，它跟我们程序中用到的基础类库没有关系。我们注意到在Path中变量值bin目录下的各个exe工具的大小都很小，一般都在27KB左右，这是因为它们实际上仅仅相当于是一层代码的包装，这些工具的实现所要用到的类库都在tools.jar中，用压缩软件打开tools.jar,你会发现有很多文件是和bin目录下的exe工具相对性的。编译和运行需要的都是toos.jar里面的类分别是   
+
+	sun.tools.java.*;	   
+	sun.tools.javac.*;	
+
+* dt.jar：运行环境类库，主要是Swing包。
+
+* rt.jar 是JAVA基础类库，默认就在Root Classloader的加载路径里面的，而在Claspath配置该变量是不需要的；同时jre/lib目录下的其他 jar:jce.jar、jsse.jar、charsets.jar、resources.jar 都在Root Classloader中。
+
 ***
 
 ## web.xml
