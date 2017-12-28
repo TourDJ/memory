@@ -141,22 +141,32 @@ java 虚拟机字节码[执行引擎](http://www.cnblogs.com/sheeva/p/6347577.ht
 方法返回地址
 
 #### java 沙箱
+Java安全模型的核心就是[Java沙箱](https://yq.aliyun.com/articles/8620)（sandbox），什么是沙箱？沙箱是一个限制程序运行的环境。限制程序运行一方面是为了保护系统资源，同时另一方面也为了保护程序自己。沙箱主要限制系统资源访问，那系统资源包括什么？——CPU、内存、文件系统、网络。不同级别的沙箱对这些资源访问的限制也可以不一样。
+
 组成Java沙箱的基本组件如下：
 * 类加载体系结构
 * class文件检验器
 * 内置于Java虚拟机（及语言）的安全特性
 * 安全管理器及Java API
 
+#### java 类加载器
+[类加载器](https://www.ibm.com/developerworks/cn/java/j-lo-classloader/index.html)（class loader）用来加载 Java 类到 Java 虚拟机中。
+系统提供的类加载器主要有下面三个：
+* 引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库，是用原生代码来实现的，并不继承自 java.lang.ClassLoader。
+* 扩展类加载器（extensions class loader）：它用来加载 Java 的扩展库。Java 虚拟机的实现会提供一个扩展库目录。该类加载器在此目录里面查找并加载 Java 类。
+* 系统类加载器（system class loader）：它根据 Java 应用的类路径（CLASSPATH）来加载 Java 类。一般来说，Java 应用的类都是由它来完成加载的。可以通过 ClassLoader.getSystemClassLoader()来获取它。
+
 详细说明见[这里](http://zhaohe162.blog.163.com/blog/static/3821679720119311111880/)。
 
 #### class 文件校验器
-通过四趟扫描，保证了class文件正确 
+class [文件校验器](http://blog.csdn.net/u013361114/article/details/25034077)就是为了保证class文件有正确的结构，能够正确运行。通过四趟扫描，保证了class文件正确 
 * 第一趟：class文件的结构检查
 * 第二趟：类型数据的语义检查
 * 第三趟：字节码验证
 * 第四趟：符号引用的验证
 
-详细说明见[这里](http://blog.csdn.net/u013361114/article/details/25034077)
+#### java 安全管理器
+[安全管理器](https://yq.aliyun.com/articles/57223)(SecurityManager)在Java语言中的作用就是检查操作是否有权限执行。是Java沙箱的基础组件。
 
 ***
 
