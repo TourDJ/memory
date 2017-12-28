@@ -130,6 +130,16 @@ JVM([Java虚拟机](http://www.cnblogs.com/ivantang/p/5530787.html))一种用于
 #### HotSpot
 Java [HotSpot](http://www.cnblogs.com/ivantang/p/5531587.html) 虚拟机是Sun公司的Java平台一个高效的[虚拟机实现](http://www.cnblogs.com/ivantang/p/5531592.html)。Java HotSpot技术提供Java标准平台的基础设施，提供对快速开发、部署关键业务的桌面和企业应用程序的解决方案。Java SE可应用在Solaris操作环境、Linux和Windows下，也可以应用在其它通过Java技术认证的平台下。
 
+#### 执行引擎
+java 虚拟机字节码[执行引擎](http://www.cnblogs.com/sheeva/p/6347577.html)是jvm最核心的组成部分之一，它做的事情很简单：输入的是字节码文件，处理过程是字节码解析的等效过程，输出的是执行结果。
+
+在jvm的内存结构里，存在这一块称为虚拟机栈的内存区域，虚拟机栈中的元素就是栈帧。每个栈帧主要包含4个部分：
+
+局部变量表
+操作数栈
+动态连接
+方法返回地址
+
 #### java 沙箱
 组成Java沙箱的基本组件如下：
 * 类加载体系结构
