@@ -156,8 +156,6 @@ Java安全模型的核心就是[Java沙箱](https://yq.aliyun.com/articles/8620)
 * 扩展类加载器（extensions class loader）：它用来加载 Java 的扩展库。Java 虚拟机的实现会提供一个扩展库目录。该类加载器在此目录里面查找并加载 Java 类。
 * 系统类加载器（system class loader）：它根据 Java 应用的类路径（CLASSPATH）来加载 Java 类。一般来说，Java 应用的类都是由它来完成加载的。可以通过 ClassLoader.getSystemClassLoader()来获取它。
 
-详细说明见[这里](http://zhaohe162.blog.163.com/blog/static/3821679720119311111880/)。
-
 #### class 文件校验器
 class [文件校验器](http://blog.csdn.net/u013361114/article/details/25034077)就是为了保证class文件有正确的结构，能够正确运行。通过四趟扫描，保证了class文件正确 
 * 第一趟：class文件的结构检查
@@ -167,6 +165,9 @@ class [文件校验器](http://blog.csdn.net/u013361114/article/details/25034077
 
 #### java 安全管理器
 [安全管理器](https://yq.aliyun.com/articles/57223)(SecurityManager)在Java语言中的作用就是检查操作是否有权限执行。是Java沙箱的基础组件。
+
+#### 策略和保护域
+[策略](http://www.importnew.com/17093.html)是一组权限的总称，用于确定权限应该用于哪些代码源。保护域可以理解为代码源和相应权限的一个组合。
 
 ***
 
