@@ -3,17 +3,17 @@
 
 #### Deiban(Ubuntu) 下安装配置 JDK(OpenJDK)
 
-1、下载安装jdk	
+1 下载安装jdk	
 $sudo apt-get install openjdk-8-jdk
-2、查看当前系统中的JVM	
+2 查看当前系统中的JVM	
 $sudo update-alternatives --display java
 3、安装JVM路径	
 $sudo update-alternatives --install /usr/bin/java java /usr/local/jdk1.8.0_152/bin/java 1400
 > 命令： update-alternatives --install link name path priority	
-  link 为系统中功能相同软件的公共链接目录，比如/usr/bin/java(需绝对目录)		
-  name 为命令链接符名称,如java	 	
-  path 为你所要使用新命令、新软件的所在目录		 
-  priority 为优先级，当命令链接已存在时，需高于当前值，因为当alternative为自动模式时,系统默认启用priority高的链接;整数根据版本号设置的优先级（更改的优先级需要大于当前的）	
+> link 为系统中功能相同软件的公共链接目录，比如/usr/bin/java(需绝对目录)		
+> name 为命令链接符名称,如java	 	
+> path 为你所要使用新命令、新软件的所在目录		 
+> priority 为优先级，当命令链接已存在时，需高于当前值，因为当alternative为自动模式时,系统默认启用priority高的链接;整数根据版本号设置的优先级（更改的优先级需要大于当前的）	
 4、更换系统 JVM
 $sudo update-alternatives --config java
 5、配置环境变量
