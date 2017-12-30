@@ -362,7 +362,6 @@ HashMap 的实例有两个参数影响其性能：初始容量 和加载因子�
 
 注意，迭代器的快速失败行为不能得到保证，一般来说，存在非同步的并发修改时，不可能作出任何坚决的保证。快速失败迭代器尽最大努力抛出 ConcurrentModificationException。因此，编写依赖于此异常的程序的做法是错误的，正确做法是：迭代器的快速失败行为应该仅用于检测程序错误。
 
-[Map](http://tool.oschina.net/apidocs/apidoc?api=jdk-zh)
 
 java [内存](https://www.ibm.com/developerworks/cn/java/j-codetoheap/index.html)使用
 
