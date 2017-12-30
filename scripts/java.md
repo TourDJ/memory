@@ -1,20 +1,23 @@
 
 ## JDK 安装配置
 
-#### Ubuntu下安装配置OpenJDK
-http://blog.csdn.net/gavin_dinggengjia/article/details/7363863
+#### Deiban(Ubuntu) 下安装配置 JDK(OpenJDK)
 
 1、下载安装jdk
-$sudo apt-get install openjdk-6-jdk
+$sudo apt-get install openjdk-8-jdk
 2、查看当前系统中的JVM
 $sudo update-alternatives --display java
 3、安装JVM路径
-$sudo update-alternative s --install /usr/bin/java java /usr/lib/jvm/java-1.6.0-jdk/bin/java 60
+$sudo update-alternatives --install /usr/bin/java java /usr/local/jdk1.8.0_152/bin/java 1400
+> 命令： update-alternatives --install link name path priority	
+  * link 为系统中功能相同软件的公共链接目录，比如/usr/bin/java(需绝对目录)	
+  * name 为命令链接符名称,如java 	
+  * path 为你所要使用新命令、新软件的所在目录	 
+  * priority 为优先级，当命令链接已存在时，需高于当前值，因为当alternative为自动模式时,系统默认启用priority高的链接;整数根据版本号设置的优先级（更改的优先级需要大于当前的）
 4、更换系统 JVM
-$sudo update-alternatives –config java
+$sudo update-alternatives --config java
 5、配置环境变量
-$vim /etc/profile
-添加以下几行： 
+在文件 /etc/profile 中添加以下几行： 
 
     export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk
     export JRE_HOME=$JAVA_HOME/jre  
@@ -42,10 +45,28 @@ $java -version
     
     lrwxrwxrwx 1 root root 22 11月  2 22:17 /usr/bin/java -> /etc/alternatives/java
 
-#### ubuntu下安装eclipse
-http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
+#### linux 下安装 eclipse
+1, 下载 eclipse http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/2/eclipse-jee-oxygen-2-linux-gtk-x86_64.tar.gz
+2, 解压
+$ tar -zxvf eclipse-SDK-3.7.2-linux-gtk.tar.gz
+3、将文件夹移动到安装目录
+$ sudo mv eclipse /usr/local/
+4、创建桌面链接
+$ sudo vim /usr/share/applications/eclipse.desktop
 
-#### dt.jar、tools.jar [作用](http://blog.csdn.net/ns_code/article/details/18547959)
+	[Desktop Entry]
+	Encoding=UTF-8
+	Name=Eclipse
+	Comment=Eclipse IDE
+	Exec=eclipse
+	Icon=/usr/local/eclipse/icon.xpm
+	Terminal=false
+	Type=Application
+	Categories=GNOME;Application;Development;
+	StartupNotify=true
+
+
+#### dt.jar、tools.jar [作用](http://www.cnblogs.com/jtlgb/p/6039809.html)
 * tools.jar：工具类库，它跟我们程序中用到的基础类库没有关系。我们注意到在Path中变量值bin目录下的各个exe工具的大小都很小，一般都在27KB左右，这是因为它们实际上仅仅相当于是一层代码的包装，这些工具的实现所要用到的类库都在tools.jar中，用压缩软件打开tools.jar,你会发现有很多文件是和bin目录下的exe工具相对性的。编译和运行需要的都是toos.jar里面的类分别是   
 
 	sun.tools.java.*;	   
@@ -58,8 +79,6 @@ http://blog.csdn.net/gavin_dinggengjia/article/details/7364375
 ***
 
 ## web.xml
-
-[格式定义](http://blog.csdn.net/liaoxiaohua1981/article/details/6759206)：
 
 #### 初始化过程
 * 在启动Web项目时，容器(比如Tomcat)会读web.xml配置文件中的两个节点 listener 和 contex-param。   
@@ -95,7 +114,14 @@ Servlet中
 
 
 #### url-pattern
-> Servlet 2.5规范允许<servlet-mapping>的<url-pattern>子元素出现多次，之前的规范只允许一个<servlet-mapping>元素包含一个<url-pattern>子元素。详细看[这里](http://blog.csdn.net/woshizoe/article/details/7696367)
+<url-pattern> 元素指定对应于 Servlet 的URL路径，该路径是相对于Web应用程序上下文根的路径。
+> Servlet 2.5规范允许<servlet-mapping>的<url-pattern>子元素出现多次，之前的规范只允许一个<servlet-mapping>元素包含一个<url-pattern>子元素。
+
+	<servlet-mapping>
+		<servlet-name>welcome</servlet-name>
+		<url-pattern>/en/welcome</url-pattern>
+		<url-pattern>/zh/welcome</url-pattern>
+	</servlet-mapping>
 
 ##### Servlet 的 url 映射    
 当Servlet容器接收到一个请求，它首先确定该请求应该由哪一个Web应用程序来响应。这是通过比较请求URI的开始部分与Web应用程序的上下文路径来确定的。映射到Servlet的路径是请求URI减去上下文的路径，Web应用程序的Context对象在去掉请求URI的上下文路径后，将按照下面的路径映射规则的顺序对剩余部分的路径进行处理，并且在找到第一个成功的匹配后，不再进行下一个匹配。
