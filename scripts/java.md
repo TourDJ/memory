@@ -52,10 +52,13 @@ $java -version
 
 #### linux 下安装 eclipse
 1, 下载 eclipse http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/2/eclipse-jee-oxygen-2-linux-gtk-x86_64.tar.gz
+
 2, 解压
-$ tar -zxvf eclipse-SDK-3.7.2-linux-gtk.tar.gz
+
+	$ tar -zxvf eclipse-SDK-3.7.2-linux-gtk.tar.gz
 3、将文件夹移动到安装目录
-$ sudo mv eclipse /usr/local/
+
+	$ sudo mv eclipse /usr/local/
 4、创建桌面链接
 $ sudo vim /usr/share/applications/eclipse.desktop
 
