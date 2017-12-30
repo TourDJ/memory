@@ -12,7 +12,7 @@
 3、安装JVM路径	
 
 	$sudo update-alternatives --install /usr/bin/java java /usr/local/jdk1.8.0_152/bin/java 1400
-> 命令： update-alternatives --install link name path priority	
+> 命令： update-alternatives --install link name path priority \r\n
 	link 为系统中功能相同软件的公共链接目录，比如/usr/bin/java(需绝对目录)		
 	name 为命令链接符名称,如java	 	
 	path 为你所要使用新命令、新软件的所在目录		 
