@@ -331,14 +331,17 @@ Listener 主要用于对 Session、Request、Context 进行监控。
 
 ## Java 语言特性
 
+#### 泛型
+Java 语言中的[泛型](https://www.ibm.com/developerworks/cn/java/j-jtp01255.html)基本上完全在编译器中实现，由编译器执行类型检查和类型推断，然后生成普通的非泛型的字节码。这种实现技术称为 擦除（erasure）（编译器使用泛型类型信息保证类型安全，然后在生成字节码之前将其清除）。
+
 #### 引用对象
 引用对象 封装了对另一个对象的引用，这样就可以像其他任何对象一样检查和操作引用自身。有三种类型的引用对象，按从弱到强依次为： 软 引用、 弱 引用和 虚 引用。正如下面定义的那样，每种类型对应于一个不同的可到达性级别。软引用适用于实现内存敏感的缓存，弱引用适用于实现无法防止其键（或值）被回收的规范化映射，而虚引用则适用于以某种比 Java 终结机制更灵活的方式调度 pre-mortem 清除操作。
 
 #### NIO
-[NIO](https://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html) 的创建目的是为了让 Java 程序员可以实现高速 I/O 而无需编写自定义的本机代码。NIO 将最耗时的 I/O 操作(即填充和提取缓冲区)转移回操作系统，因而可以极大地提高速度。
+[NIO](https://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html) 的创建目的是为了让 Java 程序员可以实现高速 I/O 而无需编写自定义的本机代码。NIO 将最耗时的 I/O 操作(即填充和提取缓冲区)转移回操作系统，因而可以极大地提高速度。[通配符](https://www.ibm.com/developerworks/cn/java/j-jtp04298.html)在类型系统中具有重要的意义，它们为一个泛型类所指定的类型集合提供了一个有用的类型范围。
 
 #### HashMap
-基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。
+基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，[HashMap](http://www.importnew.com/27043.html) 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。
 
 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。
 
