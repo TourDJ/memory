@@ -84,6 +84,8 @@ $ sudo vim /usr/share/applications/eclipse.desktop
 
 * rt.jar 是JAVA基础类库，默认就在Root Classloader的加载路径里面的，而在Claspath配置该变量是不需要的；同时jre/lib目录下的其他 jar:jce.jar、jsse.jar、charsets.jar、resources.jar 都在Root Classloader中。
 
+JDK目录结构和文件作用[介绍](http://www.cnblogs.com/sunxucool/p/3489314.html)
+
 ***
 
 ## web.xml
@@ -324,6 +326,10 @@ Listener 主要用于对 Session、Request、Context 进行监控。
 ## Interceptor
 [Interceptor](http://blog.csdn.net/ggibenben1314/article/details/45341855)是在面向切面编程的时候，在你的service的一个方法前调用一个方法，或者在方法后调用一个方法。两者的本质区别：拦截器是基于java的反射机制的，而过滤器是基于函数回调。
 > Interceptor 是框架自己造的概念，Filter是servlet规范里的。
+
+***
+
+## Java 语言特性
 
 
 
