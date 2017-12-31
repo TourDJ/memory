@@ -235,3 +235,26 @@ setenforce [ Enforcing | Permissive | 1 | 0 ]   // 1 开启， 0 关闭
 
 永久关闭，需要设置文件/etc/sysconfig/selinux 并重启才能生效。
 
+## nginx 安装
+1：下载安装包
+2：解压 tar -zxvf nginx-1.5.9.tar.gz 
+3. 安装依赖包
+
+      aptitude install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
+3：设置一下配置信息
+
+      ./configure \
+      --prefix=/usr/local/nginx \
+      --pid-path=/var/run/nginx/nginx.pid \
+      --lock-path=/var/lock/nginx.lock \
+      --error-log-path=/var/log/nginx/error.log \
+      --http-log-path=/var/log/nginx/access.log \
+      --with-http_gzip_static_module \
+      --http-client-body-temp-path=/var/temp/nginx/client \
+      --http-proxy-temp-path=/var/temp/nginx/proxy \
+      --http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+      --http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+      --http-scgi-temp-path=/var/temp/nginx/scgi
+4：make 编译 
+5：make install 安装 
+
