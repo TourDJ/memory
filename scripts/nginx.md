@@ -224,6 +224,12 @@ The upstream directive specifies that these two instances work in tandem as an u
 
 只有关闭了SELinux后，才能正常访问。
 
+nginx和selinux冲突解决:
+
+取出selinux中有关于nginx被拒绝的信息，然后通过一些手段将这些文件设置成通过
+cat /var/log/audit/audit.log |grep nginx |grep denied| audit2allow -M mynginx
+semodule -i mynginx.pp
+
  
 查看 selinux 状态：
 
@@ -433,11 +439,5 @@ CentOS
 
       lynx http://localhost
 
-
-nginx和selinux冲突
-
-取出selinux中有关于nginx被拒绝的信息，然后通过一些手段将这些文件设置成通过
-cat /var/log/audit/audit.log |grep nginx |grep denied| audit2allow -M mynginx
-semodule -i mynginx.pp
 
 
