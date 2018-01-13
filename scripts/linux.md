@@ -73,6 +73,27 @@
 apt-cache 是linux下的一个apt软件包管理工具，它可查询apt的二进制软件包缓存文件。
 参见： http://zwkufo.blog.163.com/blog/static/258825120092245519896/
 
+## debian 网络配置
+
+配置网卡
+修改 /etc/network/interfaces 添加如下
+
+auto eth0 #开机自动激活
+iface eth0 inte static #静态IP
+address 192.168.0.56 #本机IP
+netmask 255.255.255.0 #子网掩码
+gateway 192.168.0.254 #路由网关
+ 
+如果是用DHCP自动获取，请在配置文件里添加如下：
+auto eth0
+iface eth0 inet dhcp
+
+设置DNS
+echo "nameserver 202.96.128.86" >> /etc/resolv.conf
+
+重启一下网卡。
+/etc/init.d/networking restart
+
 ## linux 命令
 
 #### nohup 命令
