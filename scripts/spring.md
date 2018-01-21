@@ -14,7 +14,7 @@
 @RequestParam用于将请求参数区数据映射到功能处理方法的参数上。
 例如： 请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。 
 
-      public String login(@RequestParam(value="username", required=true, defaultValue="zhang") String username)
+      public String login(@RequestParam(value="username", required=true, defaultValue="zhang") String username)
 
 多个参数传递，例如：url?userName=zhangsan&userName=wangwu, 多个数据之间使用“，”分割；参数入参的数据为“zhangsan,wangwu”, 使用如下方式来接收多个请求参数：
 
