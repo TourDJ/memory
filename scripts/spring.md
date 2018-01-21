@@ -12,7 +12,7 @@
 
 #### @RequestParam  
 @RequestParam用于将请求参数区数据映射到功能处理方法的参数上。
-例如： 请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。
+例如： 请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。 
 
       public String login(@RequestParam(value="username", required=true, defaultValue="zhang") String username)
 
