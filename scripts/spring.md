@@ -56,7 +56,37 @@ B) PUT方式提交时， 根据request header Content-Type的值来判断:
 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。
 
 使用时机：
-返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用；
+返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用
+
+#### [@SessionAttributes](http://www.cnblogs.com/daxin/p/SessionAttributes.html)
+SessionAttributes 注解应用到 Controller上面，可以将Model中的属性同步到session当中。
+在默认情况下，ModelMap 中的属性作用域是 request 级别是，也就是说，当本次请求结束后，ModelMap 中的属性将销毁。如果希望在多个请求中共享 ModelMap 中的属性，必须将其属性转存到 session 中，这样 ModelMap 的属性才可以被跨请求访问。Spring 允许我们有选择地指定 ModelMap 中的哪些属性需要转存到 session 中，以便下一个请求属对应的 ModelMap 的属性列表中还能访问到这些属性。这一功能是通过类定义处标注 @SessionAttributes 注解来实现的。
+
+      @Controller
+      @RequestMapping("/Demo.do")
+      @SessionAttributes(value={"attr1","attr2"})
+      public class Demo {
+
+          @RequestMapping(params="method=index")
+          public ModelAndView index() {
+              ModelAndView mav = new ModelAndView("index.jsp");
+              mav.addObject("attr1", "attr1Value");
+              mav.addObject("attr2", "attr2Value");
+              return mav;
+          }
+
+          @RequestMapping(params="method=index2")
+          public ModelAndView index2(@ModelAttribute("attr1")String attr1, @ModelAttribute("attr2")String attr2) {
+              ModelAndView mav = new ModelAndView("success.jsp");
+              return mav;
+          }
+      }
+
+#### [@ModelAttribute](http://www.cnblogs.com/Hymen/p/3296952.html)
+我们可以在需要访问 Session 属性的 controller 上加上 @SessionAttributes，然后在 action 需要的 User 参数上加上 @ModelAttribute，并保证两者的属性名称一致。SpringMVC 就会自动将 @SessionAttributes 定义的属性注入到 ModelMap 对象，在 setup action 的参数列表时，去 ModelMap 中取到这样的对象，再添加到参数列表。只要我们不去调用 SessionStatus 的 setComplete() 方法，这个对象就会一直保留在 Session 中，从而实现 Session 信息的共享。
+
+@ModelAttribute注释方法
+被@ModelAttribute注释的方法会在此controller每个方法执行前被执行，因此对于一个controller映射多个URL的用法来说，要谨慎使用。
 
 ***
 
