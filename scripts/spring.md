@@ -12,7 +12,24 @@
 详情看[这里](https://www.tuicool.com/articles/M3MVr2)
 
 
-#### @RequestParam @RequestBody @PathVariable
+#### @RequestParam  
+@RequestParam用于将请求参数区数据映射到功能处理方法的参数上。
+例如： 请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。
+
+    public String login(@RequestParam(value="username", required=true, defaultValue="zhang") String username)
+
+多个参数传递，例如：url?userName=zhangsan&userName=wangwu, 多个数据之间使用“，”分割；参数入参的数据为“zhangsan,wangwu”, 使用如下方式来接收多个请求参数：
+
+    public String login(@RequestParam(value="userName") String []  userNames)     
+
+#### @PathVariable
+当使用@RequestMapping URI template 样式映射时， 即 someUrl/{paramId}, 这时的paramId可通过 @Pathvariable注解绑定它传过来的值到方法的参数上。
+
+      @RequestMapping("/blogs/{id}")  
+      public void findBlog(@PathVariable String id, Model model) {      
+        // implementation omitted  
+      } 
+上面代码把URI template 中变量 id 的值绑定到方法的参数上。若方法参数名称和需要绑定的uri template中变量名称不一致，需要在@PathVariable("name")指定uri template中的名称。
 
 #### @RequestBody
 
