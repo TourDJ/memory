@@ -2,25 +2,23 @@
 
 ## Spring 注解
 
-#### @Configuration
+#### [@Configuration](https://www.tuicool.com/articles/M3MVr2)
 
 明确指出该类是 Bean 配置的信息源。Spring 对标注 Configuration 的类有如下要求：  
 * 配置类不能是 final 的；
 * 配置类不能是本地化的，亦即不能将配置类定义在其他类的方法内部；
 * 配置类必须有一个无参构造函数。
 
-详情看[这里](https://www.tuicool.com/articles/M3MVr2)
-
 
 #### @RequestParam  
 @RequestParam用于将请求参数区数据映射到功能处理方法的参数上。
 例如： 请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。
 
-    public String login(@RequestParam(value="username", required=true, defaultValue="zhang") String username)
+      public String login(@RequestParam(value="username", required=true, defaultValue="zhang") String username)
 
 多个参数传递，例如：url?userName=zhangsan&userName=wangwu, 多个数据之间使用“，”分割；参数入参的数据为“zhangsan,wangwu”, 使用如下方式来接收多个请求参数：
 
-    public String login(@RequestParam(value="userName") String []  userNames)     
+      public String login(@RequestParam(value="userName") String []  userNames)     
 
 #### @PathVariable
 当使用@RequestMapping URI template 样式映射时， 即 someUrl/{paramId}, 这时的paramId可通过 @Pathvariable注解绑定它传过来的值到方法的参数上。
@@ -75,8 +73,7 @@ B) PUT方式提交时， 根据request header Content-Type的值来判断:
 详情看[这里](http://blog.csdn.net/jationxiaozi/article/details/6084757)
 
 
-\<context:component-scan base-package="pack.pack"/\>
+[\<context:component-scan base-package="pack.pack"/\>](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html)
 
 该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
 
-详情看[这里](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html)
