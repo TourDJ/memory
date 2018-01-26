@@ -88,6 +88,15 @@ SessionAttributes 注解应用到 Controller上面，可以将Model中的属性�
 @ModelAttribute注释方法
 被@ModelAttribute注释的方法会在此controller每个方法执行前被执行，因此对于一个controller映射多个URL的用法来说，要谨慎使用。
 
+#### @RestController 与 @Controller
+@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。
+
+1)如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver不起作用，返回的内容就是Return 里的内容。
+例如：本来应该到success.jsp页面的，则其显示success.
+
+2)如果需要返回到指定页面，则需要用 @Controller配合视图解析器InternalResourceViewResolver才行。
+3)如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。
+
 ***
 
 
@@ -107,4 +116,13 @@ SessionAttributes 注解应用到 Controller上面，可以将Model中的属性�
 [\<context:component-scan base-package="pack.pack"/\>](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html)
 
 该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
+
+
+## Spring mvc
+
+#### [ViewResolver](http://blog.csdn.net/prince2270/article/details/5891085)
+Spring MVC使用ViewResolver来根据controller中返回的view名关联到具体的View对象。使用View对象来渲染返回值以生成最终的视图，如html,json或pdf等。
+
+[ContentNegotiatingViewResolver](http://www.open-open.com/lib/view/open1417705219152.html) 视图解析器,利用他就可以配置多种返回值。
+[Migrating spring 3.2 REST to Spring 4](https://javattitude.com/2014/04/20/migrating-spring-3-2-rest-to-spring-4/)
 
