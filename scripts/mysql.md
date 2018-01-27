@@ -1,0 +1,12 @@
+
+
+FOREIGN_KEY_CHECKS  
+MySQL还原数据库，禁用和启用外键约束的方法(FOREIGN_KEY_CHECKS) 
+禁用
+
+    SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0
+ 
+启用
+
+    SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS
+> 有时还原数据库时，因为表有约束导致40014错误，可以通过关闭外键约束，还原成功时再启用。
