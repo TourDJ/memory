@@ -33,6 +33,10 @@
 
 > 其中，> 是覆盖，>> 是追加。
 
+To find all socket files on your system run
+
+        sudo find / -type s
+
 ***
 
 ## deb 包安装方法  
@@ -152,3 +156,6 @@ invoke-rc.d 类似与 RHEL 中的 service。
 
 ## 参考
 [debian下服务控制命令](http://www.cnblogs.com/Joans/articles/4939002.html)
+
+
+
