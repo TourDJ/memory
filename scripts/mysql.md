@@ -13,10 +13,13 @@ MySQL还原数据库，禁用和启用外键约束的方法(FOREIGN_KEY_CHECKS)
 
 #### mysql 命令
 查看是否还有其他进程在使用
-mysql -uroot -proot -h127.0.0.1 -P3306 -e 'show processlist;'
+
+    mysql -uroot -proot -h127.0.0.1 -P3306 -e 'show processlist;'
 
 备份数据
-mysqldump -uroot -proot express_user > ~/expressuser.sql
+
+    mysqldump -uroot -proot express_user > ~/expressuser.sql
 
 查看mysql是否运行
-ps aux | grep mysql
+
+    ps aux | grep mysql
