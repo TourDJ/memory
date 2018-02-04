@@ -7,7 +7,8 @@
 
     vim file 打开单个文件
     vim file1 file2 file3 ... 同时打开多个文件
-    :open file 在vim窗口中打开一个新文件
+    vim file +10 打开文件并跳转到指定行
+    :open file 在vim窗口中打开一个新文件
     :split file 在新窗口中打开文件
     :bn 切换到下一个文件
     :bp 切换到上一个文件
