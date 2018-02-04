@@ -39,3 +39,11 @@ MySQL还原数据库，禁用和启用外键约束的方法(FOREIGN_KEY_CHECKS)
 查看mysql是否运行
 
     ps aux | grep mysql
+    
+查看创建表语句
+
+    show create table seckill\G
+    
+    
+    
+    
