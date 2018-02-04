@@ -1,6 +1,6 @@
 
-#### mysql 变量
-FOREIGN_KEY_CHECKS  
+## mysql 变量
+##### FOREIGN_KEY_CHECKS    
 MySQL还原数据库，禁用和启用外键约束的方法(FOREIGN_KEY_CHECKS) 
 禁用
 
