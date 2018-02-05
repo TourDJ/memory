@@ -13,6 +13,22 @@ socket 连接：
 tcp 连接：
 
     [zzz@zzz mysql]$ mysql --protocol=TCP -uroot -p -P3307 -hlocalhost
+    
+## mysql 函数   
+### 日期函数
+#### date_add() 为日期增加一个时间间隔
+
+    set @dt = now();
+    select date_add(@dt, interval 1 day); -- add 1 day
+    select date_add(@dt, interval 1 hour); -- add 1 hour
+    select date_add(@dt, interval 1 minute); -- ...
+    select date_add(@dt, interval 1 second);
+    select date_add(@dt, interval 1 microsecond);
+    select date_add(@dt, interval 1 week);
+    select date_add(@dt, interval 1 month);
+    select date_add(@dt, interval 1 quarter);
+    select date_add(@dt, interval 1 year);
+    select date_add(@dt, interval -1 day); -- sub 1 day
 
 
 ## mysql 变量
