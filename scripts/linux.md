@@ -11,7 +11,7 @@
 
 ## linux 命令
 
-#### nohup 命令
+#### nohup
 
 　　用途：不挂断地运行命令。  
 
@@ -34,11 +34,20 @@ http://blog.csdn.net/Destina/article/details/6208319
 
 > 其中，> 是覆盖，>> 是追加。
 
+#### find
 To find all socket files on your system run
 
         sudo find / -type s
 
+#### ps
+检测后台进程是否存在
 
+    ps -ef |grep redis
+
+#### netstat
+检测6379端口是否在监听
+
+    netstat -lntp | grep 6379
 
 ## linux 中变量的含义
 
