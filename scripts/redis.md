@@ -50,15 +50,18 @@ redis的配置文件在你的安装目录里。
 
 ## 使用
 启动
-sudo ./redis-server
-sudo ./redis-server ./redis.conf
+
+    sudo ./redis-server
+    sudo ./redis-server ./redis.conf
 
 客户端连接
-sudo ./redis-cli
-sudo ./redis-cli -p 6380 (如果用的不是默认端口)
+
+    sudo ./redis-cli
+    sudo ./redis-cli -p 6380 (如果用的不是默认端口)
 
 停止
-sudo ./redis-cli shutdown
+
+    sudo ./redis-cli shutdown
 
 
 ## 将redis做成一个服务
