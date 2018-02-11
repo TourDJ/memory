@@ -101,3 +101,6 @@ Please see the [detail](https://stackoverflow.com/questions/20028996/how-to-inst
     npm config get prefix
     npm config set prefix path
 
+#### 清除缓存
+
+     npm cache clean --force
