@@ -90,5 +90,6 @@ redis服务不支持chkconfig, 为此，我们需要更改redis脚本。 在启�
 
     vi /etc/profile
     export PATH="$PATH:/usr/local/redis/bin"
+这样就可以直接调用redis-cli的命令了。
 
 > Redis有两种存储方式，默认是snapshot方式，实现方法是定时将内存的快照(snapshot)持久化到硬盘，这种方法缺点是持久化之后如果出现crash则会丢失一段数据。因此在完美主义者的推动下作者增加了aof方式。aof即append only mode，在写入内存数据的同时将操作命令保存到日志文件。
