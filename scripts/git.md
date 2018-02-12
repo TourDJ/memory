@@ -7,11 +7,11 @@
 
     $ git init
 
-该命令将创建一个名为 .git 的子目录，这个子目录含有你初始化的 Git 仓库中所有的必须文件，这些文件是 Git 仓库的骨干。 但是，在这个时候，我们仅仅是做了一个初始化的操作，你的项目里的文件还没有被跟踪。通过 git add 命令来实现对指定文件的跟踪，然后执行 git commit 提交：
+该命令将创建一个名为 .git 的子目录，这个子目录含有你初始化的 Git 仓库中所有的必须文件，这些文件是 Git 仓库的骨干。 但是，在这个时候，我们仅仅是做了一个初始化的操作，你的项目里的文件还没有被跟踪。通过 git add 命令来实现对指定文件的跟踪，然后执行 git commit 提交：  
 
-        $ git add *.c
-        $ git add LICENSE
-        $ git commit -m 'initial project version'
+    $ git add *.c
+    $ git add LICENSE
+    $ git commit -m 'initial project version'
 ***
 
 ### git clone 克隆现有的仓库
