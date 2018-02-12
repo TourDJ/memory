@@ -61,9 +61,9 @@ git status 命令的输出十分详细，但其用语有些繁琐。
 
     $ git add README
 
-跟踪多个文件
+跟踪多个文件  
 
-    $ git add .
+    $ git add .
     
 此时再运行 git status 命令，会看到 README 文件已被跟踪，并处于暂存状态：
 
@@ -75,6 +75,7 @@ git status 命令的输出十分详细，但其用语有些繁琐。
         new file:   README
 
 只要在 Changes to be committed 这行下面的，就说明是已暂存状态。
+
 ***
 
 ### 忽略文件
