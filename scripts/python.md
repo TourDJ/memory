@@ -65,5 +65,7 @@ Python 安装
     pip show pip
 
 
+#### 搜寻
 
+    pip search pycuda
 
