@@ -5,6 +5,10 @@ Python 安装
 
 ### pip 使用
 
+#### 更新pip
+
+    pip install -U pip
+    
 #### 安装PyPI软件
 
     pip install SomePackage
@@ -50,6 +54,15 @@ Python 安装
     Successfully uninstalled SomePackage
 
 
+#### 列出软件包清单
+
+    pip list
+
+    pip list --outdated
+
+#### 查看软件包信息
+
+    pip show pip
 
 
 
