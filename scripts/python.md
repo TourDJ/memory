@@ -69,3 +69,7 @@ Python 安装
 
     pip search pycuda
 
+
+## ipython 
+
+[安装](https://github.com/ipython/ipython/downloads)
