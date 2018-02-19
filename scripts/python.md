@@ -1,5 +1,22 @@
 
-Python 安装
+## Python 语法
+
+> python 常用[函数](https://docs.python.org/2/library/functions.html)。
+
+-*- coding: utf-8 -*-
+目的是告诉Python解释器，用UTF-8编码读取源代码。
+
+#### pass 语句在函数中的作用
+
+    def mypython():
+        pass
+    
+定义一个函数 mypython，但函数体部分暂时还没有完成，又不能空着不写内容，因此可以用pass来替代占个位置。
+
+#### pass 语句在循环中的作用
+
+    while True:
+        pass
 
 ## Python 包管理工具
 
