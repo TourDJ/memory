@@ -90,6 +90,8 @@ windows
     安装 ipython
     安装pyreadline，解压pyreadline-2.0.zip 到python安装目录下C:\Python27\Lib\site-packages
     进入解压后的目录，执行python setup.py install，等待安装完毕
+    
+> 默认windows下没有readline模块可用，所以tab的自动补全以及console的颜色样式是“NoColor“。可以[下载](https://pypi.python.org/pypi/pyreadline/2.0) pyreadline包安装，安装方式与IPython相同。    
 
 linux
 
