@@ -70,6 +70,29 @@ Python 安装
     pip search pycuda
 
 
-## ipython 
+## ipython 使用
+IPython 是一个 python 的交互式 shell，比默认的python shell 好用得多，支持变量自动补全，自动缩进，支持 bash shell 命令，内置了许多很有用的功能和函数。
+IPython 是基于BSD 开源的。
 
-[安装](https://github.com/ipython/ipython/downloads)
+IPython 为交互式计算提供了一个丰富的架构，包含:
+
+* 强大的交互式 shell
+* Jupyter 内核
+* 交互式的数据可视化工具
+* 灵活、可嵌入的解释器
+* 易于使用，高性能的并行计算工具
+
+#### 安装
+
+windows 
+
+    [下载](https://github.com/ipython/ipython/downloads)ipython 及 pyreadline 
+    安装 ipython
+    安装pyreadline，解压pyreadline-2.0.zip 到python安装目录下C:\Python27\Lib\site-packages
+    进入解压后的目录，执行python setup.py install，等待安装完毕
+
+linux
+
+    pip install ipython
+
+
