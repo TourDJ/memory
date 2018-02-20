@@ -114,4 +114,20 @@ linux
 
     pip install ipython
 
+#### Magic
+IPython有一些"magic"关键字:
+
+    %Exit, %Pprint, %Quit, %alias, %autocall, %autoindent, %automagic, 
+    %bookmark, %cd, %color_info, %colors, %config, %dhist, %dirs, %ed, 
+    %edit, %env, %hist, %logoff, %logon, %logstart, %logstate, %lsmagic, 
+    %macro, %magic, %p, %page, %pdb, %pdef, %pdoc, %pfile, %pinfo, %popd, 
+    %profile, %prun, %psource, %pushd, %pwd, %r, %rehash, %rehashx, %reset, 
+    %run, %runlog, %save, %sc, %sx, %system_verbose, %unalias, %who, 
+    %who_ls, %whos, %xmode 
+IPython 会检查传给它的命令是否包含magic关键字。如果命令是一个magic关键字，IPython就自己来处理。如果不是magic关键字，就交给 Python（标准解释器）去处理。如果automagic打开（默认），你不需要在magic关键字前加%符号。相反，如果automagic是关闭的，则%是必须的。在命令提示符下输入命令magic就会显示所有magic关键字列表以及它们的简短的用法说明。良好的文档对于一个软件的任何一部分来说都是重要的，从在线IPython用户手册到内嵌文档（%magic），IPython当然不会在这方面有所缺失。
+
+## python web 框架
+#### Flask
+
+文档：http://docs.jinkan.org/docs/flask/index.html
 
