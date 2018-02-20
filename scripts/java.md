@@ -35,7 +35,7 @@ $source /etc/profile 使配置立刻生效
 $echo $JAVA_HOME
 $java -version
 
-#### linux 安装 jdk
+#### linux 源码安装 jdk
 1, 将源码文件 jdk-8u152-linux-x64.tar.gz 解压到 /usr/local 下
 2, 配置环境变量
   在/etc/profile文件中，配置环境变量，编辑文件，在最后添加：
@@ -88,69 +88,42 @@ JDK目录结构和文件作用[介绍](http://www.cnblogs.com/sunxucool/p/348931
 
 ***
 
-## web.xml
+## J2SE
+## Java 语言特性
 
-#### 初始化过程
-* 在启动Web项目时，容器(比如Tomcat)会读web.xml配置文件中的两个节点 listener 和 contex-param。   
-* 接着容器会创建一个 ServletContext(上下文),应用范围内即整个WEB项目都能使用这个上下文。  
-* 接着容器会将读取到&lt;context-param&gt; 转化为键值对,并交给 ServletContext。 
-* 容器创建 listener 中的类实例,即创建监听（备注：listener定义的类可以是自定义的类但必须需要继承 ServletContextListener）。   
-* 在监听的类中会有一个contextInitialized(ServletContextEvent event)初始化方法，在这个方法中可以通过
+#### 泛型
+Java 语言中的[泛型](https://www.ibm.com/developerworks/cn/java/j-jtp01255.html)基本上完全在编译器中实现，由编译器执行类型检查和类型推断，然后生成普通的非泛型的字节码。这种实现技术称为 擦除（erasure）（编译器使用泛型类型信息保证类型安全，然后在生成字节码之前将其清除）。
 
-    event.getServletContext().getInitParameter("contextConfigLocation") 
-  来得到context-param 设定的值。在这个类中还必须有一个contextDestroyed(ServletContextEvent event) 销毁方法.用于关闭应用前释放资源，比如说数据库连接的关闭。 
-* 得到这个context-param的值之后,你就可以做一些操作了.注意,这个时候你的WEB项目还没有完全启动完成.这个动作会比所有的Servlet都要早。 
-    
-> 由上面的初始化过程可知容器对于web.xml的加载过程是 context-param -> listener  -> filter  -> servlet 。
+[通配符](https://www.ibm.com/developerworks/cn/java/j-jtp04298.html)在类型系统中具有重要的意义，它们为一个泛型类所指定的类型集合提供了一个有用的类型范围。
 
-#### 如何使用
-页面中
-     
-        ${initParam.contextConfigLocation}
-Servlet中
-        
-        String paramValue=getServletContext().getInitParameter("contextConfigLocation")
-        
-#### context-param
+#### 引用对象
+引用对象 封装了对另一个对象的引用，这样就可以像其他任何对象一样检查和操作引用自身。有三种类型的引用对象，按从弱到强依次为： 软引用、 弱引用和 虚引用。正如下面定义的那样，每种类型对应于一个不同的可到达性级别。软引用适用于实现内存敏感的缓存，弱引用适用于实现无法防止其键（或值）被回收的规范化映射，而虚引用则适用于以某种比 Java 终结机制更灵活的方式调度 pre-mortem 清除操作。
 
-    <context-param>  
-        <param-name>contextConfigLocation</param-name>  
-        <param-value>contextConfigLocationValue></param-value>  
-    </context-param>  
-    
-作用：该元素用来声明应用范围(整个WEB项目)内的上下文初始化参数。
-    param-name 设定上下文的参数名称。必须是唯一名称
-    param-value 设定的参数名称的值
+#### NIO
+[NIO](https://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html) 的创建目的是为了让 Java 程序员可以实现高速 I/O 而无需编写自定义的本机代码。NIO 将最耗时的 I/O 操作(即填充和提取缓冲区)转移回操作系统，因而可以极大地提高速度。
+
+通道 和 缓冲区 是 NIO 中的核心对象，几乎在每一个 I/O 操作中都要使用它们。
+
+#### HashMap
+基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，[HashMap](http://www.importnew.com/27043.html) 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。
+
+此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。
+
+HashMap 的实例有两个参数影响其性能：初始容量 和加载因子。容量 是哈希表中桶的数量，初始容量只是哈希表在创建时的容量。加载因子 是哈希表在其容量自动增加之前可以达到多满的一种尺度。当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 rehash 操作（即重建内部数据结构），从而哈希表将具有大约两倍的桶数。
+
+通常，默认加载因子 (.75) 在时间和空间成本上寻求一种折衷。加载因子过高虽然减少了空间开销，但同时也增加了查询成本（在大多数 HashMap 类的操作中，包括 get 和 put 操作，都反映了这一点）。在设置初始容量时应该考虑到映射中所需的条目数及其加载因子，以便最大限度地减少 rehash 操作次数。如果初始容量大于最大条目数除以加载因子，则不会发生 rehash 操作。
+
+如果很多映射关系要存储在 HashMap 实例中，则相对于按需执行自动的 rehash 操作以增大表的容量来说，使用足够大的初始容量创建它将使得映射关系能更有效地存储。
+
+注意，此实现不是同步的。如果多个线程同时访问一个哈希映射，而其中至少一个线程从结构上修改了该映射，则它必须 保持外部同步。（结构上的修改是指添加或删除一个或多个映射关系的任何操作；仅改变与实例已经包含的键关联的值不是结构上的修改。）这一般通过对自然封装该映射的对象进行同步操作来完成。如果不存在这样的对象，则应该使用 Collections.synchronizedMap 方法来“包装”该映射。最好在创建时完成这一操作，以防止对映射进行意外的非同步访问，如下所示：
+
+   	Map m = Collections.synchronizedMap(new HashMap(...));
+由所有此类的“collection 视图方法”所返回的迭代器都是快速失败 的：在迭代器创建之后，如果从结构上对映射进行修改，除非通过迭代器本身的 remove 方法，其他任何时间任何方式的修改，迭代器都将抛出 ConcurrentModificationException。因此，面对并发的修改，迭代器很快就会完全失败，而不冒在将来不确定的时间发生任意不确定行为的风险。
+
+注意，迭代器的快速失败行为不能得到保证，一般来说，存在非同步的并发修改时，不可能作出任何坚决的保证。快速失败迭代器尽最大努力抛出 ConcurrentModificationException。因此，编写依赖于此异常的程序的做法是错误的，正确做法是：迭代器的快速失败行为应该仅用于检测程序错误。
 
 
-#### url-pattern
-<url-pattern> 元素指定对应于 Servlet 的URL路径，该路径是相对于Web应用程序上下文根的路径。
-> Servlet 2.5规范允许<servlet-mapping>的<url-pattern>子元素出现多次，之前的规范只允许一个<servlet-mapping>元素包含一个<url-pattern>子元素。
-
-	<servlet-mapping>
-		<servlet-name>welcome</servlet-name>
-		<url-pattern>/en/welcome</url-pattern>
-		<url-pattern>/zh/welcome</url-pattern>
-	</servlet-mapping>
-
-##### Servlet 的 url 映射    
-当Servlet容器接收到一个请求，它首先确定该请求应该由哪一个Web应用程序来响应。这是通过比较请求URI的开始部分与Web应用程序的上下文路径来确定的。映射到Servlet的路径是请求URI减去上下文的路径，Web应用程序的Context对象在去掉请求URI的上下文路径后，将按照下面的路径映射规则的顺序对剩余部分的路径进行处理，并且在找到第一个成功的匹配后，不再进行下一个匹配。
-
-* 容器试着对请求的路径和Servlet映射的路径进行精确匹配，如果匹配成功，则调用这个Servlet来处理请求。
-* 容器试着匹配最长的路径前缀，以斜杠（/）为路径分隔符，按照路径树逐级递减匹配，选择最长匹配的Servlet来处理请求。
-* 如果请求的URL路径最后有扩展名，如.jsp，Servlet容器会试着匹配处理这个扩展名的Servlet。
-* 如果按照前面3条规则没有找到匹配的Servlet，容器会调用Web应用程序默认的Servlet来对请求进行处理，如果没有定义默认的Servlet，容器将向客户端发送HTTP 404错误信息（请求资源不存在）。
-
-##### 使用下面的语法来定义映射: 
-
-* 以/开始并且以 /* 结束的字符串用来映射路径       
-* 以*.为前缀的字符串用来映射扩展名         
-* 以一个单独的/指示这个Web应用程序默认的Servlet    
-* 所有其他的字符被用于精确匹配   
-
-> [问题](http://blog.sina.com.cn/s/blog_7d0b04e70101mclr.html)： 为什么定义”/*.action”这样一个看起来很正常的匹配会错？  
-  因为这个匹配即属于路径映射，也属于扩展映射，导致容器无法判断。
-***
+java [内存](https://www.ibm.com/developerworks/cn/java/j-codetoheap/index.html)使用
 
 ## class 字节码文件
 class [字节码](http://www.cnblogs.com/ivantang/p/6236711.html)文件是一组以8位字节为基础单位的二进制流，各个数据项目严格按照顺序紧凑地排列在Class文件之中，中间没有添加任何分隔符，这使得整个Class文件中存储的内容几乎全部都是程序运行的必要数据，没有空隙存在。当遇到需要占用8位字节以上的空间的数据项时，则会按照高位在前的方式分割成若干个8位字节进行存储。
@@ -241,7 +214,68 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 
 ***
 
-## Servlet
+## J2EE
+
+### Web 项目初始化过程
+* 在启动Web项目时，容器(比如Tomcat)会读web.xml配置文件中的两个节点 listener 和 contex-param。   
+* 接着容器会创建一个 ServletContext(上下文),应用范围内即整个WEB项目都能使用这个上下文。  
+* 接着容器会将读取到&lt;context-param&gt; 转化为键值对,并交给 ServletContext。 
+* 容器创建 listener 中的类实例,即创建监听（备注：listener定义的类可以是自定义的类但必须需要继承 ServletContextListener）。   
+* 在监听的类中会有一个contextInitialized(ServletContextEvent event)初始化方法，在这个方法中可以通过
+
+    event.getServletContext().getInitParameter("contextConfigLocation") 
+  来得到context-param 设定的值。在这个类中还必须有一个contextDestroyed(ServletContextEvent event) 销毁方法.用于关闭应用前释放资源，比如说数据库连接的关闭。 
+* 得到这个context-param的值之后,你就可以做一些操作了.注意,这个时候你的WEB项目还没有完全启动完成.这个动作会比所有的Servlet都要早。 
+    
+> 由上面的初始化过程可知容器对于web.xml的加载过程是 context-param -> listener  -> filter  -> servlet 。
+
+> 如何使用
+>  页面中: ${initParam.contextConfigLocation}
+>  Servlet中: String paramValue=getServletContext().getInitParameter("contextConfigLocation")
+
+### web.xml 标签
+#### context-param
+
+    <context-param>  
+        <param-name>contextConfigLocation</param-name>  
+        <param-value>contextConfigLocationValue></param-value>  
+    </context-param>  
+    
+作用：该元素用来声明应用范围(整个WEB项目)内的上下文初始化参数。
+    param-name 设定上下文的参数名称。必须是唯一名称
+    param-value 设定的参数名称的值
+
+
+#### url-pattern
+<url-pattern> 元素指定对应于 Servlet 的URL路径，该路径是相对于Web应用程序上下文根的路径。
+> Servlet 2.5规范允许<servlet-mapping>的<url-pattern>子元素出现多次，之前的规范只允许一个<servlet-mapping>元素包含一个<url-pattern>子元素。
+
+	<servlet-mapping>
+		<servlet-name>welcome</servlet-name>
+		<url-pattern>/en/welcome</url-pattern>
+		<url-pattern>/zh/welcome</url-pattern>
+	</servlet-mapping>
+
+* Servlet 的 url 映射 *       	  
+当Servlet容器接收到一个请求，它首先确定该请求应该由哪一个Web应用程序来响应。这是通过比较请求URI的开始部分与Web应用程序的上下文路径来确定的。映射到Servlet的路径是请求URI减去上下文的路径，Web应用程序的Context对象在去掉请求URI的上下文路径后，将按照下面的路径映射规则的顺序对剩余部分的路径进行处理，并且在找到第一个成功的匹配后，不再进行下一个匹配。
+
+* 容器试着对请求的路径和Servlet映射的路径进行精确匹配，如果匹配成功，则调用这个Servlet来处理请求。
+* 容器试着匹配最长的路径前缀，以斜杠（/）为路径分隔符，按照路径树逐级递减匹配，选择最长匹配的Servlet来处理请求。
+* 如果请求的URL路径最后有扩展名，如.jsp，Servlet容器会试着匹配处理这个扩展名的Servlet。
+* 如果按照前面3条规则没有找到匹配的Servlet，容器会调用Web应用程序默认的Servlet来对请求进行处理，如果没有定义默认的Servlet，容器将向客户端发送HTTP 404错误信息（请求资源不存在）。
+
+*使用下面的语法来定义映射: 
+
+* 以/开始并且以 /* 结束的字符串用来映射路径       
+* 以*.为前缀的字符串用来映射扩展名         
+* 以一个单独的/指示这个Web应用程序默认的Servlet    
+* 所有其他的字符被用于精确匹配   
+
+> [问题](http://blog.sina.com.cn/s/blog_7d0b04e70101mclr.html)： 为什么定义”/*.action”这样一个看起来很正常的匹配会错？  
+  因为这个匹配即属于路径映射，也属于扩展映射，导致容器无法判断。
+***
+
+* Servlet *
 [servlet](http://www.cnblogs.com/doit8791/p/4209442.html)是一种运行服务器端的java应用程序，具有独立于平台和协议的特性，并且可以动态的生成web页面，它工作在客户端请求与服务器响应的中间层。
 
 #### ServletConfig
@@ -283,7 +317,7 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 
 ***
 
-## Filter
+* Filter
 [Filter 简介](http://www.open-open.com/lib/view/open1350703788524.html)   
 Servlet API中提供了一个Filter接口，开发web应用时，如果编写的Java类实现了这个接口，则把这个java类称之为过滤器Filter。通过Filter技术，开发人员可以实现用户在访问某个目标资源之前，对访问的请求和响应进行拦截。简单说，就是可以实现web容器对某资源的访问前截获进行相关的处理，还可以在某资源向web容器返回响应前进行截获进行处理。
 
@@ -304,7 +338,7 @@ Filter [分类](http://www.cnblogs.com/hh6plus/p/5548049.html)：一共分为四
 
 
 
-## Listener
+* Listener
 [Listener](http://blog.csdn.net/u012228718/article/details/41730799) 是 Servlet 的监听器，它可以监听客户端的请求、服务端的操作等。
 Listener 主要用于对 Session、Request、Context 进行监控。	
 
@@ -323,46 +357,9 @@ Listener 主要用于对 Session、Request、Context 进行监控。
 与上面六类不同，这两类 Listener 监听的是 Session 内的对象，而非 Session 本身，不需要在 web.xml中配置。
 
 
-## Interceptor
+* Interceptor
 [Interceptor](http://blog.csdn.net/ggibenben1314/article/details/45341855)是在面向切面编程的时候，在你的service的一个方法前调用一个方法，或者在方法后调用一个方法。两者的本质区别：拦截器是基于java的反射机制的，而过滤器是基于函数回调。
 > Interceptor 是框架自己造的概念，Filter是servlet规范里的。
 
 ***
-
-## Java 语言特性
-
-#### 泛型
-Java 语言中的[泛型](https://www.ibm.com/developerworks/cn/java/j-jtp01255.html)基本上完全在编译器中实现，由编译器执行类型检查和类型推断，然后生成普通的非泛型的字节码。这种实现技术称为 擦除（erasure）（编译器使用泛型类型信息保证类型安全，然后在生成字节码之前将其清除）。
-
-[通配符](https://www.ibm.com/developerworks/cn/java/j-jtp04298.html)在类型系统中具有重要的意义，它们为一个泛型类所指定的类型集合提供了一个有用的类型范围。
-
-#### 引用对象
-引用对象 封装了对另一个对象的引用，这样就可以像其他任何对象一样检查和操作引用自身。有三种类型的引用对象，按从弱到强依次为： 软 引用、 弱 引用和 虚 引用。正如下面定义的那样，每种类型对应于一个不同的可到达性级别。软引用适用于实现内存敏感的缓存，弱引用适用于实现无法防止其键（或值）被回收的规范化映射，而虚引用则适用于以某种比 Java 终结机制更灵活的方式调度 pre-mortem 清除操作。
-
-#### NIO
-[NIO](https://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html) 的创建目的是为了让 Java 程序员可以实现高速 I/O 而无需编写自定义的本机代码。NIO 将最耗时的 I/O 操作(即填充和提取缓冲区)转移回操作系统，因而可以极大地提高速度。
-
-通道 和 缓冲区 是 NIO 中的核心对象，几乎在每一个 I/O 操作中都要使用它们。
-
-#### HashMap
-基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，[HashMap](http://www.importnew.com/27043.html) 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。
-
-此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。
-
-HashMap 的实例有两个参数影响其性能：初始容量 和加载因子。容量 是哈希表中桶的数量，初始容量只是哈希表在创建时的容量。加载因子 是哈希表在其容量自动增加之前可以达到多满的一种尺度。当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 rehash 操作（即重建内部数据结构），从而哈希表将具有大约两倍的桶数。
-
-通常，默认加载因子 (.75) 在时间和空间成本上寻求一种折衷。加载因子过高虽然减少了空间开销，但同时也增加了查询成本（在大多数 HashMap 类的操作中，包括 get 和 put 操作，都反映了这一点）。在设置初始容量时应该考虑到映射中所需的条目数及其加载因子，以便最大限度地减少 rehash 操作次数。如果初始容量大于最大条目数除以加载因子，则不会发生 rehash 操作。
-
-如果很多映射关系要存储在 HashMap 实例中，则相对于按需执行自动的 rehash 操作以增大表的容量来说，使用足够大的初始容量创建它将使得映射关系能更有效地存储。
-
-注意，此实现不是同步的。如果多个线程同时访问一个哈希映射，而其中至少一个线程从结构上修改了该映射，则它必须 保持外部同步。（结构上的修改是指添加或删除一个或多个映射关系的任何操作；仅改变与实例已经包含的键关联的值不是结构上的修改。）这一般通过对自然封装该映射的对象进行同步操作来完成。如果不存在这样的对象，则应该使用 Collections.synchronizedMap 方法来“包装”该映射。最好在创建时完成这一操作，以防止对映射进行意外的非同步访问，如下所示：
-
-   	Map m = Collections.synchronizedMap(new HashMap(...));
-由所有此类的“collection 视图方法”所返回的迭代器都是快速失败 的：在迭代器创建之后，如果从结构上对映射进行修改，除非通过迭代器本身的 remove 方法，其他任何时间任何方式的修改，迭代器都将抛出 ConcurrentModificationException。因此，面对并发的修改，迭代器很快就会完全失败，而不冒在将来不确定的时间发生任意不确定行为的风险。
-
-注意，迭代器的快速失败行为不能得到保证，一般来说，存在非同步的并发修改时，不可能作出任何坚决的保证。快速失败迭代器尽最大努力抛出 ConcurrentModificationException。因此，编写依赖于此异常的程序的做法是错误的，正确做法是：迭代器的快速失败行为应该仅用于检测程序错误。
-
-
-java [内存](https://www.ibm.com/developerworks/cn/java/j-codetoheap/index.html)使用
-
 
