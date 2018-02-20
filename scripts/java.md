@@ -256,7 +256,7 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 		<url-pattern>/zh/welcome</url-pattern>
 	</servlet-mapping>
 
-* Servlet 的 url 映射 *       	  
+**Servlet 的 url 映射**       	  
 当Servlet容器接收到一个请求，它首先确定该请求应该由哪一个Web应用程序来响应。这是通过比较请求URI的开始部分与Web应用程序的上下文路径来确定的。映射到Servlet的路径是请求URI减去上下文的路径，Web应用程序的Context对象在去掉请求URI的上下文路径后，将按照下面的路径映射规则的顺序对剩余部分的路径进行处理，并且在找到第一个成功的匹配后，不再进行下一个匹配。
 
 * 容器试着对请求的路径和Servlet映射的路径进行精确匹配，如果匹配成功，则调用这个Servlet来处理请求。
@@ -264,7 +264,7 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 * 如果请求的URL路径最后有扩展名，如.jsp，Servlet容器会试着匹配处理这个扩展名的Servlet。
 * 如果按照前面3条规则没有找到匹配的Servlet，容器会调用Web应用程序默认的Servlet来对请求进行处理，如果没有定义默认的Servlet，容器将向客户端发送HTTP 404错误信息（请求资源不存在）。
 
-*使用下面的语法来定义映射: 
+*使用下面的语法来定义映射*: 
 
 * 以/开始并且以 /* 结束的字符串用来映射路径       
 * 以*.为前缀的字符串用来映射扩展名         
@@ -275,7 +275,7 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
   因为这个匹配即属于路径映射，也属于扩展映射，导致容器无法判断。
 ***
 
-* Servlet *
+### Servlet
 [servlet](http://www.cnblogs.com/doit8791/p/4209442.html)是一种运行服务器端的java应用程序，具有独立于平台和协议的特性，并且可以动态的生成web页面，它工作在客户端请求与服务器响应的中间层。
 
 #### ServletConfig
@@ -317,7 +317,7 @@ Runtime异常无须显式声明抛出，如果程序需要捕捉Runtime异常，
 
 ***
 
-* Filter
+### Filter
 [Filter 简介](http://www.open-open.com/lib/view/open1350703788524.html)   
 Servlet API中提供了一个Filter接口，开发web应用时，如果编写的Java类实现了这个接口，则把这个java类称之为过滤器Filter。通过Filter技术，开发人员可以实现用户在访问某个目标资源之前，对访问的请求和响应进行拦截。简单说，就是可以实现web容器对某资源的访问前截获进行相关的处理，还可以在某资源向web容器返回响应前进行截获进行处理。
 
@@ -338,7 +338,7 @@ Filter [分类](http://www.cnblogs.com/hh6plus/p/5548049.html)：一共分为四
 
 
 
-* Listener
+### Listener
 [Listener](http://blog.csdn.net/u012228718/article/details/41730799) 是 Servlet 的监听器，它可以监听客户端的请求、服务端的操作等。
 Listener 主要用于对 Session、Request、Context 进行监控。	
 
@@ -357,7 +357,7 @@ Listener 主要用于对 Session、Request、Context 进行监控。
 与上面六类不同，这两类 Listener 监听的是 Session 内的对象，而非 Session 本身，不需要在 web.xml中配置。
 
 
-* Interceptor
+### Interceptor
 [Interceptor](http://blog.csdn.net/ggibenben1314/article/details/45341855)是在面向切面编程的时候，在你的service的一个方法前调用一个方法，或者在方法后调用一个方法。两者的本质区别：拦截器是基于java的反射机制的，而过滤器是基于函数回调。
 > Interceptor 是框架自己造的概念，Filter是servlet规范里的。
 
