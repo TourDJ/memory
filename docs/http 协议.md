@@ -1,0 +1,85 @@
+
+## [HTTP 协议](http://www.cnblogs.com/li0803/archive/2008/11/03/1324746.html)
+HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。
+
+#### HTTP 请求组成
+ http 请求由三部分组成，分别是：请求行、消息报头、请求正文
+ 
+      GET /562f25980001b1b106000338.jpg HTTP/1.1
+      Host    img.mukewang.com
+      User-Agent    Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36
+      Accept    image/webp,image/*,*/*;q=0.8
+      Referer    http://www.imooc.com/
+      Accept-Encoding    gzip, deflate, sdch
+      Accept-Language    zh-CN,zh;q=0.8
+      Connection: Keep-Alive
+
+请求行以一个方法符号开头，以空格分开，后面跟着请求的URI和协议的版本，格式如下：
+
+      Method Request-URI HTTP-Version CRLF  
+
+其中 Method表示请求方法；Request-URI是一个统一资源标识符；HTTP-Version表示请求的HTTP协议版本；CRLF表示回车和换行（除了作为结尾的CRLF外，不允许出现单独的CR或LF字符）。
+
+请求方法（所有方法全为大写）有多种，各个方法的解释如下：
+* GET     请求获取Request-URI所标识的资源
+* POST    在Request-URI所标识的资源后附加新的数据
+* HEAD    请求获取由Request-URI所标识的资源的响应消息报头
+* PUT     请求服务器存储一个资源，并用Request-URI作为其标识
+* DELETE  请求服务器删除Request-URI所标识的资源
+* TRACE   请求服务器回送收到的请求信息，主要用于测试或诊断
+* CONNECT 保留将来使用
+* OPTIONS 请求查询服务器的性能，或者查询与资源相关的选项和需求
+
+> 一个完整的 URL 包括以下几部分：
+protocal://hostname[:port]/path/[;parameters][?query]#fragment
+
+* protocol 协议，常用的协议是http
+* hostname 主机地址，可以是域名，也可以是IP地址
+* port 端口 http协议默认端口是：80端口，如果不写默认就是:80端口
+* path 路径 网络资源在服务器中的指定路径
+* parameter 参数 如果要向服务器传入参数，在这部分输入
+* query 查询字符串 如果需要从服务器那里查询内容，在这里编辑
+* fragment 片段 网页中可能会分为不同的片段，如果想访问网页后直接到达指定位置，可以在这部分设置
+
+例如：
+
+      http://www.exapmle.com:8080/news/index.asp?boardID=5&ID=24618&page=1#name
+
+
+#### Access-Control-Allow-Origin
+> Access-Control-Allow-Origin是从Cross Origin Resource Sharing (CORS)中分离出来的。这个header是决定哪些网站可以访问资源，通过定义一个通配符来决定是单一的网站还是所有网站可以访问我们的资源。需要注意的是，如果定义了通配符，那么 Access-Control-Allow-Credentials选项就无效了，而且user-agent的cookies不会在请求里发送。
+
+正确的设置
+
+    * – 通配符允许任何远程资源来访问含有Access-Control-Allow-Origin 的内容。  
+    http://www.example.com – 只允许特定站点才能访问(http://[host], 或者 https://[host]) 
+
+通常不正确的设置
+
+    http://example.com, http://web2.example.com – 多个站点是不支持的，只能配置一个站点。  
+    *.example.com – 只允许单一的站点  
+    http://*.example.com – 同上面一样  
+
+
+#### Etag
+> HTTP 协议规格说明定义ETag为“被请求变量的实体值” （参见 —— 章节 14.19）。 另一种说法是，ETag是一个可以与Web资源关联的记号（token）。典型的Web资源可以一个Web页，但也可能是JSON或XML文档。服务器单独负责判断记号是什么及其含义，并在HTTP响应头中将其传送到客户端，以下是服务器端返回的格式：
+
+        ETag: "50b1c1d4f775c61:df3"  
+        
+客户端的查询更新格式是这样的：  
+
+      If-None-Match: W/"50b1c1d4f775c61:df3"  
+ 
+ 如果ETag没改变，则返回状态304然后不返回，这也和Last-Modified一样。本人测试Etag主要在断点下载时比较有用。 
+ 
+      Last-Modified和Etags如何帮助提高性能?  
+        
+> 聪明的开发者会把Last-Modified 和ETags请求的http报头一起使用，这样可利用客户端（例如浏览器）的缓存。因为服务器首先产生 Last-Modified/Etag标记，服务器可在稍后使用它来判断页面是否已经被修改。本质上，客户端通过将该记号传回服务器要求服务器验证其（客户端）缓存。    
+
+过程如下: 
+
+       1. 客户端请求一个页面（A）。  
+       2. 服务器返回页面A，并在给A加上一个Last-Modified/ETag。  
+       3. 客户端展现该页面，并将页面连同Last-Modified/ETag一起缓存。  
+       4. 客户再次请求页面A，并将上次请求时服务器返回的Last-Modified/ETag一起传递给服务器。  
+       5. 服务器检查该Last-Modified或ETag，并判断出该页面自上次客户端请求之后还未被修改，直接返回响应304和一个空的响应体。
