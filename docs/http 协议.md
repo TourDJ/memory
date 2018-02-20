@@ -30,8 +30,8 @@ HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速�
 * CONNECT 保留将来使用
 * OPTIONS 请求查询服务器的性能，或者查询与资源相关的选项和需求
 
-> 一个完整的 [URL](http://www.cnblogs.com/woodyblog/p/6005414.html) 包括以下几部分：
-> protocal://hostname[:port]/path/[;parameters][?query]#fragment
+> 一个完整的 [URL](http://www.cnblogs.com/woodyblog/p/6005414.html) 包括以下几部分： 
+>   protocal://hostname[:port]/path/[;parameters][?query]#fragment
 > 
 > * protocol 协议，常用的协议是http
 > * hostname 主机地址，可以是域名，也可以是IP地址
