@@ -3,7 +3,7 @@
 HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。
 
 #### HTTP 请求组成
- http 请求由三部分组成，分别是：请求行、消息报头、请求正文
+ http 请求由四部分组成，分别是：请求行、消息报头、空行、请求正文
  
       GET /562f25980001b1b106000338.jpg HTTP/1.1
       Host    img.mukewang.com
@@ -30,22 +30,59 @@ HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速�
 * CONNECT 保留将来使用
 * OPTIONS 请求查询服务器的性能，或者查询与资源相关的选项和需求
 
-> 一个完整的 URL 包括以下几部分：
-protocal://hostname[:port]/path/[;parameters][?query]#fragment
+> 一个完整的 [URL](http://www.cnblogs.com/woodyblog/p/6005414.html) 包括以下几部分：
+> protocal://hostname[:port]/path/[;parameters][?query]#fragment
+> 
+> * protocol 协议，常用的协议是http
+> * hostname 主机地址，可以是域名，也可以是IP地址
+> * port 端口 http协议默认端口是：80端口，如果不写默认就是:80端口
+> * path 路径 网络资源在服务器中的指定路径
+> * parameter 参数 如果要向服务器传入参数，在这部分输入
+> * query 查询字符串 如果需要从服务器那里查询内容，在这里编辑
+> * fragment 片段 网页中可能会分为不同的片段，如果想访问网页后直接到达指定位置，可以在这部分设置
+> 
+> 例如：
+> 
+>       http://www.exapmle.com:8080/news/index.asp?boardID=5&ID=24618&page=1#name
 
-* protocol 协议，常用的协议是http
-* hostname 主机地址，可以是域名，也可以是IP地址
-* port 端口 http协议默认端口是：80端口，如果不写默认就是:80端口
-* path 路径 网络资源在服务器中的指定路径
-* parameter 参数 如果要向服务器传入参数，在这部分输入
-* query 查询字符串 如果需要从服务器那里查询内容，在这里编辑
-* fragment 片段 网页中可能会分为不同的片段，如果想访问网页后直接到达指定位置，可以在这部分设置
+#### HTTP 响应
+HTTP响应是由四个部分组成，分别是：状态行、消息报头、空行、响应正文
 
-例如：
+      HTTP/1.1 200 OK  
+      Server: Microsoft-IIS/5.0   
+      Date: Thu,08 Mar 200707:17:51 GMT
+      Connection: Keep-Alive                                 
+      Content-Length: 23330
+      Content-Type: text/html
+      Expries: Thu,08 Mar 2007 07:16:51 GMT
+      Set-Cookie: ASPSESSIONIDQAQBQQQB=BEJCDGKADEDJKLKKAJEOIMMH; path=/
+      Cache-control: private
 
-      http://www.exapmle.com:8080/news/index.asp?boardID=5&ID=24618&page=1#name
+      <html>
+            <head></head>
+            <body>
+                  <!--body goes here-->
+            </body>
+      </html>
 
+状态行由HTTP协议版本号、状态码、状态消息三部分组成。
+状态代码有三位数字组成，第一个数字定义了响应的类别，共分五种类别:
+* 1xx：指示信息，表示请求已接收，继续处理
+* 2xx：成功，表示请求已被成功接收、理解、接受
+* 3xx：重定向，要完成请求必须进行更进一步的操作
+* 4xx：客户端错误，请求有语法错误或请求无法实现
+* 5xx：服务器端错误，服务器未能实现合法的请求
 
+常见状态代码：
+* 200 OK      //客户端请求成功
+* 400 Bad Request  //客户端请求有语法错误，不能被服务器所理解
+* 401 Unauthorized //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 
+* 403 Forbidden  //服务器收到请求，但是拒绝提供服务
+* 404 Not Found  //请求资源不存在，eg：输入了错误的URL
+* 500 Internal Server Error //服务器发生不可预期的错误
+* 503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后可能恢复正常
+
+## 消息报头
 #### Access-Control-Allow-Origin
 > Access-Control-Allow-Origin是从Cross Origin Resource Sharing (CORS)中分离出来的。这个header是决定哪些网站可以访问资源，通过定义一个通配符来决定是单一的网站还是所有网站可以访问我们的资源。需要注意的是，如果定义了通配符，那么 Access-Control-Allow-Credentials选项就无效了，而且user-agent的cookies不会在请求里发送。
 
