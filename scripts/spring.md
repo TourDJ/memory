@@ -126,3 +126,14 @@ Spring MVC使用ViewResolver来根据controller中返回的view名关联到具�
 [ContentNegotiatingViewResolver](http://www.open-open.com/lib/view/open1417705219152.html) 视图解析器,利用他就可以配置多种返回值。
 [Migrating spring 3.2 REST to Spring 4](https://javattitude.com/2014/04/20/migrating-spring-3-2-rest-to-spring-4/)
 
+
+## Spring AOP
+AOP（Aspect Orient Programming），作为面向对象编程的一种补充，广泛应用于处理一些具有横切性质的系统级服务，如事务管理、安全检查、缓存、对象池管理等。
+> 横向抽取代码复用: 基于代理技术,在不修改原来代码的前提下,对原有方法进行增强。
+
+#### AOP相关术语
+|术语	| 中文   |描述  |
+| ----- | ----- | ------ |
+|Joinpoint |连接点|指那些被拦截到的点.在Spring中,这些点指方法(因为Spring只支持方法类型的连接点).|
+
+
