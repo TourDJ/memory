@@ -293,9 +293,9 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
           System.out.println("after");
       }
 
-**知识点**	
-[Java JDK代理、CGLIB、AspectJ代理分析比较](https://zhuanlan.zhihu.com/p/28870960)
-[Spring 实践：AOP](http://www.importnew.com/19041.html)
-[Spring AOP 实现原理与 CGLIB 应用](https://www.ibm.com/developerworks/cn/java/j-lo-springaopcglib/index.html)
+**知识点**  
+[Java JDK代理、CGLIB、AspectJ代理分析比较](https://zhuanlan.zhihu.com/p/28870960)  
+[Spring 实践：AOP](http://www.importnew.com/19041.html)  
+[Spring AOP 实现原理与 CGLIB 应用](https://www.ibm.com/developerworks/cn/java/j-lo-springaopcglib/index.html)  
 
 
