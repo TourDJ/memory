@@ -168,6 +168,11 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
       4) execution(* com.tang.service.impl.OrderServiceImple.*(..)) # 匹配指定类所有方法 
       5) execution(* com.tang.service.OrderService+.*(..)) # 匹配实现特定接口所有类方法 
       6) execution(* save*(..)) # 匹配所有save开头的方法
+***
+
+> Spring AOP 框架对 AOP 代理类的处理原则是：如果目标对象的实现类实现了接口，Spring AOP 将会采用 JDK 动态代理来生成 AOP 代理类；如果目标对象的实现类没有实现接口，Spring AOP 将会采用 CGLIB 来生成 AOP 代理类。
+
+> Spring 的 AOP 代理由 Spring 的 IoC 容器负责生成、管理，其依赖关系也由 IoC 容器负责管理。因此，AOP 代理可以直接使用容器中的其他 Bean 实例作为目标，这种关系可由 IoC 容器的依赖注入提供。
 
 #### Spring 原始 AOP
 配置文件：
@@ -224,6 +229,8 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
 		</aop:aspect>
 	</aop:config>
 *method 对应 Aspect 类中的方法*
+
+> Spring 依然采用运行时生成动态代理的方式来增强目标对象，所以它不需要增加额外的编译，也不需要 AspectJ 的织入器支持；而 AspectJ 在采用编译时增强，所以 AspectJ 需要使用自己的编译器来编译 Java 文件，还需要织入器。
 
 #### Spring AOP 注解使用
 使用AspectJ注解AOP需要在 applicationContext.xml 文件中开启注解自动代理功能。
@@ -293,7 +300,7 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
           System.out.println("after");
       }
 
-> Spring 依然采用运行时生成动态代理的方式来增强目标对象，所以它不需要增加额外的编译，也不需要 AspectJ 的织入器支持；而 AspectJ 在采用编译时增强，所以 AspectJ 需要使用自己的编译器来编译 Java 文件，还需要织入器。
+> AOP 广泛应用于处理一些具有横切性质的系统级服务，AOP 的出现是对 OOP 的良好补充，它使得开发者能用更优雅的方式处理具有横切性质的服务。不管是那种 AOP 实现，不论是 AspectJ、还是 Spring AOP，它们都需要动态地生成一个 AOP 代理类，区别只是生成 AOP 代理类的时机不同：AspectJ 采用编译时生成 AOP 代理类，因此具有更好的性能，但需要使用特定的编译器进行处理；而 Spring AOP 则采用运行时生成 AOP 代理类，因此无需使用特定编译器进行处理。由于 Spring AOP 需要在每次运行时生成 AOP 代理，因此性能略差一些。
 
 **知识点**  
 [Java JDK代理、CGLIB、AspectJ代理分析比较](https://zhuanlan.zhihu.com/p/28870960)  
