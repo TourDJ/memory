@@ -293,6 +293,8 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
           System.out.println("after");
       }
 
+> Spring 依然采用运行时生成动态代理的方式来增强目标对象，所以它不需要增加额外的编译，也不需要 AspectJ 的织入器支持；而 AspectJ 在采用编译时增强，所以 AspectJ 需要使用自己的编译器来编译 Java 文件，还需要织入器。
+
 **知识点**  
 [Java JDK代理、CGLIB、AspectJ代理分析比较](https://zhuanlan.zhihu.com/p/28870960)  
 [Spring 实践：AOP](http://www.importnew.com/19041.html)  
