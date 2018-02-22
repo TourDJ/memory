@@ -91,6 +91,8 @@ JDK目录结构和文件作用[介绍](http://www.cnblogs.com/sunxucool/p/348931
 ## J2SE
 ## Java 语言特性
 
+链接： [java 新特性](https://segmentfault.com/a/1190000004417830)
+
 #### Java 修饰符
 
 Java关于访问权限的关键字有三个：private、protected以及public，同时Java还有一个默认的访问权限——包权限，所以Java总共有四种访问权限控制。
@@ -212,8 +214,6 @@ JVM([Java虚拟机](http://www.cnblogs.com/ivantang/p/5530787.html))一种用于
 为什么要分代?
 [分代](http://www.cnblogs.com/ivantang/p/5530889.html)的垃圾回收策略，是基于这样一个事实：不同的对象的生命周期是不一样的。因此，不同生命周期的对象可以采取不同的收集方式，以便提高回收效率。
 
-[JVM内存模型](http://www.cnblogs.com/ivantang/p/5530945.html)是Java的核心技术之一，现在很多编程语言都引入了类似Java JVM的[内存](http://www.cnblogs.com/ivantang/p/5531534.html)模型和垃圾收集器的[机制](http://www.cnblogs.com/ivantang/p/5531496.html)。
-
 #### HotSpot
 Java [HotSpot](http://www.cnblogs.com/ivantang/p/5531587.html) 虚拟机是Sun公司的Java平台一个高效的[虚拟机实现](http://www.cnblogs.com/ivantang/p/5531592.html)。Java HotSpot技术提供Java标准平台的基础设施，提供对快速开发、部署关键业务的桌面和企业应用程序的解决方案。Java SE可应用在Solaris操作环境、Linux和Windows下，也可以应用在其它通过Java技术认证的平台下。
 
@@ -257,13 +257,23 @@ class [文件校验器](http://blog.csdn.net/u013361114/article/details/25034077
 [策略](http://www.importnew.com/17093.html)是一组权限的总称，用于确定权限应该用于哪些代码源。保护域可以理解为代码源和相应权限的一个组合。
 
 ***
+## Java 内存模型
+[JVM内存模型](http://www.cnblogs.com/ivantang/p/5530945.html)是Java的核心技术之一，现在很多编程语言都引入了类似Java JVM的[内存](http://www.cnblogs.com/ivantang/p/5531534.html)模型和垃圾收集器的[机制](http://www.cnblogs.com/ivantang/p/5531496.html)。
+
+Java 内存模型（JMM）描述了 Java 程序中各种变量的访问规则，以及在 JVM 中将变量存储到内存和从内存中读取出变量。
 
 ## Java 多线程
+
+共享变量： 如果一个变量在多个线程的工作内存中都存在内存副本，那么这个变量就是这几个线程的共享变量。
+
 #### ThreadLocal
 ThreadLocal类用来提供线程内部的局部变量。这种变量在多线程环境下访问(通过get或set方法访问)时能保证各个线程里的变量相对独立于其他线程内的变量。ThreadLocal实例通常来说都是private static类型的，用于关联线程和线程的上下文。
 
 ThreadLocal的作用是提供线程内的局部变量，这种变量在线程的生命周期内起作用，减少同一个线程内多个函数或者组件之间一些公共变量的传递的复杂度。
 
+知识点：  
+[Java中的多线程你只要看这一篇就够了](http://www.importnew.com/21089.html)
+[Java 程序中的多线程](https://www.ibm.com/developerworks/cn/java/multithreading/index.html)
 ***
 
 ## Java 异常
