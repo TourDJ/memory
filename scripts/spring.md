@@ -30,7 +30,8 @@
       } 
 上面代码把URI template 中变量 id 的值绑定到方法的参数上。若方法参数名称和需要绑定的uri template中变量名称不一致，需要在@PathVariable("name")指定uri template中的名称。
 
-#### @RequestBody
+#### @Re
+questBody
 
 作用： 
 * 该注解用于读取Request请求的body部分数据，使用系统默认配置的HttpMessageConverter进行解析，然后把相应的数据绑定到要返回的对象上；
@@ -146,14 +147,14 @@ AOP（Aspect Orient Programming），作为面向对象编程的一种补充，�
 #### Spring aop 通知
 AOP联盟为通知Advice定义了org.aopalliance.aop.Advice接口, Spring在Advice的基础上,根据通知在目标方法的连接点位置,扩充为以下五类：   
 
-|通知	 | 接口  | 注解  |描述   |
-| -------- | --------- | ------- | :------ |
-|前置通知 |MethodBeforeAdvice  |@Before  |在目标方法执行前实施增强|
-|后置通知 |AfterReturningAdvice  |@AfterReturning  |在目标方法执行后实施增强|
-|环绕通知 |MethodInterceptor  |@Around |在目标方法执行前后实施增强|
-|异常抛出通知 |ThrowsAdvice	|@AfterThrowing  |在目标方法抛出异常后实施增强|
-|引介通知 |IntroductionInterceptor  |@DeclareParents  |在目标类中添加新的方法和属性(少用)|
-|最终final通知 |- |@After  | 不管是否异常,该通知都会执行 |
+|通知	 | 接口  | 注解  |描述   | 备注   | 
+| -------- | --------- | ------- | :------ |------- | 
+|前置通知 |MethodBeforeAdvice  |@Before  |在目标方法执行前实施增强| 权限控制 |
+|后置通知 |AfterReturningAdvice  |@AfterReturning  |在目标方法执行后实施增强| |
+|环绕通知 |MethodInterceptor  |@Around |在目标方法执行前后实施增强| 权限控制/性能监控/缓存实现/事务管理 |
+|异常抛出通知 |ThrowsAdvice	|@AfterThrowing  |在目标方法抛出异常后实施增强| 发生异常后,记录错误日志 |
+|引介通知 |IntroductionInterceptor  |@DeclareParents  |在目标类中添加新的方法和属性| |
+|最终final通知 |- |@After  | 不管是否异常,该通知都会执行 | 释放资源 |
 
 #### 切入点表达式
 execution 函数定义语法： 
@@ -167,6 +168,131 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
       4) execution(* com.tang.service.impl.OrderServiceImple.*(..)) # 匹配指定类所有方法 
       5) execution(* com.tang.service.OrderService+.*(..)) # 匹配实现特定接口所有类方法 
       6) execution(* save*(..)) # 匹配所有save开头的方法
+
+#### Spring 原始 AOP
+配置文件：
+
+	<bean id="service" class="com.tang.springaop.OrderServiceImpl" />
+	<bean id="advice" class="com.tang.springaop.ConcreteInterceptor" />
+	<bean id="serviceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="service" />
+		<property name="interceptorNames" value="advice" />
+		<property name="proxyTargetClass" value="false" />
+	</bean>
+测试代码：
+
+      @RunWith(SpringJUnit4ClassRunner.class)
+      @ContextConfiguration(locations = "classpath:applicationContext.xml")
+      public class AOPClient {
+
+          @Autowired
+          @Qualifier("serviceProxy")
+          private OrderService service;
+
+          @Test
+          public void client() {
+              ...
+          }
+      }
+      
+#### Spring AOP XML 使用
+在Spring的配置文件中，所有的切面和通知器都必须定义在 <aop:config> 元素内部。
+<aop:config> 内部包括 aop:pointcut， aop:advisor， aop:aspect 标签。
+* aop:pointcut : 切入点定义
+* aop:advisor: 定义Spring传统AOP的切面,只支持一个pointcut/一个advice
+* aop:aspect : 定义AspectJ切面的,可以包含多个pointcut/多个advice
+
+配置文件：
+
+      <bean id="advice" class="com.tang.springaop.ConcreteInterceptor" />
+	<aop:config proxy-target-class="true">
+		<aop:pointcut expression="execution(* com.tang.springaop.OrderServiceImpl.*(..))" id="pointcut"/>
+		<aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>	
+	</aop:config>
+
+或者
+
+	<context:component-scan base-package="com.tang.springaop" />
+	<bean id="advice" class="com.tang.aspect.advice.Aspect" />
+	<aop:config>
+		<aop:aspect ref="advice">
+			<aop:pointcut expression="execution(* com.tang.springaop.OrderServiceImpl.*(..))" id="pointcut" />
+			<aop:before method="before" pointcut-ref="pointcut" />
+                  <aop:after-returning method="afterReturning" returning="result" pointcut-ref="pointcut" />
+                  <aop:around method="around" arg-names="point" pointcut-ref="pointcut" />
+                  <aop:after-throwing method="afterThrowing" throwing="ex" pointcut-ref="pointcut" />
+                  <aop:after method="after" pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
+*method 对应 Aspect 类中的方法*
+
+#### Spring AOP 注解使用
+使用AspectJ注解AOP需要在 applicationContext.xml 文件中开启注解自动代理功能。
+
+	<context:component-scan base-package="com.tang.aspect.advice" />
+	<aop:aspectj-autoproxy/>
+
+注解使用：
+
+      /**
+       * @Aspect: 指定是一个切面
+       * @Component: 指定可以被Spring容器扫描到
+       */
+      @Aspect
+      @Component
+      public class AnnoAspect {
+
+            @Before("execution(* com.tang.springaop.OrderServiceImpl.*(..))")
+            public void before(JoinPoint point) {
+              System.out.printf("before %s%n", point.getKind());
+          }
+
+            @AfterReturning(value = "execution(* com.tang.springaop.OrderServiceImpl.*(..))", returning = "result")
+            public void afterReturning(JoinPoint point, Object result) {
+                System.out.printf("afterReturning 结果为 %s%n", result);
+            }
+
+            @Around("execution(* com.tang.springaop.OrderServiceImpl.*(..))")
+            public Object around(ProceedingJoinPoint point) throws Throwable {
+                long start = System.currentTimeMillis();
+                Object result = point.proceed(point.getArgs());
+                long time = System.currentTimeMillis() - start;
+
+                System.out.printf("method %s invoke consuming %d ms%n", point.toLongString(), time);
+
+                return result;
+            }
+
+            @AfterThrowing(value="execution(* com.tang.springaop.OrderServiceImpl.*(..))", throwing="ex")
+            public void afterThrowing(JoinPoint point, Throwable ex) {
+                String message = new StringBuilder("method ").append(point.getSignature().getName()).append(" error").toString();
+                System.out.println(message);
+            }
+
+            @After("execution(* com.tang.springaop.OrderServiceImpl.*(..))")
+            public void after(JoinPoint point) {
+                System.out.println("After");
+            }
+      }
+
+@Pointcut定义切点
+对于重复的切点,可以使用@Pointcut进行定义, 然后在通知注解内引用。
+
+定义切点方法
+
+      public class SelfPointcut {
+
+          @Pointcut("execution(* com.tang.springaop.OrderServiceImpl.*(..))")
+          public void pointcut() {
+          }
+      }
+
+引用切点,在Advice上像调用方法一样引用切点:
+      
+      @After("SelfPointcut.pointcut()")
+      public void after(JoinPoint point) {
+          System.out.println("after");
+      }
 
 **知识点**
 [Java JDK代理、CGLIB、AspectJ代理分析比较](https://zhuanlan.zhihu.com/p/28870960)
