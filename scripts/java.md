@@ -272,8 +272,13 @@ ThreadLocal类用来提供线程内部的局部变量。这种变量在多线程
 ThreadLocal的作用是提供线程内的局部变量，这种变量在线程的生命周期内起作用，减少同一个线程内多个函数或者组件之间一些公共变量的传递的复杂度。
 
 知识点：  
-[Java中的多线程你只要看这一篇就够了](http://www.importnew.com/21089.html)
-[Java 程序中的多线程](https://www.ibm.com/developerworks/cn/java/multithreading/index.html)
+[JAVA多线程和并发基础面试问答](http://blog.jobbole.com/76308/)  
+[Java中的多线程你只要看这一篇就够了](http://www.importnew.com/21089.html)  
+[Java 程序中的多线程](https://www.ibm.com/developerworks/cn/java/multithreading/index.html)  
+[java中volatile关键字的含义](http://www.cnblogs.com/aigongsi/archive/2012/04/01/2429166.html)  
+[正确使用 Volatile 变量](https://www.ibm.com/developerworks/cn/java/j-jtp06197.html)  
+[聊聊并发（一）——深入分析Volatile的实现原理](http://www.infoq.com/cn/articles/ftf-java-volatile)  
+[Java 多线程 相关概念]()https://juejin.im/post/58de675ea22b9d0058606fb8
 ***
 
 ## Java 异常
