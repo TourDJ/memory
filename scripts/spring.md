@@ -134,6 +134,40 @@ AOP（Aspect Orient Programming），作为面向对象编程的一种补充，�
 #### AOP相关术语
 |术语	 | 中文  |描述   |
 | ----- | ----- | :------ |
-|Joinpoint |连接点|指那些被拦截到的点.在Spring中,这些点指方法(因为Spring只支持方法类型的连接点)。|
+|joinpoint |连接点|指那些被拦截到的点。在Spring中,这些点指方法(因为Spring只支持方法类型的连接点)。|
+|pointcut |切入点|指需要(配置)被增强的 joinpoint。|
+|advice |通知/增强|指拦截到joinpoint后要做的操作。通知分为前置通知/后置通知/异常通知/最终通知/环绕通知等。|
+|aspect |切面	|切入点和通知的结合。|
+|target |目标对象|需要被代理(增强)的对象.|
+|proxy |代理对象|目标对象被AOP 织入 增强/通知后,产生的对象。|
+|weaving |织入|指把增强/通知应用到目标对象来创建代理对象的过程，(Spring采用动态代理织入,AspectJ采用编译期织入和类装载期织入)。|
+|introduction |引介|一种特殊通知,在不修改类代码的前提下,可以在运行期为类动态地添加一些Method/Field(不常用)。|
+
+#### Spring aop 通知
+AOP联盟为通知Advice定义了org.aopalliance.aop.Advice接口, Spring在Advice的基础上,根据通知在目标方法的连接点位置,扩充为以下五类：
+|通知	 | 接口  | 注解  |描述   |
+| ----- | ----- | :------ |
+|前置通知 |MethodBeforeAdvice  |@Before  |在目标方法执行前实施增强|
+|后置通知 |AfterReturningAdvice  |@AfterReturning  |在目标方法执行后实施增强|
+|环绕通知 |MethodInterceptor  |@Around |在目标方法执行前后实施增强|
+|异常抛出通知 |ThrowsAdvice	|@AfterThrowing  |在目标方法抛出异常后实施增强|
+|引介通知 |IntroductionInterceptor  |@DeclareParents  |在目标类中添加新的方法和属性(少用)|
+|最终final通知 |- |@After  | 不管是否异常,该通知都会执行 |
+
+#### 切入点表达式
+execution 函数定义语法： 
+
+execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>) 
+例如:
+       
+      1) execution(public * *(..)) # 匹配所有public方法. 
+      2) execution(* com.tang.dao.*(..)) # 匹配指定包下所有类方法(不包含子包) 
+      3) execution(* com.tang.dao..*(..)) # 匹配指定包下所有类方法(包含子包) 
+      4) execution(* com.tang.service.impl.OrderServiceImple.*(..)) # 匹配指定类所有方法 
+      5) execution(* com.tang.service.OrderService+.*(..)) # 匹配实现特定接口所有类方法 
+      6) execution(* save*(..)) # 匹配所有save开头的方法
+
+**知识点**
+[Java JDK代理、CGLIB、AspectJ代理分析比较](https://zhuanlan.zhihu.com/p/28870960)
 
 
