@@ -157,11 +157,11 @@ AOP联盟为通知Advice定义了org.aopalliance.aop.Advice接口, Spring在Advi
 |最终final通知 |- |@After  | 不管是否异常,该通知都会执行 | 释放资源 |
 
 #### 切入点表达式
-execution 函数定义语法： 
+execution 函数定义语法： 	   	
 
 execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>) 
 例如:
-       
+
       1) execution(public * *(..)) # 匹配所有public方法. 
       2) execution(* com.tang.dao.*(..)) # 匹配指定包下所有类方法(不包含子包) 
       3) execution(* com.tang.dao..*(..)) # 匹配指定包下所有类方法(包含子包) 
@@ -196,8 +196,7 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
       }
       
 #### Spring AOP XML 使用
-在Spring的配置文件中，所有的切面和通知器都必须定义在 <aop:config> 元素内部。
-<aop:config> 内部包括 aop:pointcut， aop:advisor， aop:aspect 标签。
+在Spring的配置文件中，所有的切面和通知器都必须定义在 <aop:config> 元素内部。<aop:config> 内部包括 aop:pointcut， aop:advisor， aop:aspect 标签。
 * aop:pointcut : 切入点定义
 * aop:advisor: 定义Spring传统AOP的切面,只支持一个pointcut/一个advice
 * aop:aspect : 定义AspectJ切面的,可以包含多个pointcut/多个advice
@@ -275,7 +274,7 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
             }
       }
 
-@Pointcut定义切点
+**@Pointcut定义切点**	
 对于重复的切点,可以使用@Pointcut进行定义, 然后在通知注解内引用。
 
 定义切点方法
@@ -294,7 +293,9 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
           System.out.println("after");
       }
 
-**知识点**
+**知识点**	
 [Java JDK代理、CGLIB、AspectJ代理分析比较](https://zhuanlan.zhihu.com/p/28870960)
+[Spring 实践：AOP](http://www.importnew.com/19041.html)
+[Spring AOP 实现原理与 CGLIB 应用](https://www.ibm.com/developerworks/cn/java/j-lo-springaopcglib/index.html)
 
 
