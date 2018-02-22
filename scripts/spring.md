@@ -156,7 +156,7 @@ AOP联盟为通知Advice定义了org.aopalliance.aop.Advice接口, Spring在Advi
 |引介通知 |IntroductionInterceptor  |@DeclareParents  |在目标类中添加新的方法和属性| |
 |最终final通知 |- |@After  | 不管是否异常,该通知都会执行 | 释放资源 |
 
-#### 切入点表达式
+#### 切面表达式
 |AspectJ 指示器 | 描述 |
 |:--- | --------- |
 |args()	 | 限制连接点匹配参数为执行类型的执行方法 |
@@ -168,18 +168,20 @@ AOP联盟为通知Advice定义了org.aopalliance.aop.Advice接口, Spring在Advi
 |within()	 | 限制连接点匹配匹配指定的类型 |
 |@within()	 | 限制连接点匹配指定注解标注的类型 |
 @annotation	 | 限制匹配带有指定注解的连接点 |
+最常用的是 execution。
 
 execution 函数定义语法： 	   	
 
-execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>) 
+	execution(modifiers-pattern? ret-type-pattern declaring-type-pattern? name-pattern(param-pattern) hrows-pattern?)
+	execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>) 
 例如:
 
-      1) execution(public * *(..)) # 匹配所有public方法. 
-      2) execution(* com.tang.dao.*(..)) # 匹配指定包下所有类方法(不包含子包) 
-      3) execution(* com.tang.dao..*(..)) # 匹配指定包下所有类方法(包含子包) 
-      4) execution(* com.tang.service.impl.OrderServiceImple.*(..)) # 匹配指定类所有方法 
-      5) execution(* com.tang.service.OrderService+.*(..)) # 匹配实现特定接口所有类方法 
-      6) execution(* save*(..)) # 匹配所有save开头的方法
+      execution(public * *(..)) # 匹配所有public方法. 
+      execution(* com.tang.dao.*(..)) # 匹配指定包下所有类方法(不包含子包) 
+      execution(* com.tang.dao..*(..)) # 匹配指定包下所有类方法(包含子包) 
+      execution(* com.tang.service.impl.OrderServiceImple.*(..)) # 匹配指定类所有方法 
+      execution(* com.tang.service.OrderService+.*(..)) # 匹配实现特定接口所有类方法 
+      execution(* save*(..)) # 匹配所有save开头的方法
 ***
 
 > Spring 的 AOP 代理由 Spring 的 IoC 容器负责生成、管理，其依赖关系也由 IoC 容器负责管理。因此，AOP 代理可以直接使用容器中的其他 Bean 实例作为目标，这种关系可由 IoC 容器的依赖注入提供。
