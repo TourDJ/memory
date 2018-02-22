@@ -134,14 +134,14 @@ AOP（Aspect Orient Programming），作为面向对象编程的一种补充，�
 #### AOP相关术语
 |术语	 | 中文  |描述   |
 | ----- | --------- | :------ |
-|joinpoint |连接点|指那些被拦截到的点。在Spring中,这些点指方法(因为Spring只支持方法类型的连接点)。|
-|pointcut |切入点|指需要(配置)被增强的 joinpoint。|
-|advice |通知/增强|指拦截到joinpoint后要做的操作。通知分为前置通知/后置通知/异常通知/最终通知/环绕通知等。|
+|joinpoint |连接点  |指那些被拦截到的点。在Spring中,这些点指方法(因为Spring只支持方法类型的连接点)。|
+|pointcut |切入点  |指需要(配置)被增强的 joinpoint。|
+|advice |通知/增强  |指拦截到joinpoint后要做的操作。通知分为前置通知/后置通知/异常通知/最终通知/环绕通知等。|
 |aspect |切面	|切入点和通知的结合。|
-|target |目标对象|需要被代理(增强)的对象.|
-|proxy |代理对象|目标对象被AOP 织入 增强/通知后,产生的对象。|
-|weaving |织入|指把增强/通知应用到目标对象来创建代理对象的过程，(Spring采用动态代理织入,AspectJ采用编译期织入和类装载期织入)。|
-|introduction |引介|一种特殊通知,在不修改类代码的前提下,可以在运行期为类动态地添加一些Method/Field(不常用)。|
+|target |目标对象|  需要被代理(增强)的对象.|
+|proxy |代理对象  |目标对象被AOP 织入 增强/通知后,产生的对象。|
+|weaving |织入  |指把增强/通知应用到目标对象来创建代理对象的过程，(Spring采用动态代理织入,AspectJ采用编译期织入和类装载期织入)。|
+|introduction |引介  |一种特殊通知,在不修改类代码的前提下,可以在运行期为类动态地添加一些Method/Field(不常用)。|
 
 #### Spring aop 通知
 AOP联盟为通知Advice定义了org.aopalliance.aop.Advice接口, Spring在Advice的基础上,根据通知在目标方法的连接点位置,扩充为以下五类：   
