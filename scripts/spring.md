@@ -158,7 +158,7 @@ AOP联盟为通知Advice定义了org.aopalliance.aop.Advice接口, Spring在Advi
 
 #### 切入点表达式
 |AspectJ 指示器 | 描述 |
-|------- | --------- |
+|:--- | --------- |
 |args()	 | 限制连接点匹配参数为执行类型的执行方法 |
 |@args()	 | 限制连接点匹配参数由执行注解标注的执行方法 |
 |execution()	 | 匹配连接点的执行方法 |
@@ -167,7 +167,7 @@ AOP联盟为通知Advice定义了org.aopalliance.aop.Advice接口, Spring在Advi
 |@target()	 | 限制连接点匹配目标对象被指定的注解标注的类 |
 |within()	 | 限制连接点匹配匹配指定的类型 |
 |@within()	 | 限制连接点匹配指定注解标注的类型 |
-@annotation	限制匹配带有指定注解的连接点
+@annotation	 | 限制匹配带有指定注解的连接点 |
 
 execution 函数定义语法： 	   	
 
