@@ -1,5 +1,5 @@
 
-> [Spring document](https://docs.spring.io/spring/docs/4.3.13.RELEASE/spring-framework-reference/htmlsingle/)
+Spring 官方文档： [Spring Framework Reference Documentation](https://docs.spring.io/spring/docs/4.3.13.RELEASE/spring-framework-reference/htmlsingle/)
 
 ## Spring 注解
 
@@ -119,7 +119,7 @@ SessionAttributes 注解应用到 Controller上面，可以将Model中的属性�
 该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
 
 
-## Spring mvc
+## Spring MVC
 
 #### [ViewResolver](http://blog.csdn.net/prince2270/article/details/5891085)
 Spring MVC使用ViewResolver来根据controller中返回的view名关联到具体的View对象。使用View对象来渲染返回值以生成最终的视图，如html,json或pdf等。
