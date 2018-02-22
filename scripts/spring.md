@@ -170,8 +170,6 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
       6) execution(* save*(..)) # 匹配所有save开头的方法
 ***
 
-> Spring AOP 框架对 AOP 代理类的处理原则是：如果目标对象的实现类实现了接口，Spring AOP 将会采用 JDK 动态代理来生成 AOP 代理类；如果目标对象的实现类没有实现接口，Spring AOP 将会采用 CGLIB 来生成 AOP 代理类。
-
 > Spring 的 AOP 代理由 Spring 的 IoC 容器负责生成、管理，其依赖关系也由 IoC 容器负责管理。因此，AOP 代理可以直接使用容器中的其他 Bean 实例作为目标，这种关系可由 IoC 容器的依赖注入提供。
 
 #### Spring 原始 AOP
@@ -199,7 +197,9 @@ execution(<访问修饰符> <返回类型><方法名>(<参数>)<异常>)
               ...
           }
       }
-      
+ 
+> Spring AOP 框架对 AOP 代理类的处理原则是：如果目标对象的实现类实现了接口，Spring AOP 将会采用 JDK 动态代理来生成 AOP 代理类；如果目标对象的实现类没有实现接口，Spring AOP 将会采用 CGLIB 来生成 AOP 代理类。
+     
 #### Spring AOP XML 使用
 在Spring的配置文件中，所有的切面和通知器都必须定义在 <aop:config> 元素内部。<aop:config> 内部包括 aop:pointcut， aop:advisor， aop:aspect 标签。
 * aop:pointcut : 切入点定义
