@@ -1,6 +1,17 @@
 
 ## Python 语法
 
+编译成 .pyc 文件
+
+    python -m py_compile hello.py
+> .pyc 文件可以提高加载速度，但不能提高运行速度。
+
+编译成 .pyo 文件
+
+    python -O -m py_compile hello.py
+    
+    
+
 > python 常用[函数](https://docs.python.org/2/library/functions.html)。
 
 -*- coding: utf-8 -*-
