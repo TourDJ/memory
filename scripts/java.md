@@ -260,6 +260,9 @@ class [文件校验器](http://blog.csdn.net/u013361114/article/details/25034077
 ## Java 内存模型
 [JVM内存模型](http://www.cnblogs.com/ivantang/p/5530945.html)是Java的核心技术之一，现在很多编程语言都引入了类似Java JVM的[内存](http://www.cnblogs.com/ivantang/p/5531534.html)模型和垃圾收集器的[机制](http://www.cnblogs.com/ivantang/p/5531496.html)。
 
+#### [Java 内存模型](http://blog.csdn.net/beiyetengqing/article/details/49583381)
+Java Memory Model (JAVA 内存模型）描述线程之间如何通过内存(memory)来进行交互。 具体说来， JVM中存在一个主存区（Main Memory或Java Heap Memory），对于所有线程进行共享，而每个线程又有自己的工作内存（Working Memory），工作内存中保存的是主存中某些变量的拷贝，线程对所有变量的操作并非发生在主存区，而是发生在工作内存中，而线程之间是不能直接相互访问，变量在程序中的传递，是依赖主存来完成的。
+
 Java 内存模型（JMM）描述了 Java 程序中各种变量的访问规则，以及在 JVM 中将变量存储到内存和从内存中读取出变量。
 
 > 我们在安装64位JDK时，一般都是server模式运行程序的(默认)。32位不支持server模式。
