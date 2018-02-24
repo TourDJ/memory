@@ -264,6 +264,34 @@ Java 内存模型（JMM）描述了 Java 程序中各种变量的访问规则，
 
 ## Java 多线程
 
+> 我们在安装64位JDK时，一般都是server模式运行程序的(默认)。32位不支持server模式。
+> server模式与client模式的区别是：server模式启动时，速度较慢，但是一旦运行起来后，性能将会有很大的提升。原因是当虚拟机运行在-client模式的时候,使用的是一个代号为C1的轻量级编译器, 而-server模式启动的虚拟机采用相对重量级,代号为C2的编译器，这个编译器对代码做了很多的优化。
+
+#### [指令的重排序](https://yq.aliyun.com/articles/348581)
+编译器或者运行时环境为了优化程序程序性能，可能会对指令进行重新排序。  
+
+重排序的分类
+* 编译器优化的重排序：编译器在不改变单线程程序执行结果的前提下，可以重新安排语句的执行顺序。这里需要注意的是：不改变单线程程序的语义（as-if-serial）。  
+* 指令级并行的重排序：现代处理器采用了指令级并行技术(ILP)来将多条指令重叠执行。在单线程和单处理器中，如果两个操作之间不存在数据依赖，处理器可以改变语句对应机器指令的执行顺序。  
+* 内存系统的重排序：由于处理器使用缓存和读/写缓冲区，处理器会重排对内存的读/写操作的执行顺序。
+
+> [重排序规则表](http://blog.csdn.net/moshenglv/article/details/62423142)
+
+#### happen—before（“先行发生”）规则
+
+[Happens-before](https://www.jianshu.com/p/0909ec597e02) 关系是对在一个线程内执行的操作在另一个线程内的操作的可见性保证。Happens-before 定义程序中所有操作的偏序关系。Happens-before 不仅仅是在时序上对操作进行重排序，它也是对内存读写顺序的保证。
+
+happens-before 的规则：  
+* 单线程规则： 单个线程的所有操作都 happens-before 在同一线程中的后续操作  
+* 锁定规则： 锁的 unlock（存在于 synchronized 方法或代码块）happens-before 对这个锁的后续获取操作  
+* volatile 变量规则：对 volatile 字段的写操作 happens-before 其后对这个字段的所有读操作。 
+* 线程启动规则： 在一个线程中对 Thread.start() 的调用 happens-before 被其启动的线程。  
+* 线程join规则：线程中的所有操作 happens-before 从这个线程的 join 成功返回的所有其他线程。  
+* 传递性 如果 A happens-before B， B happens-before C，那么 A happens-before C。
+* 中断规则：当一个线程在另一个线程上调用 interrupt 时，必须在中断线程检测到 interrupt 调用之前执行（通过抛出 InterruptedException，或者调用 isInterrupted 和 interrupted）。
+* 终结器规则：对象的构造函数必须在启动该对象的终结期之前执行完成。
+
+
 共享变量： 如果一个变量在多个线程的工作内存中都存在内存副本，那么这个变量就是这几个线程的共享变量。
 
 #### ThreadLocal
@@ -278,7 +306,7 @@ ThreadLocal的作用是提供线程内的局部变量，这种变量在线程的
 [java中volatile关键字的含义](http://www.cnblogs.com/aigongsi/archive/2012/04/01/2429166.html)  
 [正确使用 Volatile 变量](https://www.ibm.com/developerworks/cn/java/j-jtp06197.html)  
 [聊聊并发（一）——深入分析Volatile的实现原理](http://www.infoq.com/cn/articles/ftf-java-volatile)  
-[Java 多线程 相关概念]()https://juejin.im/post/58de675ea22b9d0058606fb8
+[Java 多线程 相关概念](https://juejin.im/post/58de675ea22b9d0058606fb8)
 ***
 
 ## Java 异常
