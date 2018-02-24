@@ -104,6 +104,10 @@ sorted()函数也是一个高阶函数，它可以接收一个比较函数来实
 ### python 装饰器
 python 内置的 @ 语法就是为了简化装饰器调用。
 
+推荐阅读：  
+[Python 装饰器](http://python.jobbole.com/82344/)
+
+### python 迭代器和生成器
 
 推荐阅读：  
 [理解Python迭代对象、迭代器、生成器](https://zhuanlan.zhihu.com/p/24376869)  
