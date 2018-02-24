@@ -1,4 +1,6 @@
 
+链接： [The Python Tutorial](https://docs.python.org/2/tutorial/index.html)
+
 ## Python 语法
 运行 python 文件  
 
@@ -62,7 +64,31 @@ sorted()函数也是一个高阶函数，它可以接收一个比较函数来实
 
 > 链接： [python 常用函数](https://docs.python.org/2/library/functions.html)。
 
--*- coding: utf-8 -*-
+#### python 闭包
+像内层函数引用了外层函数的变量（参数也算变量），然后返回内层函数的情况，称为闭包（Closure）。
+例如：
+
+	def count():
+	    fs = []
+	    for i in range(1, 4):
+		def f(j):
+		    def g():
+			return j*j
+		    return g
+		r = f(i)
+		fs.append(r)
+	    return fs
+	f1, f2, f3 = count()
+	print f1(), f2(), f3()
+
+#### python 匿名函数
+
+	 map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+关键字 lambda 表示匿名函数，冒号前面的 x 表示函数参数。匿名函数有个限制，就是只能有一个表达式，不写return，返回值就是该表达式的结果。
+
+编码
+
+	-*- coding: utf-8 -*-
 目的是告诉Python解释器，用UTF-8编码读取源代码。
 
 #### pass 语句在函数中的作用
