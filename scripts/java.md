@@ -262,8 +262,6 @@ class [文件校验器](http://blog.csdn.net/u013361114/article/details/25034077
 
 Java 内存模型（JMM）描述了 Java 程序中各种变量的访问规则，以及在 JVM 中将变量存储到内存和从内存中读取出变量。
 
-## Java 多线程
-
 > 我们在安装64位JDK时，一般都是server模式运行程序的(默认)。32位不支持server模式。
 > server模式与client模式的区别是：server模式启动时，速度较慢，但是一旦运行起来后，性能将会有很大的提升。原因是当虚拟机运行在-client模式的时候,使用的是一个代号为C1的轻量级编译器, 而-server模式启动的虚拟机采用相对重量级,代号为C2的编译器，这个编译器对代码做了很多的优化。
 
@@ -291,6 +289,17 @@ happens-before 的规则：
 * 中断规则：当一个线程在另一个线程上调用 interrupt 时，必须在中断线程检测到 interrupt 调用之前执行（通过抛出 InterruptedException，或者调用 isInterrupted 和 interrupted）。
 * 终结器规则：对象的构造函数必须在启动该对象的终结期之前执行完成。
 
+#### [内存屏障](http://www.cnblogs.com/chenyangyao/p/5269622.html)
+内存屏障（Memory Barrier，或有时叫做内存栅栏，Memory Fence）是一种CPU指令，用于控制特定条件下的重排序和内存可见性问题。Java编译器也会根据内存屏障的规则禁止重排序。
+      
+内存屏障可以被分为以下几种类型
+* LoadLoad 屏障：对于这样的语句Load1; LoadLoad; Load2，在Load2及后续读取操作要读取的数据被访问前，保证Load1要读取的数据被读取完毕。
+* StoreStore 屏障：对于这样的语句Store1; StoreStore; Store2，在Store2及后续写入操作执行前，保证Store1的写入操作对其它处理器可见。
+* LoadStore 屏障：对于这样的语句Load1; LoadStore; Store2，在Store2及后续写入操作被刷出前，保证Load1要读取的数据被读取完毕。
+* StoreLoad 屏障：对于这样的语句Store1; StoreLoad; Load2，在Load2及后续所有读取操作执行前，保证Store1的写入对所有处理器可见。它的开销是四种屏障中最大的。        
+> 在大多数处理器的实现中，toreLoad 屏障是个万能屏障，兼具其它三种内存屏障的功能。
+
+## Java 多线程
 
 共享变量： 如果一个变量在多个线程的工作内存中都存在内存副本，那么这个变量就是这几个线程的共享变量。
 
