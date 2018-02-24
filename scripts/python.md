@@ -1,17 +1,22 @@
 
 ## Python 语法
+运行 python 文件
 
+    python hello.py
+    
 编译成 .pyc 文件
 
     python -m py_compile hello.py
+    python hello.pyc
 > .pyc 文件可以提高加载速度，但不能提高运行速度。
 
 编译成 .pyo 文件
 
     python -O -m py_compile hello.py
+    python hello.pyo
     
 ## Python 函数
-#### map
+#### map 函数
 map()函数是 Python 内置的高阶函数，它接收一个函数 f 和一个 list，并通过把函数 f 依次作用在 list 的每个元素上，得到一个新的 list 并返回。
 
     def format_name(s):
@@ -21,7 +26,7 @@ map()函数是 Python 内置的高阶函数，它接收一个函数 f 和一个 
     
 map()函数不改变原有的 list，而是返回一个新的 list。
 
-#### reduce
+#### reduce 函数
 reduce()函数也是Python内置的一个高阶函数。reduce()函数接收的参数和 map()类似，一个函数 f，一个list，但行为和 map()不同，reduce()传入的函数 f 必须接收两个参数，reduce()对list的每个元素反复调用函数f，并返回最终结果值。
 
     def f(x, y):
@@ -33,7 +38,7 @@ reduce()还可以接收第3个可选参数，作为计算的初始值。
 
     reduce(f, [1, 3, 5, 7, 9], 100)
 
-#### filter
+#### filter 函数
 filter()函数是 Python 内置的另一个有用的高阶函数，filter()函数接收一个函数 f 和一个list，这个函数 f 的作用是对每个元素进行判断，返回 True或 False，filter()根据判断结果自动过滤掉不符合条件的元素，返回由符合条件元素组成的新list。
 
     def is_odd(x):
@@ -42,7 +47,7 @@ filter()函数是 Python 内置的另一个有用的高阶函数，filter()函�
     filter(is_odd, [1, 4, 6, 7, 9, 12, 17])
 
 
-> python 常用[函数](https://docs.python.org/2/library/functions.html)。
+> 链接： [python 常用函数](https://docs.python.org/2/library/functions.html)。
 
 -*- coding: utf-8 -*-
 目的是告诉Python解释器，用UTF-8编码读取源代码。
