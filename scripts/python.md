@@ -1,13 +1,13 @@
 
 ## Python 语法
-运行 python 文件
+运行 python 文件  
 
-    python hello.py
+	python hello.py
     
 编译成 .pyc 文件
 
-    python -m py_compile hello.py
-    python hello.pyc
+	python -m py_compile hello.py
+	python hello.pyc
 > .pyc 文件可以提高加载速度，但不能提高运行速度。
 
 编译成 .pyo 文件
