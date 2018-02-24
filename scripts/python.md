@@ -16,7 +16,12 @@
 
     python -O -m py_compile hello.py
     python hello.pyo
-    
+ 
+### python 运算符 
+
+推荐阅读：  
+[Python的运算符](https://zhuanlan.zhihu.com/p/20584316)
+ 
 ### Python 函数
 #### map 函数
 map()函数是 Python 内置的高阶函数，它接收一个函数 f 和一个 list，并通过把函数 f 依次作用在 list 的每个元素上，得到一个新的 list 并返回。
@@ -86,7 +91,7 @@ sorted()函数也是一个高阶函数，它可以接收一个比较函数来实
 	 map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 关键字 lambda 表示匿名函数，冒号前面的 x 表示函数参数。匿名函数有个限制，就是只能有一个表达式，不写return，返回值就是该表达式的结果。
 
-### Python 编译器
+### Python 解释器
 当我们编写Python代码时，我们得到的是一个包含Python代码的以.py为扩展名的文本文件。要运行代码，就需要 [Python 解释器](https://zhuanlan.zhihu.com/p/25256857)去执行.py文件。
 常见 python 解释器：
 * CPython：当我们从Python官方网站下载并安装好Python 2.7后，我们就直接获得了一个官方版本的解释器 CPython。
@@ -98,6 +103,14 @@ sorted()函数也是一个高阶函数，它可以接收一个比较函数来实
 
 ### python 装饰器
 python 内置的 @ 语法就是为了简化装饰器调用。
+
+
+推荐阅读：  
+[理解Python迭代对象、迭代器、生成器](https://zhuanlan.zhihu.com/p/24376869)  
+[Python 迭代器与生成器](https://zhuanlan.zhihu.com/p/26123333)  
+[Python 的迭代器和生成器](https://zhuanlan.zhihu.com/p/24499698)
+
+***
 
 编码
 
