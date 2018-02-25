@@ -1,5 +1,7 @@
 
+
 python 官方文档： [The Python Tutorial](https://docs.python.org/2/tutorial/index.html)
+***
 
 ## Python 语法
 运行 python 文件  
@@ -114,8 +116,8 @@ Python 的函数定义非常简单，但灵活度却非常大。除了正常定�
 * 关键字参数
 关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。
 
-	def person(name, age, **kw):
-	    print 'name:', name, 'age:', age, 'other:', kw
+		def person(name, age, **kw):
+		    print 'name:', name, 'age:', age, 'other:', kw
 
 > 参数组合  
 > 在Python中定义函数，可以用必选参数、默认参数、可变参数和关键字参数，这4种参数都可以一起使用，或者只用其中某些，但是请注意，参数定义的顺序必须是：必选参数、默认参数、可变参数和关键字参数。
