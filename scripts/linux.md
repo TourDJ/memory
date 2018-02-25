@@ -9,45 +9,7 @@
 4. 根据 /etc/rcS.d/ 文件夹中对应的脚本启动 Xwindow 服务器 xorg。Xwindow 为 Linux 下的图形用户界面系统。
 5. 启动登录管理器,等待用户登录。Ubuntu 系统默认使用 GDM 作为登录管理器,您在登录管理器界面中输入用户名和密码后,便可以登录系统。(您可以在 /etc/rc3.d/ 文件夹中找到一个名为 S13gdm 的链接)
 
-## linux 命令
 
-#### nohup
-
-　　用途：不挂断地运行命令。  
-
-　　语法：nohup Command [ Arg ... ] [　& ]       
-
-　　描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 & （ 表示"and"的符号）到命令的尾部。   
-
-#### ldconfig
-http://blog.csdn.net/Destina/article/details/6208319
-
-#### 向文件添加和追加内容
-
-添加内容
-
-    ivan@jiefang:~/test$ echo Hello > a.txt
-
-追加内容
-
-    ivan@jiefang:~/test$ echo World >> a.txt
-
-> 其中，> 是覆盖，>> 是追加。
-
-#### find
-To find all socket files on your system run
-
-        sudo find / -type s
-
-#### ps
-检测后台进程是否存在
-
-    ps -ef |grep redis
-
-#### netstat
-检测6379端口是否在监听
-
-    netstat -lntp | grep 6379
 
 ## linux 中变量的含义
 
