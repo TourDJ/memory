@@ -182,6 +182,15 @@ python 内置的 @ 语法就是为了简化装饰器调用。
     while True:
         pass
 
+
+## python web
+
+
+推荐阅读：  
+[Python Web部署方式总结](http://python.jobbole.com/85489/)
+
+***
+
 ## Python 包管理工具
 
 ### pip 使用
