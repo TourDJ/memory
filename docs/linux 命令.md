@@ -1,6 +1,39 @@
 
-      
-#### top 
+## nohup
+　　用途：不挂断地运行命令。
+
+　　语法：nohup Command [ Arg ... ] [　& ]
+
+　　描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 & （ 表示"and"的符号）到命令的尾部。
+
+## ldconfig
+http://blog.csdn.net/Destina/article/details/6208319
+
+向文件添加和追加内容
+添加内容
+
+ivan@jiefang:~/test$ echo Hello > a.txt
+追加内容
+
+ivan@jiefang:~/test$ echo World >> a.txt
+其中，> 是覆盖，>> 是追加。
+
+## find
+To find all socket files on your system run
+
+    sudo find / -type s
+
+## ps
+检测后台进程是否存在
+
+ps -ef |grep redis
+
+## netstat
+检测6379端口是否在监听
+
+netstat -lntp | grep 6379
+
+## top 
 top 的全屏对话模式可分为3部分：系统信息栏、命令输入栏、进程列表栏。
 第一部分 — 最上部的 系统信息栏 ：
 第一行（top）：
