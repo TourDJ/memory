@@ -18,7 +18,23 @@ python 官方文档： [The Python Tutorial](https://docs.python.org/2/tutorial/
 
     python -O -m py_compile hello.py
     python hello.pyo
- 
+
+### python [内置属性](http://www.cnblogs.com/java-koma/articles/1877231.html)
+一个python文件相当于一个模块，模块都有内置的属性信息，用 dir(模块名) 可以查看：		
+
+__doc__ ： 模块的docstring  
+__file__ ：模块文件在磁盘上的绝对路径  
+__name__ ：模块的名称（独立运行时值是__main__，被import时值是模块的名称）  
+
+例如：
+
+		def sayHello(name):
+		    print "Hello, my name is %s" % name
+
+		if __name__ == '__main__':
+		    # 这里可以写测试代码，只有当单独运行时才会执行到这里，被其它模块import时是不会被执行的
+		    sayHello("koma")
+
 ### python 运算符 
 
 推荐阅读：  
