@@ -187,6 +187,7 @@ python 内置的 @ 语法就是为了简化装饰器调用。
 
 
 推荐阅读：  
+[Apache Tutorial: Dynamic Content with CGI](https://httpd.apache.org/docs/2.4/howto/cgi.html)
 [Python Web部署方式总结](http://python.jobbole.com/85489/)
 
 ***
