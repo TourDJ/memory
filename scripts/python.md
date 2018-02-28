@@ -303,5 +303,8 @@ IPython 会检查传给它的命令是否包含magic关键字。如果命令是�
 ## python web 框架
 #### Flask
 
-文档：http://docs.jinkan.org/docs/flask/index.html
+相关资料:  
+[Flask 文档](http://docs.jinkan.org/docs/flask/index.html)  
+[Python 技巧总结](https://litaotao.github.io/python-materials)  
+
 
