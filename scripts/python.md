@@ -1,6 +1,8 @@
 
+**python 资料**
+python 官方文档： [The Python Tutorial](https://docs.python.org/2/tutorial/index.html)  
+[简明 Python 教程](https://woodpecker.org.cn/abyteofpython_cn/chinese/index.html)  
 
-python 官方文档： [The Python Tutorial](https://docs.python.org/2/tutorial/index.html)
 ***
 
 ## Python 语法
