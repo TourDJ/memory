@@ -357,6 +357,8 @@ $ git remote show origin
     $ git status
     # On branch master
     nothing to commit, working directory clean
+    git pull
+    git stash pop
 ***
 
 ### git reflog 显示整个本地仓储的 commit
