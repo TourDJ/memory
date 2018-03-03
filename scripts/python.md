@@ -284,8 +284,10 @@ python 内置的 @ 语法就是为了简化装饰器调用。
 
     pip search pycuda
 
-#### python 安装依赖包
+#### python [安装依赖包](http://blog.csdn.net/vitaminc4/article/details/76576956)
 
+	pip freeze | tee requirements.txt # 输出本地包环境至文件
+	pip install -r requirements.txt # 根据文件进行包安装
 
 ## ipython 使用
 IPython 是一个 python 的交互式 shell，比默认的python shell 好用得多，支持变量自动补全，自动缩进，支持 bash shell 命令，内置了许多很有用的功能和函数。
