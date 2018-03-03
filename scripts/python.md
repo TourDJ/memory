@@ -339,9 +339,9 @@ IPython 会检查传给它的命令是否包含magic关键字。如果命令是�
 
 ***
 
-相关资料:  
+相关资料:  
 [Flask 文档](http://docs.jinkan.org/docs/flask/index.html)  
-[Python 技巧总结](https://litaotao.github.io/python-materials)  
+[Python 技巧总结](https://litaotao.github.io/python-materials)  
 [用pyenv 和 virtualenv 搭建单机多版本python 虚拟开发环境](http://www.cnblogs.com/npumenglei/p/3719412.html)   
 [Linux 下的 Python 多版本管理（pyenv）](https://my.oschina.net/lionets/blog/267469)  
 
