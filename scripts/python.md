@@ -196,23 +196,23 @@ python 内置的 @ 语法就是为了简化装饰器调用。
 
 ## Python 包管理工具
 ### pip 安装
-* 源码安装
+* 源码安装  
 首先需要安装setuptools,否则直接安装pip会提示没有 setuptools  
 
-	$ tar -zxvf setuptools-19.4.tar.gz    
-	$ cd setuptools-19.4    
-	$ python setup.py intall
+		$ tar -zxvf setuptools-19.4.tar.gz    
+		$ cd setuptools-19.4    
+		$ python setup.py intall
 安装pip   
 
-        $ tar -zxvf pip-8.0.0.tar.gz    
-	$ cd pip-8.0.0    
-	$ python setup.py build    
-	$ python setup.py intall 
+		$ tar -zxvf pip-8.0.0.tar.gz    
+		$ cd pip-8.0.0    
+		$ python setup.py build    
+		$ python setup.py intall 
 
 * 使用 get-pip.py 安装  
 下载 get-pip.py，然后安装：  
 
-	python get-pip.py
+		python get-pip.py   
 官方安装链接: [Installation](https://pip.pypa.io/en/stable/installing/) 
 
 * linux 包管理器安装  
