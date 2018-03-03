@@ -289,6 +289,12 @@ python 内置的 @ 语法就是为了简化装饰器调用。
 	pip freeze | tee requirements.txt # 输出本地包环境至文件
 	pip install -r requirements.txt # 根据文件进行包安装
 
+### pip 镜像源配置  
+在当前用户主目录创建.pip文件夹，在.pip目录创建并编辑pip.conf  
+ 
+	[global]
+	index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
 ## ipython 使用
 IPython 是一个 python 的交互式 shell，比默认的python shell 好用得多，支持变量自动补全，自动缩进，支持 bash shell 命令，内置了许多很有用的功能和函数。
 IPython 是基于BSD 开源的。
@@ -331,8 +337,12 @@ IPython 会检查传给它的命令是否包含magic关键字。如果命令是�
 ## python web 框架
 #### Flask
 
-相关资料:  
+***
+
+相关资料:  
 [Flask 文档](http://docs.jinkan.org/docs/flask/index.html)  
-[Python 技巧总结](https://litaotao.github.io/python-materials)  
+[Python 技巧总结](https://litaotao.github.io/python-materials)  
+[用pyenv 和 virtualenv 搭建单机多版本python 虚拟开发环境](http://www.cnblogs.com/npumenglei/p/3719412.html)   
+[Linux 下的 Python 多版本管理（pyenv）](https://my.oschina.net/lionets/blog/267469)  
 
 
