@@ -4,7 +4,8 @@
 [OpenJDK：是时候替换JDK了么？](http://www.importnew.com/18308.html)  
 [java 调试技能之 dubbo 调试 — telnet](http://www.importnew.com/24896.html)  
 [Java 8简明教程](http://www.importnew.com/10360.html)  
-[Java 的 23 种设计模式全解析](http://www.cnblogs.com/geek6/p/3951677.html)
+[Java 的 23 种设计模式全解析](http://www.cnblogs.com/geek6/p/3951677.html)  
+[JDK 5.0 中更灵活、更具可伸缩性的锁定机制](https://www.ibm.com/developerworks/cn/java/j-jtp10264/index.html?ca=drs-)
 
 #### Spring
 [Spring MVC 入门示例讲解](http://www.importnew.com/15141.html)  
@@ -21,6 +22,11 @@
 [Spring Cloud基础教程](http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/)
 
 [Spring AOP的实现原理](http://www.importnew.com/24305.html)
+
+
+#### 多线程
+[深入浅出 Java Concurrency](http://www.blogjava.net/xylz/archive/2010/07/08/325587.html)  
+
 
 #### IO/NIO
 [Java中的NIO和IO的比较](http://www.open-open.com/lib/view/open1493261619358.html)
@@ -44,15 +50,17 @@
 
 ***
 
-## node.js
+## Node.js
 
 [jade 使用说明](https://segmentfault.com/a/1190000000357534)
 
 ***
 
-## python
+## Python
 
-[将Sublime Text 3打造成强大的Python开发环境](http://python.jobbole.com/81312/)
+[将Sublime Text 3打造成强大的Python开发环境](http://python.jobbole.com/81312/)  
+[简明 Python 教程](https://woodpecker.org.cn/abyteofpython_cn/chinese/index.html)  
+
 
 ***
 
