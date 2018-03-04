@@ -30,24 +30,42 @@
 [红黑树插入算法实现原理分析](http://www.importnew.com/24071.html)  
 [史上最清晰的红黑树讲解（上）](http://www.importnew.com/21818.html)  
 [史上最清晰的红黑树讲解（下）](http://www.importnew.com/21822.html)  
+[从头到尾彻底解析Hash表算法](https://kb.cnblogs.com/page/189480/)
 
-
+#### Netty
 [Netty 源码分析之服务端启动全解析](http://www.open-open.com/lib/view/open1481598828673.html)  
-[Netty实现原理浅析](http://www.importnew.com/15656.html)
+[Netty实现原理浅析](http://www.importnew.com/15656.html)  
+[Netty系列之Netty高性能之道](http://www.infoq.com/cn/articles/netty-high-performance)
+
+#### 消息队列
+
+[消息队列探秘 – RabbitMQ 消息队列介绍](http://www.importnew.com/25744.html)  
+
+
+***
 
 ## node.js
 
 [jade 使用说明](https://segmentfault.com/a/1190000000357534)
 
-
+***
 
 ## python
 
 [将Sublime Text 3打造成强大的Python开发环境](http://python.jobbole.com/81312/)
 
 ***
+
+## 数据库
+
+[从搭建到应用，一文读懂Redis](http://muxiulin.cn/archives/1197)  
+
+***
+
 ## 其他  
 [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/)  
 [The Twelve Factors](https://12factor.net/zh_cn/)  
 [使用Travis进行持续集成](https://www.liaoxuefeng.com/article/0014631488240837e3633d3d180476cb684ba7c10fda6f6000)  
-[XML 命名空间](http://www.cnblogs.com/zhao1949/p/5652167.html)
+[XML 命名空间](http://www.cnblogs.com/zhao1949/p/5652167.html)  
+[S.O.L.I.D：面向对象设计的头 5 大原则](http://blog.jobbole.com/86267/)  
+[面向对象设计原则和创建SOLID应用的5个方法](http://www.importnew.com/10656.html)
