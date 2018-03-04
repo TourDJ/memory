@@ -14,9 +14,12 @@
 
 [Spring Boot 启动流程详解（一）](http://www.importnew.com/24875.html)
 [spring boot应用启动原理分析](http://www.importnew.com/19149.html)  
-[springboot(二)：web综合开发](http://www.ityouknow.com/springboot/2016/02/03/springboot(%E4%BA%8C)-web%E7%BB%BC%E5%90%88%E5%BC%80%E5%8F%91.html)
+[springboot(二)：web综合开发](http://www.ityouknow.com/springboot/2016/02/03/springboot(%E4%BA%8C)-web%E7%BB%BC%E5%90%88%E5%BC%80%E5%8F%91.html)  
+[Spring Boot开发Web应用](http://blog.didispace.com/springbootweb
 
-[Spring AOP的实现原理])(http://www.importnew.com/24305.html)
+[Spring Cloud基础教程](http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/)
+
+[Spring AOP的实现原理](http://www.importnew.com/24305.html)
 
 #### IO/NIO
 [Java中的NIO和IO的比较](http://www.open-open.com/lib/view/open1493261619358.html)
