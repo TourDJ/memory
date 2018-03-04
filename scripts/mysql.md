@@ -63,6 +63,16 @@ MySQL还原数据库，禁用和启用外键约束的方法(FOREIGN_KEY_CHECKS)
 
     show create table seckill\G
     
-    
+
+mysql_upgrade  
+升级数据库版本:
+
+    mysql_upgrade -u root -p  
+mysql_upgrade examines all tables in all databases for incompatibilities with the current version of MySQL Server. mysql_upgrade also upgrades the system tables so that you can take advantage of new privileges or capabilities that might have been added.  
+
+flush privileges  
+mysql 新设置用户或更改密码后需用flush privileges刷新MySQL的系统权限相关表，否则会出现拒绝访问，还有一种方法，就是重新启动mysql服务器，来使新设置生效。
+
+
     
     
