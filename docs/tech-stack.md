@@ -32,7 +32,8 @@
 [史上最清晰的红黑树讲解（下）](http://www.importnew.com/21822.html)  
 
 
-
+[Netty 源码分析之服务端启动全解析](http://www.open-open.com/lib/view/open1481598828673.html)  
+[Netty实现原理浅析](http://www.importnew.com/15656.html)
 
 ## node.js
 
