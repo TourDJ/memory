@@ -32,7 +32,14 @@
 [Java中的NIO和IO的比较](http://www.open-open.com/lib/view/open1493261619358.html)
 
 #### 数据结构
-[图解集合7：红黑树概念、红黑树的插入及旋转操作详细解读](http://www.importnew.com/24930.html)  
+[图解集合 1 ：ArrayList](http://www.importnew.com/25008.html)   
+[图解集合 2 ：LinkedList](http://www.importnew.com/25023.html)  
+[图解集合 3 : CopyOnWriteArrayList](http://www.importnew.com/25034.html)  
+[图解集合 4 ：HashMap](http://www.importnew.com/25049.html)  
+[图解集合 5 ：不正确地使用HashMap引发死循环及元素丢失](http://www.importnew.com/25070.html)   
+[图解集合 6 : LinkedHashMap](http://www.importnew.com/25103.html)    
+[图解集合7：红黑树概念、红黑树的插入及旋转操作详细解读](http://www.importnew.com/24930.html)   
+[图解集合 8 : 红黑树的移除节点操作](http://www.importnew.com/25125.html)
 [红黑树插入算法实现原理分析](http://www.importnew.com/24071.html)  
 [史上最清晰的红黑树讲解（上）](http://www.importnew.com/21818.html)  
 [史上最清晰的红黑树讲解（下）](http://www.importnew.com/21822.html)  
