@@ -7,6 +7,11 @@
 [Java 的 23 种设计模式全解析](http://www.cnblogs.com/geek6/p/3951677.html)  
 [JDK 5.0 中更灵活、更具可伸缩性的锁定机制](https://www.ibm.com/developerworks/cn/java/j-jtp10264/index.html?ca=drs-)
 
+#### JVM
+[.class 文件结构说明](http://www.cnblogs.com/ivantang/p/6236711.html)  
+[深入探讨 Java 类加载器](https://www.ibm.com/developerworks/cn/java/j-lo-classloader/index.html)  
+[实例分析JVM安全体系：双亲委派、命名空间、保护域、策略](http://www.importnew.com/17093.html)
+
 #### Spring
 [Spring MVC 入门示例讲解](http://www.importnew.com/15141.html)  
 [Spring：基于注解的Spring MVC（上）](http://www.importnew.com/23015.html)  
@@ -44,6 +49,8 @@
 [史上最清晰的红黑树讲解（上）](http://www.importnew.com/21818.html)  
 [史上最清晰的红黑树讲解（下）](http://www.importnew.com/21822.html)  
 [从头到尾彻底解析Hash表算法](https://kb.cnblogs.com/page/189480/)
+[HashMap 实现原理](http://www.importnew.com/27043.html)  
+
 
 #### Netty
 [Netty 源码分析之服务端启动全解析](http://www.open-open.com/lib/view/open1481598828673.html)  
