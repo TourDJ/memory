@@ -80,7 +80,7 @@ Grant 命令
 ## mysql 权限
 |权限	  |说明	  | 举例|
 |---|---------|-----|
-||||
+|usage| 连接（登陆）权限，建立一个用户，就会自动授予其usage权限（默认授予）。 |mysql> grant usage on *.* to ‘p1′@’localhost’ identified by ‘123′;|
 
 
     
