@@ -81,7 +81,7 @@ Grant 命令
 |权限	  |说明	  | 举例|
 | --- | ------ | ----------------------- |
 |usage| 连接（登陆）权限，建立一个用户，就会自动授予其usage权限（默认授予）。 |mysql> grant usage on *.* to ‘p1′@’localhost’ identified by ‘123′;|
-|usage|	连接（登陆）权限，建立一个用户，就会自动授予其usage权限（默认授予）。该权限只能用于数据库登陆，不能执行任何操作；且usage权限不能被回收，也即REVOKE用户并不能删除用户。|	mysql>  grant usage on *.* to 'root′@'localhost' identified by '123';|
+|usage|	连接（登陆）权限，建立一个用户，就会自动授予其usage权限（默认授予）。\n该权限只能用于数据库登陆，不能执行任何操作；且usage权限不能被回收，也即REVOKE用户并不能删除用户。|	mysql>  grant usage on \*.\* to 'root′@'localhost' identified by '123';|
 
 
     
