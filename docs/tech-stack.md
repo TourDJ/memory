@@ -48,7 +48,7 @@
 [红黑树插入算法实现原理分析](http://www.importnew.com/24071.html)  
 [史上最清晰的红黑树讲解（上）](http://www.importnew.com/21818.html)  
 [史上最清晰的红黑树讲解（下）](http://www.importnew.com/21822.html)  
-[从头到尾彻底解析Hash表算法](https://kb.cnblogs.com/page/189480/)
+[从头到尾彻底解析Hash表算法](https://kb.cnblogs.com/page/189480/)  
 [HashMap 实现原理](http://www.importnew.com/27043.html)  
 
 
