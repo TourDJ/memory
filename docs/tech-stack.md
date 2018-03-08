@@ -10,7 +10,11 @@
 #### JVM
 [.class 文件结构说明](http://www.cnblogs.com/ivantang/p/6236711.html)  
 [深入探讨 Java 类加载器](https://www.ibm.com/developerworks/cn/java/j-lo-classloader/index.html)  
-[实例分析JVM安全体系：双亲委派、命名空间、保护域、策略](http://www.importnew.com/17093.html)
+[实例分析JVM安全体系：双亲委派、命名空间、保护域、策略](http://www.importnew.com/17093.html)  
+[从 Java 代码到 Java 堆](https://www.ibm.com/developerworks/cn/java/j-codetoheap/index.html)  
+[修复 Java 内存模型，第 1 部分](https://www.ibm.com/developerworks/java/library/j-jtp02244/index.html)  
+[修复 Java 内存模型，第 2 部分](https://www.ibm.com/developerworks/cn/java/j-jtp03304/)  
+
 
 #### Spring
 [Spring MVC 入门示例讲解](http://www.importnew.com/15141.html)  
@@ -34,6 +38,7 @@
 
 
 #### IO/NIO
+[NIO 入门](https://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html)  
 [Java中的NIO和IO的比较](http://www.open-open.com/lib/view/open1493261619358.html)
 
 #### 数据结构
