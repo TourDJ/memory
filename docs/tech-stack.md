@@ -5,7 +5,8 @@
 [java 调试技能之 dubbo 调试 — telnet](http://www.importnew.com/24896.html)  
 [Java 8简明教程](http://www.importnew.com/10360.html)  
 [Java 的 23 种设计模式全解析](http://www.cnblogs.com/geek6/p/3951677.html)  
-[JDK 5.0 中更灵活、更具可伸缩性的锁定机制](https://www.ibm.com/developerworks/cn/java/j-jtp10264/index.html?ca=drs-)
+[JDK 5.0 中更灵活、更具可伸缩性的锁定机制](https://www.ibm.com/developerworks/cn/java/j-jtp10264/index.html?ca=drs-)  
+[弱引用和软引用](https://zhuanlan.zhihu.com/p/29415902)
 
 #### JVM
 [.class 文件结构说明](http://www.cnblogs.com/ivantang/p/6236711.html)  
@@ -14,6 +15,14 @@
 [从 Java 代码到 Java 堆](https://www.ibm.com/developerworks/cn/java/j-codetoheap/index.html)  
 [修复 Java 内存模型，第 1 部分](https://www.ibm.com/developerworks/java/library/j-jtp02244/index.html)  
 [修复 Java 内存模型，第 2 部分](https://www.ibm.com/developerworks/cn/java/j-jtp03304/)  
+[操作系统工具](https://www.ibm.com/developerworks/cn/java/j-lo-performance-analysissy-tools/index.html)  
+[Java 内置监控工具](https://www.ibm.com/developerworks/cn/java/j-lo-performance-analysissy-tools2/index.html)  
+[内存详解](https://www.ibm.com/developerworks/cn/java/j-nativememory-linux/)  
+[JVM 优化经验总结](https://www.ibm.com/developerworks/cn/java/j-lo-jvm-optimize-experience/index.html)   
+[JVM 垃圾回收器工作原理及使用实例介绍](https://www.ibm.com/developerworks/cn/java/j-lo-JVMGarbageCollection/)  
+[JVM 数据存储介绍及性能优化](https://www.ibm.com/developerworks/cn/java/j-lo-JVM-Optimize/index.html)  
+[Java JVM 运行机制及基本原理](https://zhuanlan.zhihu.com/p/25713880)  
+[JVM 堆内存和非堆内存](http://www.importnew.com/27645.html)
 
 
 #### Spring
@@ -30,11 +39,15 @@
 
 [Spring Cloud基础教程](http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/)
 
-[Spring AOP的实现原理](http://www.importnew.com/24305.html)
+[Spring AOP的实现原理](http://www.importnew.com/24305.html)  
+[Spring AOP 实现原理与 CGLIB 应用](https://www.ibm.com/developerworks/cn/java/j-lo-springaopcglib/index.html)  
+[AOP引介](http://www.importnew.com/19041.html)  
+
 
 
 #### 多线程
-[深入浅出 Java Concurrency](http://www.blogjava.net/xylz/archive/2010/07/08/325587.html)  
+[Java 中的进程与线程](https://www.ibm.com/developerworks/cn/java/j-lo-processthread/)  
+
 
 
 #### IO/NIO
