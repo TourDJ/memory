@@ -76,10 +76,7 @@ mysql 新设置用户或更改密码后需用flush privileges刷新MySQL的系�
 Grant 命令
 
     grant 权限 on 数据库对象 to 用户
-
-
-
-
-    
-参考资料：  
+ 
+参考资料：   
+[MySQL的Grant命令](http://www.cnblogs.com/hcbin/archive/2010/04/23/1718379.html)   
 [mysql 权限](http://blog.csdn.net/liang_0609/article/details/52473689)
