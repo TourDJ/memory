@@ -14,9 +14,9 @@
       make
       make install
 
-编译如果出现以下错误：   
-  configure: error: readline library not found
-解决方法：    
+> 编译如果出现以下错误：   
+  configure: error: readline library not found   
+> 解决方法：    
   You probably need to install libreadline-dev.
   A quick way to search for packages in cases like this is to use a command like:
 
