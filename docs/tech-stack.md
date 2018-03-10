@@ -93,6 +93,9 @@
 [将Sublime Text 3打造成强大的Python开发环境](http://python.jobbole.com/81312/)  
 [简明 Python 教程](https://woodpecker.org.cn/abyteofpython_cn/chinese/index.html)  
 
+## Docker
+
+[Docker 在分布式和大数据框架中的应用](https://www.ibm.com/developerworks/cn/opensource/os-cn-docker-distributed-bigdata/index.html)
 
 ***
 
