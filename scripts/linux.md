@@ -59,8 +59,6 @@ C编程语言的头文件.为了一致性这实际上应该在/usr/lib 下，但
 /usr/local   
 本地安装的软件和其他文件放在这里.  用户自己编译的软件默认会安装到这个目录下。这里主要存放那些手动安装的软件，即不是通过“新立得”或apt-get安装的软件。它和/usr目录具有相类似的目录结构。让软件包管理器来管理/usr目录，而把自定义的脚本(scripts)放到/usr/local目录下面
 
-
-
 /var文件系统 
 
 /var 包括系统一般运行时要改变的数据.每个系统是特定的，即不通过网络与其他计算机共享.  
@@ -90,7 +88,7 @@ mail, news, 打印队列和其他队列工作的目录.每个不同的spool在/v
 比/tmp 允许的大或需要存在较长时间的临时文件. (虽然系统管理员可能不允许/var/tmp 有很旧的文件.) 
 
 /opt：用户级的程序目录
-这里主要存放那些可选的程序。你想尝试最新的firefox测试版吗?那就装到/opt目录下吧，这样，当你尝试完，想删掉firefox的时候，你就可 以直接删除它，而不影响系统其他任何设置。安装到/opt目录下的程序，它所有的数据、库文件等等都是放在同个目录下面。
+这里主要存放那些可选的程序。你想尝试最新的firefox测试版吗?那就装到/opt目录下吧，这样，当你尝试完，想删掉firefox的时候，你就可以直接删除它，而不影响系统其他任何设置。安装到/opt目录下的程序，它所有的数据、库文件等等都是放在同个目录下面。
 举个例子：刚才装的测试版firefox，就可以装到/opt/firefox_beta目录下，/opt/firefox_beta目录下面就包含了运 行firefox所需要的所有文件、库、数据等等。要删除firefox的时候，你只需删除/opt/firefox_beta目录即可，非常简单。
 在硬盘容量不够时，也可将/opt单独挂载到其他磁盘上使用。
 
@@ -108,13 +106,10 @@ mail, news, 打印队列和其他队列工作的目录.每个不同的spool在/v
 #### ldconfig
 http://blog.csdn.net/Destina/article/details/6208319
 
-向文件添加和追加内容
-添加内容
+#### 向文件添加和追加内容
 
-ivan@jiefang:~/test$ echo Hello > a.txt
-追加内容
-
-ivan@jiefang:~/test$ echo World >> a.txt
+    ivan@jiefang:~/test$ echo Hello > a.txt
+    ivan@jiefang:~/test$ echo World >> a.txt
 其中，> 是覆盖，>> 是追加。
 
 #### find
@@ -179,7 +174,10 @@ s – 改变画面更新周期
 #### tree
 
 
+## linux 文件
 
+#### /etc/sudoers
+sudo的配置文件。该文件允许特定用户像root用户一样使用各种各样的命令，而不需要root用户的密码。
 
 
 
