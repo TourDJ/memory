@@ -18,8 +18,7 @@
   configure: error: readline library not found   
 > 解决方法：    
   You probably need to install libreadline-dev.
-  A quick way to search for packages in cases like this is to use a command like:
-
+  A quick way to search for packages in cases like this is to use a command like:    
     apt-cache search libreadline
     sudo apt-get install libreadline-dev
 
