@@ -25,6 +25,8 @@ Non-login shells
             /etc/bashrc
                 /etc/profile.d
 
+.bash_logout 在每次登陆shell退出时被读取并执行。
+
 #### linux 中变量的含义
 
 * $# 是传给脚本的参数个数
