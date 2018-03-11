@@ -117,14 +117,39 @@ To find all socket files on your system run
     sudo find / -type s
 
 #### ps
+
+ps -l
+
+    F S UID PID PPID C PRI NI ADDR SZ WCHAN TTY TIME CMD
+    0 S 0 5881 5654 0 76 0 - 1303 wait pts/0 00:00:00 su
+    4 S 0 5882 5881 0 75 0 - 1349 wait pts/0 00:00:00 bash
+    4 R 0 6037 5882 0 76 0 - 1111 - pts/0 00:00:00 ps
+ 
+
+# 上面这个信息其实很多喔！各相关信息的意义为：
+* F 代表这个程序的旗标 (flag)， 4 代表使用者为 super user；
+* S 代表这个程序的状态 (STAT)，关于各 STAT 的意义将在内文介绍；
+* PID 没问题吧！？就是这个程序的 ID 啊！底下的 PPID 则上父程序的 ID；
+* C CPU 使用的资源百分比
+* PRI 这个是 Priority (优先执行序) 的缩写，详细后面介绍；
+* NI 这个是 Nice 值，在下一小节我们会持续介绍。
+* ADDR 这个是 kernel function，指出该程序在内存的那个部分。如果是个 running 的程序，一般就是『 - 』的啦！
+* SZ 使用掉的内存大小；
+* WCHAN 目前这个程序是否正在运作当中，若为 - 表示正在运作；
+* TTY 登入者的终端机位置啰；
+* TIME 使用掉的 CPU 时间。
+* CMD 所下达的指令为何！？
+
+
 检测后台进程是否存在
 
-ps -ef |grep redis
+    ps -ef |grep redis
+
 
 #### netstat
 检测6379端口是否在监听
 
-netstat -lntp | grep 6379
+    netstat -lntp | grep 6379
 
 #### top 
 top 的全屏对话模式可分为3部分：系统信息栏、命令输入栏、进程列表栏。
