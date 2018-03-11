@@ -9,7 +9,21 @@
 4. 根据 /etc/rcS.d/ 文件夹中对应的脚本启动 Xwindow 服务器 xorg。Xwindow 为 Linux 下的图形用户界面系统。
 5. 启动登录管理器,等待用户登录。Ubuntu 系统默认使用 GDM 作为登录管理器,您在登录管理器界面中输入用户名和密码后,便可以登录系统。(您可以在 /etc/rc3.d/ 文件夹中找到一个名为 S13gdm 的链接)
 
+#### Login 与 Nonlogin shells 执行过程
 
+Login shells
+
+    /etc/profile
+        /etc/profile.d
+    ~/.bash_profile
+        ~/.bashrc
+            /etc/bashrc
+
+Non-login shells
+
+        ~/.bashrc
+            /etc/bashrc
+                /etc/profile.d
 
 #### linux 中变量的含义
 
@@ -126,7 +140,7 @@ ps -l
     4 R 0 6037 5882 0 76 0 - 1111 - pts/0 00:00:00 ps
  
 
-# 上面这个信息其实很多喔！各相关信息的意义为：
+上面这个信息其实很多喔！各相关信息的意义为：
 * F 代表这个程序的旗标 (flag)， 4 代表使用者为 super user；
 * S 代表这个程序的状态 (STAT)，关于各 STAT 的意义将在内文介绍；
 * PID 没问题吧！？就是这个程序的 ID 啊！底下的 PPID 则上父程序的 ID；
