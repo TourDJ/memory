@@ -121,6 +121,7 @@
 ## 数据库
 
 [从搭建到应用，一文读懂Redis](http://muxiulin.cn/archives/1197)    
+[Redis 分布式锁的正确实现方式（ Java 版 ）](http://www.importnew.com/27477.html)   
 [MySQL与PostgreSQL：该选择哪个开源数据库？哪一个更好？](http://www.infoq.com/cn/news/2013/12/mysql-vs-postgresql)   
 [MyCAT 数据分片入门实战](http://blog.jobbole.com/109189/)     
 
