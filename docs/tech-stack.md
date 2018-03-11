@@ -122,7 +122,7 @@
 
 [从搭建到应用，一文读懂Redis](http://muxiulin.cn/archives/1197)    
 [MySQL与PostgreSQL：该选择哪个开源数据库？哪一个更好？](http://www.infoq.com/cn/news/2013/12/mysql-vs-postgresql)   
-[MyCAT 数据分片入门实战](MyCAT 数据分片入门实战)     
+[MyCAT 数据分片入门实战](http://blog.jobbole.com/109189/)     
 
 [MongoDB两阶段提交实现事务](https://www.tuicool.com/articles/f6ZBjm?via=wechat_qr)   
 
