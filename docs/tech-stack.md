@@ -46,7 +46,10 @@
 
 
 #### 多线程
-[Java 中的进程与线程](https://www.ibm.com/developerworks/cn/java/j-lo-processthread/)  
+[Java 中的进程与线程](https://www.ibm.com/developerworks/cn/java/j-lo-processthread/)   
+[探索 ConcurrentHashMap 高并发性的实现机制](https://www.ibm.com/developerworks/cn/java/java-lo-concurrenthashmap/index.html)    
+[聊聊并发（四）——深入分析ConcurrentHashMap](http://www.infoq.com/cn/articles/ConcurrentHashMap)   
+
 
 
 
@@ -80,6 +83,10 @@
 [消息队列探秘 – RabbitMQ 消息队列介绍](http://www.importnew.com/25744.html)  
 
 
+#### 工作流
+[Activiti - 新一代的开源 BPM 引擎](https://www.ibm.com/developerworks/cn/java/j-lo-activiti1/)  
+
+
 ***
 
 ## Node.js
@@ -91,7 +98,19 @@
 ## Python
 
 [将Sublime Text 3打造成强大的Python开发环境](http://python.jobbole.com/81312/)  
-[简明 Python 教程](https://woodpecker.org.cn/abyteofpython_cn/chinese/index.html)  
+[简明 Python 教程](https://woodpecker.org.cn/abyteofpython_cn/chinese/index.html)   
+[Python爬虫入门（1）：综述](http://python.jobbole.com/81332/)   
+[Python爬虫入门（2）：爬虫基础了解](http://python.jobbole.com/81334/)   
+[Python爬虫入门（3）：Urllib库的基本使用](http://python.jobbole.com/81336/)   
+[Python爬虫入门（4）：Urllib库的高级用法](http://python.jobbole.com/81339/)    
+[Python爬虫入门（5）：URLError异常处理](http://python.jobbole.com/81341/)    
+[Python爬虫入门（6）：Cookie的使用](http://python.jobbole.com/81344/)     
+[Python爬虫入门（7）：正则表达式](http://python.jobbole.com/81346/)  
+[Python爬虫入门（8）：Beautiful Soup的用法](http://python.jobbole.com/81349/)  
+[Python自省（反射）指南](http://www.cnblogs.com/huxi/archive/2011/01/02/1924317.html)    
+[我常用的 Python 调试工具](http://blog.jobbole.com/51062/)   
+[Python 性能分析入门指南](http://blog.jobbole.com/74266/)  
+[Python超级程序员使用的开发工具](http://blog.jobbole.com/59000/)   
 
 ## Docker
 
@@ -101,7 +120,19 @@
 
 ## 数据库
 
-[从搭建到应用，一文读懂Redis](http://muxiulin.cn/archives/1197)  
+[从搭建到应用，一文读懂Redis](http://muxiulin.cn/archives/1197)    
+[MySQL与PostgreSQL：该选择哪个开源数据库？哪一个更好？](http://www.infoq.com/cn/news/2013/12/mysql-vs-postgresql)   
+[MyCAT 数据分片入门实战](MyCAT 数据分片入门实战)     
+
+[MongoDB两阶段提交实现事务](https://www.tuicool.com/articles/f6ZBjm?via=wechat_qr)   
+
+
+***
+
+## 数据结构
+
+[数据结构和算法之时间复杂度和空间复杂度](http://www.cnblogs.com/wsnb/p/5178591.html)   
+
 
 ***
 
