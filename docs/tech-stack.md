@@ -22,7 +22,10 @@
 [JVM 垃圾回收器工作原理及使用实例介绍](https://www.ibm.com/developerworks/cn/java/j-lo-JVMGarbageCollection/)  
 [JVM 数据存储介绍及性能优化](https://www.ibm.com/developerworks/cn/java/j-lo-JVM-Optimize/index.html)  
 [Java JVM 运行机制及基本原理](https://zhuanlan.zhihu.com/p/25713880)  
-[JVM 堆内存和非堆内存](http://www.importnew.com/27645.html)
+[JVM 堆内存和非堆内存](http://www.importnew.com/27645.html)   
+[探究 Java 虚拟机栈](http://www.importnew.com/26842.html)  
+[一点一滴探究 JVM 之内存结构](http://www.importnew.com/27454.html)   
+
 
 
 #### Spring
