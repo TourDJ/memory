@@ -213,6 +213,8 @@ s – 改变画面更新周期
 
 #### tree
 
+#### nmap
+
 #### ./configure, make, make install 的作用 
 * configure，这一步一般用来生成 Makefile，为下一步的编译做准备，你可以通过在 configure 后加上参数来对安装进行控制，比如代码:
 
