@@ -82,7 +82,7 @@ Grant 命令
     show variables like 'character_set_%';    
     show variables like 'collation_%';
     
->   mysql 插入数据乱码解决方法：     
+>   mysql 插入数据乱码解决方法：         
 >       alter database jiefang character set utf8;    
 >       set names 'utf8';    
 >       set character_set_server=utf8;     
