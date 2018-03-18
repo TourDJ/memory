@@ -76,7 +76,23 @@ mysql 新设置用户或更改密码后需用flush privileges刷新MySQL的系�
 Grant 命令
 
     grant 权限 on 数据库对象 to 用户
- 
+
+查看字符集   
+
+    show variables like 'character_set_%';    
+    show variables like 'collation_%';
+    
+>   mysql 插入数据乱码解决方法：     
+>       alter database jiefang character set utf8;    
+>       set names 'utf8';    
+>       set character_set_server=utf8;     
+>   设置好后重新创建表
+
+
+
+ 
+*** 
+
 参考资料：   
 [MySQL的Grant命令](http://www.cnblogs.com/hcbin/archive/2010/04/23/1718379.html)   
 [mysql 权限](http://blog.csdn.net/liang_0609/article/details/52473689)
