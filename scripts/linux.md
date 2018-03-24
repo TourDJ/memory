@@ -234,8 +234,8 @@ sudo的配置文件。该文件允许特定用户像root用户一样使用各种
 
 ## redhat 系列
 
-CentOS 7 安装 google-chrome 浏览器
-1，下载 chrome 的 rpm 包 google-chrome-stable_current_x86_64.rpm     
+#### CentOS 7 安装 google-chrome 浏览器
+1，下载 chrome 的 rpm 包 google-chrome-stable_current_x86_64.rpm       
 2，切换到安装包目录，执行命令：        
 
     yum localinstall google-chrome-stable_current_x86_64.rpm 
@@ -248,8 +248,9 @@ CentOS 7 安装 google-chrome 浏览器
 5，继续执行安装命令，如果报以下错误：   
 
     NOKEY Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-6，执行命令：    
-    rpm --import /etc/pki/rpm-gpg/RPM*
+6，执行命令： 
+
+    rpm --import /etc/pki/rpm-gpg/RPM*    
 7，再执行安装命令即可。
 
 ## debian 系列
