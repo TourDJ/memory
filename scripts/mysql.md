@@ -13,7 +13,15 @@ socket 连接：
 tcp 连接：
 
     [zzz@zzz mysql]$ mysql --protocol=TCP -uroot -p -P3307 -hlocalhost
-    
+
+***
+
+## MySQL 安装
+CentOS 7  
+参考： [How To Install MySQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-centos-7)
+
+*** 
+
 ## MySQL 函数   
 ### 日期函数
 #### date_add() 为日期增加一个时间间隔
