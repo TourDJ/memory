@@ -123,6 +123,14 @@
 
 ## 数据库
 
+MySQL   
+[How To Reset Your MySQL or MariaDB Root Password](https://www.digitalocean.com/community/tutorials/how-to-reset-your-mysql-or-mariadb-root-password)   
+[How To Change a MariaDB Data Directory to a New Location on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-change-a-mariadb-data-directory-to-a-new-location-on-centos-7)    
+[How To Install MariaDB on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-mariadb-on-centos-7)   
+[How To Install MySQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-centos-7)    
+[How To Configure a Galera Cluster with MariaDB 10.1 on Ubuntu 16.04 Servers](https://www.digitalocean.com/community/tutorials/how-to-configure-a-galera-cluster-with-mariadb-10-1-on-ubuntu-16-04-servers)   
+
+Redis   
 [从搭建到应用，一文读懂Redis](http://muxiulin.cn/archives/1197)    
 [Redis 分布式锁的正确实现方式（ Java 版 ）](http://www.importnew.com/27477.html)   
 [MySQL与PostgreSQL：该选择哪个开源数据库？哪一个更好？](http://www.infoq.com/cn/news/2013/12/mysql-vs-postgresql)   
