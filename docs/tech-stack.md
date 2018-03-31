@@ -148,6 +148,19 @@ Redis
 
 ***
 
+## Linux 
+
+[UNIX TOOLBOX](http://cb.vu/unixtoolbox_zh_CN.xhtml)    
+
+***
+
+## 服务器
+
+[Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)   
+
+
+***
+
 ## 其他  
 [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/)  
 [The Twelve Factors](https://12factor.net/zh_cn/)  
