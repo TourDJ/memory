@@ -14,6 +14,8 @@ file(aof)里面(这称为“全持久化模式”)。
     ivan@debianJF:~$ make
     ivan@debianJF:~$ make install
 
+> make 命令执行后，最好执行下 make test 命令，验证数据库安装是否正常。此步骤有可能报 “ couldn't execute "tclsh8.5": no such file or directory ” 错误，安装一下 tcl8.5+ 即可。
+
 > make install命令执行完成后，会在/usr/local/bin目录下生成本个可执行文件，分别是redis-server、redis-cli、redis-benchmark、
   redis-check-aof 、redis-check-dump，它们的作用如下：  
 
