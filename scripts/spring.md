@@ -3,6 +3,8 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
 
 ## Spring 注解
 
+参考： [Spring 注解依赖注入实现](https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-iocannt/index.html)     
+
 #### [@Configuration](https://www.tuicool.com/articles/M3MVr2)
 
 明确指出该类是 Bean 配置的信息源。Spring 对标注 Configuration 的类有如下要求：  
