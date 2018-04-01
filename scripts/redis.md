@@ -12,16 +12,17 @@ file(aof)里面(这称为“全持久化模式”)。
     ivan@debianJF:~$ tar zxvf redis-3.0.7.tar.gz
     ivan@debianJF:~$ cd redis-3.0.7
     ivan@debianJF:~$ make
-    ivan@debianJF:~$ make install
 
 > make 命令执行后，最好执行下 make test 命令，验证数据库安装是否正常。此步骤有可能报 “ couldn't execute "tclsh8.5": no such file or directory ” 错误，安装一下 tcl8.5+ 即可。
+
+    ivan@debianJF:~$ make install
 
 > make install命令执行完成后，会在/usr/local/bin目录下生成本个可执行文件，分别是redis-server、redis-cli、redis-benchmark、
   redis-check-aof 、redis-check-dump，它们的作用如下：  
     * redis-server：Redis服务器的daemon启动程序     
     * redis-cli：Redis命令行操作工具。也可以用telnet根据其纯文本协议来操作    
     * redis-benchmark：Redis性能测试工具，测试Redis在当前系统下的读写性能       
-    * redis-check-aof：数据修复     
+    * redis-check-aof：数据修复   
     * redis-check-dump：检查导出工具
 
 > 为什么没用标准的Linux安装三板斧呢？官方维基是这样说的：  
