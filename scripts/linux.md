@@ -109,6 +109,18 @@ mail, news, 打印队列和其他队列工作的目录.每个不同的spool在/v
 
 ***
 
+systemctl命令是系统服务管理器指令，它实际上将 service 和 chkconfig 这两个命令组合到一起。
+
+任务	                    旧指令	                            新指令
+使某服务自启	          chkconfig --level 3 httpd on	       systemctl enable httpd.service
+使某服务不自动启动	    chkconfig --level 3 httpd off	     systemctl disable httpd.service
+检查服务状态	          service httpd status	               systemctl status httpd.service 或者 systemctl is-active httpd.service
+显示所有已启动服务	    chkconfig --list	                 systemctl list-units --type=service
+启动某服务	           service httpd start	                systemctl start httpd.service
+停止某服务	           service httpd stop	                systemctl stop httpd.service
+重启某服务	           service httpd restart	            systemctl restart httpd.service
+
+
 ## linux 命令
 
 #### nohup
