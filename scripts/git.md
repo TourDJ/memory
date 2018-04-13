@@ -32,6 +32,11 @@ Git 克隆的是该 Git 仓库服务器上的几乎所有数据，而不是仅�
 depth 用于指定克隆深度，为1即表示只克隆最近一次commit。 
 
     git clone --depth=1
+    
+克隆指定分支的代码
+
+    git clone -b 分支名 仓库地址
+
 ***
 
 ### git status 检查当前文件状态
