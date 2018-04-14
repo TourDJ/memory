@@ -2,6 +2,7 @@
 
 
 ## Spring Cloud 版本
+spring cloud 的版本并不是用数字来表示的，而是用伦敦地铁名来命名，并且是按字母顺序递增的。
 
 |Cloud代号|	Boot版本(train)|	Boot版本(tested)|	lifecycle|
 |---|---|---|----|
