@@ -3,7 +3,7 @@
 ## Java
 
 ## special
-[How to do in java](https://howtodoinjava.com/)  
+[How to do in java(Lokesh Gupta)](https://howtodoinjava.com/)  
 
 ***
 ***
