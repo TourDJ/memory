@@ -1,6 +1,10 @@
 
 
 ## Java
+
+## special
+[how to do in java](https://howtodoinjava.com/)  
+
 [OpenJDK：是时候替换JDK了么？](http://www.importnew.com/18308.html)  
 [java 调试技能之 dubbo 调试 — telnet](http://www.importnew.com/24896.html)  
 [Java 8简明教程](http://www.importnew.com/10360.html)  
