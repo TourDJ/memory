@@ -1,12 +1,15 @@
 
 
+## Excellet tech blogs
+[How to do in java(Lokesh Gupta)](https://howtodoinjava.com/)     
+[David Walsh Blog - JavaScript Consultant](https://davidwalsh.name/)    
+
+
+***
+***
+
+
 ## Java
-
-## special
-[How to do in java(Lokesh Gupta)](https://howtodoinjava.com/)  
-
-***
-***
 
 [OpenJDK：是时候替换JDK了么？](http://www.importnew.com/18308.html)  
 [java 调试技能之 dubbo 调试 — telnet](http://www.importnew.com/24896.html)  
