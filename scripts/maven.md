@@ -14,11 +14,11 @@ maven项目 关于Eclipse报:" cannot be read or is not a valid ZIP file"的解�
 
 ## maven 错误
 Remove all your failed downloads      
-Linux
+Linux                   
 
         find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;
 
-Windows
+Windows                 
 
         cd %userprofile%\.m2\repository
         for /r %i in (*.lastUpdated) do del %i
