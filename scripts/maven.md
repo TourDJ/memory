@@ -12,13 +12,13 @@ maven项目 关于Eclipse报:" cannot be read or is not a valid ZIP file"的解�
 如果还报错，删除maven报错，eclipse中打开pom.xml 编辑状态 重新保存。看看最新的报错信息，进入对应的目录，删除即可
 
 
-
-Remove all your failed downloads    
+## maven 错误
+Remove all your failed downloads      
 Linux
 
-    find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;
+        find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;
 
 Windows
 
-    cd %userprofile%\.m2\repository
-    for /r %i in (*.lastUpdated) do del %i
+        cd %userprofile%\.m2\repository
+        for /r %i in (*.lastUpdated) do del %i
