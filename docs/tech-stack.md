@@ -3,6 +3,8 @@
 ## Excellet tech blogs
 [How to do in java(Lokesh Gupta)](https://howtodoinjava.com/)     
 [David Walsh Blog - JavaScript Consultant](https://davidwalsh.name/)    
+[How To Install Iptables Firewall In CentOS 7 Linux](https://www.rootusers.com/how-to-install-iptables-firewall-in-centos-7-linux/)     
+
 
 
 ***
