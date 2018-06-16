@@ -36,7 +36,6 @@
 * [sublime](https://github.com/TourDJ/memory/blob/master/scripts/sublime-text-3.md)
 * [typescript](https://github.com/TourDJ/memory/blob/master/scripts/typescript.md)
 * [vim](https://github.com/TourDJ/memory/blob/master/scripts/vim.md)
-* []()
 
 
 
