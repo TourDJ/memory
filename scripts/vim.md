@@ -167,3 +167,21 @@
 
 > set 设置可以在命令行输入，也可以写在$HOME下的.exrc (如果是vi)或者.vimrc(如果是vim)中。写进去很方便的。
 
+
+## 替换
+vi/vim 中可以使用 :s 命令来替换字符串
+
+    :s/vivian/sky/ 替换当前行第一个 vivian 为 sky
+    :s/vivian/sky/g 替换当前行所有 vivian 为 sky
+    :n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
+    :n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky(n 为数字，若 n 为 .，表示从当前行开始到最后一行)
+    :%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
+    :%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
+
+可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
+
+    :s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
+    :%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/
+
+
+
