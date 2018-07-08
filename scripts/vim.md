@@ -206,7 +206,19 @@ vi/vim 中可以使用 :s 命令来替换字符串
     :%s/^/#/g 注释整个文档，此法更快。
 
 ## 映射
+map是一个映射命令,将常用的很长的命令映射到一个新的功能键上。
 
+map的格式：
+
+    map <要映射键> <被映射的按键序列>
+比如 map T :q!后，则在命令模式下按T并按回车，就会退出vim
+vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，后者用于通常的命令模式。 
+
+    映射:map <F2> ggvG
+    解除映射:unmap <F2>
+    清除所有映射:mapclear
+    在光标后面插入当前日期和时间:map <F2> a<C-R>=strftime("%c")<CR><Esc>
+    
 [vim的几种模式和按键映射](http://www.cnblogs.com/my_life/articles/3261873.html)   
 
 
