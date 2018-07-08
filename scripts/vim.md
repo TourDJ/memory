@@ -203,5 +203,12 @@ vi/vim 中可以使用 :s 命令来替换字符串
     :s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
     :%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/
 
+## 注释
+
+    3,5 s/^/#/g 注释第3-5行
+    3,5 s/^#//g 解除3-5行的注释
+    1,$ s/^/#/g 注释整个文档。
+    :%s/^/#/g 注释整个文档，此法更快。
+    
 
 
