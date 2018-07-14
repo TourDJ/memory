@@ -21,3 +21,7 @@
 这种方式是通过 req.body.id 获取数据
 
     let id = req.body.id
+
+
+相关阅读：    
+[express中app.use和app.get的区别及解析](https://blog.csdn.net/wthfeng/article/details/53366169)   
