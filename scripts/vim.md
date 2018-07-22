@@ -215,6 +215,11 @@ vi/vim 中可以使用 :s 命令来替换字符串
     :s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
     :%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/
 
+#### 替换单个字符
+
+    将光标移到要替换的字符上：
+    rx x为要替换后的字符
+    
 ## 注释
 
     3,5 s/^/#/g 注释第3-5行
