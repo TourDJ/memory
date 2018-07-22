@@ -2,7 +2,7 @@
 ## [Vim 使用](http://www.cnblogs.com/softwaretesting/archive/2011/07/12/2104435.html)
 
 技术链接：    
-.[一些不起眼但非常有用的 Vim 命令](http://blog.jobbole.com/84683/)  
+[一些不起眼但非常有用的 Vim 命令](http://blog.jobbole.com/84683/)  
 [简明Vim练级攻略](http://blog.jobbole.com/18339/)     
 [Vim 实用技术，第 1 部分: 实用技巧](http://blog.jobbole.com/20604/)     
 
@@ -10,7 +10,7 @@
 以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。
 
 ## 文件命令
-
+#### 打开文件
     vim file 打开单个文件
     vim file1 file2 file3 ... 同时打开多个文件
     vim file +10 打开文件并跳转到指定行
@@ -18,6 +18,21 @@
     :split file 在新窗口中打开文件
     :bn 切换到下一个文件
     :bp 切换到上一个文件
+   
+#### 在文件中插入另一个文件中的内容
+插入另一个文件的全部内容
+
+    打开文件b.txt，将光标定位到要复制插入的位置，然后进入命令模式中输入：
+    :r!cat a.txt
+插入另一个文件的部分内容
+
+    打开一个文件a.txt,复制n+1行:
+        "ayn+
+    然后敲命令转到文件b.txt:
+        :ex file_two
+    敲命令:
+        "ap
+
 
 ## 插入命令
 
