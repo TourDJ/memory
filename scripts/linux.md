@@ -377,5 +377,15 @@ invoke-rc.d 类似与 RHEL 中的 service。
 [鸟哥的 Linux 私房菜](http://cn.linux.vbird.org/linux_server/)    
 [debian下服务控制命令](http://www.cnblogs.com/Joans/articles/4939002.html)
 
+#### linux 突然断网
+linux 网络断了，重启后宝如下错误：
+
+    Failed to start LSB: Bring up/down networking.
+解决方法：
+
+    systemctl restart NetworkManager
+    sudo service network restart
+
+
 
 
