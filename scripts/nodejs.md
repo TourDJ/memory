@@ -1,4 +1,4 @@
-### node 脚本安装
+## node 脚本安装
 Please see the [detail](https://stackoverflow.com/questions/20028996/how-to-install-node-binary-distribution-files-on-linux#)
 > install code 
 
@@ -68,7 +68,7 @@ Please see the [detail](https://stackoverflow.com/questions/20028996/how-to-inst
         sudo rm -rf /usr/local/bin/_node/ 
 
 
-### node 版本含义
+## node 版本含义
 
 版本格式：主版本号.次版本号.修订号，版本号递增规则如下：
 
@@ -90,7 +90,7 @@ Please see the [detail](https://stackoverflow.com/questions/20028996/how-to-inst
 
 
 
-### npm 常用命令
+## npm 常用命令
 #### 查看 npm 包安装根路径
 > -g 选项是可选的，不加就是当前项目包的根路径，否则是全局包的根路径  
 
@@ -105,6 +105,11 @@ Please see the [detail](https://stackoverflow.com/questions/20028996/how-to-inst
 
      npm cache clean --force
 
+***
+
+## CommonJS
+CommonJS是服务器端模块的规范，Node.js采用了这个规范。    
+根据CommonJS规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。
 
 ***
 
