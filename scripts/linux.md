@@ -387,5 +387,40 @@ linux 网络断了，重启后宝如下错误：
     sudo service network restart
 
 
+## linux 解压缩
+* tar 文件解压缩
+
+        tar -cvf jpg.tar *.jpg
+        tar -xvf file.tar
+* tar.gz 文件解压缩
+
+        tar -zcvf jpg.tar.gz *.jpg
+        tar -zxvf file.tar.gz
+* tar.bz2 文件解压缩
+
+        tar -jcvf jpg.tar.bz2 *.jpg
+        tar -jxvf file.tar.bz2
+* tar.Z 文件解压缩
+
+        tar -Zcvf jpg.tar.Z *.jpg
+        tar -Zxvf file.tar.Z
+* rar 文件解压缩
+
+        rar a jpg.rar *.jpg
+        unrar e file.rar
+* zip 文件解压缩
+
+        zip jpg.zip *.jpg
+        unzip file.zip 
+其他
+
+        *.gz 用 gzip -d或者gunzip 解压
+        *.bz2 用 bzip2 -d或者用bunzip2 解压
+        *.Z 用 uncompress 解压
+
+
+
+
+
 
 
