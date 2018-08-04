@@ -442,7 +442,7 @@ $ git remote show origin
         git remote add origin git@github.com:yourname/仓库名.git
  * 现在可以提交代码：
  
-        git push -u origin maste
+        git push -u origin master
    如果初次提交的代码与服务器有冲突，需要先执行 git pull 同步代码。
    
 ***
