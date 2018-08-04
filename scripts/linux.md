@@ -412,6 +412,11 @@ linux 网络断了，重启后宝如下错误：
 
         zip jpg.zip *.jpg
         unzip file.zip 
+* xz 文件解压缩
+
+        xz -z 要压缩的文件
+        xz -d 要解压的文件
+        使用 -k 参数来保留被解压缩的文件
 其他
 
         *.gz 用 gzip -d或者gunzip 解压
