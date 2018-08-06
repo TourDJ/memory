@@ -258,7 +258,7 @@ Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理
 
 * 延伸阅读    
 [Centos7下的systemctl命令与service和chkconfig](https://blog.csdn.net/cds86333774/article/details/51165361)     
-[https://www.jianshu.com/p/d856428bc43f](https://www.jianshu.com/p/d856428bc43f)     
+[systemd，upstart， systemV服务启动编写](https://www.jianshu.com/p/d856428bc43f)     
 
 
 ## linux 文件
