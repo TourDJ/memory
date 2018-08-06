@@ -404,6 +404,29 @@ $ git remote show origin
 #### git diff
 [git diff](http://blog.csdn.net/csfreebird/article/details/8044796) 可以比较working tree同index之间，index和git directory之间，working tree和git directory之间，git directory中不同commit之间的差异。
 
+
+#### git branch
+
+创建分支
+
+    git branch testing
+
+切换分支
+
+    git checkout testing
+
+你可以简单地使用 git log 命令查看各个分支当前所指的对象。 提供这一功能的参数是 --decorate。
+
+    git log --oneline --decorate
+
+输出你的提交历史、各个分支的指向以及项目的分支分叉情况
+
+    git log --oneline --decorate --graph --all
+
+配置 git lg 可以看到彩色的日志
+    
+    git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+ 
 ## git 使用技巧
 
 1 在本地仓库执行 pull 时报以下错误：
@@ -446,5 +469,7 @@ $ git remote show origin
    如果初次提交的代码与服务器有冲突，需要先执行 git pull 同步代码。
    
 ***
+
+
 
 
