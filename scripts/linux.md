@@ -129,6 +129,9 @@ systemctl命令是系统服务管理器指令，它实际上将 service 和 chkc
 　　语法：nohup Command [ Arg ... ] [　& ]
 
 　　描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 & （ 表示"and"的符号）到命令的尾部。
+例如后台执行Spring boot:
+
+    nohup java -jar crm-1.0.jar --server.port=8080 --spring.profiles.active=pro >/home/nginx/crm/logs/crm.log &
 
 #### ldconfig
 ldconfig 命令的用途,主要是在默认搜寻目录(/lib和/usr/lib)以及动态库配置文件/etc/ld.so.conf内所列的目录下,搜索出可共享的动态链接库(格式如前介绍,lib*.so*)，进而创建出动态装入程序(ld.so)所需的连接和缓存文件，缓存文件默认为 /etc/ld.so.cache，此文件保存已排好序的动态链接库名字列表。
@@ -171,7 +174,8 @@ ps -l
 
 检测后台进程是否存在
 
-    ps -ef |grep redis
+    ps -ef | grep redis
+    ps aux | grep redis
 
 
 #### netstat
