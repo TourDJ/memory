@@ -252,6 +252,11 @@ s – 改变画面更新周期
 查看 Linux 系统的位数
 
     getconf LONG_BIT
+    
+#### [systemctl](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units)
+Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。    
+
+[Centos7下的systemctl命令与service和chkconfig](https://blog.csdn.net/cds86333774/article/details/51165361)
 
 ## linux 文件
 
