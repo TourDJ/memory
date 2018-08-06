@@ -440,4 +440,9 @@ CentOS
       lynx http://localhost
 
 
+## nginx 命令
+nginx 重加载
+
+      sudo nginx -s reload
+
 
