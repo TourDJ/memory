@@ -1,18 +1,13 @@
 
 ## tmux 常用命令
+
+#### session
 start tmux with a new session
 
     tmux
-Splitting Panes
+    
+#### window
 
-    C-b % //horizontal
-    C-b " //vertial
-Navigating Panes
-
-    C-b <arrow key>
-Closing Panes
-
-    type exit or hit Ctrl-d
 Creating Windows
 
     C-b c
@@ -32,6 +27,18 @@ attach session
 
     tmux attach -t 0
     tmux new -s database
+    
+#### panel
+Splitting Panes
+
+    C-b % //horizontal
+    C-b " //vertial
+Navigating Panes
+
+    C-b <arrow key>
+Closing Panes
+
+    type exit or hit Ctrl-d
     
 ***
 #### tmux 文章链接：     
