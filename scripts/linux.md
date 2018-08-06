@@ -123,7 +123,7 @@ systemctl命令是系统服务管理器指令，它实际上将 service 和 chkc
 
 ## linux 命令
 
-#### nohup
+#### [nohup](https://www.cnblogs.com/baby123/p/6477429.html)    
 　　用途：不挂断地运行命令。
 
 　　语法：nohup Command [ Arg ... ] [　& ]
@@ -245,6 +245,13 @@ s – 改变画面更新周期
 * make，这一步就是编译，大多数的源代码包都经过这一步进行编译（当然有些perl或python编写的软件需要调用perl或python来进行编译）。如果 在 make 过程中出现 error ，你就要记下错误代码（注意不仅仅是最后一行），然后你可以向开发者提交 bugreport（一般在 INSTALL 里有提交地址），或者你的系统少了一些依赖库等，这些需要自己仔细研究错误代码。
 
 * make insatll，这条命令来进行安装（当然有些软件需要先运行 make check 或 make test 来进行一些测试），这一步一般需要你有 root 权限（因为要向系统写入文件）。
+
+#### [getconf](https://www.cnblogs.com/MYSQLZOUQI/p/5552238.html)
+将系统配置变量值写入标准输出。
+
+查看 Linux 系统的位数
+
+    getconf LONG_BIT
 
 ## linux 文件
 
