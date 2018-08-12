@@ -1,5 +1,8 @@
 
 
+## System V
+UNIX System V is one of the first commercial versions of the Unix operating system. It was originally developed by AT&T and first released in 1983. Four major versions of System V were released, numbered 1, 2, 3, and 4. System V Release 4, or SVR4, was commercially the most successful version, being the result of an effort, marketed as "Unix System Unification", which solicited the collaboration of the major Unix vendors. It was the source of several common commercial Unix features. System V is sometimes abbreviated to SysV.
+
 ## linux 基础知识
 
 #### linux 启动过程
@@ -9,7 +12,7 @@
 4. 根据 /etc/rcS.d/ 文件夹中对应的脚本启动 Xwindow 服务器 xorg。Xwindow 为 Linux 下的图形用户界面系统。
 5. 启动登录管理器,等待用户登录。Ubuntu 系统默认使用 GDM 作为登录管理器,您在登录管理器界面中输入用户名和密码后,便可以登录系统。(您可以在 /etc/rc3.d/ 文件夹中找到一个名为 S13gdm 的链接)
 
-#### Login 与 Nonlogin shells 执行过程
+#### Login shells 与 Nonlogin shells 执行过程
 
 Login shells
 
@@ -261,12 +264,74 @@ Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理
 [systemd，upstart， systemV服务启动编写](https://www.jianshu.com/p/d856428bc43f)     
 
 
+#### 参考  
+[鸟哥的 Linux 私房菜](http://cn.linux.vbird.org/linux_server/)    
+[debian下服务控制命令](http://www.cnblogs.com/Joans/articles/4939002.html)
+
+#### linux 突然断网
+linux 网络断了，重启后宝如下错误：
+
+    Failed to start LSB: Bring up/down networking.
+解决方法：
+
+    systemctl restart NetworkManager
+    sudo service network restart
+
+
+#### linux 解压缩
+* tar 文件解压缩
+
+        tar -cvf jpg.tar *.jpg
+        tar -xvf file.tar
+* tar.gz 文件解压缩
+
+        tar -zcvf jpg.tar.gz *.jpg
+        tar -zxvf file.tar.gz
+* tar.bz2 文件解压缩
+
+        tar -jcvf jpg.tar.bz2 *.jpg
+        tar -jxvf file.tar.bz2
+* tar.Z 文件解压缩
+
+        tar -Zcvf jpg.tar.Z *.jpg
+        tar -Zxvf file.tar.Z
+* rar 文件解压缩
+
+        rar a jpg.rar *.jpg
+        unrar e file.rar
+* zip 文件解压缩
+
+        zip jpg.zip *.jpg
+        unzip file.zip 
+* xz 文件解压缩
+
+        xz -z 要压缩的文件
+        xz -d 要解压的文件
+        使用 -k 参数来保留被解压缩的文件
+其他
+
+        *.gz 用 gzip -d或者gunzip 解压
+        *.bz2 用 bzip2 -d或者用bunzip2 解压
+        *.Z 用 uncompress 解压
+
+
+##3## linux 历史记录
+查询历史命令记录并执行某条命令
+
+    history
+    !100
+
+> ~/.bash_histroy里面是记录的上次注销前的历史记录（最大保存1000条，且是上次注销前最近的1000条记录）  
+  HISTSIZE 变量记录了保存的数量
+
 ## linux 文件
 
 #### /etc/sudoers
 sudo的配置文件。该文件允许特定用户像root用户一样使用各种各样的命令，而不需要root用户的密码。
 
 
+***
+***
 
 ## redhat 系列
 
@@ -288,6 +353,8 @@ sudo的配置文件。该文件允许特定用户像root用户一样使用各种
 
     rpm --import /etc/pki/rpm-gpg/RPM*    
 7，再执行安装命令即可。
+
+***
 
 ## debian 系列
 ### deb 包安装方法  
@@ -397,60 +464,6 @@ update-rc.d 类似与 RHEL 中的 chkconfig。
 
 invoke-rc.d 类似与 RHEL 中的 service。
 
-#### 参考  
-[鸟哥的 Linux 私房菜](http://cn.linux.vbird.org/linux_server/)    
-[debian下服务控制命令](http://www.cnblogs.com/Joans/articles/4939002.html)
-
-#### linux 突然断网
-linux 网络断了，重启后宝如下错误：
-
-    Failed to start LSB: Bring up/down networking.
-解决方法：
-
-    systemctl restart NetworkManager
-    sudo service network restart
-
-
-## linux 解压缩
-* tar 文件解压缩
-
-        tar -cvf jpg.tar *.jpg
-        tar -xvf file.tar
-* tar.gz 文件解压缩
-
-        tar -zcvf jpg.tar.gz *.jpg
-        tar -zxvf file.tar.gz
-* tar.bz2 文件解压缩
-
-        tar -jcvf jpg.tar.bz2 *.jpg
-        tar -jxvf file.tar.bz2
-* tar.Z 文件解压缩
-
-        tar -Zcvf jpg.tar.Z *.jpg
-        tar -Zxvf file.tar.Z
-* rar 文件解压缩
-
-        rar a jpg.rar *.jpg
-        unrar e file.rar
-* zip 文件解压缩
-
-        zip jpg.zip *.jpg
-        unzip file.zip 
-* xz 文件解压缩
-
-        xz -z 要压缩的文件
-        xz -d 要解压的文件
-        使用 -k 参数来保留被解压缩的文件
-其他
-
-        *.gz 用 gzip -d或者gunzip 解压
-        *.bz2 用 bzip2 -d或者用bunzip2 解压
-        *.Z 用 uncompress 解压
-
-
-## linux 历史记录
-~/.bash_histroy里面是记录的上次注销前的历史记录（最大保存1000条，且是上次注销前最近的1000条记录）  
-HISTSIZE 变量记录了保存的数量
 
     echo $HISTSIZE
 可以修改该参数，但重启电脑后失效，如需长久有效，在 /etc/profile 文件中配置。
