@@ -34,6 +34,7 @@ To set a default target, run:
 
 
 chkconfig, service 与 systemctl 命令对照
+
 | 任务	           |              旧指令	          |         新指令            |
 |-------            | ----------                      | --------------            |
 |使某服务自启	        |  chkconfig --level 3 httpd on	  |   systemctl enable httpd.service |
