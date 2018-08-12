@@ -33,11 +33,16 @@ To set a default target, run:
 [浅析 Linux 初始化 init 系统，第 3 部分](https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html?ca=drs-)   
 
 
-**chkconfig, service 与 systemctl 命令对照**
+
 | 任务	           |              旧指令	          |         新指令            |
 |-------            | ----------                      | --------------            |
 |使某服务自启	        |  chkconfig --level 3 httpd on	  |   systemctl enable httpd.service |
-
+|使某服务不自动启动	  |  chkconfig --level 3 httpd off	|   systemctl disable httpd.service |
+|检查服务状态	        |  service httpd status	          |   systemctl status httpd.service 或者 systemctl is-active httpd.service |
+|显示所有已启动服务	  |  chkconfig --list	            |   systemctl list-units --type=service |
+|启动某服务	         |  service httpd start	           |   systemctl start httpd.service |
+|停止某服务	         |  service httpd stop	           |   systemctl stop httpd.service |
+|重启某服务	         |  service httpd restart	       |   systemctl restart httpd.service |
 
 
 > SysV init守护进程（sysv init软件包）是一个基于运行级别的系统，它使用运行级别（单用户、多用户以及其他更多级别）和链接（位于/etc/rc?.d目录中，分别链接到/etc/init.d中的init脚本）来启动和关闭系统服务。Upstart init守护进程（upstart软件包）则是基于事件的系统，它使用事件来启动和关闭系统服务。
