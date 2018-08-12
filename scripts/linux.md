@@ -28,16 +28,20 @@ To set a default target, run:
 * 延伸阅读    
 [Centos7下的systemctl命令与service和chkconfig](https://blog.csdn.net/cds86333774/article/details/51165361)     
 [systemd，upstart， systemV服务启动编写](https://www.jianshu.com/p/d856428bc43f)     
+[浅析 Linux 初始化 init 系统，第 1 部分](https://www.ibm.com/developerworks/cn/linux/1407_liuming_init1/index.html?ca=drs-)   
+[浅析 Linux 初始化 init 系统，第 2 部分](https://www.ibm.com/developerworks/cn/linux/1407_liuming_init2/index.html)   
+[浅析 Linux 初始化 init 系统，第 3 部分](https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html?ca=drs-)   
+
 
 **chkconfig, service 与 systemctl 命令对照**
-| 任务	           |              旧指令	          |         新指令            |   
-|-------            | ----------                      | --------------                  | 
+| 任务	           |              旧指令	          |         新指令            |
+|-------            | ----------                      | --------------                  |
 |使某服务自启	        |  chkconfig --level 3 httpd on	  |   systemctl enable httpd.service |
 |使某服务不自动启动	  |  chkconfig --level 3 httpd off	|   systemctl disable httpd.service |
 |检查服务状态	        |  service httpd status	          |   systemctl status httpd.service 或者 systemctl is-active httpd.service |
 |显示所有已启动服务	  |  chkconfig --list	            |   systemctl list-units --type=service |
-|启动某服务	         |  service httpd start	           |   systemctl start httpd.service | 
-|停止某服务	         |  service httpd stop	           |   systemctl stop httpd.service | 
+|启动某服务	         |  service httpd start	           |   systemctl start httpd.service |
+|停止某服务	         |  service httpd stop	           |   systemctl stop httpd.service |
 |重启某服务	         |  service httpd restart	       |   systemctl restart httpd.service |
 
 
