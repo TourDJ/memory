@@ -30,8 +30,9 @@ To set a default target, run:
 [systemd，upstart， systemV服务启动编写](https://www.jianshu.com/p/d856428bc43f)     
 
 
-任务	                    旧指令	                            新指令
-使某服务自启	          chkconfig --level 3 httpd on	       systemctl enable httpd.service
+|任务	      |              旧指令	                   |         新指令            |   
+|----      | ----------   | --------------             | 
+|使某服务自启	     |     chkconfig --level 3 httpd on	   |   systemctl enable httpd.service |
 使某服务不自动启动	    chkconfig --level 3 httpd off	     systemctl disable httpd.service
 检查服务状态	          service httpd status	               systemctl status httpd.service 或者 systemctl is-active httpd.service
 显示所有已启动服务	    chkconfig --list	                 systemctl list-units --type=service
