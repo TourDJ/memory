@@ -252,5 +252,37 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
     
 [vim的几种模式和按键映射](http://www.cnblogs.com/my_life/articles/3261873.html)   
 
+***
+
+## vim 插件管理工具
+
+#### vim-plug
+安装方法：
+
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
+使用方法：
+在 vim 配置文件中增加 vim-plug 配置：
+
+    call plug#begin('~/.vim/plugged')   
+    Plug 'pangloss/vim-javascript'      ## List the plugins with Plug commands
+    call plug#end()
+> 在 .vim 文件夹下创建 plugged 文件夹，如果不存在。
+
+配置完成后，输入 vim 命令,启动文本编辑器：
+
+    $ vim
+
+查看状态类型类型：
+
+    ：PlugStatus
+
+安装 vim-javascript 插件：
+
+    ：PlugInstall
+    
+
+## pathogen
+...
