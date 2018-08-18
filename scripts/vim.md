@@ -27,9 +27,9 @@
 插入另一个文件的部分内容
 
     打开一个文件a.txt,复制n+1行:
-        "ayn+
+        "ayn+1
     然后敲命令转到文件b.txt:
-        :ex file_two
+        :ex b.txt
     敲命令:
         "ap
 
