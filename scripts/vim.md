@@ -256,6 +256,9 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
 
 ## vim 插件管理工具
 
+相关链接：    
+[Setting up Vim for React.js](https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015)    
+
 #### vim-plug
 安装方法：
 
@@ -284,5 +287,7 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
     ：PlugInstall
     
 
-## pathogen
+#### pathogen
 ...
+
+***
