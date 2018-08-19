@@ -1,11 +1,13 @@
 
 # vim 使用心得
 
-## vim 常用模式：
-   * 命令模式(command-mode)
-   * 插入模式(insert-mode)
-   * 可视模式(visual-mode)
-   * 正常模式(normal-mode) 
+## vim 常用模式
+ * 正常模式(normal-mode) 
+     初始打开 vim 就是正常模式，在其他模式下，按 ESC 键就可回到正常模式。正常状态下可浏览和修改内容，可通过<a href="#vimcmd" target="_self">vim 命令</a>快速操作。
+ * 命令模式(command-mode)
+ * 插入模式(insert-mode)
+ * 可视模式(visual-mode)
+
  
 ## vim 配置
 vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
@@ -119,16 +121,17 @@ autocmd FileType c,cpp set shiftwidth=4 | set expandtab
 
 就可以只在编辑c和cpp文件时实行这种设置了
 
-### vimscript
+## vimscript
 Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
 
-优秀资源    
-[Five Minute Vimscript](Five Minute Vimscript)    
+* 优秀资源    
+[Five Minute Vimscript](http://andrewscala.com/vimscript/)    
 [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)    
 [Learn Vimscript the Hard Way中文版](http://learnvimscriptthehardway.onefloweroneworld.com/)    
 
 
 ***
+## <span id="vimcmd"><font color="red">vim 命令</font></span>
 
 ## [Vim 命令](http://www.cnblogs.com/softwaretesting/archive/2011/07/12/2104435.html)
 
