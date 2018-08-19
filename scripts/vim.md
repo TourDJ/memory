@@ -1,5 +1,29 @@
 
-## [Vim 使用](http://www.cnblogs.com/softwaretesting/archive/2011/07/12/2104435.html)
+## vim 使用
+### vim 配置
+vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
+    
+    :source ~/.vimrc
+> 注意命令前面的冒号，是在vim的命令模式下执行的，不是在linux命令行下执行。
+
+### vim 常用模式：
+   * 命令模式(command-mode)
+   * 插入模式(insert-mode)
+   * 可视模式(visual-mode)
+   * 正常模式(normal-mode) 
+   
+### vimscript
+Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
+
+优秀资源    
+[Five Minute Vimscript](Five Minute Vimscript)    
+[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)    
+[Learn Vimscript the Hard Way中文版](http://learnvimscriptthehardway.onefloweroneworld.com/)    
+
+
+***
+
+## [Vim 命令](http://www.cnblogs.com/softwaretesting/archive/2011/07/12/2104435.html)
 
 技术链接：    
 [一些不起眼但非常有用的 Vim 命令](http://blog.jobbole.com/84683/)  
@@ -9,7 +33,7 @@
 
 以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。
 
-## 文件命令
+### 文件命令
 #### 打开文件
     vim file 打开单个文件
     vim file1 file2 file3 ... 同时打开多个文件
@@ -259,7 +283,7 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
 相关链接：    
 [Setting up Vim for React.js](https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015)    
 
-#### vim-plug
+### vim-plug
 安装方法：
 
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -285,9 +309,18 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
 安装 vim-javascript 插件：
 
     ：PlugInstall
-    
 
-#### pathogen
+#### 常用命令
+
+    :PlugInstall     install                      安装插件
+    :PlugUpdate      install or update            更新插件
+    :PlugClean       remove plugin not in list    删除本地无用插件
+    :PlugUpgrade     Upgrade vim-plug itself      升级本身
+    :PlugStatus      Check the status of plugins  查看插件状态
+
+### pathogen
 ...
 
+
+### 
 ***
