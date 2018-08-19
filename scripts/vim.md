@@ -1,17 +1,124 @@
 
 ## vim 使用
-### vim 配置
-vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
-    
-    :source ~/.vimrc
-> 注意命令前面的冒号，是在vim的命令模式下执行的，不是在linux命令行下执行。
 
 ### vim 常用模式：
    * 命令模式(command-mode)
    * 插入模式(insert-mode)
    * 可视模式(visual-mode)
    * 正常模式(normal-mode) 
-   
+ 
+### vim 配置
+vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
+    
+    :source ~/.vimrc
+> 注意命令前面的冒号，是在vim的命令模式下执行的，不是在linux命令行下执行。
+  
+### vim 常用设置参数
+
+    "显示行号
+    set nu
+
+    "启动时隐去援助提示
+    set shortmess=atI
+
+    "语法高亮
+    syntax on
+
+    "使用vim的键盘模式
+    "set nocompatible
+
+    "不需要备份
+    set nobackup
+
+    "没有保存或文件只读时弹出确认
+    set confirm
+
+    "鼠标可用
+    set mouse=a
+
+    "tab缩进
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
+    set smarttab
+
+    "文件自动检测外部更改
+    set autoread
+
+    "c文件自动缩进
+    set cindent
+
+    "自动对齐
+    set autoindent
+
+    "智能缩进
+    set smartindent
+
+    "高亮查找匹配
+    set hlsearch
+
+    "背景色
+    set background=dark
+
+    "显示匹配
+    set showmatch
+
+    "显示标尺，就是在右下角显示光标位置
+    set ruler
+
+    "去除vi的一致性
+    set nocompatible
+
+    "允许折叠
+    set foldenable
+    """""""""""""""""设置折叠"""""""""""""""""""""
+    "
+    "根据语法折叠
+    set fdm=syntax
+
+    "手动折叠
+    "set fdm=manual
+
+    "设置键盘映射，通过空格设置折叠
+    nnoremap <space> @=((foldclosed(line('.')<0)?'zc':'zo'))<CR>
+    """"""""""""""""""""""""""""""""""""""""""""""
+    "不要闪烁
+    set novisualbell
+
+    "启动显示状态行
+    set laststatus=2
+
+    "浅色显示当前行
+    autocmd InsertLeave * se nocul
+
+    "用浅色高亮当前行
+    autocmd InsertEnter * se cul
+
+    "显示输入的命令
+    set showcmd
+
+    "被分割窗口之间显示空白
+    set fillchars=vert:/
+
+    set fillchars=stl:/
+
+    set fillchars=stlnc:/
+
+shiftwidth:用于程序中自动缩进所使用的空白长度指示的。一般来说为了保持程序的美观，和下面的参数最好一致。同时它也是符号移位长度的制定者。
+tabstop:定义tab所等同的空格长度，一般来说最好设置成8，因为如果是其它值的话，可能引起文件在打印之类的场合中看起来很别扭。除非你设置了expandtab模式，也就是把tabs转换成空格，这样的话就不会一起混淆，不过毕竟制表符为8是最常用最普遍的设置，所以一般还是不要改。
+softtabstop:?
+
+
+4 关于expandtab
+举个例子，在多人一起开发项目时，为了使代码风格尽量保持一致，一般不允许在代码使用TAB符，而以4个空格代之。我们可以编辑一个文件，包含下面的内容：
+set shiftwidth=4
+set expandtab
+
+然后把下面的命令加入到.vimrc中：
+autocmd FileType c,cpp set shiftwidth=4 | set expandtab
+
+就可以只在编辑c和cpp文件时实行这种设置了
+
 ### vimscript
 Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
 
@@ -311,6 +418,7 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
     ：PlugInstall
 
 #### 常用命令
+在 vim 命令模式下使用。
 
     :PlugInstall     install                      安装插件
     :PlugUpdate      install or update            更新插件
@@ -318,9 +426,56 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
     :PlugUpgrade     Upgrade vim-plug itself      升级本身
     :PlugStatus      Check the status of plugins  查看插件状态
 
+示例：
+
+    " Specify a directory for plugins
+    " - For Neovim: ~/.local/share/nvim/plugged
+    " - Avoid using standard Vim directory names like 'plugin'
+    call plug#begin('~/.vim/plugged')
+
+    " Make sure you use single quotes
+
+    " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+    Plug 'junegunn/vim-easy-align'
+
+    " Any valid git URL is allowed
+    Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+    " Multiple Plug commands can be written in a single line using | separators
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+    " On-demand loading
+    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+    " Using a non-master branch
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+    " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+    Plug 'fatih/vim-go', { 'tag': '*' }
+
+    " Plugin options
+    Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+    " Plugin outside ~/.vim/plugged with post-update hook
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+    " Unmanaged plugin (manually installed and updated)
+    Plug '~/my-prototype-plugin'
+
+    " Initialize plugin system
+    call plug#end()
+
 ### pathogen
 ...
 
 
-### 
+### vunble
+
+
+### 常用插件
+[NERD Tree](https://github.com/scrooloose/nerdtree)是一个树形目录插件，方便浏览当前目录有哪些目录和文件。   
+[Vim Powerline](https://github.com/powerline/powerline/tree/master)是一个显示vim状态栏插件，它能够显示vim模式、操作环境、编码格式、行数/列数等信息。使用时注意切换分支。     
+
+
 ***
