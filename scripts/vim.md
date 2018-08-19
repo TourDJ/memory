@@ -131,7 +131,7 @@ Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提�
 
 
 ***
-<span id = "vimcmd"><font color="red">vim 命令</font></span>
+<a id="vimcmd"><font color="red">vim 命令</font></a>
 
 ## [Vim 命令](http://www.cnblogs.com/softwaretesting/archive/2011/07/12/2104435.html)
 
