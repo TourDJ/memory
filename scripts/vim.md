@@ -1,19 +1,19 @@
 
 # vim 使用心得
 
-### vim 常用模式：
+## vim 常用模式：
    * 命令模式(command-mode)
    * 插入模式(insert-mode)
    * 可视模式(visual-mode)
    * 正常模式(normal-mode) 
  
-### vim 配置
+## vim 配置
 vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
     
     :source ~/.vimrc
 > 注意命令前面的冒号，是在vim的命令模式下执行的，不是在linux命令行下执行。
   
-### vim 常用设置参数
+## vim 常用设置参数
 
     "显示行号
     set nu
