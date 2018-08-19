@@ -1,5 +1,5 @@
 
-## vim 使用
+# vim 使用心得
 
 ### vim 常用模式：
    * 命令模式(command-mode)
