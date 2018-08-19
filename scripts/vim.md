@@ -3,7 +3,7 @@
 
 ## vim 常用模式
  * 正常模式(normal-mode) 
-     初始打开 vim 就是正常模式，在其他模式下，按 ESC 键就可回到正常模式。正常状态下可浏览和修改内容，可通过<a href="#vimcmd" target="_self">vim 命令</a>快速操作。
+     初始打开 vim 就是正常模式，在其他模式下，按 ESC 键就可回到正常模式。正常状态下可浏览和修改内容，可通过[vim 命令](#vimcmd)快速操作。
  * 命令模式(command-mode)
  * 插入模式(insert-mode)
  * 可视模式(visual-mode)
