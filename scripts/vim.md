@@ -1,6 +1,10 @@
 
 # vim 使用心得
 
+> vim 相关文档    
+[Vim galore](https://github.com/mhinz/vim-galore)    
+[Vim galore 中文](https://github.com/wsdjeg/vim-galore-zh_cn)   
+
 ## vim 模式
  * 正常模式(normal-mode)        
      正常模式一般用于浏览文件，也包括一些复制、粘贴、删除等操作。这时通过[vim 命令](#vimcmd)操作时，一般的键/键组合会被当成功能键，而不会键入对应的字符。初始打开 vim 就是正常模式，在其他模式下，按 ESC 键(有时需要按两下）就可回到正常模式。
