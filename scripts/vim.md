@@ -1,5 +1,5 @@
 
-# vim 使用心得
+# vim 使用
 
 > vim 相关文档    
 [Vim galore](https://github.com/mhinz/vim-galore)    
@@ -21,10 +21,9 @@
  * 替换模式(replace-mode)    
      在正常模式按下R(shift+r)开启，此时光标所在的内容会被新输入内容替换。
  
- * Ex mode
-     在正常模式按下gQ开启。
-     
-> REPL: 读取-求值-输出”循环（英语：Read-Eval-Print Loop，简称REPL）是一个简单的，交互式的编程环境。
+ * 终端模式(Ex mode)   
+     在正常模式按下gQ开启 REPL。
+     > REPL: 读取-求值-输出”循环（英语：Read-Eval-Print Loop，简称REPL）是一个简单的，交互式的编程环境。
 
 ## vim 配置
 vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
