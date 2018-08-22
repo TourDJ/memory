@@ -130,15 +130,15 @@ expandtab: 是否将tab转换为空格（主要是防止不同的用户不同的
 ## vimscript
 Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
 
-**vimscript 语法速览:       
+** vimscript 语法速览:       
 [Five Minute Vimscript](http://andrewscala.com/vimscript/)    
 [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)    
 [Learn Vimscript the Hard Way中文版](http://learnvimscriptthehardway.onefloweroneworld.com/)    
 
-**Vim’s internal documentation
+** Vim’s internal documentation    
 [Vim documentation: usr_41](http://vimdoc.sourceforge.net/htmldoc/usr_41.html)    
 
-**IBM Scripting the Vim editor series:    
+** IBM Scripting the Vim editor series:    
 [Part 1: Variables, values, and expressions](https://www.ibm.com/developerworks/linux/library/l-vim-script-1/index.html)    
 [Part 2: User-defined functions](https://www.ibm.com/developerworks/linux/library/l-vim-script-2/index.html?ca=drs-)    
 [Part 3: Built-in lists](https://www.ibm.com/developerworks/linux/library/l-vim-script-3/index.html?ca=drs-)    
