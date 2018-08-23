@@ -131,8 +131,23 @@ expandtab: 是否将tab转换为空格（主要是防止不同的用户不同的
 Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
 
 #### vimscript 命令
+* :echo命令 会打印输出，但是一旦你的脚本运行完毕，那些输出信息就会消失。使用:echom打印的信息 会保存下来，你可以执行:messages命令再次查看那些信息。
 
-     :echo $MYVIMRC  查询 vimrc 文件的位置
+          :echo $MYVIMRC  查询 vimrc 文件的位置
+
+* 添加一个!（感叹号）至布尔选项后面就会切换对于选项的值。
+
+          :set number!
+
+* 使用一个?符号向Vim获取一个选项的当前值。
+
+          :set number
+          :set number?
+          :set nonumber
+          :set number?
+
+* numberwidth 选项改变行号的列宽。
+* viw 将高亮选中整个单词。
 
 **vimscript 语法速览**         
 [Five Minute Vimscript](http://andrewscala.com/vimscript/)    
@@ -404,7 +419,9 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
     清除所有映射:mapclear
     在光标后面插入当前日期和时间:map <F2> a<C-R>=strftime("%c")<CR><Esc>
     
-[vim的几种模式和按键映射](http://www.cnblogs.com/my_life/articles/3261873.html)   
+[vim的几种模式和按键映射](http://www.cnblogs.com/my_life/articles/3261873.html) 
+
+每一个*map系列的命令都有个对应的*noremap命令，包括：noremap/nnoremap、 vnoremap和inoremap。这些命令将不递归解释映射的内容。
 
 ***
 
