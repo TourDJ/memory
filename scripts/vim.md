@@ -1,5 +1,6 @@
 
 # vim 使用
+vi 是古老的文本编辑器，vim 是 vi 的扩展版本。
 
 > vim 相关文档    
 [Vim galore](https://github.com/mhinz/vim-galore)    
@@ -405,6 +406,8 @@ vi/vim 中可以使用 :s 命令来替换字符串
     1,$ s/^/#/g 注释整个文档。
     :%s/^/#/g 注释整个文档，此法更快。
 
+在在结对符之间跳转： %
+
 ## 映射
 map是一个映射命令,将常用的很长的命令映射到一个新的功能键上。
 
@@ -422,6 +425,46 @@ vmap 和 map类似，二者的区别在于前者用于所谓的Visual模式，�
 [vim的几种模式和按键映射](http://www.cnblogs.com/my_life/articles/3261873.html) 
 
 每一个*map系列的命令都有个对应的*noremap命令，包括：noremap/nnoremap、 vnoremap和inoremap。这些命令将不递归解释映射的内容。
+
+各类 vim 插件帮助文档中经常出现 <leader>，即前缀键，缓解了快捷键引起冲突的问题。
+     
+     " 定义快捷键的前缀，即<Leader>
+     let mapleader=";"
+     
+常用操作设定成快捷键，提升效率：
+
+     " 定义快捷键到行首和行尾
+     nmap LB 0
+     nmap LE $
+     " 设置快捷键将选中文本块复制至系统剪贴板
+     vnoremap <Leader>y "+y
+     " 设置快捷键将系统剪贴板内容粘贴至 vim
+     nmap <Leader>p "+p
+     " 定义快捷键关闭当前分割窗口
+     nmap <Leader>q :q<CR>
+     " 定义快捷键保存当前窗口内容
+     nmap <Leader>w :w<CR>
+     " 定义快捷键保存所有窗口内容并退出 vim
+     nmap <Leader>WQ :wa<CR>:q<CR>
+     " 不做任何保存，直接退出 vim
+     nmap <Leader>Q :qa!<CR>
+     " 依次遍历子窗口
+     nnoremap nw <C-W><C-W>
+     " 跳转至右方的窗口
+     nnoremap <Leader>lw <C-W>l
+     " 跳转至左方的窗口
+     nnoremap <Leader>hw <C-W>h
+     " 跳转至上方的子窗口
+     nnoremap <Leader>kw <C-W>k
+     " 跳转至下方的子窗口
+     nnoremap <Leader>jw <C-W>j
+     " 定义快捷键在结对符之间跳转
+     nmap <Leader>M %
+
+vimrc 修改后立即生效
+
+     " 让配置变更立即生效
+     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 ***
 
