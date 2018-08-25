@@ -161,6 +161,9 @@ vim 常用设置参数
 
 paste：粘贴模式，会取消所有上述选项的影响来保证后面的操作。通常是从剪贴板粘贴代码——保持原有代码的风格，使用 nopaste 取消设置。
 
+     :set paste
+     :set nopaste
+
 ## vimscript
 Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
 
@@ -650,5 +653,16 @@ vimrc 修改后立即生效
 
 [Vim Powerline](https://github.com/powerline/powerline/tree/master)是一个显示vim状态栏插件，它能够显示vim模式、操作环境、编码格式、行数/列数等信息。使用时注意切换分支。     
 
+[Indent Guides](https://github.com/nathanaelkane/vim-indent-guides) 多层缩进    
+安装好后作以下配置
+
+     " 随 vim 自启动
+     let g:indent_guides_enable_on_vim_startup=1
+     " 从第二层开始可视化显示缩进
+     let g:indent_guides_start_level=2
+     " 色块宽度
+     let g:indent_guides_guide_size=1
+     " 快捷键 i 开/关缩进可视化
+     :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 ***
