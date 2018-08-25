@@ -1,6 +1,6 @@
 
 # vim 使用
-在 Linux 的系統中使用文字编辑器来编辑你的 Linux 参数配置文件，常常听到的就有： [emacs](http://www.gnu.org/software/emacs/), [pico](https://en.wikipedia.org/wiki/Pico_(text_editor)), [nano](http://sourceforge.net/projects/nano/), [joe](http://sourceforge.net/projects/joe-editor/), 与 [vim](http://www.vim.org) 等等。这些编辑器有什么区别呢？     
+在 Linux 的系統中使用文字编辑器来编辑你的 Linux 参数配置文件，是最平常不过的事情了，常常听到的就有： [emacs](http://www.gnu.org/software/emacs/), [pico](https://en.wikipedia.org/wiki/Pico_(text_editor)), [nano](http://sourceforge.net/projects/nano/), [joe](http://sourceforge.net/projects/joe-editor/), 与 [vim](http://www.vim.org) 等等。这些编辑器有什么区别呢？     
 
 * [常见文件编辑器比较](http://encyclopedia.thefreedictionary.com/List+of+text+editors)   
 
@@ -18,8 +18,8 @@ vi 是古老的文本编辑器，vim是从 vi 发展出来的一个文本编辑�
 > 在这之后，Vim 加入了不计其数的新功能。做为第一个里程碑的是 1994 年的 3.0 版本加入了多视窗编辑模式（分割视窗）。从那之后，同一萤幕可以显示的 Vim 编辑文件数可以不止一个了。1996 年发布的 Vim 4.0 是第一个利用图型介面（GUI ）的版本。1998 年 5.0 版本的 Vim 加入了 highlight（语法高亮 ）功能。2001 年的 Vim 6.0 版本加入了代码折叠 、插件 、 多国语言支持、垂直分割视窗等功能。2006 年 5 月发布的 Vim 7.0 版更加入了拼字检查、上下文相关补全，标签页编辑等新功能。现在最新的版本是 2008 年 8 月发布的 Vim 7.2，该版本合并了 vim 7.1 以来的所有修正补丁，并且加入了脚本的浮点数支持。
 
 
-vim 相关文档
-vim 的入门系统的学习，可以看看鸟哥的这篇介绍：
+**vim 相关文档**
+如果想系统地学习vim 的入门知识，可以看看鸟哥的这篇介绍：
 
 * [鳥哥的 Linux 私房菜 -- 第九章、vim 程式編輯器](http://linux.vbird.org/linux_basic/0310vi.php#tips_code)    
 
@@ -32,7 +32,7 @@ vim 的入门系统的学习，可以看看鸟哥的这篇介绍：
 
 vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多的快捷键，通过快捷键可以进入各种模式，实现各种操作。这些快捷键我们不可能都一一记住，通常，我们只在记住一些常用的罢了。不过好在有专门的 vim 犍位图，需要的时候可以查一下也是挺方便的。
 
-* [史上最全Vim快捷键键位图 -- 入门到进阶](http://cenalulu.github.io/linux/all-vim-cheatsheat/)    
+* [史上最全Vim快捷键键位图 -- 入门到进阶](http://cenalulu.github.io/linux/all-vim-cheatsheat/)     
 
 ## vim 模式
  * 正常模式(normal-mode)        
@@ -56,6 +56,57 @@ vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多�
  * 终端模式(Ex mode)   
      在正常模式按下gQ开启 REPL。
      > REPL: 读取-求值-输出”循环（英语：Read-Eval-Print Loop，简称REPL）是一个简单的，交互式的编程环境。
+
+## vim 的 buffer、window 和 tab
+在 vim 中，可以将 buffer 看成是打开文件的实例。一个文件只有一个 buffer。
+查看 buffer 的命令：
+
+     :ls
+       1 %a   ".vimrc"                       line 20
+       2   =  ".viminfo"                     line 30
+       3 # =  "/etc/vimrc"                   line 71
+左侧是buffer的编号，有%的表示是当前激活的window中打开的buffer，a表示这个buffer是active的，双引号中的字符串表示了buffer对应的文件名字，line n表示当前cursor处于该buffer的哪一行。
+
+使用:buffer(:b)命令切换buffer
+
+     :b 2
+
+
+window 可以看成是 buffer 的 viewport。一个 buffer 可以有多个 window。在不同的window中编辑同一个文件的buffer，并且在一个window中对文件进行编辑，修改会同步体现在另外的window中。
+
+分割窗口的命令：
+
+     :sp（水平分割）
+     :vsp（垂直分割）
+
+在window之间切换可以使用Ctrl + w + h/j/k/l（向左、下、上、右切换）或者Ctrl + w + w（在窗口间切换）。    
+如果要调整window的大小，分窗口是水平分隔还是垂直分隔两种情况： 
+     * 如果是水平分隔可以使用:nwinc +/-把当前激活窗口高度增加、减少n个字符高度，比如:10winc + 
+     * 如果是垂直分隔可以使用:nwinc >/<把当前激活窗口宽度增加、减少n个字符宽度，比如:5winc >
+
+tab 是 window 的集合，tab的标题栏会显示该tab当前激活的window中文件的名字，及tab中一共有多少个window。。在新的 tab 中打开文件:
+
+     :tabe app.js
+     
+查看 tab 列表：
+
+     ：tabs
+     Tab page 1
+         react01.html
+         circle.js
+         app.js
+     Tab page 2
+     >   app.js     
+'>' 表示cursor当前在tab 2的app.js上，使用1gt即可快速切换到tab 1。   
+在 tab 间切换命令：
+
+     :tabnext
+     :tabpre
+     gt
+     gT
+可以使用:tabc命令关闭当前tab。
+
+* [Buffers, windows, and tabs](https://sanctum.geek.nz/arabesque/buffers-windows-tabs/)   
 
 ## vim 配置
 vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
@@ -224,6 +275,10 @@ Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提�
     :split file 在新窗口中打开文件
     :bn 切换到下一个文件
     :bp 切换到上一个文件
+    
+在进入 vim 里打开另一个文件
+
+     ：e file
    
 #### 在文件中插入另一个文件中的内容
 插入另一个文件的全部内容
