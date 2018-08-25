@@ -65,7 +65,7 @@ vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多�
        1 %a   ".vimrc"                       line 20
        2   =  ".viminfo"                     line 30
        3 # =  "/etc/vimrc"                   line 71
-左侧是buffer的编号，有%的表示是当前激活的window中打开的buffer，a表示这个buffer是active的，双引号中的字符串表示了buffer对应的文件名字，line n表示当前cursor处于该buffer的哪一行。
+左侧是buffer的编号，有%的表示是当前激活的window中打开的buffer，a表示这个buffer是active的，双引号中的字符串表示了buffer对应的文件名字，line n表示当前cursor处于该buffer的哪一行，# 代表的是编辑前一次编辑的文档。
 
 使用:buffer(:b)命令切换buffer
 
