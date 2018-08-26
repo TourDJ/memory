@@ -19,22 +19,9 @@ vi 是古老的文本编辑器，vim是从 vi 发展出来的一个文本编辑�
 > 在这之后，Vim 加入了不计其数的新功能。做为第一个里程碑的是 1994 年的 3.0 版本加入了多视窗编辑模式（分割视窗）。从那之后，同一萤幕可以显示的 Vim 编辑文件数可以不止一个了。1996 年发布的 Vim 4.0 是第一个利用图型介面（GUI ）的版本。1998 年 5.0 版本的 Vim 加入了 highlight（语法高亮 ）功能。2001 年的 Vim 6.0 版本加入了代码折叠 、插件 、 多国语言支持、垂直分割视窗等功能。2006 年 5 月发布的 Vim 7.0 版更加入了拼字检查、上下文相关补全，标签页编辑等新功能。现在最新的版本是 2008 年 8 月发布的 Vim 7.2，该版本合并了 vim 7.1 以来的所有修正补丁，并且加入了脚本的浮点数支持。
 
 
-**vim 相关文档**      
+Vim 和 TextMate 有很多不同，你常常会遇到它不让你输入，让你抓狂。Vim 有很多不同的模式，在不同的模式下，不同的按键有不同的功能。更让人崩溃的是，大写和小写的功能也天差地别。所以看看：
 
-如果想系统地学习vim 的入门知识，可以看看鸟哥的这篇介绍：
-
-* [鳥哥的 Linux 私房菜 -- 第九章、vim 程式編輯器](http://linux.vbird.org/linux_basic/0310vi.php#tips_code)    
-
-挺不错的，讲得还是比较详细，概念也解释的比较清楚。
-
-比较深入一点的，看这篇介绍，包括中英文版。
-* [Vim galore](https://github.com/mhinz/vim-galore)    
-
-* [Vim galore 中文](https://github.com/wsdjeg/vim-galore-zh_cn)   
-
-vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多的快捷键，通过快捷键可以进入各种模式，实现各种操作。这些快捷键我们不可能都一一记住，通常，我们只在记住一些常用的罢了。不过好在有专门的 vim 犍位图，需要的时候可以查一下也是挺方便的。
-
-* [史上最全Vim快捷键键位图 -- 入门到进阶](http://cenalulu.github.io/linux/all-vim-cheatsheat/)     
+* [迁移到 Vim 的10个难关](http://blog.jobbole.com/18333/)    
 
 ## vim 模式
  * 正常模式(normal-mode)        
@@ -58,6 +45,36 @@ vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多�
  * 终端模式(Ex mode)   
      在正常模式按下gQ开启 REPL。
      > REPL: 读取-求值-输出”循环（英语：Read-Eval-Print Loop，简称REPL）是一个简单的，交互式的编程环境。
+
+这里只列出了部分模式。
+
+所以，Vim的学习曲线相当的大，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。因此建议一开始先熟悉一些常用的命令。
+
+* [简明Vim练级攻略](http://blog.jobbole.com/18339/)    
+
+稍微有点熟悉之后，可以渐进式的系统学习。
+
+**vim 相关文档**      
+
+当你发现你对 vim 还是挺感兴趣的，此时可以系统地学习下 vim 的入门知识，可以看看鸟哥的这篇介绍：
+
+* [鳥哥的 Linux 私房菜 -- 第九章、vim 程式編輯器](http://linux.vbird.org/linux_basic/0310vi.php#tips_code)    
+
+挺不错的，讲得还是比较详细，概念也解释的比较清楚。
+
+之后，比较深入一点的，看这篇介绍，包括中英文版。
+
+* [Vim galore](https://github.com/mhinz/vim-galore)    
+
+* [Vim galore 中文](https://github.com/wsdjeg/vim-galore-zh_cn)   
+
+vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多的快捷键，通过快捷键可以进入各种模式，实现各种操作。这些快捷键我们不可能都一一记住，通常，我们只在记住一些常用的罢了。不过好在有专门的 vim 犍位图，需要的时候可以查一下也是挺方便的。
+
+* [史上最全Vim快捷键键位图 -- 入门到进阶](http://cenalulu.github.io/linux/all-vim-cheatsheat/)     
+
+那么，为什么 Vim 使用 HJKL 键作为方向键呢？
+
+* [为什么 Vim 使用 HJKL 键作为方向键](http://blog.jobbole.com/18650/)    
 
 ## vim 的 buffer、window 和 tab
 在 vim 中，可以将 buffer 看成是打开文件的实例。一个文件只有一个 buffer。
