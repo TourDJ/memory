@@ -1,5 +1,6 @@
 
 # vim 使用
+
 在 Linux 的系統中使用文字编辑器来编辑你的 Linux 参数配置文件，是最平常不过的事情了，常常听到的就有： [emacs](http://www.gnu.org/software/emacs/), [pico](https://en.wikipedia.org/wiki/Pico_(text_editor)), [nano](http://sourceforge.net/projects/nano/), [joe](http://sourceforge.net/projects/joe-editor/), 与 [vim](http://www.vim.org) 等等。这些编辑器有什么区别呢？     
 
 * [常见文件编辑器比较](http://encyclopedia.thefreedictionary.com/List+of+text+editors)   
@@ -19,6 +20,7 @@ vi 是古老的文本编辑器，vim是从 vi 发展出来的一个文本编辑�
 
 
 **vim 相关文档**      
+
 如果想系统地学习vim 的入门知识，可以看看鸟哥的这篇介绍：
 
 * [鳥哥的 Linux 私房菜 -- 第九章、vim 程式編輯器](http://linux.vbird.org/linux_basic/0310vi.php#tips_code)    
