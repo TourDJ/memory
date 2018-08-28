@@ -726,6 +726,12 @@ vimrc 修改后立即生效
      " 快捷键 i 开/关缩进可视化
      :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
+[nerdcommenter](https://github.com/scrooloose/nerdcommenter)注释插件
+默认配置了一些快捷键
+
+     <leader>cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中一行的部分内容则在选中部分前后添加分别 /、/；
+     <leader>cu，取消选中文本块的注释
+
 ***
 
 在 .vimrc 文件中，使用的语言就是 Vim 脚本语言(vim script)。vim 脚本相当于可直接在命令模式下执行的命令，只是不需要输入前面的冒号（如果用了冒号也不会出错）。因此，像设置选项、创建键盘映射这样的命令是直接可用的。当然，作为一种脚本语言，除了普通键盘上会输入的命令外，我们还需要一些更复杂的功能，特别是：变量，表达式，条件和循环语句，函数。
