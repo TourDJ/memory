@@ -234,45 +234,6 @@ paste：粘贴模式，会取消所有上述选项的影响来保证后面的操
      :set paste
      :set nopaste
 
-## vimscript
-Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
-
-#### vimscript 命令
-* :echo命令 会打印输出，但是一旦你的脚本运行完毕，那些输出信息就会消失。使用:echom打印的信息 会保存下来，你可以执行:messages命令再次查看那些信息。
-
-          :echo $MYVIMRC  查询 vimrc 文件的位置
-
-* 添加一个!（感叹号）至布尔选项后面就会切换对于选项的值。
-
-          :set number!
-
-* 使用一个?符号向Vim获取一个选项的当前值。
-
-          :set number
-          :set number?
-          :set nonumber
-          :set number?
-
-* numberwidth 选项改变行号的列宽。
-* viw 将高亮选中整个单词。
-
-**vimscript 语法速览**         
-[Five Minute Vimscript](http://andrewscala.com/vimscript/)    
-[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)    
-[Learn Vimscript the Hard Way中文版](http://learnvimscriptthehardway.onefloweroneworld.com/)    
-
-**Vim’s internal documentation**      
-[Vim documentation: usr_41](http://vimdoc.sourceforge.net/htmldoc/usr_41.html)    
-
-**IBM Scripting the Vim editor series**      
-[Part 1: Variables, values, and expressions](https://www.ibm.com/developerworks/linux/library/l-vim-script-1/index.html)    
-[Part 2: User-defined functions](https://www.ibm.com/developerworks/linux/library/l-vim-script-2/index.html?ca=drs-)    
-[Part 3: Built-in lists](https://www.ibm.com/developerworks/linux/library/l-vim-script-3/index.html?ca=drs-)    
-[Part 4: Dictionaries](https://www.ibm.com/developerworks/linux/library/l-vim-script-4/index.html?ca=drs-)    
-[Part 5: Event-driven scripting and automation](https://www.ibm.com/developerworks/linux/library/l-vim-script-5/index.html?ca=drs-)    
-
-
-
 ***
 ## <a id="vimcmd"><font color="red">Vim 命令</font></a>
 
@@ -284,7 +245,6 @@ Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提�
 
 
 以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。
-
 ### 文件命令
 #### 打开文件
     vim file 打开单个文件
@@ -562,7 +522,32 @@ vi/vim 中可以使用 :s 命令来替换字符串
     1,$ s/^/#/g 注释整个文档。
     :%s/^/#/g 注释整个文档，此法更快。
 
-在在结对符之间跳转： %
+
+
+#### 代码折叠
+vim 自身支持多种折叠：手动建立折叠（manual）、基于缩进进行折叠（indent）、基于语法进行折叠（syntax）、未更改文本构成折叠（diff）等等。
+
+     " 启动 vim 时关闭折叠代码
+     set nofoldenable
+     " 基于缩进进行代码折叠
+     set foldmethod=indent
+     " 基于语法进行代码折叠
+     set foldmethod=syntax
+     
+在 .vimrc 文件中配置好后，用以下命令操作：
+     * za 打开或关闭当前折叠
+     * zM 关闭所有折叠
+     * zR 打开所有折叠
+
+#### 常用命令
+     %	跳转到配对的括号去
+     [[	跳转到代码块的开头去(但要求代码块中'{'必须单独占一行)
+     gD	跳转到局部变量的定义处
+     ''	跳转到光标上次停靠的地方, 是两个', 而不是一个"
+     mx	设置书签,x只能是a-z的26个字母
+     `x	跳转到书签处("`"是1左边的键)
+     >	增加缩进,"x>"表示增加以下x行的缩进
+     <	减少缩进,"x<"表示减少以下x行的缩进
 
 ## 映射
 map是一个映射命令,将常用的很长的命令映射到一个新的功能键上。
@@ -623,6 +608,8 @@ vimrc 修改后立即生效
      autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 ***
+
+工欲善其事，必先利其器。
 
 ## vim 插件管理工具
 
@@ -740,3 +727,46 @@ vimrc 修改后立即生效
      :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 ***
+
+在 .vimrc 文件中，使用的语言就是 Vim 脚本语言(vim script)。vim 脚本相当于可直接在命令模式下执行的命令，只是不需要输入前面的冒号（如果用了冒号也不会出错）。因此，像设置选项、创建键盘映射这样的命令是直接可用的。当然，作为一种脚本语言，除了普通键盘上会输入的命令外，我们还需要一些更复杂的功能，特别是：变量，表达式，条件和循环语句，函数。
+
+## vimscript
+Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
+
+#### vimscript 命令
+* :echo命令 会打印输出，但是一旦你的脚本运行完毕，那些输出信息就会消失。使用:echom打印的信息 会保存下来，你可以执行:messages命令再次查看那些信息。
+
+          :echo $MYVIMRC  查询 vimrc 文件的位置
+
+* 添加一个!（感叹号）至布尔选项后面就会切换对于选项的值。
+
+          :set number!
+
+* 使用一个?符号向Vim获取一个选项的当前值。
+
+          :set number
+          :set number?
+          :set nonumber
+          :set number?
+
+* numberwidth 选项改变行号的列宽。
+* viw 将高亮选中整个单词。
+
+**vimscript 语法速览**         
+[Five Minute Vimscript](http://andrewscala.com/vimscript/)    
+[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)    
+[Learn Vimscript the Hard Way中文版](http://learnvimscriptthehardway.onefloweroneworld.com/)    
+
+**Vim’s internal documentation**      
+[Vim documentation: usr_41](http://vimdoc.sourceforge.net/htmldoc/usr_41.html)    
+
+**IBM Scripting the Vim editor series**      
+[Part 1: Variables, values, and expressions](https://www.ibm.com/developerworks/linux/library/l-vim-script-1/index.html)    
+[Part 2: User-defined functions](https://www.ibm.com/developerworks/linux/library/l-vim-script-2/index.html?ca=drs-)    
+[Part 3: Built-in lists](https://www.ibm.com/developerworks/linux/library/l-vim-script-3/index.html?ca=drs-)    
+[Part 4: Dictionaries](https://www.ibm.com/developerworks/linux/library/l-vim-script-4/index.html?ca=drs-)    
+[Part 5: Event-driven scripting and automation](https://www.ibm.com/developerworks/linux/library/l-vim-script-5/index.html?ca=drs-)    
+
+
+
+
