@@ -81,6 +81,12 @@ vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多�
 * [为什么 Vim 使用 HJKL 键作为方向键](http://blog.jobbole.com/18650/)    
 
 ## vim 的 buffer、window 和 tab
+查看帮助文件，是这样描述的：
+
+     缓冲区是内存中的文件文本。
+     窗口是缓冲区的视窗。
+     标签页是窗口的集合
+
 在 vim 中，可以将 buffer 看成是打开文件的实例。一个文件只有一个 buffer。
 查看 buffer 的命令：
 
@@ -240,7 +246,8 @@ paste：粘贴模式，会取消所有上述选项的影响来保证后面的操
      :set nopaste
 
 ***
-## <a id="vimcmd"><font color="red">Vim 命令</font></a>
+## <a id="vimcmd"><font color="red">vim 命令</font></a>
+我们常说的命令通常是指在正常模式下的操作。
 
 技术链接：  
 [Vim命令合集](http://www.cnblogs.com/softwaretesting/archive/2011/07/12/2104435.html)     
