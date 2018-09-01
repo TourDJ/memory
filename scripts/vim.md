@@ -620,6 +620,9 @@ vimrc 修改后立即生效
 ***
 
 工欲善其事，必先利其器。
+VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtimepath”选项中， 我们可以使用 set 命令查看它：
+
+     :set runtimepath?
 
 ## vim 插件管理工具
 
@@ -783,9 +786,29 @@ Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提�
 [Part 4: Dictionaries](https://www.ibm.com/developerworks/linux/library/l-vim-script-4/index.html?ca=drs-)    
 [Part 5: Event-driven scripting and automation](https://www.ibm.com/developerworks/linux/library/l-vim-script-5/index.html?ca=drs-)    
 
+***
+
+环境变量 $VIMRUNTIME 用来找出各种支持文件。colors,plugins,docs都是在 VIMRUNTIME 目录下的。可以使用以下命令查看：
+
+     :echo $VIMRUNTIME
+
 
 ## vim 主题
+vim 的颜色主题在 $VIMRUNTIME/colors 文件夹里。在正常模式下输入
 
+     :colorscheme
+查看当前的配色方案。
+修改主题使用命令
 
+     ：colorscheme mycolor
+其中mycolor是你 $VIMRUNTIME/colors 文件夹包含的文件名。也可以把这个命令写入~/.vimrc配置文件中，这样每次打开Vim都是你设定的主题。
+
+在.vimrc中添加一句
+set runtimepath+=~/.vim
+
+* status/tabline 插件
+
+          Plug 'vim-airline/vim-airline'
+          Plug 'vim-airline/vim-airline-themes'
 
 
