@@ -784,5 +784,8 @@ Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提�
 [Part 5: Event-driven scripting and automation](https://www.ibm.com/developerworks/linux/library/l-vim-script-5/index.html?ca=drs-)    
 
 
+## vim 主题
+
+
 
 
