@@ -810,7 +810,8 @@ vim 的颜色主题在 $VIMRUNTIME/colors 文件夹里。在正常模式下输�
 
 **常用的主题插件**
 
-* status/tabline 插件
+* [vim-airline](https://github.com/vim-airline/vim-airline)    
+Lean & mean status/tabline for vim that's light as air.
 
           Plug 'vim-airline/vim-airline'
           Plug 'vim-airline/vim-airline-themes'
