@@ -808,7 +808,7 @@ vim 的颜色主题在 $VIMRUNTIME/colors 文件夹里。在正常模式下输�
      set runtimepath+=~/.vim
 将用户目录加入到运行时路径中。
 
-** 常用的主题插件 **
+**常用的主题插件**
 
 * status/tabline 插件
 
