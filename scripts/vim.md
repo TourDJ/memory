@@ -816,4 +816,11 @@ Lean & mean status/tabline for vim that's light as air.
           Plug 'vim-airline/vim-airline'
           Plug 'vim-airline/vim-airline-themes'
 
+* [gruvbox](https://github.com/morhetz/gruvbox)     
+[安装](https://github.com/morhetz/gruvbox/wiki/Installation)    
 
+          Plug 'morhetz/gruvbox'
+          set background=dark    " Setting dark mode
+          set background=light   " Setting light mode
+
+注： 安装插件管理工具是 vim-plug。
