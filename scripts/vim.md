@@ -627,10 +627,10 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
 ## vim 插件
 相比sublime text2等现代编辑器，Vim缺乏默认的插件管理器，所有插件的文件都散布在~/.vim下的几个文件夹中。不过可以通过安装插件管理工具来管理插件，用户需要做的只是去Github上找到自己想要的插件的名字，安装，更新就可以用了。
 
-常用的 vim 插件管理工具：
-
 相关链接：    
 [Setting up Vim for React.js](https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015)    
+
+常用的 vim 插件管理工具：
 
 * vim-plug
 安装方法：
@@ -678,11 +678,12 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
     call plug#end()
 
 * pathogen
-...
+pathogen 插件的安装：
+[Vim下的插件管理工具pathogen简介](https://www.cnblogs.com/litifeng/p/5597565.html) 
 
 
 * vunble
-vunble 的安装：     
+vunble 插件的安装：     
 [vim中的杀手级插件: vundle](http://zuyunfei.com/2013/04/12/killer-plugin-of-vim-vundle/)
 
 ### 常用插件
