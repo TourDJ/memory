@@ -829,4 +829,4 @@ Lean & mean status/tabline for vim that's light as air.
 
 还有一些其他不错的主题插件值得关注：
 
-* [收集漂亮的 Vim 主题]（https://zhuanlan.zhihu.com/p/34699085）
+  [收集漂亮的 Vim 主题](https://zhuanlan.zhihu.com/p/34699085)
