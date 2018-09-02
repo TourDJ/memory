@@ -809,6 +809,7 @@ vim 的颜色主题在 $VIMRUNTIME/colors 文件夹里。在正常模式下输�
 将用户目录加入到运行时路径中。
 
 **常用的主题插件**
+收藏了几个不同的主题插件。
 
 * [vim-airline](https://github.com/vim-airline/vim-airline)    
 Lean & mean status/tabline for vim that's light as air.
@@ -817,10 +818,15 @@ Lean & mean status/tabline for vim that's light as air.
           Plug 'vim-airline/vim-airline-themes'
 
 * [gruvbox](https://github.com/morhetz/gruvbox)     
-[安装](https://github.com/morhetz/gruvbox/wiki/Installation)    
+[安装](https://github.com/morhetz/gruvbox/wiki/Installation)及配置：    
 
           Plug 'morhetz/gruvbox'
+          colorscheme gruvbox
           set background=dark    " Setting dark mode
           set background=light   " Setting light mode
 
 注： 安装插件管理工具是 vim-plug。
+
+还有一些其他不错的主题插件值得关注：
+
+* [收集漂亮的 Vim 主题]（https://zhuanlan.zhihu.com/p/34699085）
