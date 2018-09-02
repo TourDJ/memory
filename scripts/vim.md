@@ -796,15 +796,19 @@ Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提�
 ## vim 主题
 vim 的颜色主题在 $VIMRUNTIME/colors 文件夹里。在正常模式下输入
 
-     :colorscheme
+     : colorscheme
 查看当前的配色方案。
 修改主题使用命令
 
      ：colorscheme mycolor
-其中mycolor是你 $VIMRUNTIME/colors 文件夹包含的文件名。也可以把这个命令写入~/.vimrc配置文件中，这样每次打开Vim都是你设定的主题。
+其中 mycolor 是你 $VIMRUNTIME/colors 文件夹包含的文件名。也可以把这个命令写入~/.vimrc配置文件中，这样每次打开Vim都是你设定的主题。
 
-在.vimrc中添加一句
-set runtimepath+=~/.vim
+或者也可以在.vimrc中添加一句：
+
+     set runtimepath+=~/.vim
+将用户目录加入到运行时路径中。
+
+** 常用的主题插件 **
 
 * status/tabline 插件
 
