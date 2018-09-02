@@ -633,13 +633,13 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
 常用的 vim 插件管理工具：
 
 * vim-plug
-安装方法：
+安装方法：      
 
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
-使用方法：
+使用方法：       
 在 vim 配置文件中增加 vim-plug 配置：
 
     call plug#begin('~/.vim/plugged')   
