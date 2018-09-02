@@ -624,12 +624,15 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
 
      :set runtimepath?
 
-## vim 插件管理工具
+## vim 插件
+相比sublime text2等现代编辑器，Vim缺乏默认的插件管理器，所有插件的文件都散布在~/.vim下的几个文件夹中。不过可以通过安装插件管理工具来管理插件，用户需要做的只是去Github上找到自己想要的插件的名字，安装，更新就可以用了。
+
+常用的 vim 插件管理工具：
 
 相关链接：    
 [Setting up Vim for React.js](https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015)    
 
-### vim-plug
+* vim-plug
 安装方法：
 
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -656,7 +659,7 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
 
     ：PlugInstall
 
-#### 常用命令
+**常用命令**
 在 vim 命令模式下使用。
 
     :PlugInstall     install                      安装插件
@@ -671,46 +674,16 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
     " - For Neovim: ~/.local/share/nvim/plugged
     " - Avoid using standard Vim directory names like 'plugin'
     call plug#begin('~/.vim/plugged')
-
-    " Make sure you use single quotes
-
-    " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
     Plug 'junegunn/vim-easy-align'
-
-    " Any valid git URL is allowed
-    Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-    " Multiple Plug commands can be written in a single line using | separators
-    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-    " On-demand loading
-    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-    " Using a non-master branch
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-    " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-    Plug 'fatih/vim-go', { 'tag': '*' }
-
-    " Plugin options
-    Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-    " Plugin outside ~/.vim/plugged with post-update hook
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-    " Unmanaged plugin (manually installed and updated)
-    Plug '~/my-prototype-plugin'
-
-    " Initialize plugin system
     call plug#end()
 
-### pathogen
+* pathogen
 ...
 
 
-### vunble
-
+* vunble
+vunble 的安装：     
+[vim中的杀手级插件: vundle](http://zuyunfei.com/2013/04/12/killer-plugin-of-vim-vundle/)
 
 ### 常用插件
 [NERD Tree](https://github.com/scrooloose/nerdtree)是一个树形目录插件，方便浏览当前目录有哪些目录和文件。   
