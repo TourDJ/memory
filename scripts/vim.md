@@ -682,9 +682,18 @@ pathogen 插件的安装：
 [Vim下的插件管理工具pathogen简介](https://www.cnblogs.com/litifeng/p/5597565.html) 
 
 
-* vunble
-vunble 插件的安装：     
-[vim中的杀手级插件: vundle](http://zuyunfei.com/2013/04/12/killer-plugin-of-vim-vundle/)
+* vunble       
+vunble set up：     
+
+     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+常用命令：    
+
+      :PluginList       - lists configured plugins
+      :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+      :PluginSearch foo - searches for foo; append `!` to refresh local cache
+      :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
 
 ### 常用插件
 [NERD Tree](https://github.com/scrooloose/nerdtree)是一个树形目录插件，方便浏览当前目录有哪些目录和文件。   
