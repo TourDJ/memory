@@ -23,6 +23,8 @@ Vim 和 TextMate 有很多不同，你常常会遇到它不让你输入，让你
 
 * [迁移到 Vim 的10个难关](http://blog.jobbole.com/18333/)    
 
+***
+
 ## vim 模式
 vim 是一个多模式的编辑器。初学者进入 vim 时，根本不知道怎么使用，很可能甚至不知道该怎么退出它，vim 中的快捷键跟我们平时使用的完全不一样。在我使用 vim 初期，常用的模式就三个：正常模式、插入模式和命令模式，所以就一直认为 vim 就只有三种模式，实际上，vim 的模式有 12 种之多，但常用的就几种，详情可查看 vim 的帮助文档：
 
@@ -80,6 +82,8 @@ vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多�
 
 * [为什么 Vim 使用 HJKL 键作为方向键](http://blog.jobbole.com/18650/)    
 
+*** 
+
 ## vim 的 buffer、window 和 tab
 查看帮助文件，是这样描述的：
 
@@ -136,6 +140,8 @@ tab 是 window 的集合，tab的标题栏会显示该tab当前激活的window�
 可以使用:tabc命令关闭当前tab。
 
 * [Buffers, windows, and tabs](https://sanctum.geek.nz/arabesque/buffers-windows-tabs/)   
+
+****
 
 ## vim 配置
 vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
@@ -245,6 +251,28 @@ paste：粘贴模式，会取消所有上述选项的影响来保证后面的操
      :set paste
      :set nopaste
 
+
+**代码折叠**     
+vim 自身支持多种折叠：
+* 手动建立折叠（manual）
+* 基于缩进进行折叠（indent）
+* 基于语法进行折叠（syntax）
+* 未更改文本构成折叠（diff）
+
+配置
+
+     " 启动 vim 时关闭折叠代码
+     set nofoldenable
+     " 基于缩进进行代码折叠
+     set foldmethod=indent
+     " 基于语法进行代码折叠
+     set foldmethod=syntax
+     
+在 .vimrc 文件中配置好后，用以下命令操作：
+     * za 打开或关闭当前折叠
+     * zM 关闭所有折叠
+     * zR 打开所有折叠
+
 ***
 
 ## <a id="vimcmd"><font color="red">vim 命令</font></a>
@@ -256,6 +284,7 @@ paste：粘贴模式，会取消所有上述选项的影响来保证后面的操
 
 
 以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。
+
 ### 文件命令
 打开文件
 
@@ -263,7 +292,8 @@ paste：粘贴模式，会取消所有上述选项的影响来保证后面的操
     vim file1 file2 file3 ... 同时打开多个文件
     vim file +10 打开文件并跳转到指定行
     :open file 在vim窗口中打开一个新文件
-    :split file 在新窗口中打开文件
+    :split file 在水平分割的窗口中打开文件
+    :vsplit file 在垂直分割的窗口中打开文件
     :bn 切换到下一个文件
     :bp 切换到上一个文件
     
@@ -395,40 +425,6 @@ paste：粘贴模式，会取消所有上述选项的影响来保证后面的操
      gUw（光标下的单词变为大写）
      :TOhtml（根据 Vim 的语法加亮的方式生成 HTML 代码；在图形界面中也可以使用菜单“Syntax—Convert to HTML”达到同样效果
 
-### 模式行（modeline）
-vim 的 modeline 可以让你针对每个文件进行文件级别的设置，这些设置是覆盖当前用户的 vimrc 中的设置的。当 vim 打开一个包含了vim modeline 注释行的文件时，会自动读取这一行的参数配置并调整自己的设置到这个配置。vim 默认关闭modeline，开启的话需要在你的home下的.vimrc文件中增加一行：
-
-     set modeline
-
-在文件的首行/尾行（必须），写一行当前这个文件里面语言所支持的注释，例如写shell就是#，写Python就是#，写php就//或/\*\*/，然后在里面加上 modeline 识别的固定格式，举例：
-
-     # vim: set expandtab ts=4 sts=4 sw=4 : 
-
-上面的注释中，'#'后面、"vim:"前面的空格是必须的，结尾的':'也是必须的，这些是modeline所识别的。中间就是熟悉的vimrc中的设置了。在不同的语言中，注释的语法也不一样，所有在其他语言中可能有不同写法。
-
-在文件里面，可以用该文件标准的注解形式向 vim 下指令。譬如一个 reStructuredText 格式的文字档，你可以加上以下的 modeline，让 vim 在读它的时候自动把档案解释为 rst (以取得正确的语法高亮)：
-
-     .. vim: set ft=rst:
-modeline 里可以放的指令不限一个，所以我.py 档案在档尾都有这麽一行的 modeline
-
-     # vim: set ai et nu sw=4 ts=4 tw=79:
-
-### 执行外部命令
-执行外部命令的方法
-
-     :!命令
-把外部命令执行的结果插入到当前编辑的缓冲区中
-
-     :r!命令
-对所有的非空行进行编号，只需要
-
-     :%!nl
-
-对包含空行的所有行进行编号
-
-     :%!nl -ba
-
-
 
 ## 撤销和重做
 
@@ -514,21 +510,6 @@ vi/vim 中可以使用 :s 命令来替换字符串
 
 
 
-#### 代码折叠
-vim 自身支持多种折叠：手动建立折叠（manual）、基于缩进进行折叠（indent）、基于语法进行折叠（syntax）、未更改文本构成折叠（diff）等等。
-
-     " 启动 vim 时关闭折叠代码
-     set nofoldenable
-     " 基于缩进进行代码折叠
-     set foldmethod=indent
-     " 基于语法进行代码折叠
-     set foldmethod=syntax
-     
-在 .vimrc 文件中配置好后，用以下命令操作：
-     * za 打开或关闭当前折叠
-     * zM 关闭所有折叠
-     * zR 打开所有折叠
-
 #### 常用命令
      %	跳转到配对的括号去
      [[	跳转到代码块的开头去(但要求代码块中'{'必须单独占一行)
@@ -538,6 +519,44 @@ vim 自身支持多种折叠：手动建立折叠（manual）、基于缩进进�
      `x	跳转到书签处("`"是1左边的键)
      >	增加缩进,"x>"表示增加以下x行的缩进
      <	减少缩进,"x<"表示减少以下x行的缩进
+
+
+***
+
+## 模式行（modeline）
+vim 的 modeline 可以让你针对每个文件进行文件级别的设置，这些设置是覆盖当前用户的 vimrc 中的设置的。当 vim 打开一个包含了vim modeline 注释行的文件时，会自动读取这一行的参数配置并调整自己的设置到这个配置。vim 默认关闭modeline，开启的话需要在你的home下的.vimrc文件中增加一行：
+
+     set modeline
+
+在文件的首行/尾行（必须），写一行当前这个文件里面语言所支持的注释，例如写shell就是#，写Python就是#，写php就//或/\*\*/，然后在里面加上 modeline 识别的固定格式，举例：
+
+     # vim: set expandtab ts=4 sts=4 sw=4 : 
+
+上面的注释中，'#'后面、"vim:"前面的空格是必须的，结尾的':'也是必须的，这些是modeline所识别的。中间就是熟悉的vimrc中的设置了。在不同的语言中，注释的语法也不一样，所有在其他语言中可能有不同写法。
+
+在文件里面，可以用该文件标准的注解形式向 vim 下指令。譬如一个 reStructuredText 格式的文字档，你可以加上以下的 modeline，让 vim 在读它的时候自动把档案解释为 rst (以取得正确的语法高亮)：
+
+     .. vim: set ft=rst:
+modeline 里可以放的指令不限一个，所以我.py 档案在档尾都有这麽一行的 modeline
+
+     # vim: set ai et nu sw=4 ts=4 tw=79:
+
+### 执行外部命令
+执行外部命令的方法
+
+     :!命令
+把外部命令执行的结果插入到当前编辑的缓冲区中
+
+     :r!命令
+对所有的非空行进行编号，只需要
+
+     :%!nl
+
+对包含空行的所有行进行编号
+
+     :%!nl -ba
+
+
 
 ***
 
@@ -636,51 +655,6 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
 [Setting up Vim for React.js](https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015)    
 
 常用的 vim 插件管理工具：
-
-* vim-plug
-安装方法：      
-
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-
-使用方法：       
-在 vim 配置文件中增加 vim-plug 配置：
-
-    call plug#begin('~/.vim/plugged')   
-    Plug 'pangloss/vim-javascript'      ## List the plugins with Plug commands
-    call plug#end()
-> 在 .vim 文件夹下创建 plugged 文件夹，如果不存在。
-
-配置完成后，输入 vim 命令,启动文本编辑器：
-
-    $ vim
-
-查看状态类型类型：
-
-    ：PlugStatus
-
-安装 vim-javascript 插件：
-
-    ：PlugInstall
-
-**常用命令**
-在 vim 命令模式下使用。
-
-    :PlugInstall     install                      安装插件
-    :PlugUpdate      install or update            更新插件
-    :PlugClean       remove plugin not in list    删除本地无用插件
-    :PlugUpgrade     Upgrade vim-plug itself      升级本身
-    :PlugStatus      Check the status of plugins  查看插件状态
-
-示例：
-
-    " Specify a directory for plugins
-    " - For Neovim: ~/.local/share/nvim/plugged
-    " - Avoid using standard Vim directory names like 'plugin'
-    call plug#begin('~/.vim/plugged')
-    Plug 'junegunn/vim-easy-align'
-    call plug#end()
 
 * pathogen
 pathogen 插件的安装：
