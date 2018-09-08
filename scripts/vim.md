@@ -656,8 +656,9 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
 
 常用的 vim 插件管理工具：
 
-* pathogen
-pathogen 插件的安装：
+* pathogen       
+
+pathogen 插件的安装：       
 [Vim下的插件管理工具pathogen简介](https://www.cnblogs.com/litifeng/p/5597565.html) 
 
 
@@ -677,6 +678,7 @@ pathogen 插件的安装：
 
 ### 常用插件
 * [NERD Tree](https://github.com/scrooloose/nerdtree)是一个树形目录插件，方便浏览当前目录有哪些目录和文件。   
+
 常用快捷键来操作目录：
 
     通过hjkl来移动光标
