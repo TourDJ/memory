@@ -676,7 +676,7 @@ pathogen 插件的安装：
 
 
 ### 常用插件
-[NERD Tree](https://github.com/scrooloose/nerdtree)是一个树形目录插件，方便浏览当前目录有哪些目录和文件。   
+* [NERD Tree](https://github.com/scrooloose/nerdtree)是一个树形目录插件，方便浏览当前目录有哪些目录和文件。   
 常用快捷键来操作目录：
 
     通过hjkl来移动光标
@@ -688,9 +688,9 @@ pathogen 插件的安装：
     K到同目录第一个节点
     P到同目录最后一个节点??
 
-[Vim Powerline](https://github.com/powerline/powerline/tree/master)是一个显示vim状态栏插件，它能够显示vim模式、操作环境、编码格式、行数/列数等信息。使用时注意切换分支。     
+* [Vim Powerline](https://github.com/powerline/powerline/tree/master)是一个显示vim状态栏插件，它能够显示vim模式、操作环境、编码格式、行数/列数等信息。使用时注意切换分支。     
 
-[Indent Guides](https://github.com/nathanaelkane/vim-indent-guides) 多层缩进    
+* [Indent Guides](https://github.com/nathanaelkane/vim-indent-guides) 多层缩进    
 安装好后作以下配置
 
      " 随 vim 自启动
@@ -702,7 +702,7 @@ pathogen 插件的安装：
      " 快捷键 i 开/关缩进可视化
      :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
-[nerdcommenter](https://github.com/scrooloose/nerdcommenter)注释插件
+* [nerdcommenter](https://github.com/scrooloose/nerdcommenter)注释插件
 默认配置了一些快捷键
 
      <leader>cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中一行的部分内容则在选中部分前后添加分别 /、/；
