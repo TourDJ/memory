@@ -122,7 +122,7 @@ HTTP响应是由四个部分组成，分别是：状态行、消息报头、空�
        4. 客户再次请求页面A，并将上次请求时服务器返回的Last-Modified/ETag一起传递给服务器。  
        5. 服务器检查该Last-Modified或ETag，并判断出该页面自上次客户端请求之后还未被修改，直接返回响应304和一个空的响应体。
 
-**Request header field Access-Control-Allow-Headers is not allowed by Access-Control-Allow-Headers 
+**Request header field Access-Control-Allow-Headers is not allowed by Access-Control-Allow-Headers** 
 
 The server (that the POST request is sent to) needs to include the Access-Control-Allow-Headers header (etc) in its response. Putting them in your request from the client has no effect.This is because it is up to the server to specify that it accepts cross-origin requests (and that it permits the Content-Type request header, and so on), the client cannot decide for itself that a given server should allow CORS.
 
