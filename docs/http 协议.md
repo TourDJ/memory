@@ -121,3 +121,13 @@ HTTP响应是由四个部分组成，分别是：状态行、消息报头、空�
        3. 客户端展现该页面，并将页面连同Last-Modified/ETag一起缓存。  
        4. 客户再次请求页面A，并将上次请求时服务器返回的Last-Modified/ETag一起传递给服务器。  
        5. 服务器检查该Last-Modified或ETag，并判断出该页面自上次客户端请求之后还未被修改，直接返回响应304和一个空的响应体。
+
+> Request header field Access-Control-Allow-Headers is not allowed by Access-Control-Allow-Headers 
+
+The server (that the POST request is sent to) needs to include the Access-Control-Allow-Headers header (etc) in its response. Putting them in your request from the client has no effect.This is because it is up to the server to specify that it accepts cross-origin requests (and that it permits the Content-Type request header, and so on), the client cannot decide for itself that a given server should allow CORS.
+
+跨域请求在使用POST方法向服务器发送数据时，如果Content-Type使用application/x-www-form-urlencoded、multipart/form-data或text/plain之外编码格式会由普通请求变为Preflighted请求。另外使用自定头时也会变为Preflighted请求。Preflighted 请求与简单请求不同，Preflighted 请求首先会向服务器发送一个Options请求，以验证是否对指定服务有访问权限，之后再发送实际的请求。所以你检查一下你JAVA后端是怎么处理那个先发送的Options请求的，后端服务器需要设置正确的响应头，现在你浏览器报的是那个Preflighted请求不通过的错误。
+
+ 在使用Ajax跨域请求时，如果设置Header的ContentType为application/json,会分两次发送请求。第一次先发送Method为OPTIONS的请求到服务器，这个请求会询问服务器支持哪些请求方法（GET,POST等），支持哪些请求头等等服务器的支持情况。等到这个请求返回后，如果原来我们准备发送的请求符合服务器的规则，那么才会继续发送第二个请求，否则会在Console中报错。
+
+ https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
