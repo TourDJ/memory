@@ -794,4 +794,22 @@ Lean & mean status/tabline for vim that's light as air.
 
 还有一些其他不错的主题插件值得关注：
 
-  [收集漂亮的 Vim 主题](https://zhuanlan.zhihu.com/p/34699085)
+  [收集漂亮的 Vim 主题](https://zhuanlan.zhihu.com/p/34699085)     
+  
+  
+  
+ 
+## vim7 升级 vim8
+
+安装依赖
+
+     yum install libXt-devel gtk2-devel
+     yum -y install python-devel ruby ruby-devel perl perl-devel perl-ExtUtils-Embed
+     yum install ncurses-devel
+     yum install ctags
+
+下载源码并编译安装
+
+     ./configure --disable-selinux --enable-perlinterp=yes --enable-python3interp=yes --enable-rubyinterp=yes --enable-cscope --enable-gui=auto --with-features=huge --enable-multibyte --enable-xim --with-x --with-gnome --with-compiledby="tang" --prefix=/usr/local/vim8
+     make
+     make install
