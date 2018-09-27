@@ -323,4 +323,255 @@ execution 函数定义语法：
 [Spring 实践：AOP](http://www.importnew.com/19041.html)  
 [Spring AOP 实现原理与 CGLIB 应用](https://www.ibm.com/developerworks/cn/java/j-lo-springaopcglib/index.html)  
 
+***
+***
+# Spring 使用
+
+## Spring 注解
+
+### @ConditionalOnClass
+判断当前classpath下是否存在指定类，若是则将当前的配置装载入spring容器。
+
+### @ConditionalOnProperty
+Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某个configuration是否生效。具体操作是通过其两个属性name以及havingValue来实现的。
+* name： 用来从application.properties中读取某个属性值，如果该值为空，则返回false;如果值不为空，则将该值与havingValue指定的值进行比较，如果一样则返回true;否则返回false。如果返回值为false，则该configuration不生效；为true则生效。
+* havingValue： 
+* matchIfMissing： 
+
+### @ConditionalOnMissingBean
+如果存在指定name的bean，则该注解标注的bean不创建
+
+
+### @EnableConfigurationProperties
+
+开启属性注入,有此注解就可以通过 @autowired 注入， 是配合 @ConfigurationProperties 使用的。如果没有 @EnableConfigurationProperties，则使用 @ConfigurationProperties 注解的类上还需要添加 @Component 一类组件。
+
+### @ConfigurationProperties
+
+读取配置信息并自动封装成实体类，能够批量注入配置文件的属性。@Value 只能单个指定。
+
+### @@AutoConfigureAfter
+### @@EnableAspectJAutoProxy
+
+***
+
+## Spring web 自动配置
+
+### @EnableAutoConfiguration
+
+注解 EnableAutoConfiguration 实现了自动装配，相关的类有 WebMvcAutoConfiguration 。
+当 WebMvcConfigurationSupport 类不存在的时候，自动装配类 WebMvcAutoConfiguration 才会创建出来，所以增加 @EnableWebMvc 注解以后 WebMvcAutoConfiguration 中配置就不会生效，你需要自己来配置需要的每一项。这种情况下的配置方法建议参考 WebMvcAutoConfiguration 类。
+
+### @EnableWebMvc 、 WebMvcConfigurationSupport 和 WebMvcConfigurerAdapter
+使用了 @EnableWebMvc 注解等于扩展了 WebMvcConfigurationSupport 类的功能, 但是没有重写任何方法, 如果需要自定义一些配置，则可以实现接口 WebMvcConfigurer 重写一些相关的方法；如果不需要配置一些特殊的配置属性，则可以直接继承 WebMvcConfigurationSupport 类，而不需要添加 @EnableWebMvc 注解 。
+ 
+有以下几种使用方式：
+
+* @EnableWebMvc + extends WebMvcConfigurerAdapter, 在扩展的类中重写父类的方法即可，这种方式会屏蔽 Spring Boot 的 @EnableAutoConfiguration 中的设置；
+* extends WebMvcConfigurationSupport，在扩展的类中重写父类的方法即可，这种方式会屏蔽 Spring Boot 的 @EnableAutoConfiguration 中的设置；
+* extends WebMvcConfigurerAdapter，在扩展的类中重写父类的方法即可，这种方式依旧使用 Spring Boot 的 @EnableAutoConfiguration 中的设置。
+
+> 在 WebMvcConfigurationSupport（@EnableWebMvc）和 @EnableAutoConfiguration 这两种方式都有一些默认的设定，而 WebMvcConfigurerAdapter 则是一个abstract class。
+> WebMvcConfigurerAdapter 已过时，现在直接实现 WebMvcConfigurer 接口。
+
+
+***
+
+## Spring 拦截器
+
+Spring 中实现自定义拦截器只需要3步： 
+1、 创建我们自己的拦截器类并实现 HandlerInterceptor 接口。 
+2、 创建一个Java类继承 WebMvcConfigurerAdapter 或 WebMvcConfigurationSupport, 并重写 addInterceptors 方法。 
+3、 实例化我们自定义的拦截器，然后将对像手动添加到拦截器链中（在addInterceptors方法中添加）。
+
+Spring MVC 中的Interceptor 拦截请求是通过HandlerInterceptor 来实现的。在SpringMVC 中定义一个Interceptor 非常简单，主要有两种方式:
+* 第一种方式是要定义的Interceptor类要实现了Spring 的HandlerInterceptor 接口，或者是这个类继承实现了HandlerInterceptor 接口的类，比如Spring 已经提供的实现了HandlerInterceptor 接口的抽象类HandlerInterceptorAdapter ；
+* 第二种方式是实现Spring 的 WebRequestInterceptor 接口，或者是继承实现了 WebRequestInterceptor 的类。
+
+***
+
+## Spring 消息转换器
+
+
+## Spring 属性管理
+
+PropertySource: 属性源，用于存放 key-value 对象的抽象，子类需要实现 getProperty(String name) 返回对应的 value 方法，其中value可以是任何类型不局限在字符串
+* EnumerablePropertySource: 增加了一个方法用于返回所有 name 值 getPropertyNames，同时重写的 containsProperty方法，通过getPropertyNames 返回的 key 值进行判断，有助于提升性能
+* MapPropertySource：其中的source是以Map形式存放的,重写了getProperty和getPropertyNames
+* PropertiesPropertySoruce：同MapPropertySource,只是构造函数的参数不同
+
+PropertySources: 用于存放PropertySource的集合
+* MutablePropertySources：用linkList实现PropertySources，可以方便向List链中首位、末位、中间位置增加或替换或删除一个key-value属性值。每次增加或替换时，都会判断这个PropertySource是否存在，如果存在，先删除，保证整个List中name的唯一
+
+PropertyResolver：属性解析器，用于解析相应key的value
+
+Environment: 环境。 比如JDK环境，Servlet 环境，Spring环境等等；每个环境都有自己的配置数据，如System.getProperties()、System.getenv()等可以拿到JDK环境数据；ServletContext.getInitParameter()可以拿到Servlet环境配置数据等等。Environment 本身是一个PropertyResolver，但是提供了Profile特性，即可以根据环境得到相应数据（即激活不同的Profile，可以得到不同的属性数据，比如用于多环境场景的配置（正式机、测试机、开发机DataSource配置））
+* MockEnvironment：模拟的环境，用于测试时使用；
+* StandardEnvironment：标准环境，普通Java应用时使用，会自动注册System.getProperties() 和 System.getenv()到环境；
+* StandardServletEnvironment：标准Servlet环境，其继承了StandardEnvironment，Web应用时使用，除了StandardEnvironment外，会自动注册ServletConfig（DispatcherServlet）、ServletContext及JNDI实例到环境；默认除了StandardEnvironment的两个属性外，还有另外三个属性：servletContextInitParams（ServletContext）、servletConfigInitParams（ServletConfig）、jndiProperties（JNDI）。
+
+Profile：剖面，我们程序可能从某几个剖面来执行应用，比如正式机环境、测试机环境、开发机环境等，每个剖面的配置可能不一样（比如开发机可能使用本地的数据库测试，正式机使用正式机的数据库测试）等；因此呢，就需要根据不同的环境选择不同的配置；只有激活的剖面的组件/配置才会注册到Spring容器，类似于maven中profile
+
+profile 有两种：
+* 默认的：通过“spring.profiles.default”属性获取，如果没有配置默认值是“default”
+* 明确激活的：通过“spring.profiles.active”获取
+
+查找顺序是：先进性明确激活的匹配，如果没有指定明确激活的（即集合为空）就找默认的；配置属性值从Environment读取。
+设置profile属性:    
+* 启动Java应用时，通过-D传入系统参数
+```java
+	-Dspring.profiles.active=dev  
+```
+* 如果是web环境，可以通过上下文初始化参数设置	
+```xml
+	<context-param>  
+	    <param-name>spring.profiles.active</param-name>  
+	    <param-value>dev</param-value>  
+	</context-param>
+```  
+* 通过自定义添加PropertySource
+```java
+	Map<String, Object> map = new HashMap<String, Object>();  
+	map.put("spring.profiles.active", "dev");  
+	MapPropertySource propertySource = new MapPropertySource("map", map);  
+	env.getPropertySources().addFirst(propertySource); 
+```
+* 直接设置Profile
+```java
+	env.setActiveProfiles("dev", "test");
+```
+
+## Spring AOP
+
+AOP的基本概念
+* 切面（Aspect）：业务流程运行的某个特定步骤，也就是应用运行过程的关注点，关注点通常会横切多个对象，因此常被称为横切关注点
+* 连接点（JoinPoint）：程序执行过程中明确的点，如方法调用，或者异常抛出。Spring AOP中，连接点总是方法调用。
+* 增强处理（Advice）：AOP框架在特定的切入点执行的增强处理。处理有around，before，after等类型。
+* 切入点（PointCut）：可以插入增强处理的连接点。
+
+Spring AOP 无需使用任何特殊命令对 Java 源代码进行编译，它采用运行时动态地、在内存中临时生成“代理类”的方式来生成 AOP 代理。
+
+Spring 允许使用 AspectJ Annotation 用于定义切面（Aspect）、切入点（Pointcut）和增强处理（Advice），Spring 框架则可识别并根据这些 Annotation 来生成 AOP 代理。Spring 只是使用了和 AspectJ 5 一样的注解，但并没有使用 AspectJ 的编译器或者织入器（Weaver），底层依然使用的是 Spring AOP，依然是在运行时动态生成 AOP 代理，并不依赖于 AspectJ 的编译器或者织入器。
+
+当启动了 @AspectJ 支持后，只要我们在 Spring 容器中配置一个带 @Aspect 注释的 Bean，Spring 将会自动识别该 Bean，并将该 Bean 作为切面 Bean 处理。
+```java
+// 定义一个切面
+@Aspect
+@Component
+public class LogAspect {
+
+    @Pointcut("execution(* com.tang.service..*.bookFlight(..))")
+    private void logPointCut() {
+    }
+
+    @AfterReturning(pointcut = "logPointCut()", returning = "retVala")
+    public void logBookingStatus(boolean retVala) { 
+        if (retVala) {
+            System.out.println("booking flight succeeded!");
+        } else {
+            System.out.println("booking flight failed!");
+        }
+    }
+}
+```
+
+#### 切点表达式
+切点的功能是指出切面的通知应该从哪里织入应用的执行流。切面只能织入公共方法。
+
+在Spring AOP中，使用 AspectJ 的切点表达式语言定义切点其中 excecution() 是最重要的描述符，其它描述符用于辅助excecution()。
+
+excecution()的语法如下
+```java
+	execution(modifiers-pattern? ret-type-pattern declaring-type-pattern? name-pattern(param-pattern) throws-pattern?)
+```
+这个语法看似复杂，但是我们逐个分解一下，其实就是描述了一个方法的特征：
+* modifier-pattern：表示方法的修饰符
+* ret-type-pattern：表示方法的返回值
+* declaring-type-pattern?：表示方法所在的类的路径
+* name-pattern：表示方法名
+* param-pattern：表示方法的参数
+* throws-pattern：表示方法抛出的异常
+
+注意事项
+
+* 其中后面跟着“?”的是可选项。
+* 在各个pattern中，可以使用"*"来表示匹配所有。
+* 在param-pattern中，可以指定具体的参数类型，多个参数间用“,”隔开，各个也可以用“*”来表示匹配任意类型的参数，如:
+	(String)表示匹配一个String参数的方法；    
+	(\*,String)表示匹配有两个参数的方法，第一个参数可以是任意类型，而第二个参数是String类型。    
+	(..)表示零个或多个任意的方法参数。
+> 使用&&符号表示与关系，使用||表示或关系、使用!表示非关系。在XML文件中使用and、or和not这三个符号。
+
+Spring还提供了一个bean()描述符，用于在切点表达式中引用Spring Beans。例如：
+```java
+	excecution(* com.tianmaying.service.BlogService.updateBlog(..))  and bean('Blog')
+```
+这表示将切面应用于BlogService的updateBlog方法上，但是仅限于ID为tianmayingBlog的Bean。
+
+也可以排除特定的Bean：
+```java
+	excecution(* com.tianmaying.service.BlogService.updateBlog(..))  and !bean('Blog')
+```
+可用的描述符包括：
+
+* args() 表示方法的参数属于一个特定的类
+* @args()
+* execution()
+* this() 是用来限定方法所属的类，比如this(com.tianmaying.service.BlogServiceInterface)表示实现了com.tianmaying.service.BlogServiceInterface的所有类。如果this括号内是具体类而不是接口的话，则表示单个类。
+* target() 表示方法所属的类
+* @target()
+* within() 表示方法属于一个特定的类
+* @within()
+* @annotation 表示具有某个标注的方法
+
+> 它们对应的加了@的版本则表示对应的类具有某个标注。
+
+AspectJ提供了五种定义通知的标注：
+
+* @Before：前置通知，在调用目标方法之前执行通知定义的任务
+* @After：后置通知，在目标方法执行结束后，无论执行结果如何都执行通知定义的任务
+* @After-returning：后置通知，在目标方法执行结束后，如果执行成功，则执行通知定义的任务
+* @After-throwing：异常通知，如果目标方法执行过程中抛出异常，则执行通知定义的任务
+* @Around：环绕通知，在目标方法执行前和执行后，都需要执行通知定义的任务
+
+***
+***
+
+# Spring Boot 使用
+
+## Spring Boot 配置
+
+Spring Boot 所提供的配置优先级顺序比较复杂。按照优先级从高到低的顺序，具体的列表如下所示。
+
+* 命令行参数
+	java -jar example-1.0.jar --server.port=8080 --spring.profiles.active=pro
+* 从 java:comp/env 得到的 JNDI 属性。
+* 通过 System.getProperties() 获取的 Java 系统参数。
+	java -Dname="isea533" -jar app.jar
+* 操作系统环境变量。
+* 通过 RandomValuePropertySource 生成的 random.* 属性。
+* jar包外部的application-{profile}.properties或application.yml(带spring.profile)配置文件
+* jar包内部的application-{profile}.properties或application.yml(带spring.profile)配置文件
+* jar包外部的application.properties或application.yml(不带spring.profile)配置文件
+* jar包内部的application.properties或application.yml(不带spring.profile)配置文件
+* 在应用配置 Java 类（包含 @Configuration 注解的 Java 类）中通过 @PropertySource 注解声明的属性文件。
+* 通过 SpringApplication.setDefaultProperties 声明的默认属性。
+
+
+## Spring Boot 静态资源处理
+
+Spring boot默认对 '\/\*\*' 的访问可以直接访问四个目录下的文件：
+
+	* classpath:/public/
+	* classpath:/resources/
+	* classpath:/static/
+	* classpath:/META-INF/resouces/
+优先级顺序为：META-INF/resources > resources > static > public
+
+在这几个目录下放置静态的 html 文件可以直接访问，classpath 路径指 src/main/resources 。
+
+## Spring Boot 动态页面
+
+
+
 
