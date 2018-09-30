@@ -497,3 +497,69 @@ react应用在运行时会更改浏览器uri而又不真的希望服务器对这
       }
 
 try_files $uri $uri/ /index.html是nginx重定向指令，意思是在站点查找有无浏览器发来的uri，如果没有那就发送index.html这个文件给浏览器。
+
+
+## nginx location 正则写法
+语法
+
+      Syntax:	location [ = | ~ | ~* | ^~ ] uri { ... }
+                  location @name { ... }
+      Default:	—
+      Context:	server, location
+
+* 以 = 开头表示精确匹配
+* 以 ~ 开头表示区分大小写的正则匹配
+* 以 ~* 开头表示不区分大小写的正则匹配
+* 以 ^~ 开头表示uri以某个常规字符串开头，不是正则匹配
+* 以 / 通用匹配, 如果没有其它匹配,任何请求都会匹配到
+
+顺序优先级：      
+(location =) > (location 完整路径) > (location ^~ 路径) > (location ~,~* 正则顺序) > (location 部分起始路径) > (/)    
+    
+```shell
+location ~* \.(gif|jpg|jpeg)$ {
+  # 匹配所有以 gif,jpg或jpeg 结尾的请求
+  # 然而，所有请求 /images/ 下的图片会被 config D 处理，因为 ^~ 到达不了这一条正则
+  [ configuration E ] 
+}
+
+location /images/ {
+  # 字符匹配到 /images/，继续往下，会发现 ^~ 存在
+  [ configuration F ] 
+}
+
+location /images/abc {
+  # 最长字符匹配到 /images/abc，继续往下，会发现 ^~ 存在
+  # F与G的放置顺序是没有关系的
+  [ configuration G ] 
+}
+
+location ~ /images/abc/ {
+  # 只有去掉 config D 才有效：先最长匹配 config G 开头的地址，继续往下搜索，匹配到这一条正则，采用
+    [ configuration H ] 
+}
+
+location ~* /js/.*/\.js
+```
+
+## [Rewrite 规则](https://segmentfault.com/a/1190000002797606)     
+rewrite功能就是，使用nginx提供的全局变量或自己设置的变量，结合正则表达式和标志位实现url重写以及重定向。    
+rewrite只能放在server{},location{},if{}中，并且只能对域名后边的除去传递的参数外的字符串起作用，例如     
+      http://seanlook.com/a/we/index.php?id=1&u=str 
+只对/a/we/index.php重写。
+
+语法      
+
+      rewrite regex replacement [flag];
+
+如果相对域名或参数字符串起作用，可以使用全局变量匹配，也可以使用proxy_pass反向代理。
+
+表面看rewrite和location功能有点像，都能实现跳转，主要区别在于rewrite是在同一域名内更改获取资源的路径，而location是对一类路径做控制访问或反向代理，可以proxy_pass到其他机器。很多情况下rewrite也会写在location里，它们的执行顺序是：
+
+* 执行server块的rewrite指令
+* 执行location匹配
+* 执行选定的location中的rewrite指令
+* 如果其中某步URI被重写，则重新循环执行1-3，直到找到真实存在的文件；
+* 循环超过10次，则返回500 Internal Server Error错误。
+
+
