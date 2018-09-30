@@ -482,3 +482,18 @@ alias实例：
 1. 使用alias时，目录名后面一定要加"/"。
 3. alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。
 4. alias只能位于location块中。（root可以不放在location中）
+
+
+## nginx 正确服务 react-router
+react应用在运行时会更改浏览器uri而又不真的希望服务器对这些uri去作响应，如果此时刷新浏览器，服务器当然是收到浏览器发来的uri就去寻找资源，这个uri在服务器上是没有对应资源，结果服务器因找不到资源就发送403错误标志给浏览器。
+
+所以，我们要做的调整是：浏览器在使用这个react应用期间，无论uri更改与否，服务器都发回index.html这个页面就行。
+
+      server {  
+        ...
+        location / {
+          try_files $uri $uri/ /index.html;
+        }
+      }
+
+try_files $uri $uri/ /index.html是nginx重定向指令，意思是在站点查找有无浏览器发来的uri，如果没有那就发送index.html这个文件给浏览器。
