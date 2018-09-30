@@ -563,3 +563,6 @@ rewrite只能放在server{},location{},if{}中，并且只能对域名后边的�
 * 循环超过10次，则返回500 Internal Server Error错误。
 
 
+***
+
+[ngx_http_rewrite_module](http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#break)    
