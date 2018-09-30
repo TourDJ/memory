@@ -154,6 +154,9 @@ Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某
 ### @@AutoConfigureAfter
 ### @@EnableAspectJAutoProxy
 
+#### @profile
+@profile 注解是spring提供的一个用来标明当前运行环境的注解。使用DI来依赖注入的时候，能够根据当前制定的运行环境来注入相应的bean。
+
 ***
 
 ## Spring web 自动配置
