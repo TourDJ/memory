@@ -1,6 +1,36 @@
 
 Spring 官方文档： [Spring Framework Reference Documentation](https://docs.spring.io/spring/docs/4.3.13.RELEASE/spring-framework-reference/htmlsingle/)
 
+# Spring 使用
+
+
+## Spring 标签
+
+\<context:annotation-config/\> 
+
+将隐式地向 Spring 容器注册 4 个 BeanPostProcessor：
+  * AutowiredAnnotationBeanPostProcessor
+  * CommonAnnotationBeanPostProcessor
+  * PersistenceAnnotationBeanPostProcessor
+  * equiredAnnotationBeanPostProcessor
+
+详情看[这里](http://blog.csdn.net/jationxiaozi/article/details/6084757)
+
+
+[\<context:component-scan base-package="pack.pack"/\>](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html)
+
+该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
+
+
+## Spring MVC
+
+#### [ViewResolver](http://blog.csdn.net/prince2270/article/details/5891085)
+Spring MVC使用ViewResolver来根据controller中返回的view名关联到具体的View对象。使用View对象来渲染返回值以生成最终的视图，如html,json或pdf等。
+
+[ContentNegotiatingViewResolver](http://www.open-open.com/lib/view/open1417705219152.html) 视图解析器,利用他就可以配置多种返回值。
+[Migrating spring 3.2 REST to Spring 4](https://javattitude.com/2014/04/20/migrating-spring-3-2-rest-to-spring-4/)
+
+
 ## Spring 注解
 
 参考： [Spring 注解依赖注入实现](https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-iocannt/index.html)     
@@ -32,8 +62,7 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
       } 
 上面代码把URI template 中变量 id 的值绑定到方法的参数上。若方法参数名称和需要绑定的uri template中变量名称不一致，需要在@PathVariable("name")指定uri template中的名称。
 
-#### @Re
-questBody
+#### @RequestBody
 
 作用： 
 * 该注解用于读取Request请求的body部分数据，使用系统默认配置的HttpMessageConverter进行解析，然后把相应的数据绑定到要返回的对象上；
@@ -100,35 +129,118 @@ SessionAttributes 注解应用到 Controller上面，可以将Model中的属性�
 2)如果需要返回到指定页面，则需要用 @Controller配合视图解析器InternalResourceViewResolver才行。
 3)如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。
 
+
+### @ConditionalOnClass
+判断当前classpath下是否存在指定类，若是则将当前的配置装载入spring容器。
+
+### @ConditionalOnProperty
+Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某个configuration是否生效。具体操作是通过其两个属性name以及havingValue来实现的。
+* name： 用来从application.properties中读取某个属性值，如果该值为空，则返回false;如果值不为空，则将该值与havingValue指定的值进行比较，如果一样则返回true;否则返回false。如果返回值为false，则该configuration不生效；为true则生效。
+* havingValue： 
+* matchIfMissing： 
+
+### @ConditionalOnMissingBean
+如果存在指定name的bean，则该注解标注的bean不创建
+
+
+### @EnableConfigurationProperties
+
+开启属性注入,有此注解就可以通过 @autowired 注入， 是配合 @ConfigurationProperties 使用的。如果没有 @EnableConfigurationProperties，则使用 @ConfigurationProperties 注解的类上还需要添加 @Component 一类组件。
+
+### @ConfigurationProperties
+
+读取配置信息并自动封装成实体类，能够批量注入配置文件的属性。@Value 只能单个指定。
+
+### @@AutoConfigureAfter
+### @@EnableAspectJAutoProxy
+
 ***
 
+## Spring web 自动配置
 
-## Spring 标签
+### @EnableAutoConfiguration
 
-\<context:annotation-config/\> 
+注解 EnableAutoConfiguration 实现了自动装配，相关的类有 WebMvcAutoConfiguration 。
+当 WebMvcConfigurationSupport 类不存在的时候，自动装配类 WebMvcAutoConfiguration 才会创建出来，所以增加 @EnableWebMvc 注解以后 WebMvcAutoConfiguration 中配置就不会生效，你需要自己来配置需要的每一项。这种情况下的配置方法建议参考 WebMvcAutoConfiguration 类。
 
-将隐式地向 Spring 容器注册 4 个 BeanPostProcessor：
-  * AutowiredAnnotationBeanPostProcessor
-  * CommonAnnotationBeanPostProcessor
-  * PersistenceAnnotationBeanPostProcessor
-  * equiredAnnotationBeanPostProcessor
+### @EnableWebMvc 、 WebMvcConfigurationSupport 和 WebMvcConfigurerAdapter
+使用了 @EnableWebMvc 注解等于扩展了 WebMvcConfigurationSupport 类的功能, 但是没有重写任何方法, 如果需要自定义一些配置，则可以实现接口 WebMvcConfigurer 重写一些相关的方法；如果不需要配置一些特殊的配置属性，则可以直接继承 WebMvcConfigurationSupport 类，而不需要添加 @EnableWebMvc 注解 。
+ 
+有以下几种使用方式：
 
-详情看[这里](http://blog.csdn.net/jationxiaozi/article/details/6084757)
+* @EnableWebMvc + extends WebMvcConfigurerAdapter, 在扩展的类中重写父类的方法即可，这种方式会屏蔽 Spring Boot 的 @EnableAutoConfiguration 中的设置；
+* extends WebMvcConfigurationSupport，在扩展的类中重写父类的方法即可，这种方式会屏蔽 Spring Boot 的 @EnableAutoConfiguration 中的设置；
+* extends WebMvcConfigurerAdapter，在扩展的类中重写父类的方法即可，这种方式依旧使用 Spring Boot 的 @EnableAutoConfiguration 中的设置。
+
+> 在 WebMvcConfigurationSupport（@EnableWebMvc）和 @EnableAutoConfiguration 这两种方式都有一些默认的设定，而 WebMvcConfigurerAdapter 则是一个abstract class。
+> WebMvcConfigurerAdapter 已过时，现在直接实现 WebMvcConfigurer 接口。
 
 
-[\<context:component-scan base-package="pack.pack"/\>](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html)
+***
 
-该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
+## Spring 拦截器
+
+Spring 中实现自定义拦截器只需要3步： 
+1、 创建我们自己的拦截器类并实现 HandlerInterceptor 接口。 
+2、 创建一个Java类继承 WebMvcConfigurerAdapter 或 WebMvcConfigurationSupport, 并重写 addInterceptors 方法。 
+3、 实例化我们自定义的拦截器，然后将对像手动添加到拦截器链中（在addInterceptors方法中添加）。
+
+Spring MVC 中的Interceptor 拦截请求是通过HandlerInterceptor 来实现的。在SpringMVC 中定义一个Interceptor 非常简单，主要有两种方式:
+* 第一种方式是要定义的Interceptor类要实现了Spring 的HandlerInterceptor 接口，或者是这个类继承实现了HandlerInterceptor 接口的类，比如Spring 已经提供的实现了HandlerInterceptor 接口的抽象类HandlerInterceptorAdapter ；
+* 第二种方式是实现Spring 的 WebRequestInterceptor 接口，或者是继承实现了 WebRequestInterceptor 的类。
+
+***
+
+## Spring 消息转换器
 
 
-## Spring MVC
+## Spring 属性管理
 
-#### [ViewResolver](http://blog.csdn.net/prince2270/article/details/5891085)
-Spring MVC使用ViewResolver来根据controller中返回的view名关联到具体的View对象。使用View对象来渲染返回值以生成最终的视图，如html,json或pdf等。
+PropertySource: 属性源，用于存放 key-value 对象的抽象，子类需要实现 getProperty(String name) 返回对应的 value 方法，其中value可以是任何类型不局限在字符串
+* EnumerablePropertySource: 增加了一个方法用于返回所有 name 值 getPropertyNames，同时重写的 containsProperty方法，通过getPropertyNames 返回的 key 值进行判断，有助于提升性能
+* MapPropertySource：其中的source是以Map形式存放的,重写了getProperty和getPropertyNames
+* PropertiesPropertySoruce：同MapPropertySource,只是构造函数的参数不同
 
-[ContentNegotiatingViewResolver](http://www.open-open.com/lib/view/open1417705219152.html) 视图解析器,利用他就可以配置多种返回值。
-[Migrating spring 3.2 REST to Spring 4](https://javattitude.com/2014/04/20/migrating-spring-3-2-rest-to-spring-4/)
+PropertySources: 用于存放PropertySource的集合
+* MutablePropertySources：用linkList实现PropertySources，可以方便向List链中首位、末位、中间位置增加或替换或删除一个key-value属性值。每次增加或替换时，都会判断这个PropertySource是否存在，如果存在，先删除，保证整个List中name的唯一
 
+PropertyResolver：属性解析器，用于解析相应key的value
+
+Environment: 环境。 比如JDK环境，Servlet 环境，Spring环境等等；每个环境都有自己的配置数据，如System.getProperties()、System.getenv()等可以拿到JDK环境数据；ServletContext.getInitParameter()可以拿到Servlet环境配置数据等等。Environment 本身是一个PropertyResolver，但是提供了Profile特性，即可以根据环境得到相应数据（即激活不同的Profile，可以得到不同的属性数据，比如用于多环境场景的配置（正式机、测试机、开发机DataSource配置））
+* MockEnvironment：模拟的环境，用于测试时使用；
+* StandardEnvironment：标准环境，普通Java应用时使用，会自动注册System.getProperties() 和 System.getenv()到环境；
+* StandardServletEnvironment：标准Servlet环境，其继承了StandardEnvironment，Web应用时使用，除了StandardEnvironment外，会自动注册ServletConfig（DispatcherServlet）、ServletContext及JNDI实例到环境；默认除了StandardEnvironment的两个属性外，还有另外三个属性：servletContextInitParams（ServletContext）、servletConfigInitParams（ServletConfig）、jndiProperties（JNDI）。
+
+Profile：剖面，我们程序可能从某几个剖面来执行应用，比如正式机环境、测试机环境、开发机环境等，每个剖面的配置可能不一样（比如开发机可能使用本地的数据库测试，正式机使用正式机的数据库测试）等；因此呢，就需要根据不同的环境选择不同的配置；只有激活的剖面的组件/配置才会注册到Spring容器，类似于maven中profile
+
+profile 有两种：
+* 默认的：通过“spring.profiles.default”属性获取，如果没有配置默认值是“default”
+* 明确激活的：通过“spring.profiles.active”获取
+
+查找顺序是：先进性明确激活的匹配，如果没有指定明确激活的（即集合为空）就找默认的；配置属性值从Environment读取。
+设置profile属性:    
+* 启动Java应用时，通过-D传入系统参数
+```java
+	-Dspring.profiles.active=dev  
+```
+* 如果是web环境，可以通过上下文初始化参数设置	
+```xml
+	<context-param>  
+	    <param-name>spring.profiles.active</param-name>  
+	    <param-value>dev</param-value>  
+	</context-param>
+```  
+* 通过自定义添加PropertySource
+```java
+	Map<String, Object> map = new HashMap<String, Object>();  
+	map.put("spring.profiles.active", "dev");  
+	MapPropertySource propertySource = new MapPropertySource("map", map);  
+	env.getPropertySources().addFirst(propertySource); 
+```
+* 直接设置Profile
+```java
+	env.setActiveProfiles("dev", "test");
+```
 
 ## Spring AOP
 AOP（Aspect Orient Programming），作为面向对象编程的一种补充，广泛应用于处理一些具有横切性质的系统级服务，如事务管理、安全检查、缓存、对象池管理等。
@@ -322,126 +434,6 @@ execution 函数定义语法：
 [Java JDK代理、CGLIB、AspectJ代理分析比较](https://zhuanlan.zhihu.com/p/28870960)  
 [Spring 实践：AOP](http://www.importnew.com/19041.html)  
 [Spring AOP 实现原理与 CGLIB 应用](https://www.ibm.com/developerworks/cn/java/j-lo-springaopcglib/index.html)  
-
-***
-***
-# Spring 使用
-
-## Spring 注解
-
-### @ConditionalOnClass
-判断当前classpath下是否存在指定类，若是则将当前的配置装载入spring容器。
-
-### @ConditionalOnProperty
-Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某个configuration是否生效。具体操作是通过其两个属性name以及havingValue来实现的。
-* name： 用来从application.properties中读取某个属性值，如果该值为空，则返回false;如果值不为空，则将该值与havingValue指定的值进行比较，如果一样则返回true;否则返回false。如果返回值为false，则该configuration不生效；为true则生效。
-* havingValue： 
-* matchIfMissing： 
-
-### @ConditionalOnMissingBean
-如果存在指定name的bean，则该注解标注的bean不创建
-
-
-### @EnableConfigurationProperties
-
-开启属性注入,有此注解就可以通过 @autowired 注入， 是配合 @ConfigurationProperties 使用的。如果没有 @EnableConfigurationProperties，则使用 @ConfigurationProperties 注解的类上还需要添加 @Component 一类组件。
-
-### @ConfigurationProperties
-
-读取配置信息并自动封装成实体类，能够批量注入配置文件的属性。@Value 只能单个指定。
-
-### @@AutoConfigureAfter
-### @@EnableAspectJAutoProxy
-
-***
-
-## Spring web 自动配置
-
-### @EnableAutoConfiguration
-
-注解 EnableAutoConfiguration 实现了自动装配，相关的类有 WebMvcAutoConfiguration 。
-当 WebMvcConfigurationSupport 类不存在的时候，自动装配类 WebMvcAutoConfiguration 才会创建出来，所以增加 @EnableWebMvc 注解以后 WebMvcAutoConfiguration 中配置就不会生效，你需要自己来配置需要的每一项。这种情况下的配置方法建议参考 WebMvcAutoConfiguration 类。
-
-### @EnableWebMvc 、 WebMvcConfigurationSupport 和 WebMvcConfigurerAdapter
-使用了 @EnableWebMvc 注解等于扩展了 WebMvcConfigurationSupport 类的功能, 但是没有重写任何方法, 如果需要自定义一些配置，则可以实现接口 WebMvcConfigurer 重写一些相关的方法；如果不需要配置一些特殊的配置属性，则可以直接继承 WebMvcConfigurationSupport 类，而不需要添加 @EnableWebMvc 注解 。
- 
-有以下几种使用方式：
-
-* @EnableWebMvc + extends WebMvcConfigurerAdapter, 在扩展的类中重写父类的方法即可，这种方式会屏蔽 Spring Boot 的 @EnableAutoConfiguration 中的设置；
-* extends WebMvcConfigurationSupport，在扩展的类中重写父类的方法即可，这种方式会屏蔽 Spring Boot 的 @EnableAutoConfiguration 中的设置；
-* extends WebMvcConfigurerAdapter，在扩展的类中重写父类的方法即可，这种方式依旧使用 Spring Boot 的 @EnableAutoConfiguration 中的设置。
-
-> 在 WebMvcConfigurationSupport（@EnableWebMvc）和 @EnableAutoConfiguration 这两种方式都有一些默认的设定，而 WebMvcConfigurerAdapter 则是一个abstract class。
-> WebMvcConfigurerAdapter 已过时，现在直接实现 WebMvcConfigurer 接口。
-
-
-***
-
-## Spring 拦截器
-
-Spring 中实现自定义拦截器只需要3步： 
-1、 创建我们自己的拦截器类并实现 HandlerInterceptor 接口。 
-2、 创建一个Java类继承 WebMvcConfigurerAdapter 或 WebMvcConfigurationSupport, 并重写 addInterceptors 方法。 
-3、 实例化我们自定义的拦截器，然后将对像手动添加到拦截器链中（在addInterceptors方法中添加）。
-
-Spring MVC 中的Interceptor 拦截请求是通过HandlerInterceptor 来实现的。在SpringMVC 中定义一个Interceptor 非常简单，主要有两种方式:
-* 第一种方式是要定义的Interceptor类要实现了Spring 的HandlerInterceptor 接口，或者是这个类继承实现了HandlerInterceptor 接口的类，比如Spring 已经提供的实现了HandlerInterceptor 接口的抽象类HandlerInterceptorAdapter ；
-* 第二种方式是实现Spring 的 WebRequestInterceptor 接口，或者是继承实现了 WebRequestInterceptor 的类。
-
-***
-
-## Spring 消息转换器
-
-
-## Spring 属性管理
-
-PropertySource: 属性源，用于存放 key-value 对象的抽象，子类需要实现 getProperty(String name) 返回对应的 value 方法，其中value可以是任何类型不局限在字符串
-* EnumerablePropertySource: 增加了一个方法用于返回所有 name 值 getPropertyNames，同时重写的 containsProperty方法，通过getPropertyNames 返回的 key 值进行判断，有助于提升性能
-* MapPropertySource：其中的source是以Map形式存放的,重写了getProperty和getPropertyNames
-* PropertiesPropertySoruce：同MapPropertySource,只是构造函数的参数不同
-
-PropertySources: 用于存放PropertySource的集合
-* MutablePropertySources：用linkList实现PropertySources，可以方便向List链中首位、末位、中间位置增加或替换或删除一个key-value属性值。每次增加或替换时，都会判断这个PropertySource是否存在，如果存在，先删除，保证整个List中name的唯一
-
-PropertyResolver：属性解析器，用于解析相应key的value
-
-Environment: 环境。 比如JDK环境，Servlet 环境，Spring环境等等；每个环境都有自己的配置数据，如System.getProperties()、System.getenv()等可以拿到JDK环境数据；ServletContext.getInitParameter()可以拿到Servlet环境配置数据等等。Environment 本身是一个PropertyResolver，但是提供了Profile特性，即可以根据环境得到相应数据（即激活不同的Profile，可以得到不同的属性数据，比如用于多环境场景的配置（正式机、测试机、开发机DataSource配置））
-* MockEnvironment：模拟的环境，用于测试时使用；
-* StandardEnvironment：标准环境，普通Java应用时使用，会自动注册System.getProperties() 和 System.getenv()到环境；
-* StandardServletEnvironment：标准Servlet环境，其继承了StandardEnvironment，Web应用时使用，除了StandardEnvironment外，会自动注册ServletConfig（DispatcherServlet）、ServletContext及JNDI实例到环境；默认除了StandardEnvironment的两个属性外，还有另外三个属性：servletContextInitParams（ServletContext）、servletConfigInitParams（ServletConfig）、jndiProperties（JNDI）。
-
-Profile：剖面，我们程序可能从某几个剖面来执行应用，比如正式机环境、测试机环境、开发机环境等，每个剖面的配置可能不一样（比如开发机可能使用本地的数据库测试，正式机使用正式机的数据库测试）等；因此呢，就需要根据不同的环境选择不同的配置；只有激活的剖面的组件/配置才会注册到Spring容器，类似于maven中profile
-
-profile 有两种：
-* 默认的：通过“spring.profiles.default”属性获取，如果没有配置默认值是“default”
-* 明确激活的：通过“spring.profiles.active”获取
-
-查找顺序是：先进性明确激活的匹配，如果没有指定明确激活的（即集合为空）就找默认的；配置属性值从Environment读取。
-设置profile属性:    
-* 启动Java应用时，通过-D传入系统参数
-```java
-	-Dspring.profiles.active=dev  
-```
-* 如果是web环境，可以通过上下文初始化参数设置	
-```xml
-	<context-param>  
-	    <param-name>spring.profiles.active</param-name>  
-	    <param-value>dev</param-value>  
-	</context-param>
-```  
-* 通过自定义添加PropertySource
-```java
-	Map<String, Object> map = new HashMap<String, Object>();  
-	map.put("spring.profiles.active", "dev");  
-	MapPropertySource propertySource = new MapPropertySource("map", map);  
-	env.getPropertySources().addFirst(propertySource); 
-```
-* 直接设置Profile
-```java
-	env.setActiveProfiles("dev", "test");
-```
-
-## Spring AOP
 
 AOP的基本概念
 * 切面（Aspect）：业务流程运行的某个特定步骤，也就是应用运行过程的关注点，关注点通常会横切多个对象，因此常被称为横切关注点
