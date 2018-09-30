@@ -564,5 +564,8 @@ rewrite只能放在server{},location{},if{}中，并且只能对域名后边的�
 
 
 ***
+进阶     
+[nginx平台初探](http://tengine.taobao.org/book/chapter_02.html)     
+[ngx_http_rewrite_module](http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#break)   
 
-[ngx_http_rewrite_module](http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#break)    
+
