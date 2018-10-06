@@ -7,7 +7,7 @@
   ### [vim 的 buffer、window 和 tab](#buffer)
   ### [vim 配置](#config)
   ### [vim 命令](#vimcmd)
-
+### [vim 主题](theme)
 
 *** 
 
@@ -554,7 +554,7 @@ vi/vim 中可以使用 :s 命令来替换字符串
 
 ***
 
-## 模式行（modeline）
+## <a id="modeline">模式行（modeline）</a>
 vim 的 modeline 可以让你针对每个文件进行文件级别的设置，这些设置是覆盖当前用户的 vimrc 中的设置的。当 vim 打开一个包含了vim modeline 注释行的文件时，会自动读取这一行的参数配置并调整自己的设置到这个配置。vim 默认关闭modeline，开启的话需要在你的home下的.vimrc文件中增加一行：
 
      set modeline
@@ -591,7 +591,7 @@ modeline 里可以放的指令不限一个，所以我.py 档案在档尾都有�
 
 ***
 
-## vim 寄存器
+## <a id="config">vim 寄存器</a>
 通过下面命令显示所有寄存器内容：
 
 :reg
@@ -614,7 +614,7 @@ modeline 里可以放的指令不限一个，所以我.py 档案在档尾都有�
 
 ***
 
-## 映射
+## <a id="config">映射</a>
 map是一个映射命令,将常用的很长的命令映射到一个新的功能键上。
 
 map的格式：
@@ -679,7 +679,7 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
 
      :set runtimepath?
 
-## vim 插件
+## <a id="config">vim 插件</a>
 相比sublime text2等现代编辑器，Vim缺乏默认的插件管理器，所有插件的文件都散布在~/.vim下的几个文件夹中。不过可以通过安装插件管理工具来管理插件，用户需要做的只是去Github上找到自己想要的插件的名字，安装，更新就可以用了。
 
 相关链接：    
@@ -743,53 +743,12 @@ pathogen 插件的安装：
 
 ***
 
-在 .vimrc 文件中，使用的语言就是 Vim 脚本语言(vim script)。vim 脚本相当于可直接在命令模式下执行的命令，只是不需要输入前面的冒号（如果用了冒号也不会出错）。因此，像设置选项、创建键盘映射这样的命令是直接可用的。当然，作为一种脚本语言，除了普通键盘上会输入的命令外，我们还需要一些更复杂的功能，特别是：变量，表达式，条件和循环语句，函数。
-
-## vimscript
-Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
-
-#### vimscript 命令
-* :echo命令 会打印输出，但是一旦你的脚本运行完毕，那些输出信息就会消失。使用:echom打印的信息 会保存下来，你可以执行:messages命令再次查看那些信息。
-
-          :echo $MYVIMRC  查询 vimrc 文件的位置
-
-* 添加一个!（感叹号）至布尔选项后面就会切换对于选项的值。
-
-          :set number!
-
-* 使用一个?符号向Vim获取一个选项的当前值。
-
-          :set number
-          :set number?
-          :set nonumber
-          :set number?
-
-* numberwidth 选项改变行号的列宽。
-* viw 将高亮选中整个单词。
-
-**vimscript 语法速览**         
-[Five Minute Vimscript](http://andrewscala.com/vimscript/)    
-[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)    
-[Learn Vimscript the Hard Way中文版](http://learnvimscriptthehardway.onefloweroneworld.com/)    
-
-**Vim’s internal documentation**      
-[Vim documentation: usr_41](http://vimdoc.sourceforge.net/htmldoc/usr_41.html)    
-
-**IBM Scripting the Vim editor series**      
-[Part 1: Variables, values, and expressions](https://www.ibm.com/developerworks/linux/library/l-vim-script-1/index.html)    
-[Part 2: User-defined functions](https://www.ibm.com/developerworks/linux/library/l-vim-script-2/index.html?ca=drs-)    
-[Part 3: Built-in lists](https://www.ibm.com/developerworks/linux/library/l-vim-script-3/index.html?ca=drs-)    
-[Part 4: Dictionaries](https://www.ibm.com/developerworks/linux/library/l-vim-script-4/index.html?ca=drs-)    
-[Part 5: Event-driven scripting and automation](https://www.ibm.com/developerworks/linux/library/l-vim-script-5/index.html?ca=drs-)    
-
-***
-
 环境变量 $VIMRUNTIME 用来找出各种支持文件。colors,plugins,docs都是在 VIMRUNTIME 目录下的。可以使用以下命令查看：
 
      :echo $VIMRUNTIME
 
 
-## vim 主题
+## <a id="theme">vim 主题</a>
 vim 的颜色主题在 $VIMRUNTIME/colors 文件夹里。在正常模式下输入
 
      : colorscheme
@@ -829,8 +788,8 @@ Lean & mean status/tabline for vim that's light as air.
   
   
   
- 
-## vim7 升级 vim8
+## <a id="other">其他</a> 
+### <a id="vim8">vim7 升级 vim8</a>
 
 安装依赖
 
@@ -844,3 +803,46 @@ Lean & mean status/tabline for vim that's light as air.
      ./configure --disable-selinux --enable-perlinterp=yes --enable-python3interp=yes --enable-rubyinterp=yes --enable-cscope --enable-gui=auto --with-features=huge --enable-multibyte --enable-xim --with-x --with-gnome --with-compiledby="tang" --prefix=/usr/local/vim8
      make
      make install
+
+***
+
+在 .vimrc 文件中，使用的语言就是 Vim 脚本语言(vim script)。vim 脚本相当于可直接在命令模式下执行的命令，只是不需要输入前面的冒号（如果用了冒号也不会出错）。因此，像设置选项、创建键盘映射这样的命令是直接可用的。当然，作为一种脚本语言，除了普通键盘上会输入的命令外，我们还需要一些更复杂的功能，特别是：变量，表达式，条件和循环语句，函数。
+
+## <a id="config">vimscript</a>
+Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
+
+#### vimscript 命令
+* :echo命令 会打印输出，但是一旦你的脚本运行完毕，那些输出信息就会消失。使用:echom打印的信息 会保存下来，你可以执行:messages命令再次查看那些信息。
+
+          :echo $MYVIMRC  查询 vimrc 文件的位置
+
+* 添加一个!（感叹号）至布尔选项后面就会切换对于选项的值。
+
+          :set number!
+
+* 使用一个?符号向Vim获取一个选项的当前值。
+
+          :set number
+          :set number?
+          :set nonumber
+          :set number?
+
+* numberwidth 选项改变行号的列宽。
+* viw 将高亮选中整个单词。
+
+**vimscript 语法速览**         
+[Five Minute Vimscript](http://andrewscala.com/vimscript/)    
+[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)    
+[Learn Vimscript the Hard Way中文版](http://learnvimscriptthehardway.onefloweroneworld.com/)    
+
+**Vim’s internal documentation**      
+[Vim documentation: usr_41](http://vimdoc.sourceforge.net/htmldoc/usr_41.html)    
+
+**IBM Scripting the Vim editor series**      
+[Part 1: Variables, values, and expressions](https://www.ibm.com/developerworks/linux/library/l-vim-script-1/index.html)    
+[Part 2: User-defined functions](https://www.ibm.com/developerworks/linux/library/l-vim-script-2/index.html?ca=drs-)    
+[Part 3: Built-in lists](https://www.ibm.com/developerworks/linux/library/l-vim-script-3/index.html?ca=drs-)    
+[Part 4: Dictionaries](https://www.ibm.com/developerworks/linux/library/l-vim-script-4/index.html?ca=drs-)    
+[Part 5: Event-driven scripting and automation](https://www.ibm.com/developerworks/linux/library/l-vim-script-5/index.html?ca=drs-)    
+
+***
