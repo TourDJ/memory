@@ -1,8 +1,8 @@
 
 
 [vim 使用](#vim)    
-  [vim 概述](#summary)  
-    [vim 历史](#history)   
+&nbsp;&nbsp;[vim 概述](#summary)  
+        [vim 历史](#history)   
   [vim 模式](#mode)   
   [vim 的 buffer、window 和 tab](#buffer)    
   [vim 配置](#config)      
