@@ -1,7 +1,7 @@
 
 
 ## vim 使用
-* ### [vim 概述](#summary)
+   ### [vim 概述](#summary)
      #### [vim 历史](history)
 * ### [vim 模式](#mode)
 * ### [vim 的 buffer、window 和 tab](#buffer)
