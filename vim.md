@@ -7,9 +7,26 @@
   - [vim 的 buffer、window 和 tab](#buffer)    
   - [vim 配置](#config)      
   - [vim 命令](#vimcmd)      
-  - [vim 主题](#theme)         
+    - [文件命令](#vimcmd_file)      
+    - [插入命令](#vimcmd_insert)     
+    - [移动命令](#vimcmd_move)      
+    - [删除命令](#vimcmd_delete)     
+    - [拷贝和粘贴](#vimcmd_yank)     
+    - [撤销和重做](#vimcmd_undo)      
+    - [退出命令](#vimcmd_exit)    
+    - [替换](#vimcmd_replace)        
+    - [注释](#vimcmd_comment)      
+    - [批量缩进](#vimcmd_indent)     
+    - [其他](#vimcmd_other)  
+  - [模式行（modeline）](#modeline)   
+  - [vim 寄存器](#register)
+  - [映射](#mapping)        
+  - [vim 插件](#plugin)       
+  - [vim 主题](#theme)   
+  - [vimscript 命令](#script)       
 
 *** 
+
 # <a id="vim">vim 使用</a>
 ***
 
@@ -298,7 +315,7 @@ vim 自身支持多种折叠：
 
 以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。
 
-### 文件命令
+### <a id="vimcmd_file">文件命令</a>
 打开文件
 
     vim file 打开单个文件
@@ -328,7 +345,7 @@ vim 自身支持多种折叠：
         "ap
 
 
-### 插入命令
+### <a id="vimcmd_insert">插入命令</a>
 
     i 在当前位置生前插入
     a 在当前位置后插入
@@ -341,7 +358,7 @@ vim 自身支持多种折叠：
 
 :args
 
-### 移动命令
+### <a id="vimcmd_move">移动命令</a>
 > 在Vim中，很多命令都可以配合数字使用，比如删除10个字符10x，在当前位置后插入3个！，3a！<Esc>，这里的Esc是必须的，否则命令不生效。
 
     h 左移一个字符
@@ -375,7 +392,7 @@ vim 自身支持多种折叠：
     Ctrl + f 向下滚动一屏
     Ctrl + b 向上滚动一屏
 
-### 删除命令
+### <a id="vimcmd_delete">删除命令</a>
 
         x： 删除当前字符
         nx： 删除当前光标开始向后 n 个字符
@@ -402,7 +419,7 @@ vim 自身支持多种折叠：
         J: 删除两行之间的空行，实际上是合并两行。
 
 
-### 拷贝和粘贴
+### <a id="vimcmd_yank">拷贝和粘贴</a>
 
         yy(Y) 拷贝当前行
         nyy 拷贝当前后开始的n行，比如2yy拷贝当前行及其下一行。
@@ -439,14 +456,14 @@ vim 自身支持多种折叠：
      :TOhtml（根据 Vim 的语法加亮的方式生成 HTML 代码；在图形界面中也可以使用菜单“Syntax—Convert to HTML”达到同样效果
 
 
-## 撤销和重做
+### <a id="vimcmd_undo">撤销和重做</a>
 
     u 撤销（Undo）
     U 撤销对整行的操作
     Ctrl + r 重做（Redo），即撤销的撤销。
     
 
-## 退出命令
+## <a id="vimcmd_exit">退出命令</a>
 
     :wq 保存并退出
     :x 同wq
@@ -455,7 +472,54 @@ vim 自身支持多种折叠：
     :e! 放弃所有修改，并打开原来文件。
 
 
-## 其他
+### <a id="vimcmd_replace">替换</a>
+vi/vim 中可以使用 :s 命令来替换字符串
+
+    :s/vivian/sky/ 替换当前行第一个 vivian 为 sky
+    :s/vivian/sky/g 替换当前行所有 vivian 为 sky
+    :n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
+    :n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky(n 为数字，若 n 为 .，表示从当前行开始到最后一行)
+    :%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
+    :%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
+
+可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
+
+    :s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
+    :%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/
+
+替换单个字符
+
+    将光标移到要替换的字符上：
+    rx x为要替换后的字符
+    
+### <a id="vimcmd_comment">注释</a>
+
+    3,5 s/^/#/g 注释第3-5行
+    3,5 s/^#//g 解除3-5行的注释
+    1,$ s/^/#/g 注释整个文档。
+    :%s/^/#/g 注释整个文档，此法更快。
+
+
+### <a id="vimcmd_indent">批量缩进</a>
+
+* 按下 v 键进入可视模式，选中要缩进的代码：       
+
+          按下 n< 向前缩进
+          按下 n> 向后缩进
+
+* 在正常模式下：
+
+          n << 键向前缩进从当前起及之后的n-1行
+          n >> 键向后缩进从当前起及之后的n-1行
+> n 表示要缩进的次数，缩进一次可以省略。
+
+* 命令行模式下：
+
+          m,n> m 到 n 行缩进
+          m>n m行开始的n 行缩进一次
+
+
+### <a id="vimcmd_other">其他</a>
 #### 基本计算器
 插入模式下，按 Ctrl+r 键然后输入 =，再输入一个简单的算式(如：=2+3)，再按 Enter 键计算结果会被插入到文件中。
 
@@ -493,38 +557,8 @@ vim 自身支持多种折叠：
 
 > set 设置可以在命令行输入，也可以写在$HOME下的.exrc (如果是vi)或者.vimrc(如果是vim)中。写进去很方便的。
 
-cit 命令    
-在用vim编辑html和xml时经常使用 cit 操作来删除一对标签内的文字    
-
-
-## 替换
-vi/vim 中可以使用 :s 命令来替换字符串
-
-    :s/vivian/sky/ 替换当前行第一个 vivian 为 sky
-    :s/vivian/sky/g 替换当前行所有 vivian 为 sky
-    :n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
-    :n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky(n 为数字，若 n 为 .，表示从当前行开始到最后一行)
-    :%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
-    :%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
-
-可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
-
-    :s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
-    :%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/
-
-#### 替换单个字符
-
-    将光标移到要替换的字符上：
-    rx x为要替换后的字符
-    
-## 注释
-
-    3,5 s/^/#/g 注释第3-5行
-    3,5 s/^#//g 解除3-5行的注释
-    1,$ s/^/#/g 注释整个文档。
-    :%s/^/#/g 注释整个文档，此法更快。
-
-
+#### cit 命令    
+在用vim编辑html和xml时经常使用 cit 操作来删除一对标签内的文字。
 
 #### 常用命令
      %	跳转到配对的括号去
@@ -535,24 +569,6 @@ vi/vim 中可以使用 :s 命令来替换字符串
      `x	跳转到书签处("`"是1左边的键)
      >	增加缩进,"x>"表示增加以下x行的缩进
      <	减少缩进,"x<"表示减少以下x行的缩进
-
-#### 批量缩进
-
-* 按下 v 键进入可视模式，选中要缩进的代码：       
-
-          按下 n< 向前缩进
-          按下 n> 向后缩进
-
-* 在正常模式下：
-
-          n << 键向前缩进从当前起及之后的n-1行
-          n >> 键向后缩进从当前起及之后的n-1行
-> n 表示要缩进的次数，缩进一次可以省略。
-
-* 命令行模式下：
-
-          m,n> m 到 n 行缩进
-          m>n m行开始的n 行缩进一次
 
 ***
 
@@ -593,7 +609,7 @@ modeline 里可以放的指令不限一个，所以我.py 档案在档尾都有�
 
 ***
 
-## <a id="config">vim 寄存器</a>
+## <a id="register">vim 寄存器</a>
 通过下面命令显示所有寄存器内容：
 
 :reg
@@ -616,7 +632,7 @@ modeline 里可以放的指令不限一个，所以我.py 档案在档尾都有�
 
 ***
 
-## <a id="config">映射</a>
+## <a id="mapping">映射</a>
 map是一个映射命令,将常用的很长的命令映射到一个新的功能键上。
 
 map的格式：
@@ -681,7 +697,7 @@ VIM 插件一般安装在 5 个地方， 存放插件的路径都列在“runtim
 
      :set runtimepath?
 
-## <a id="config">vim 插件</a>
+## <a id="plugin">vim 插件</a>
 相比sublime text2等现代编辑器，Vim缺乏默认的插件管理器，所有插件的文件都散布在~/.vim下的几个文件夹中。不过可以通过安装插件管理工具来管理插件，用户需要做的只是去Github上找到自己想要的插件的名字，安装，更新就可以用了。
 
 相关链接：    
@@ -813,7 +829,7 @@ Lean & mean status/tabline for vim that's light as air.
 ## <a id="config">vimscript</a>
 Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提供一些常用的语言特征：变量、表达式、控制结构、内置函数、用户自定义函数、一级字符串、列表、字典、终端、文件IO、正则表达式模式匹配、异常和集成调试器等。
 
-#### vimscript 命令
+## <a id="script">vimscript 命令</a>
 * :echo命令 会打印输出，但是一旦你的脚本运行完毕，那些输出信息就会消失。使用:echom打印的信息 会保存下来，你可以执行:messages命令再次查看那些信息。
 
           :echo $MYVIMRC  查询 vimrc 文件的位置
