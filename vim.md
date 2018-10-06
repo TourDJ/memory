@@ -3,6 +3,9 @@
 ## vim 使用
 * ### [vim 概述](#summary)
 * ### [vim 模式](#mode)
+* ### [vim 的 buffer、window 和 tab](#buffer)
+* ### [vim 配置](#config)
+* ### [vim 命令](#vimcmd)
 
 
 *** 
@@ -91,7 +94,7 @@ vim 编辑器很强大，而他的强大之处其中一方面是有种类繁多�
 
 *** 
 
-## vim 的 buffer、window 和 tab
+## <a id="buffer">vim 的 buffer、window 和 tab</a>
 查看帮助文件，是这样描述的：
 
      缓冲区是内存中的文件文本。
@@ -150,7 +153,7 @@ tab 是 window 的集合，tab的标题栏会显示该tab当前激活的window�
 
 ****
 
-## vim 配置
+## <a id="config">vim 配置</a>
 vim 的全局配置文件是： /etc/vimrc，用户的配置文件为 ~/.vimrc， 如果不存在，就手动创建一个，平常我们只需配置这个文件就可以了。 配置完成后想要立刻生效，执行以下命令：
     
     :source ~/.vimrc
