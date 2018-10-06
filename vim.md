@@ -2,6 +2,7 @@
 
 ## vim 使用
 * ### [vim 概述](#summary)
+** #### [vim 历史](history)
 * ### [vim 模式](#mode)
 * ### [vim 的 buffer、window 和 tab](#buffer)
 * ### [vim 配置](#config)
@@ -19,7 +20,7 @@
 
 vi 是古老的文本编辑器，vim是从 vi 发展出来的一个文本编辑器，和Emacs 并列成为类Unix系统 用户最喜欢的编辑器。作为开源世界最重要的编辑器之一，Vim 以其强大的功能和可定制能力被众多开发者所喜爱。因为太强大，所以要用好不容易。
 
-**vim 历史**   
+### <a id="history">vim 历史</a>
 
 -- 摘自维基百科
 > Vim的第一个版本由Bram Moolenaar 在1991年发布。最初的简称是Vi IMitation ，随着功能的不断增加，正式名称改成了Vi IMproved。现在是在开放源代码 方式下发行的自由软件 。
