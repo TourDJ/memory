@@ -1,7 +1,9 @@
 
+[toc]
+
 # vim 使用
-  ### [vim 概述](#summary)
-  ### [vim 模式](#mode)
+### [vim 概述](#summary)
+### [vim 模式](#mode)
 
 
 
