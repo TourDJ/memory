@@ -1,13 +1,13 @@
 
 
 ## vim 使用
-  ### [vim 概述](#summary)
-  * #### [vim 历史](history)
-  ### [vim 模式](#mode)
-  ### [vim 的 buffer、window 和 tab](#buffer)
-  ### [vim 配置](#config)
-  ### [vim 命令](#vimcmd)
-### [vim 主题](theme)
+[vim 概述](#summary)
+  [vim 历史](history)
+[vim 模式](#mode)
+[vim 的 buffer、window 和 tab](#buffer)
+[vim 配置](#config)
+[vim 命令](#vimcmd)
+[vim 主题](theme)
 
 *** 
 
@@ -22,7 +22,7 @@ vi 是古老的文本编辑器，vim是从 vi 发展出来的一个文本编辑�
 
 ### <a id="history">vim 历史</a>
 
--- 摘自维基百科
+摘自维基百科
 > Vim的第一个版本由Bram Moolenaar 在1991年发布。最初的简称是Vi IMitation ，随着功能的不断增加，正式名称改成了Vi IMproved。现在是在开放源代码 方式下发行的自由软件 。
 
 > Bram Moolenaar 在 80 年代末购入他的 Amiga 计算机时，Amiga 上还没有他最常用的编辑器 vi。Bram 从一个开源的 vi 复制 Stevie 开始，开发了 Vim 的 1.0 版本。最初的目标只是完全复制 vi 的功能，那个时候的 Vim 是Vi IMitation（模拟）的简称。1991 年 Vim 1.14 版被 "Fred Fish Disk #591" 这个 Amiga 用的免费软体集所收录了。1992 年 1.22 版本的 Vim 被移植到了 UNIX 和 MS-DOS 上。从那个时候开始，Vim 的全名就变成 Vi IMproved（改良）了。
