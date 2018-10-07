@@ -200,17 +200,15 @@ vim 常用设置参数
     set confirm
 
     "鼠标可用
-    set mouse=a
-
-shiftwidth:指定在进行缩进格式化源码时制表符占据的空格数。     
-tabstop:指定我们在插入模式下输入一个制表符占据的空格数量，linux 内核编码规范建议是 8。       
-softtabstop:如何处理连续多个空格。      
-expandtab: 是否将tab转换为空格。         
-autoindent：自动缩进。     
-     
-    "tab缩进
+    set mouse=a     
+    
+    "指定我们在插入模式下输入一个制表符占据的空格数量，linux 内核编码规范建议是 8。
     set tabstop=4
+    "指定在进行缩进格式化源码时制表符占据的空格数。
     set shiftwidth=4
+    "如何处理连续多个空格。   
+    set softtabstop=4
+    "是否将tab转换为空格。
     set expandtab
     set smarttab
 
@@ -237,9 +235,6 @@ autoindent：自动缩进。
 
     "显示标尺，就是在右下角显示光标位置
     set ruler
-
-    "去除vi的一致性
-    set nocompatible
 
     "允许折叠
     set foldenable
