@@ -26,7 +26,6 @@
   - [vim 主题](#theme)   
   - [vimscript 命令](#script)       
 
-*** 
 
 # <a id="vim">vim 使用</a>
 ***
