@@ -11,7 +11,8 @@
     - [插入命令](#vimcmd_insert)     
     - [移动命令](#vimcmd_move)      
     - [删除命令](#vimcmd_delete)     
-    - [拷贝和粘贴](#vimcmd_yank)     
+    - [拷贝和粘贴](#vimcmd_yank)   
+    - [跳转命令](#vimcmd_jump)     
     - [撤销和重做](#vimcmd_undo)      
     - [退出命令](#vimcmd_exit)    
     - [替换](#vimcmd_replace)        
@@ -450,6 +451,10 @@ vim 自身支持多种折叠：
      gUw（光标下的单词变为大写）
      :TOhtml（根据 Vim 的语法加亮的方式生成 HTML 代码；在图形界面中也可以使用菜单“Syntax—Convert to HTML”达到同样效果
 
+## <a id="vimcmd_jump">跳转命令</a>
+
+    Ctrl + O 跳转到光标的上次位置
+    Ctrl + I 跳转到光标的下次位置
 
 ### <a id="vimcmd_undo">撤销和重做</a>
 
