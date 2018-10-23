@@ -24,7 +24,6 @@
 * [mongoose](https://github.com/TourDJ/memory/blob/master/scripts/mongoose.md)  
 * [mysql](https://github.com/TourDJ/memory/blob/master/scripts/mysql.md)  
 * [n](https://github.com/TourDJ/memory/blob/master/scripts/n.md)
-* [nginx](https://github.com/TourDJ/memory/blob/master/scripts/nginx.md)
 * [nodejs](https://github.com/TourDJ/memory/blob/master/scripts/nodejs.md)
 * [pm2](https://github.com/TourDJ/memory/blob/master/scripts/pm2.md)
 * [postgreSQL](https://github.com/TourDJ/memory/blob/master/scripts/postgreSQL.md)
@@ -57,7 +56,7 @@ Git是一个免费的开源分布式版本控制系统，旨在快速，高效�
 Git易于学习，占地面积小，具有闪电般快速的性能。 它超越了Subversion，CVS，Perforce和ClearCase等SCM工具，具有廉价本地分支，便捷的临时区域和多个工作流程等功能。
 ***
 
-### Nginx
+### [Nginx](https://github.com/TourDJ/memory/blob/master/nginx.md)    
 
 434/5000
 nginx [engine x]是一个HTTP和反向代理服务器，一个邮件代理服务器和一个通用的TCP / UDP代理服务器，最初由Igor Sysoev编写。 
