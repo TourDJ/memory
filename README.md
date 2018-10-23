@@ -32,10 +32,8 @@
 * [python](https://github.com/TourDJ/memory/blob/master/scripts/python.md)
 * [rabbitmq](https://github.com/TourDJ/memory/blob/master/scripts/rabbitmq.md)
 * [redis](https://github.com/TourDJ/memory/blob/master/scripts/redis.md)
-* [spring](https://github.com/TourDJ/memory/blob/master/scripts/spring.md)
 * [sublime](https://github.com/TourDJ/memory/blob/master/scripts/sublime-text-3.md)
 * [typescript](https://github.com/TourDJ/memory/blob/master/scripts/typescript.md)
-* [vim](https://github.com/TourDJ/memory/blob/master/scripts/vim.md)
 
 ## 技术收集整理
 
@@ -49,6 +47,11 @@ Vim岩石稳定，并且不断发展以变得更好。 其功能包括：
 * 强大的搜索和替换
 * 与许多工具集成
 
+***
+
+### [Spring](https://github.com/TourDJ/memory/blob/master/spring.md)    
+
+*** 
 
 ## License
 Apache License 2.0
