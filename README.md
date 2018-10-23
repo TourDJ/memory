@@ -34,7 +34,7 @@
 * [sublime](https://github.com/TourDJ/memory/blob/master/scripts/sublime-text-3.md)
 * [typescript](https://github.com/TourDJ/memory/blob/master/scripts/typescript.md)
 
-## 技术收集整理
+## 技术知识收集整理
 
 ### [vim](https://github.com/TourDJ/memory/blob/master/vim.md)    
 Vim是一个高度可配置的文本编辑器，用于有效地创建和更改任何类型的文本。 它包含在大多数UNIX系统和Apple OS X的“vi”中。
@@ -55,6 +55,12 @@ Vim岩石稳定，并且不断发展以变得更好。 其功能包括：
 Git是一个免费的开源分布式版本控制系统，旨在快速，高效地处理从小型到大型项目的所有事务。
 
 Git易于学习，占地面积小，具有闪电般快速的性能。 它超越了Subversion，CVS，Perforce和ClearCase等SCM工具，具有廉价本地分支，便捷的临时区域和多个工作流程等功能。
+***
+
+### Nginx
+
+434/5000
+nginx [engine x]是一个HTTP和反向代理服务器，一个邮件代理服务器和一个通用的TCP / UDP代理服务器，最初由Igor Sysoev编写。 
 ***
 
 ## License
