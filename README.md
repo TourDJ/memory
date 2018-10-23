@@ -24,7 +24,6 @@
 * [mongoose](https://github.com/TourDJ/memory/blob/master/scripts/mongoose.md)  
 * [mysql](https://github.com/TourDJ/memory/blob/master/scripts/mysql.md)  
 * [n](https://github.com/TourDJ/memory/blob/master/scripts/n.md)
-* [nodejs](https://github.com/TourDJ/memory/blob/master/scripts/nodejs.md)
 * [pm2](https://github.com/TourDJ/memory/blob/master/scripts/pm2.md)
 * [postgreSQL](https://github.com/TourDJ/memory/blob/master/scripts/postgreSQL.md)
 * [python](https://github.com/TourDJ/memory/blob/master/scripts/python.md)
@@ -60,8 +59,9 @@ Git易于学习，占地面积小，具有闪电般快速的性能。 它超越�
 nginx [engine x]是一个HTTP和反向代理服务器，一个邮件代理服务器和一个通用的TCP / UDP代理服务器，最初由Igor Sysoev编写。 
 ***
 
-### [Node.js]()   
+### [Node.js](https://github.com/TourDJ/memory/blob/master/nodejs.md)   
 Node.js是基于Chrome的V8 JavaScript引擎构建的JavaScript运行时。作为异步事件驱动的JavaScript运行时，Node旨在构建可伸缩的网络应用程序。
+***
 
 ## License
 Apache License 2.0
