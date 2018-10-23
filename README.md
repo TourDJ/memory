@@ -16,8 +16,7 @@
 * [batch](https://github.com/TourDJ/memory/blob/master/scripts/batch.md)
 * [docker](https://github.com/TourDJ/memory/blob/master/scripts/docker_cli.md)
 * [express](https://github.com/TourDJ/memory/blob/master/scripts/express.md)  
-* [iptables](https://github.com/TourDJ/memory/blob/master/scripts/iptables.md)
-* [git](https://github.com/TourDJ/memory/blob/master/scripts/git.md)   
+* [iptables](https://github.com/TourDJ/memory/blob/master/scripts/iptables.md) 
 * [java](https://github.com/TourDJ/memory/blob/master/scripts/java.md)    
 * [linux](https://github.com/TourDJ/memory/blob/master/scripts/linux.md)    
 * [maven](https://github.com/TourDJ/memory/blob/master/scripts/maven.md)    
@@ -52,6 +51,10 @@ Vim岩石稳定，并且不断发展以变得更好。 其功能包括：
 ### [Spring](https://github.com/TourDJ/memory/blob/master/spring.md)    
 
 *** 
+
+### [Git](https://github.com/TourDJ/memory/blob/master/git.md)    
+
+***
 
 ## License
 Apache License 2.0
