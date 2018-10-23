@@ -37,6 +37,9 @@
 * [typescript](https://github.com/TourDJ/memory/blob/master/scripts/typescript.md)
 * [vim](https://github.com/TourDJ/memory/blob/master/scripts/vim.md)
 
+## 技术收集整理
+
+### [vim](https://github.com/TourDJ/memory/blob/master/vim.md)    
 
 
 
