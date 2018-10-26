@@ -16,8 +16,7 @@
 * [docker](https://github.com/TourDJ/memory/blob/master/scripts/docker_cli.md)
 * [express](https://github.com/TourDJ/memory/blob/master/scripts/express.md)  
 * [iptables](https://github.com/TourDJ/memory/blob/master/scripts/iptables.md) 
-* [java](https://github.com/TourDJ/memory/blob/master/scripts/java.md)    
-* [linux](https://github.com/TourDJ/memory/blob/master/scripts/linux.md)    
+* [java](https://github.com/TourDJ/memory/blob/master/scripts/java.md)       
 * [maven](https://github.com/TourDJ/memory/blob/master/scripts/maven.md)    
 * [mongodb](https://github.com/TourDJ/memory/blob/master/scripts/mongodb.md)
 * [mongoose](https://github.com/TourDJ/memory/blob/master/scripts/mongoose.md)  
@@ -62,6 +61,10 @@ nginx [engine x]是一个HTTP和反向代理服务器，一个邮件代理服务
 
 ### [Node.js](https://github.com/TourDJ/memory/blob/master/nodejs.md)   
 Node.js是基于Chrome的V8 JavaScript引擎构建的JavaScript运行时。作为异步事件驱动的JavaScript运行时，Node旨在构建可伸缩的网络应用程序。
+***
+
+### [Linux](https://github.com/TourDJ/memory/blob/master/linux.md)
+Linux是围绕Linux内核构建的一系列免费和开源软件操作系统。 通常，Linux以桌面和服务器使用的形式称为Linux发行版（或简称发行版）。 Linux发行版的定义组件是Linux内核，[11]一个操作系统内核，由Linus Torvalds于1991年9月17日首次发布。 许多Linux发行版在其名称中使用“Linux”一词。 自由软件基金会使用名称GNU / Linux来引用操作系统系列以及特定的发行版，以强调大多数Linux发行版不仅仅是Linux内核，它们不仅与内核有共同之处，而且 众多实用程序和库，其中很大一部分来自GNU项目。 这引起了一些争议。
 ***
 
 ## License
