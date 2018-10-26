@@ -525,7 +525,7 @@ invoke-rc.d 类似与 RHEL 中的 service。
 
 ## 常见问题
 * error: watch ENOSPC
-Run the below command:
+Run the below command:      
 
     echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
