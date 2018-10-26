@@ -107,7 +107,13 @@ Please see the [detail](https://stackoverflow.com/questions/20028996/how-to-inst
 
 ***
 
+## [CommonJS](http://www.commonjs.org/)
+CommonJS是服务器端模块的规范，Node.js采用了这个规范。    
+根据CommonJS规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。
 
+***
+
+## Node.js 错误
   
 #### node-gyp rebuild 错误
 
@@ -164,11 +170,6 @@ node-gyp rebuild 的故障解决办法:
     npm install -g node-gyp
 
 
-## [CommonJS](http://www.commonjs.org/)
-CommonJS是服务器端模块的规范，Node.js采用了这个规范。    
-根据CommonJS规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。
-
-***
 
 node.js 相关博文    
 [PHP vs node.js: The REAL statistics](https://prahladyeri.com/blog/2014/06/php-vs-node-js-real-statistics.html)    
