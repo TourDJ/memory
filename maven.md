@@ -6,8 +6,30 @@
         mvn archetype:create -DgroupId=com.zang.maven  -DartifactId=system-parent -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false 
 > maven3.0.5以上版本舍弃了create，使用generate生成项目
 
+#### 发布第三方Jar到本地库中：
 
+        mvn install:install-file -DgroupId=com -DartifactId=test -Dversion=0.1.0 -Dpackaging=jar -Dfile=d:\test-0.1.0.jar
 
+## maven 插件
+
+#### springboot maven 打包插件：
+
+```java
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>    
+```
 
 
 ## maven 错误
