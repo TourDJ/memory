@@ -51,6 +51,14 @@ install命令完成了项目编译、单元测试、打包功能，同时把打�
 依次执行了resources、compile、testResources、testCompile、test、jar(打包)、install、deploy等阶段。
 deploy命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
 
+各阶段执行对应的插件
+| 命令 | 插件 | 说明 |
+| -- | ----- | -------------- |
+|resources|maven-resources-plugin| 无 |
+||||
+||||
+||||
+||||
 
 ## maven 插件
 
