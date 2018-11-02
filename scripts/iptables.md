@@ -169,3 +169,10 @@ drop非法连接
 上面的所有规则我都试过，没有问题．
 写这篇文章，用了我将近１个月的时间．查找资料，自己做实验，希望对大家有所帮助．如有不全及不完善的地方还请提出.
 因为本篇文章以配置为主.关于IPTABLES的基础知识及指令命令说明等我会尽快传上,当然你可以去网上搜索一下,还是很多的.
+
+## 在指定位置插入开放端口
+sudo iptables -nL --line-number
+iptables -I INPUT 17 -p tcp --dport 8000 -j ACCEPT
+sudo service iptables save
+
+
