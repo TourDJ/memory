@@ -10,7 +10,28 @@
 
         mvn install:install-file -DgroupId=com -DartifactId=test -Dversion=0.1.0 -Dpackaging=jar -Dfile=d:\test-0.1.0.jar
 
-## <a target="lifecycle">[maven 生命周期](https://www.cnblogs.com/EasonJim/p/6816340.html)</a>    
+#### 查看依赖项树
+
+        mvn dependency:tree
+
+***
+
+## <a id="lifecycle">[maven 生命周期](https://www.cnblogs.com/EasonJim/p/6816340.html)</a>    
+生命周期（lifecycle）由各个阶段组成，每个阶段由maven的插件plugin来执行完成。生命周期（lifecycle）主要包括clean、resources、complie、install、package、testResources、testCompile等，其中带test开头的都是用业编译测试代码或运行单元测试用例的。 
+
+### package、install、deploy 区别
+* mvn package
+
+依次执行了resources、compile、testResources、testCompile、test、jar(打包)等阶段。
+package命令完成了项目编译、单元测试、打包功能；但没有把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
+
+* mvn install
+依次执行了resources、compile、testResources、testCompile、test、jar(打包)、install等阶段。   
+install命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库；但没有布署到远程maven私服仓库
+
+* mvn deploy
+依次执行了resources、compile、testResources、testCompile、test、jar(打包)、install、deploy等阶段。
+deploy命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
 
 
 ## maven 插件
