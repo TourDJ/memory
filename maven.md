@@ -40,7 +40,6 @@
 
 ### package、install、deploy 区别
 * mvn package
-
 依次执行了resources、compile、testResources、testCompile、test、jar(打包)等阶段。
 package命令完成了项目编译、单元测试、打包功能；但没有把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
 
