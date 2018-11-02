@@ -62,7 +62,7 @@ deploy命令完成了项目编译、单元测试、打包功能，同时把打�
 |test|maven-surefire-plugin||
 |jar|maven-jar-plugin||
 |install|maven-install-plugin||
-|repackage|spring-boot-maven-plugin||
+|repackage|spring-boot-maven-plugin|使用 Spring Boot 打包的插件|
 
 
 ## maven 插件
