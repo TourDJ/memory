@@ -30,7 +30,7 @@
             </plugin>
         </plugins>    
 ```
-
+> 打完包会多一个目录BOOT-INF
 
 ## maven 错误
 * Remove all your failed downloads  
