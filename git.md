@@ -388,7 +388,7 @@ $ git remote show origin
 所以，如果你因为reset等操作丢失一个提交的时候，你总是可以把它找回来。除非你的操作已经被git当做垃圾处理掉了，一般是30天以后。
 ***
 
-#### git blame 
+### git blame 
 命令模式会显示所有行的信息。我们可以利用"<开始>，<结束>"表示，<开始>和<结束>参数可以是数字。
 
     $ git blame -L 12,13 hello.html 
@@ -401,11 +401,11 @@ $ git remote show origin
     $ git blame -L "/<\/body>/",-2 4333289e^ -- index.html
 注意上面有--，这是通知Git查询指定文件。
 
-#### git diff
+### git diff
 [git diff](http://blog.csdn.net/csfreebird/article/details/8044796) 可以比较working tree同index之间，index和git directory之间，working tree和git directory之间，git directory中不同commit之间的差异。
 
 
-#### git branch
+### git branch
 
 创建分支
 
