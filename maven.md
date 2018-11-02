@@ -57,9 +57,13 @@ deploy命令完成了项目编译、单元测试、打包功能，同时把打�
 | -- | ----- | -------------- |
 |resources|maven-resources-plugin| 无 |
 |compile|maven-compiler-plugin||
-||||
-||||
-||||
+|testResources|maven-resources-plugin||
+|testCompile|maven-compiler-plugin||
+|test|maven-surefire-plugin||
+|jar|maven-jar-plugin||
+|install|maven-install-plugin||
+|repackage|spring-boot-maven-plugin||
+
 
 ## maven 插件
 
