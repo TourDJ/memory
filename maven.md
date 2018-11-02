@@ -10,9 +10,33 @@
 
         mvn install:install-file -DgroupId=com -DartifactId=test -Dversion=0.1.0 -Dpackaging=jar -Dfile=d:\test-0.1.0.jar
 
+## <a target="lifecycle">[maven 生命周期](https://www.cnblogs.com/EasonJim/p/6816340.html)</a>    
+
+
 ## maven 插件
 
-#### springboot maven 打包插件：
+####  maven-jar-plugin
+maven 默认的打包插件。使用 Maven 构建一个 JAR 文件比较容易：只要定义项目包装为 “jar”，然后执行包装[生命周期](#lifecycle)阶段即可。但是定义一个可执行 JAR 文件却比较麻烦。
+
+```java
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <classpathPrefix>lib/</classpathPrefix>
+                        <mainClass>com.mypackage.MyClass</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+```
+
+
+#### spring-boot-maven-plugin
+maven springboot 打包插件：
 
 ```java
         <plugins>
