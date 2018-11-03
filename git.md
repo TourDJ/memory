@@ -1,6 +1,7 @@
-[git 命令](#git_command)       
-    - [初始化](#git_init)     
-    
+
+[git 命令](#git_command)    
+  - [初始化](#git_init)  
+    - [vim 历史](#history)
 ***
 
 ## <a id="git_command">git 命令<a/>
