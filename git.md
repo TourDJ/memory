@@ -426,6 +426,21 @@ $ git remote show origin
 配置 git lg 可以看到彩色的日志
     
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+删除分支
+
+    git branch -d testing
+    
+### 存储用户名与密码
+保存在内存中：
+
+    git config --global credential.helper cache
+    which tells git to keep your password cached in memory for (by default) 15 minutes. You can set a longer timeout with:
+    git config --global credential.helper "cache --timeout=3600"
+
+保存在磁盘上：
+
+    git config --global credential.helper store
  
 ## git 使用技巧
 
