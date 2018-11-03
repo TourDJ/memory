@@ -1,5 +1,6 @@
-[git 命令](#git_command)
-    [初始化](#git_init)
+[git 命令](#git_command)       
+    - [初始化](#git_init)     
+    
 ***
 
 ## <a id="git_command">git 命令<a/>
