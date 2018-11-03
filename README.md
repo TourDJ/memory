@@ -4,7 +4,6 @@
 
 ## docs
 * [tech-stack](https://github.com/TourDJ/memory/blob/master/docs/tech-stack.md)
-* [HTTP 协议](https://github.com/TourDJ/memory/blob/master/docs/http%20%E5%8D%8F%E8%AE%AE.md)
 
 
 ## scripts
@@ -76,7 +75,7 @@ A JavaScript library for building user interfaces.
 
 ***
 
-### [http](https://github.com/TourDJ/memory/blob/master/http%20%E5%8D%8F%E8%AE%AE.md)  
+### [HTTP 协议](https://github.com/TourDJ/memory/blob/master/http%20%E5%8D%8F%E8%AE%AE.md)  
 
 
 ***
