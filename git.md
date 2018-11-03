@@ -407,31 +407,38 @@ $ git remote show origin
 
 ### git branch
 
-创建分支
+* 创建分支
 
-    git branch testing
+        git branch testing
 
-切换分支
+* 切换分支
 
-    git checkout testing
+        git checkout testing
 
-你可以简单地使用 git log 命令查看各个分支当前所指的对象。 提供这一功能的参数是 --decorate。
+* 新建一个分支并同时切换到那个分支上
+运行一个带有 -b 参数的 git checkout 命令
 
-    git log --oneline --decorate
+        git checkout -b iss53
+        
+* 你可以简单地使用 git log 命令查看各个分支当前所指的对象。 提供这一功能的参数是 --decorate。
 
-输出你的提交历史、各个分支的指向以及项目的分支分叉情况
+        git log --oneline --decorate
 
-    git log --oneline --decorate --graph --all
+* 输出你的提交历史、各个分支的指向以及项目的分支分叉情况
 
-配置 git lg 可以看到彩色的日志
+        git log --oneline --decorate --graph --all
+
+* 配置 git lg 可以看到彩色的日志
     
-    git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    git config --global alias.lg "log --color --graph 
+    --pretty=format:'%Cred%h%Creset 
+    -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-删除分支
+* 删除分支
 
-    git branch -d testing
+        git branch -d testing
     
-跟踪分支       
+* 跟踪分支       
 从一个远程跟踪分支检出一个本地分支会自动创建一个叫做 “跟踪分支”（有时候也叫做 “上游分支”）。
 
 Git 提供了 --track 快捷方式：
@@ -466,7 +473,7 @@ Git 提供了 --track 快捷方式：
 
     $ git fetch --all; git branch -vv    
  
-删除远程分支        
+* 删除远程分支        
 从服务器上删除 serverfix 分支，运行下面的命令：
 
     $ git push origin --delete serverfix
