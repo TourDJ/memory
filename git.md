@@ -1,7 +1,10 @@
+[git 命令](#git_command)
+    [初始化](#git_init)
+***
 
-## git 命令
+## <a id="git_command">git 命令<a/>
 
-### git init 在现有目录中初始化仓库
+### <a id="git_init">git init 在现有目录中初始化仓库<a/>
 
 如果你打算使用 Git 来对现有的项目进行管理，你只需要进入该项目目录并输入：
 
