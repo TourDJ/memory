@@ -22,9 +22,9 @@ Travis CI是在线托管的CI服务，用Travis来进行持续集成。.travis.y
 [.babelrc](https://babeljs.io/docs/en/configuration#babelrc) 是 babel 配置文件。
 示例：
 ```javascript
-	{
-	  "presets": [...],
-	  "plugins": [...]
-	}
+{
+  "presets": [...],
+  "plugins": [...]
+}
 ```
 ***
