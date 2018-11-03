@@ -401,9 +401,12 @@ $ git remote show origin
     $ git blame -L "/<\/body>/",-2 4333289e^ -- index.html
 注意上面有--，这是通知Git查询指定文件。
 
+***
+
 ### git diff
 [git diff](http://blog.csdn.net/csfreebird/article/details/8044796) 可以比较working tree同index之间，index和git directory之间，working tree和git directory之间，git directory中不同commit之间的差异。
 
+***
 
 ### git branch
 
@@ -479,7 +482,9 @@ Git 提供了 --track 快捷方式：
     $ git push origin --delete serverfix
     To https://github.com/schacon/simplegit
      - [deleted]         serverfix 
- 
+
+***
+
 ### 存储用户名与密码
 保存在内存中：
 
@@ -490,7 +495,9 @@ Git 提供了 --track 快捷方式：
 保存在磁盘上：
 
     git config --global credential.helper store
- 
+
+***
+
 ## git 使用技巧
 
 1 在本地仓库执行 pull 时报以下错误：
@@ -500,6 +507,7 @@ Git 提供了 --track 快捷方式：
 
     eval "$(ssh-agent -s)"
     ssh-add
+
 ***
 
 2 当在本地执行 push 推送到远程仓库中时，发现代码有重大问题，想要删除该条提交记录时，可以按以下步骤执行：
@@ -509,6 +517,7 @@ Git 提供了 --track 快捷方式：
 
     git push -u master origin -f
 此时，SHA 对应的版本之后所有的版本就被覆盖了，所以需要谨慎处理，最好做个备份。
+
 ***
 
 3 HEAD 的含义
@@ -517,7 +526,9 @@ Git 提供了 --track 快捷方式：
  * HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
  * 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
  * 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
- 
+
+***
+
  4 如何江本地项目与远程仓库（如：github）关联    
  * 首先将本地项目转换成 git 项目：
  
