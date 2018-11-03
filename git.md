@@ -1,7 +1,8 @@
 
 [git 命令](#git_command)    
   - [初始化](#git_init)  
-    - [vim 历史](#history)
+  - [vim 历史](#git_clone)     
+  
 ***
 
 ## <a id="git_command">git 命令<a/>
@@ -19,7 +20,7 @@
     $ git commit -m 'initial project version'
 ***
 
-### git clone 克隆现有的仓库
+### <a id="git_clone">git clone 克隆现有的仓库<a/>
 
 Git 克隆的是该 Git 仓库服务器上的几乎所有数据，而不是仅仅复制完成你的工作所需要文件。
 命令格式：
