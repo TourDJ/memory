@@ -431,6 +431,48 @@ $ git remote show origin
 
     git branch -d testing
     
+跟踪分支       
+从一个远程跟踪分支检出一个本地分支会自动创建一个叫做 “跟踪分支”（有时候也叫做 “上游分支”）。
+
+Git 提供了 --track 快捷方式：
+
+    git checkout --track origin/serverfix
+
+如果想要将本地分支与远程分支设置为不同名字，你可以轻松地增加一个不同名字的本地分支的上一个命令：
+
+    git checkout -b sf origin/serverfix
+
+设置已有的本地分支跟踪一个刚刚拉取下来的远程分支，或者想要修改正在跟踪的上游分支
+
+    git branch -u origin/serverfix
+ 
+查看设置的所有跟踪分支
+
+    git branch 的 -vv 
+例如：
+
+    $ git branch -vv
+      iss53     7e424c3 [origin/iss53: ahead 2] forgot the brackets
+      master    1ae2a45 [origin/master] deploying index fix
+    * serverfix f8674d9 [teamone/server-fix-good: ahead 3, behind 1] this should do it
+      testing   5ea463a trying something new
+这里可以看到：      
+* iss53 分支正在跟踪 origin/iss53 并且 “ahead” 是 2，意味着本地有两个提交还没有推送到服务器上。 
+* master 分支正在跟踪 origin/master 分支并且是最新的。 
+* serverfix 分支正在跟踪 teamone 服务器上的 server-fix-good 分支并且领先 3 落后 1，意味着服务器上有一次提交还没有合并入同时本地有三次提交还没有推送。 
+* testing 分支并没有跟踪任何远程分支。
+
+> 需要重点注意的一点是这些数字的值来自于你从每个服务器上最后一次抓取的数据。 这个命令并没有连接服务器，它只会告诉你关于本地缓存的服务器数据。 如果想要统计最新的领先与落后数字，需要在运行此命令前抓取所有的远程仓库。 可以像这样做：
+
+    $ git fetch --all; git branch -vv    
+ 
+删除远程分支        
+从服务器上删除 serverfix 分支，运行下面的命令：
+
+    $ git push origin --delete serverfix
+    To https://github.com/schacon/simplegit
+     - [deleted]         serverfix 
+ 
 ### 存储用户名与密码
 保存在内存中：
 
