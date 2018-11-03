@@ -464,10 +464,10 @@ Git 提供了 --track 快捷方式：
     * serverfix f8674d9 [teamone/server-fix-good: ahead 3, behind 1] this should do it
       testing   5ea463a trying something new
 这里可以看到：      
-* iss53 分支正在跟踪 origin/iss53 并且 “ahead” 是 2，意味着本地有两个提交还没有推送到服务器上。 
-* master 分支正在跟踪 origin/master 分支并且是最新的。 
-* serverfix 分支正在跟踪 teamone 服务器上的 server-fix-good 分支并且领先 3 落后 1，意味着服务器上有一次提交还没有合并入同时本地有三次提交还没有推送。 
-* testing 分支并没有跟踪任何远程分支。
+1. iss53 分支正在跟踪 origin/iss53 并且 “ahead” 是 2，意味着本地有两个提交还没有推送到服务器上。 
+2. master 分支正在跟踪 origin/master 分支并且是最新的。 
+3. serverfix 分支正在跟踪 teamone 服务器上的 server-fix-good 分支并且领先 3 落后 1，意味着服务器上有一次提交还没有合并入同时本地有三次提交还没有推送。 
+4. testing 分支并没有跟踪任何远程分支。
 
 > 需要重点注意的一点是这些数字的值来自于你从每个服务器上最后一次抓取的数据。 这个命令并没有连接服务器，它只会告诉你关于本地缓存的服务器数据。 如果想要统计最新的领先与落后数字，需要在运行此命令前抓取所有的远程仓库。 可以像这样做：
 
