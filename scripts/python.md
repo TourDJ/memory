@@ -3,6 +3,7 @@
 > * [The Python Tutorial](https://docs.python.org/2/tutorial/index.html)  
 > * [简明 Python 教程](https://woodpecker.org.cn/abyteofpython_cn/chinese/index.html)    
 > * [Python 入门教程](https://docspy3zh.readthedocs.io/en/latest/tutorial/index.html)     
+> * [How To Install Python 3 and Set Up a Local Programming Environment on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7)      
 
 
 ***
