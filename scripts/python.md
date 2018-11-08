@@ -1,7 +1,9 @@
 
 > Python 资料  
 > * [The Python Tutorial](https://docs.python.org/2/tutorial/index.html)  
-> * [简明 Python 教程](https://woodpecker.org.cn/abyteofpython_cn/chinese/index.html)  
+> * [简明 Python 教程](https://woodpecker.org.cn/abyteofpython_cn/chinese/index.html)    
+> * [Python 入门教程](https://docspy3zh.readthedocs.io/en/latest/tutorial/index.html)     
+
 
 ***
 
