@@ -25,7 +25,7 @@
   - [vim 插件](#plugin)       
   - [vim 主题](#theme)   
   - [vimscript 命令](#script)       
-
+  - [vim 文档](#doc)   
 ***
 
 # <a id="vim">vim 使用</a>
