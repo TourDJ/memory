@@ -1,4 +1,28 @@
 
+React 使用
+
+要渲染 React 组件，只需创建一个大写字母开头的本地变量。
+如：
+```babel(javascript)
+const Navi = () => (
+  <nav>
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/about/">About</Link>
+      </li>
+      <li>
+        <Link to="/users/">Users</Link>
+      </li>
+    </ul>
+  </nav>
+)
+```
+
+
+
 ###### this.props.children
 
 this.props.children 属性表示组件的所有子节点。this.props.children 的值有三种可能：
