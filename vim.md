@@ -864,3 +864,12 @@ Vim的脚本语言被称为Vimscript，是典型的动态式命令语言，提�
 
 ***
 
+
+## <a id="doc">vim 文档</a>
+
+* [vim cookbook](http://www.oualline.com/vim-cook.html#last)     
+
+
+*** 
+
+
