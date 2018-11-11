@@ -3,7 +3,8 @@
 
 ## 配置文件
 
-### package.json
+### [package.json](http://www.cnblogs.com/tzyy/p/5193811.html#_h1_10)      
+
 
 #### eslintConfig 
 eslint 配置
