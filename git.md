@@ -488,6 +488,21 @@ Git 提供了 --track 快捷方式：
     $ git push origin --delete serverfix
     To https://github.com/schacon/simplegit
      - [deleted]         serverfix 
+或者：     
+如果:左边的分支为空，那么将删除:右边的远程的分支。
+
+    $ git push origin :test              // 刚提交到远程的test将被删除，但是本地还会保存的
+> 有待验证?
+
+
+* 创建远程分支      
+git push origin master 命令在没有track远程分支的本地分支中默认提交的master分支，因为master分支默认指向了origin master 分支。
+
+如果想把本地的某个分支提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，那么可以这么做。
+
+    $ git push origin test:master         // 提交本地test分支作为远程的master分支
+    $ git push origin test:test           // 提交本地test分支作为远程的test分支
+
 
 ***
 
