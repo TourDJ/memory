@@ -6,7 +6,18 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
 
 ## Spring 标签
 
-\<context:annotation-config/\> 
+* context:component-scan    
+为了让 Spring 能够扫描类路径中的类并识别出 @Repository、@Component、@Service、@Constroller 注解，需要在 XML 配置文件中启用 Bean 的自动扫描功能
+```java
+<beans … > 
+    ……
+ <context:component-scan base-package=”bookstore.dao” /> 
+……
+ </beans>
+```
+
+
+context:annotation-config
 
 将隐式地向 Spring 容器注册 4 个 BeanPostProcessor：
   * AutowiredAnnotationBeanPostProcessor
@@ -18,17 +29,6 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
 
 
 [\<context:component-scan base-package="pack.pack"/\>](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html)
-
-该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
-
-
-## Spring MVC
-
-#### [ViewResolver](http://blog.csdn.net/prince2270/article/details/5891085)
-Spring MVC使用ViewResolver来根据controller中返回的view名关联到具体的View对象。使用View对象来渲染返回值以生成最终的视图，如html,json或pdf等。
-
-[ContentNegotiatingViewResolver](http://www.open-open.com/lib/view/open1417705219152.html) 视图解析器,利用他就可以配置多种返回值。
-[Migrating spring 3.2 REST to Spring 4](https://javattitude.com/2014/04/20/migrating-spring-3-2-rest-to-spring-4/)
 
 
 ## Spring 注解
@@ -156,6 +156,18 @@ Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某
 
 #### @profile
 @profile 注解是spring提供的一个用来标明当前运行环境的注解。使用DI来依赖注入的时候，能够根据当前制定的运行环境来注入相应的bean。
+
+***
+该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
+
+
+## Spring MVC
+
+#### [ViewResolver](http://blog.csdn.net/prince2270/article/details/5891085)
+Spring MVC使用ViewResolver来根据controller中返回的view名关联到具体的View对象。使用View对象来渲染返回值以生成最终的视图，如html,json或pdf等。
+
+[ContentNegotiatingViewResolver](http://www.open-open.com/lib/view/open1417705219152.html) 视图解析器,利用他就可以配置多种返回值。
+[Migrating spring 3.2 REST to Spring 4](https://javattitude.com/2014/04/20/migrating-spring-3-2-rest-to-spring-4/)
 
 ***
 
