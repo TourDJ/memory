@@ -17,13 +17,13 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
 ```
 
 
-* context:annotation-config
-
+* **context:annotation-config**     
 将隐式地向 Spring 容器注册 4 个 BeanPostProcessor：
-  * AutowiredAnnotationBeanPostProcessor
-  * CommonAnnotationBeanPostProcessor
-  * PersistenceAnnotationBeanPostProcessor
-  * equiredAnnotationBeanPostProcessor
+
+	  AutowiredAnnotationBeanPostProcessor
+	  CommonAnnotationBeanPostProcessor
+	  PersistenceAnnotationBeanPostProcessor
+	  equiredAnnotationBeanPostProcessor
 
 详情看[这里](http://blog.csdn.net/jationxiaozi/article/details/6084757)
 
