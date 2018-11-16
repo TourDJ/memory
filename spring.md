@@ -25,10 +25,8 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
 	  PersistenceAnnotationBeanPostProcessor
 	  equiredAnnotationBeanPostProcessor
 
-详情看[这里](http://blog.csdn.net/jationxiaozi/article/details/6084757)
+详情看[这里](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html
 
-
-[\<context:component-scan base-package="pack.pack"/\>](http://www.cnblogs.com/iuranus/archive/2012/07/19/2599084.html)
 
 
 ## Spring 注解
