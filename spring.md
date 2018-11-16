@@ -11,9 +11,9 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
 ```java
 <beans … > 
     ……
- <context:component-scan base-package=”bookstore.dao” /> 
-……
- </beans>
+    <context:component-scan base-package=”bookstore.dao” /> 
+    ……
+</beans>
 ```
 
 
