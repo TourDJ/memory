@@ -128,29 +128,29 @@ SessionAttributes 注解应用到 Controller上面，可以将Model中的属性�
 3)如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。
 
 
-### @ConditionalOnClass
+#### @ConditionalOnClass
 判断当前classpath下是否存在指定类，若是则将当前的配置装载入spring容器。
 
-### @ConditionalOnProperty
+#### @ConditionalOnProperty
 Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某个configuration是否生效。具体操作是通过其两个属性name以及havingValue来实现的。
 * name： 用来从application.properties中读取某个属性值，如果该值为空，则返回false;如果值不为空，则将该值与havingValue指定的值进行比较，如果一样则返回true;否则返回false。如果返回值为false，则该configuration不生效；为true则生效。
 * havingValue： 
 * matchIfMissing： 
 
-### @ConditionalOnMissingBean
+#### @ConditionalOnMissingBean
 如果存在指定name的bean，则该注解标注的bean不创建
 
 
-### @EnableConfigurationProperties
+#### @EnableConfigurationProperties
 
 开启属性注入,有此注解就可以通过 @autowired 注入， 是配合 @ConfigurationProperties 使用的。如果没有 @EnableConfigurationProperties，则使用 @ConfigurationProperties 注解的类上还需要添加 @Component 一类组件。
 
-### @ConfigurationProperties
+#### @ConfigurationProperties
 
 读取配置信息并自动封装成实体类，能够批量注入配置文件的属性。@Value 只能单个指定。
 
-### @@AutoConfigureAfter
-### @@EnableAspectJAutoProxy
+#### @AutoConfigureAfter
+#### @EnableAspectJAutoProxy
 
 #### @profile
 @profile 注解是spring提供的一个用来标明当前运行环境的注解。使用DI来依赖注入的时候，能够根据当前制定的运行环境来注入相应的bean。
