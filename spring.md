@@ -6,7 +6,7 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
 
 ## Spring 标签
 
-* context:component-scan    
+* **context:component-scan**    
 为了让 Spring 能够扫描类路径中的类并识别出 @Repository、@Component、@Service、@Constroller 注解，需要在 XML 配置文件中启用 Bean 的自动扫描功能
 ```java
 <beans … > 
@@ -17,7 +17,7 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
 ```
 
 
-context:annotation-config
+* context:annotation-config
 
 将隐式地向 Spring 容器注册 4 个 BeanPostProcessor：
   * AutowiredAnnotationBeanPostProcessor
