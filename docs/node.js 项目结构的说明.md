@@ -43,16 +43,19 @@ Travis CI是在线托管的CI服务，用Travis来进行持续集成。.travis.y
 为了实现 PWA 应用添加至桌面的功能，除了要求站点支持 HTTPS 之外，还需要准备 [manifest.json](https://lavas.baidu.com/doc/engage-retain-users/add-to-home-screen/introduction) 文件去配置应用的图标、名称等信息。举个例子，一个基本的 manifest.json 应包含如下信息：
 ```javascript
 {
-    "short_name": "短名称",
-    "name": "这是一个完整名称",
-    "icon": [
-        {
-            "src": "icon.png",
-            "type": "image/png",
-            "sizes": "48x48"
-        }
-    ],
-    "start_url": "index.html"
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
 ```
 使用 link 标签将 manifest.json 部署到 PWA 站点 HTML 页面的头部，如下所示：
