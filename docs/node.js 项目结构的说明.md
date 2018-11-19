@@ -3,15 +3,15 @@
 
 ## 配置文件
 
-### [package.json](http://www.cnblogs.com/tzyy/p/5193811.html#_h1_10)      
+* ### [package.json](http://www.cnblogs.com/tzyy/p/5193811.html#_h1_10)      
 
 
-#### eslintConfig 
+* ### eslintConfig 
 eslint 配置
 
 ***
 
-#### jsconfig.json
+* ### jsconfig.json
 	
 The presence of jsconfig.json file in a directory indicates that the directory is the root of a JavaScript Project. The jsconfig.json file specifies the root files and the options for the features provided by the JavaScript language service.
 
@@ -19,16 +19,16 @@ The presence of jsconfig.json file in a directory indicates that the directory i
 
 ***
 
-#### jest.config.js
+* ### jest.config.js
 
 ***
 
-#### .travis.yml
+* ### .travis.yml
 Travis CI是在线托管的CI服务，用Travis来进行持续集成。.travis.yml 文件添加到存储库以告知Travis CI要执行的操作。
 
 ***
 
-#### .babelrc
+* ### .babelrc
 [.babelrc](https://babeljs.io/docs/en/configuration#babelrc) 是 babel 配置文件。
 示例：
 ```javascript
@@ -39,7 +39,7 @@ Travis CI是在线托管的CI服务，用Travis来进行持续集成。.travis.y
 ```
 ***
 
-#### manifest.json
+* ### manifest.json
 为了实现 PWA 应用添加至桌面的功能，除了要求站点支持 HTTPS 之外，还需要准备 [manifest.json](https://lavas.baidu.com/doc/engage-retain-users/add-to-home-screen/introduction) 文件去配置应用的图标、名称等信息。举个例子，一个基本的 manifest.json 应包含如下信息：
 ```javascript
 {
