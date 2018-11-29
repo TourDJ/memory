@@ -1,7 +1,8 @@
 
 [git 命令](#git_command)    
   - [初始化](#git_init)  
-  - [vim 历史](#git_clone)     
+  - [克隆](#git_clone)     
+  - [状态](#git_status)    
   
 ***
 
@@ -45,7 +46,7 @@ depth 用于指定克隆深度，为1即表示只克隆最近一次commit。
 
 ***
 
-### git status 检查当前文件状态
+### <a id="git_status">git status 检查当前文件状态<a/>
 
 git status 命令的输出十分详细，但其用语有些繁琐。 
 
@@ -69,7 +70,7 @@ git status 命令的输出十分详细，但其用语有些繁琐。
 > 你可能注意到了 M 有两个可以出现的位置，出现在右边的 M 表示该文件被修改了但是还没放入暂存区，出现在靠左边的 M 表示该文件被修改了并放入了暂存区。
 ***
 
-### git add 跟踪新文件
+###  <a id="git_status">git add 跟踪新文件<a/>
 
 使用命令 git add 开始跟踪一个文件。 
 
@@ -92,7 +93,7 @@ git status 命令的输出十分详细，但其用语有些繁琐。
 
 ***
 
-### 忽略文件
+### <a id="git_status">忽略文件<a/>
 一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件
 等。 在这种情况下，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件模式。
 
@@ -109,7 +110,7 @@ git status 命令的输出十分详细，但其用语有些繁琐。
     * 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
 ***
 
-### git commit 提交更新
+### <a id="git_status">git commit 提交更新<a/>
 
 在暂存区域已经准备妥当可以提交了。 在此之前，请一定要确认还有什么修改过的或新建的文件还没有 git add 过，否则提交的时候不会记录这些还没暂存起来的变化。 这些修改过的文件只保留在本地磁盘。 所以，每次准备提交前，先用 git status 看下，是不是都已暂存起来了， 然后再运行提交命令 git commit：
 
@@ -128,7 +129,7 @@ git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件�
      1 file changed, 5 insertions(+), 0 deletions(-)
 ***
 
-### git rm 移除文件
+### <a id="git_status">git rm 移除文件<a/>
 
 要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除（确切地说，是从暂存区域移除），然后提交。
 如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 “Changes not staged for commit” 部分（也就是 未暂存清单）看到：
@@ -168,7 +169,7 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
 该命令为删除以 ~ 结尾的所有文件。
 ***
 
-### git mv 移动文件
+### <a id="git_status">git mv 移动文件<a/>
 
     $ git mv file_from file_to
 它会恰如预期般正常工作。 
@@ -179,7 +180,7 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
     $ git add README
 ***
 
-### git log 查看提交历史
+### <a id="git_status">git log 查看提交历史<a/>
 
     $ git log
     commit ca82a6dff817ec66f44342007202690a93763949
@@ -195,7 +196,7 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
     ......
 ***
 
-### 撤消操作
+### <a id="git_status">撤消操作<a/>
 
     $ git commit --amend
 这个命令会将暂存区中的文件提交。 如果自上次提交以来你还未做任何修改（例如，在上次提交后马上执行了此命令），那么快照会保持不变，而你所修改的只是提交信息。
@@ -210,7 +211,7 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
 最终你只会有一个提交 - 第二次提交将代替第一次提交的结果。
 ***
 
-### git reset 取消暂存的文件
+### <a id="git_status">git reset 取消暂存的文件<a/>
 
 git reset HEAD <file>...
 例如，你已经修改了两个文件并且想要将它们作为两次独立的修改提交，但是却意外地输入了 git add * 暂存了它们两个。 如何只取消暂存两个中的一个呢？
@@ -245,7 +246,7 @@ git reset HEAD <file>...
     git reset --soft HEAD~1   
 ***
 
-### git checkout 撤消对文件的修改
+### <a id="git_status">git checkout 撤消对文件的修改<a/>
 你该如何方便地撤消修改 - 将它还原成上次提交时的样子（或者刚克隆完的样子，或者刚把它放入工作目录时的样子）？
 
     $ git checkout -- CONTRIBUTING.md
@@ -258,7 +259,7 @@ git reset HEAD <file>...
 可以看到那些修改已经被撤消了。
 ***
 
-### git remote 查看远程仓库
+### <a id="git_status">git remote 查看远程仓库<a/>
 
     $ git remote
     origin
@@ -269,7 +270,7 @@ git reset HEAD <file>...
     origin	https://github.com/schacon/ticgit (push)
 ***
 
-### git remote add 添加远程仓库
+### <a id="git_status">git remote add 添加远程仓库<a/>
 在本地的git仓库"添加一个远程仓库",当然这个远程仓库还是你自己的这个目录。
 $ git remote add origin ssh://你的IP/~/testgit/.git
     
@@ -284,26 +285,26 @@ $ git remote add origin ssh://你的IP/~/testgit/.git
 添加一个新的远程 Git 仓库，同时指定一个你可以轻松引用的简写。
 ***
 
-### git fetch 从远程仓库中拉取
+### <a id="git_status">git fetch 从远程仓库中拉取<a/>
 这个命令会访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。
 
     $ git fetch [remote-name]
 git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令会将数据拉取到你的本地仓库 - 它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作。
 ***
 
-### git pull 从远程仓库中抓取与拉取
+### <a id="git_status">git pull 从远程仓库中抓取与拉取<a/>
 自动的抓取然后合并远程分支到当前分支。 
 
     $ git pull [remote-name]
 ***
 
-### git push 推送到远程仓库
+### <a id="git_status">git push 推送到远程仓库<a/>
 
     $ git push origin master
 当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先将他们的工作拉取下来并将其合并进你的工作后才能推送。
 ***
 
-### git remote show 查看远程仓库详细信息
+### <a id="git_status">git remote show 查看远程仓库详细信息<a/>
 
 $ git remote show origin
 * remote origin
@@ -319,7 +320,7 @@ $ git remote show origin
     master pushes to master (up to date)
 ***
 
-### git remote rename 远程仓库的重命名
+### <a id="git_status">git remote rename 远程仓库的重命名<a/>
 
     $ git remote rename pb paul
     $ git remote
@@ -327,20 +328,20 @@ $ git remote show origin
     paul
 ***
 
-### git remote rm 远程仓库的移除
+### <a id="git_status">git remote rm 远程仓库的移除<a/>
 
     $ git remote rm paul
     $ git remote
     origin
 ***
 
-### git remote set-url 更新获取地址方式
+### <a id="git_status">git remote set-url 更新获取地址方式<a/>
 > set-url 有两个参数：当前远程库名字、为远程库新设置的地址
 
     git remote set-url origin http://git.example.cn:3000/project/ptest.git
 ***
 
-### git stash 储藏你的工作
+### <a id="git_status">git stash 储藏你的工作<a/>
 为了演示这一功能，你可以进入你的项目，在一些文件上进行工作，有可能还暂存其中一个变更。如果你运行 git status，你可以看到你的中间状态：
 
     $ git status
@@ -372,7 +373,7 @@ $ git remote show origin
     git stash pop
 ***
 
-### git reflog 显示整个本地仓储的 commit
+### <a id="git_status">git reflog 显示整个本地仓储的 commit<a/>
 显示整个本地仓储的commit, 包括所有branch的commit, 甚至包括已经撤销的commit, 只要HEAD发生了变化, 就会在reflog里面看得到. git log只包括当前分支的commit。
 例如：
 
@@ -394,7 +395,7 @@ $ git remote show origin
 所以，如果你因为reset等操作丢失一个提交的时候，你总是可以把它找回来。除非你的操作已经被git当做垃圾处理掉了，一般是30天以后。
 ***
 
-### git blame 
+### <a id="git_status">git blame<a/> 
 命令模式会显示所有行的信息。我们可以利用"<开始>，<结束>"表示，<开始>和<结束>参数可以是数字。
 
     $ git blame -L 12,13 hello.html 
@@ -409,12 +410,12 @@ $ git remote show origin
 
 ***
 
-### git diff
+### <a id="git_status">git diff<a/>
 [git diff](http://blog.csdn.net/csfreebird/article/details/8044796) 可以比较working tree同index之间，index和git directory之间，working tree和git directory之间，git directory中不同commit之间的差异。
 
 ***
 
-### git branch
+### <a id="git_status">git branch<a/>
 
 * 创建分支
 
@@ -506,7 +507,7 @@ git push origin master 命令在没有track远程分支的本地分支中默认�
 
 ***
 
-### 存储用户名与密码
+### <a id="git_status">存储用户名与密码<a/>
 保存在内存中：
 
     git config --global credential.helper cache
@@ -519,7 +520,7 @@ git push origin master 命令在没有track远程分支的本地分支中默认�
 
 ***
 
-## git 使用技巧
+## <a id="git_status">git 使用技巧<a/>
 
 1 在本地仓库执行 pull 时报以下错误：
 
