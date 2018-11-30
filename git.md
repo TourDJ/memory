@@ -542,7 +542,7 @@ git push origin master 命令在没有track远程分支的本地分支中默认�
 
 执行该条命令之后会打开一个编辑框，列出了包含该次提交在内之后的所有提交:
 
-```javascript
+```none
 pick 3c45746 3 commit
 pick 925e14a 4 commit
 
