@@ -15,7 +15,7 @@ Spring 官方文档： [Spring Framework Reference Documentation](https://docs.s
     ……
 </beans>
 ```
-
+该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
 
 * **context:annotation-config**     
 将隐式地向 Spring 容器注册 4 个 BeanPostProcessor：
@@ -160,7 +160,6 @@ Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某
 
 
 ***
-该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去。
 
 
 ## Spring MVC
@@ -678,3 +677,11 @@ spring cloud 的版本并不是用数字来表示的，而是用伦敦地铁名�
 |Dalston	| 1.5.x	| not expected 2.x	| -|
 |Edgware	| 1.5.x	| not expected 2.x | 	-|
 |Finchley	| 2.x	| not expected 1.5.x	| -|
+
+
+***
+
+HandlerMethodArgumentResolver 定义参数转换器
+
+
+addArgumentResolvers：添加自定义方法参数处理器
