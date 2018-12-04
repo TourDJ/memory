@@ -3,7 +3,7 @@
 个人学习日志，记录了日常学习中的技术知识、编程技巧、经典算法以及个人的学习心得和总结。
 
 ## docs
-* [tech-stack](https://github.com/TourDJ/memory/blob/master/docs/tech-stack.md)
+* [tech-stack](https://github.com/TourDJ/memory/blob/master/docs/%E6%8A%80%E6%9C%AF%E6%A0%88.md)
 
 
 ## scripts
