@@ -96,6 +96,22 @@ Grant 命令
 >       set character_set_server=utf8;     
 >   设置好后重新创建表
 
+mysql 初始化       
+以管理员身份打开命令行窗口, 运行:
+
+	mysqld --initialize-insecure 
+> 1.不设置root密码
+  2.不能手动建data文件夹
+
+删除 mysql 服务 
+
+	sc delete mysql
+
+
+修改密码
+
+	ALTER USER 'root'@'localhost' IDENTIFIED BY '********'
+
 
 
  
