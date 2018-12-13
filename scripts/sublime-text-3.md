@@ -1,9 +1,17 @@
 
-## 设置  
+# Sublime
+
+## Sublime 使用技巧
+* 扩展选区
+
+将光标置于代码的某处，然后按下 Ctrl+Shift+Space，会选择当前的最小区域，再按一次会向外扩展区域，以此类推，直到全选为止。
+
+
+## Sublime 设置  
 
 [Vintage Mode](http://www.sublimetext.com/docs/3/vintage.html) 让你能够在 ST3 中使用 vi 模式。
 
-## 插件  
+## Sublime 插件  
 
 SideBarEnhancements： 扩展了侧边栏中菜单选项的数量，从而提升你的工作效率。  
 
