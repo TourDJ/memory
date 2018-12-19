@@ -32,6 +32,11 @@ Sublime 文件对比插件
 * PackageResourceViewer    
 Plugin to assist viewing and editing package resources in Sublime Text 2 and Sublime Text 3. 
 
+* TrailingSpaces    
+高亮显示多余的空格和Tab
+
+
+
 ## 相关资料
 [Sublime Text常用的快捷键](http://blog.jobbole.com/82527/)    
 [常用优秀插件介绍](http://www.cnblogs.com/hykun/p/sublimeText3.html)    
