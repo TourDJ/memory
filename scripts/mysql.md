@@ -14,6 +14,30 @@ tcp 连接：
 
     [zzz@zzz mysql]$ mysql --protocol=TCP -uroot -p -P3307 -hlocalhost
 
+auth_socket     
+如果您安装5.7并且没有为root用户提供密码，它将使用auth_socket插件。该插件不关心，也不需要密码。它只检查用户是否使用UNIX套接字进行连接，然后比较用户名。
+```sql
+mysql> USE mysql;
+mysql> SELECT User, Host, plugin FROM mysql.user;
+
++------------------+-----------------------+
+| User             | plugin                |
++------------------+-----------------------+
+| root             | auth_socket           |
+| mysql.sys        | mysql_native_password |
+| debian-sys-maint | mysql_native_password |
++------------------+-----------------------+
+```
+改变插件：
+```sql
+$ sudo mysql -u root # I had to use "sudo" since is new installation
+
+mysql> USE mysql;
+mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+mysql> FLUSH PRIVILEGES;
+mysql> exit;
+```
+
 ***
 
 ## MySQL 安装
