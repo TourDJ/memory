@@ -18,7 +18,6 @@
 * [java](https://github.com/TourDJ/memory/blob/master/scripts/java.md)          
 * [mongodb](https://github.com/TourDJ/memory/blob/master/scripts/mongodb.md)
 * [mongoose](https://github.com/TourDJ/memory/blob/master/scripts/mongoose.md)  
-* [mysql](https://github.com/TourDJ/memory/blob/master/scripts/mysql.md)  
 * [n](https://github.com/TourDJ/memory/blob/master/scripts/n.md)
 * [pm2](https://github.com/TourDJ/memory/blob/master/scripts/pm2.md)
 * [postgreSQL](https://github.com/TourDJ/memory/blob/master/scripts/postgreSQL.md)
