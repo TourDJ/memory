@@ -18,10 +18,15 @@ JdbcTemplate 是在JDBC API基础上提供了更抽象的封装，并提供了�
 * 如果没有设置任一个beans，SpringBoot会自动注册它
 * 初始化数据库
 
-> 如果我们在classpath里定义了schema.sql和data.sql文件，springBoot将会使用这些文件自动初始化数据库(但你必须选建库)
-除了载入schema.sql和data.sql外，SpringBoot也会载入schema-${platform}.sql和data-${platform}.sql，如果在你的classpath下存在的话。
-spring.datasource.schema=xxxx-db.sql 可以定义你的建库文件
-spring.datasource.data=xxxx-data.sql  可以定义你的数据文件
-spring.datasource.initialize＝true|false 可以决定是不是要初始化这些数据库文件
-spring.datasource.continueOnError＝true|false 有了错误是否继续运行
+
+* spring-boot-configuration-processor
+spring默认使用yml中的配置，但有时候要用传统的xml或properties配置，就需要使用spring-boot-configuration-processor了
+```java
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-configuration-processor</artifactId>
+    <optional>true</optional>
+</dependency>
+```
+再在你的配置类开头加上@PropertySource("classpath:your.properties")，其余用法与加载yml的配置一样
 
