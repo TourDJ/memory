@@ -2,7 +2,7 @@
 
 ## Spring boot 配置
 
-* spring-boot-starter-jdbc
+### spring-boot-starter-jdbc
 Spring 对数据库的操作在jdbc上面做了深层次的封装，使用spring的注入功能，可以把DataSource注册到JdbcTemplate之中。 
 JdbcTemplate 是在JDBC API基础上提供了更抽象的封装，并提供了基于方法注解的事务管理能力。 通过使用SpringBoot自动配置功能并代替我们自动配置beans。
 在maven中，我们需要增加spring-boot-starter-jdbc模块
@@ -19,7 +19,7 @@ JdbcTemplate 是在JDBC API基础上提供了更抽象的封装，并提供了�
 * 初始化数据库
 
 
-* spring-boot-configuration-processor
+### spring-boot-configuration-processor
 spring默认使用yml中的配置，但有时候要用传统的xml或properties配置，就需要使用spring-boot-configuration-processor了
 ```java
 <dependency>
