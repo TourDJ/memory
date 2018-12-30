@@ -24,7 +24,6 @@
 * [python](https://github.com/TourDJ/memory/blob/master/scripts/python.md)
 * [rabbitmq](https://github.com/TourDJ/memory/blob/master/scripts/rabbitmq.md)
 * [redis](https://github.com/TourDJ/memory/blob/master/scripts/redis.md)
-* [sublime](https://github.com/TourDJ/memory/blob/master/scripts/sublime-text-3.md)
 * [typescript](https://github.com/TourDJ/memory/blob/master/scripts/typescript.md)
 
 ## 技术知识收集整理
