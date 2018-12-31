@@ -638,6 +638,14 @@ Git 使用两种主要类型的标签：轻量标签（lightweight）与附注�
 
 ***
 
+#### 删除远程分支
+
+    git push origin :branch-name
+
+冒号前面的空格不能少，原理是把一个空分支push到server上，相当于删除该分支。
+
+***
+
 ## <a id="git_status">git 使用技巧<a/>
 
 1 在本地仓库执行 pull 时报以下错误：
