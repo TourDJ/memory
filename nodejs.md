@@ -1,72 +1,5 @@
-## node 脚本安装
-Please see the [detail](https://stackoverflow.com/questions/20028996/how-to-install-node-binary-distribution-files-on-linux#)
-> install code 
 
-        #! /bin/bash
-        # run it by: bash install-node.sh
-        read -p " which version of Node do you need to install: enter 0.10.24, 0.12.9, or 4.2.2 (or any other valid version): " VERSIONNAME
-        read -p " Are you using a 32-bit or 64-bit operating system ? Enter 64 or 32: " ARCHVALUE
-        if [[ $ARCHVALUE = 32 ]]
-            then
-            printf "user put in 32 \n"
-            ARCHVALUE=86
-            URL=http://nodejs.org/dist/v${VERSIONNAME}/node-v${VERSIONNAME}-linux-x${ARCHVALUE}.tar.gz
-
-        elif [[ $ARCHVALUE = 64 ]]
-            then
-            printf "user put in 64 \n"
-            ARCHVALUE=64
-            URL=http://nodejs.org/dist/v${VERSIONNAME}/node-v${VERSIONNAME}-linux-x${ARCHVALUE}.tar.gz
-
-        else
-            printf "invalid input expted either 32 or 64 as input, quitting ... \n"
-
-            exit
-        fi
-
-        # setting up the folders and the the symbolic links
-        printf $URL"\n"
-        ME=$(whoami) ; 
-
-        #adding yourself to the group to access /usr/local/bin
-        sudo chown -R $ME /usr/local && cd /usr/local/bin 
-
-        # downloads and unzips the content to _node
-        mkdir _node && cd $_ && wget $URL -O - | tar zxf - --strip-components=1 
-
-        # copy the node modules folder to the /lib/ folder
-        cp -r ./lib/node_modules/ /usr/local/lib/ 
-
-        # copy the /include/node folder to /usr/local/include folder
-        cp -r ./include/node /usr/local/include/ 
-
-        # create the man folder
-        mkdir /usr/local/man/man1 
-
-        # copy the man file
-        cp ./share/man/man1/node.1 /usr/local/man/man1/ 
-
-        # copy node to the bin folder
-        cp bin/node /usr/local/bin/ 
-
-        ## making the symbolic link to npm
-        ln -s "/usr/local/lib/node_modules/npm/bin/npm-cli.js" ../npm 
-
-        # print the version of node and npm
-        node -v
-        npm -v
-
-> uninstall code
-
-        #! /bin/bash
-        # run it by: ./uninstall-node.sh
-        sudo rm -rf /usr/local/bin/npm
-        sudo rm -rf /usr/local/bin/node
-        sudo rm -rf /usr/local/lib/node_modules/
-        sudo rm -rf /usr/local/include/node/
-        sudo rm -rf /usr/local/share/man/man1/node.1
-        sudo rm -rf /usr/local/bin/_node/ 
-
+# Node.js
 
 ## node 版本含义
 
@@ -104,6 +37,10 @@ Please see the [detail](https://stackoverflow.com/questions/20028996/how-to-inst
 #### 清除缓存
 
      npm cache clean --force
+
+#### production
+添加了 production 参数后将仅仅安装  package.json 中dependencies 里面的包，不会安装 devDependencies 里面的包。
+
 
 ***
 
