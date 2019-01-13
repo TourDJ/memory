@@ -1,0 +1,19 @@
+
+{
+  "apps": [
+    {
+      "name": "account-api",
+      "script": "/home/zhangs/server/service.js",
+      "cwd": "/home/zhangs",
+      "watch": false,
+      "args": "--start",
+      "ignore_watch": [
+        "node_modules",
+        "data"
+      ],
+      "watch_options": {
+        "followSymlinks": false
+      }
+    }
+  ]
+}
