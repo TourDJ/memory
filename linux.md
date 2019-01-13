@@ -281,6 +281,9 @@ s – 改变画面更新周期
     getconf LONG_BIT
     
 
+#### lsof
+lsof -i: 查看某个端口是否被占用
+
 
 #### 参考  
 [鸟哥的 Linux 私房菜](http://cn.linux.vbird.org/linux_server/)    
@@ -529,5 +532,15 @@ invoke-rc.d 类似与 RHEL 中的 service。
 Run the below command:      
 
     echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+
+* linux ssh 配置取消禁止root用户直接登陆
+打开文件
+
+    etc/ssh/sshd_config
+    设置
+    PermitRootLogin no
+    重启sshd服务
+    sservice sshd restart
 
 
