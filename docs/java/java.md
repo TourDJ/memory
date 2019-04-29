@@ -548,4 +548,6 @@ public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtr
 
 
 [Java Programming Tutorial](https://www3.ntu.edu.sg/home/ehchua/programming/java/J2_Basics.html)     
+[programming notes](https://www3.ntu.edu.sg/home/ehchua/programming/index.html)       
+
 
