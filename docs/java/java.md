@@ -544,6 +544,17 @@ public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtr
     }
 ```
 
+排序
+```java
+Comparator<InventoryVO> byFull = Comparator.comparing(InventoryVO::getIsfull);
+Comparator<InventoryVO> byNo = Comparator.comparing(InventoryVO::getNo);
+Comparator<InventoryVO> byFullAndNo = byFull.thenComparing(byNo);
+
+if(FuncUtils.validList(inventoryVOs)) {
+	inventoryVOs = inventoryVOs.stream().sorted(byFullAndNo).collect(toList());
+}
+```
+
 
 
 
