@@ -527,3 +527,12 @@ Listener 主要用于对 Session、Request、Context 进行监控。
 
 ***
 
+## Java8 usage
+
+去掉记录中重复的编号的记录
+```java
+List<Person> newPersons = persons.stream().collect(Collectors.collectingAndThen
+	(Collectors.toCollection(() -> new TreeSet<>
+	(Comparator.comparing(Person::getNo))), ArrayList::new)
+);
+```
