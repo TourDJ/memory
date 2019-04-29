@@ -536,3 +536,12 @@ List<Person> newPersons = persons.stream().collect(Collectors.collectingAndThen
 	(Comparator.comparing(Person::getNo))), ArrayList::new)
 );
 ```
+
+```java
+public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Map<Object, Boolean> map = new ConcurrentHashMap<>();
+        return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+    }
+```
+
+
