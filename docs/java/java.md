@@ -527,3 +527,38 @@ Listener 主要用于对 Session、Request、Context 进行监控。
 
 ***
 
+## Java8 usage
+
+去掉记录中重复的编号的记录
+```java
+List<Person> newPersons = persons.stream().collect(Collectors.collectingAndThen
+	(Collectors.toCollection(() -> new TreeSet<>
+	(Comparator.comparing(Person::getNo))), ArrayList::new)
+);
+```
+
+```java
+public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Map<Object, Boolean> map = new ConcurrentHashMap<>();
+        return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+    }
+```
+
+排序
+```java
+Comparator<InventoryVO> byFull = Comparator.comparing(InventoryVO::getIsfull);
+Comparator<InventoryVO> byNo = Comparator.comparing(InventoryVO::getNo);
+Comparator<InventoryVO> byFullAndNo = byFull.thenComparing(byNo);
+
+if(FuncUtils.validList(inventoryVOs)) {
+	inventoryVOs = inventoryVOs.stream().sorted(byFullAndNo).collect(toList());
+}
+```
+
+
+
+
+[Java Programming Tutorial](https://www3.ntu.edu.sg/home/ehchua/programming/java/J2_Basics.html)     
+[programming notes](https://www3.ntu.edu.sg/home/ehchua/programming/index.html)       
+
+
