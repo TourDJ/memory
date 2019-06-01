@@ -261,8 +261,15 @@ setenforce [ Enforcing | Permissive | 1 | 0 ]   // 1 开启， 0 关闭
       --http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
       --http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
       --http-scgi-temp-path=/var/temp/nginx/scgi
-4：make 编译 
+4：make 编译      
 5：make install 安装     
+
+> ubuntu 依赖库zlib，pcre，openssl安装方法
+
+      解决依赖包openssl安装，命令：sudo apt-get install openssl libssl-dev
+      解决依赖包pcre安装，命令：sudo apt-get install libpcre3 libpcre3-dev
+      解决依赖包zlib安装，命令：sudo apt-get install zlib1g-dev
+
 
 ## 配置服务
 创建脚本 
