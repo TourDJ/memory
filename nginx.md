@@ -575,7 +575,7 @@ rewrite只能放在server{},location{},if{}中，并且只能对域名后边的�
 
 nginx 中有两个模块都有`proxy_pass`指令，都是用来做后端代理的指令：
 * `ngx_http_proxy_module` 的 proxy_pass，只能在 `server` 段使用使用, 只需要提供域名或ip地址和端口。可以理解为端口转发，可以是tcp端口，也可以是udp端口。
-* ngx_stream_proxy_module的proxy_pass，需要在 `location` 中的`if`，`limit_except`段中使用，处理需要提供域名或ip地址和端口外，还需要提供协议，如"http"或"https"，还有一个可选的uri可以配置。
+* `ngx_stream_proxy_module` 的 proxy_pass，需要在 `location` 中的`if`，`limit_except`段中使用，处理需要提供域名或ip地址和端口外，还需要提供协议，如"http"或"https"，还有一个可选的uri可以配置。
 
 示例：
 ```
