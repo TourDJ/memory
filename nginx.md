@@ -570,9 +570,106 @@ rewrite只能放在server{},location{},if{}中，并且只能对域名后边的�
 * 循环超过10次，则返回500 Internal Server Error错误。
 
 
+## 代理
+在 nginx 中配置`proxy_pass`代理转发时，如果在`proxy_pass`后面的url加/，表示绝对根路径；如果没有/，表示相对路径，把匹配的路径部分也给代理走。
+
+nginx 中有两个模块都有`proxy_pass`指令，都是用来做后端代理的指令：
+* `ngx_http_proxy_module` 的 proxy_pass，只能在 `server` 段使用使用, 只需要提供域名或ip地址和端口。可以理解为端口转发，可以是tcp端口，也可以是udp端口。
+* `ngx_stream_proxy_module` 的 proxy_pass，需要在 `location` 中的`if`，`limit_except`段中使用，处理需要提供域名或ip地址和端口外，还需要提供协议，如"http"或"https"，还有一个可选的uri可以配置。
+
+示例：
+```
+server {
+    listen      80;
+    server_name www.test.com;
+
+    # 情形A
+    # 访问 http://www.test.com/testa/aaaa
+    # 后端的request_uri为: /testa/aaaa
+    location ^~ /testa/ {
+        proxy_pass http://127.0.0.1:8801;
+    }
+    
+    # 情形B
+    # 访问 http://www.test.com/testb/bbbb
+    # 后端的request_uri为: /bbbb
+    location ^~ /testb/ {
+        proxy_pass http://127.0.0.1:8801/;
+    }
+
+    # 情形C
+    # 下面这段location是正确的
+    location ~ /testc {
+        proxy_pass http://127.0.0.1:8801;
+    }
+
+    # 情形D
+    # 下面这段location是错误的
+    #
+    # nginx -t 时，会报如下错误: 
+    #
+    # nginx: [emerg] "proxy_pass" cannot have URI part in location given by regular 
+    # expression, or inside named location, or inside "if" statement, or inside 
+    # "limit_except" block in /opt/app/nginx/conf/vhost/test.conf:17
+    # 
+    # 当location为正则表达式时，proxy_pass 不能包含URI部分。本例中包含了"/"
+    location ~ /testd {
+        proxy_pass http://127.0.0.1:8801/;   # 记住，location为正则表达式时，不能这样写！！！
+    }
+
+    # 情形E
+    # 访问 http://www.test.com/ccc/bbbb
+    # 后端的request_uri为: /aaa/ccc/bbbb
+    location /ccc/ {
+        proxy_pass http://127.0.0.1:8801/aaa$request_uri;
+    }
+
+    # 情形F
+    # 访问 http://www.test.com/namea/ddd
+    # 后端的request_uri为: /yongfu?namea=ddd
+    location /namea/ {
+        rewrite    /namea/([^/]+) /yongfu?namea=$1 break;
+        proxy_pass http://127.0.0.1:8801;
+    }
+
+    # 情形G
+    # 访问 http://www.test.com/nameb/eee
+    # 后端的request_uri为: /yongfu?nameb=eee
+    location /nameb/ {
+        rewrite    /nameb/([^/]+) /yongfu?nameb=$1 break;
+        proxy_pass http://127.0.0.1:8801/;
+    }
+
+    access_log /data/logs/www/www.test.com.log;
+}
+
+server {
+    listen      8801;
+    server_name www.test.com;
+    
+    root        /data/www/test;
+    index       index.php index.html;
+
+    rewrite ^(.*)$ /test.php?u=$1 last;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_pass unix:/tmp/php-cgi.sock;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+
+    access_log /data/logs/www/www.test.com.8801.log;
+}
+```
+
+
 ***
 进阶     
 [nginx平台初探](http://tengine.taobao.org/book/chapter_02.html)     
-[ngx_http_rewrite_module](http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#break)   
+[ngx_http_rewrite_module](http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#break)        
+[nginx之proxy_pass指令完全拆解](https://my.oschina.net/foreverich/blog/1512304)      
+
+
 
 
