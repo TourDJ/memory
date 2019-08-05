@@ -28,12 +28,6 @@
 
 ## 技术知识收集整理
 
-### [Spring](https://github.com/TourDJ/memory/blob/master/spring.md)    
-Spring Framework为现代基于Java的企业应用程序提供了全面的编程和配置模型 - 在任何类型的部署平台上。
-
-Spring的一个关键要素是应用程序级别的基础架构支持：Spring专注于企业应用程序的“管道”，以便团队可以专注于应用程序级业务逻辑，而无需与特定部署环境建立不必要的联系。
-*** 
-
 ### [Git](https://github.com/TourDJ/memory/blob/master/git.md)    
 Git是一个免费的开源分布式版本控制系统，旨在快速，高效地处理从小型到大型项目的所有事务。
 
