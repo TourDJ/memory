@@ -21,7 +21,6 @@
 * [n](https://github.com/TourDJ/memory/blob/master/scripts/n.md)
 * [pm2](https://github.com/TourDJ/memory/blob/master/scripts/pm2.md)
 * [postgreSQL](https://github.com/TourDJ/memory/blob/master/scripts/postgreSQL.md)
-* [python](https://github.com/TourDJ/memory/blob/master/scripts/python.md)
 * [rabbitmq](https://github.com/TourDJ/memory/blob/master/scripts/rabbitmq.md)
 * [redis](https://github.com/TourDJ/memory/blob/master/scripts/redis.md)
 * [typescript](https://github.com/TourDJ/memory/blob/master/scripts/typescript.md)
