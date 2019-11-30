@@ -23,18 +23,8 @@
 
 ## 技术知识收集整理
 
-### [Git](https://github.com/TourDJ/memory/blob/master/git.md)    
-Git是一个免费的开源分布式版本控制系统，旨在快速，高效地处理从小型到大型项目的所有事务。
-
-Git易于学习，占地面积小，具有闪电般快速的性能。 它超越了Subversion，CVS，Perforce和ClearCase等SCM工具，具有廉价本地分支，便捷的临时区域和多个工作流程等功能。
-***
-
 ### [Nginx](https://github.com/TourDJ/memory/blob/master/nginx.md)    
 nginx [engine x]是一个HTTP和反向代理服务器，一个邮件代理服务器和一个通用的TCP / UDP代理服务器，最初由Igor Sysoev编写。 
-***
-
-### [Node.js](https://github.com/TourDJ/memory/blob/master/nodejs.md)   
-Node.js是基于Chrome的V8 JavaScript引擎构建的JavaScript运行时。作为异步事件驱动的JavaScript运行时，Node旨在构建可伸缩的网络应用程序。
 ***
 
 ### [Maven](https://github.com/TourDJ/memory/blob/master/maven.md)    
