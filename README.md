@@ -20,7 +20,7 @@ A JavaScript library for building user interfaces.
 
 ### [HTTP 协议](https://github.com/TourDJ/memory/blob/master/http%20%E5%8D%8F%E8%AE%AE.md)  
 
-
+arangodb --starter.mode single --starter.data-dir /opt/arangodb3-3.6.4/data 
 ***
 
 ## License
